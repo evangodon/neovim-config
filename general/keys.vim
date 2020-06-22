@@ -44,6 +44,13 @@ inoremap <silent> <C-S> <C-O>:update<CR>
 nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 
+" Better indenting
+vnoremap < <gv
+vnoremap > >gv
+
+" <TAB>: completion.
+inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " Create map to add keys to
 let g:which_key_map =  {}
 " Define a separator
@@ -66,7 +73,7 @@ let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
 let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
 let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'toggle ranger' ]
 let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
-let g:which_key_map['q'] = [ 'q'                          , 'quit' ]
+let g:which_key_map['q'] = [ ':q'                          , 'quit' ]
 let g:which_key_map['S'] = [ ':SSave'                     , 'save session' ]
 let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
 let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
