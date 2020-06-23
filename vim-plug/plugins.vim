@@ -8,7 +8,12 @@ endif
 
 
 call plug#begin()
+"
+  " Quickscope
+  Plug 'unblevable/quick-scope'
 
+  if exists('g:vscode')
+  else
   " Color Schemes
   Plug 'dikiaap/minimalist'
   Plug 'joshdick/onedark.vim'
@@ -78,8 +83,8 @@ call plug#begin()
   " Table Mode
   Plug 'dhruvasagar/vim-table-mode'
 
-  " Quickscope
-  Plug 'unblevable/quick-scope'
+
+endif
 
 call plug#end()
 

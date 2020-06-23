@@ -1,4 +1,5 @@
-set noshowmode "hide mode status
+set noshowmode " hide mode status
+set laststatus=2 " always show status line
 
 if exists('g:loaded_gitbranch') || v:version < 700
   finish
@@ -27,3 +28,4 @@ let g:lightline = {
       \   'gitbranch': 'gitbranch#name'
       \ },
       \ }
+
