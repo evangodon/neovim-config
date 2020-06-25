@@ -72,8 +72,8 @@ xnoremap J :move '>+1<CR>gv-gv
 nmap <C-_>   <Plug>NERDCommenterToggle
 vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 
-" Whick key mappings 
-let g:which_key_map['.'] = [ ':e ~/.config/nvim'          , 'open init' ]
+" Which key mappings 
+let g:which_key_map['.'] = [ ':e $MYVIMRC'                , 'open init' ]
 let g:which_key_map[';'] = [ ':Commands'                  , 'commands' ]
 let g:which_key_map['='] = [ '<C-W>='                     , 'balance windows' ]
 let g:which_key_map[','] = [ 'Startify'                   , 'start screen' ]
@@ -82,11 +82,12 @@ let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
 let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
 let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'toggle ranger' ]
 let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
-let g:which_key_map['q'] = [ ':q!'                        , 'quit' ]
+let g:which_key_map['q'] = [ ':q'                         , 'quit' ]
 let g:which_key_map['S'] = [ ':SSave'                     , 'save session' ]
 let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
 let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
 let g:which_key_map['T'] = [ ':Rg'                        , 'search text' ]
+let g:which_key_map['u'] = [ ':UndotreeToggle'            , 'toggle undo tree' ]
 let g:which_key_map['tm'] = [ ':TableModeToggle'          , 'toggle table mode' ]
 
 

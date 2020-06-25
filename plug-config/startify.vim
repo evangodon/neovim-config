@@ -1,0 +1,14 @@
+
+let g:startify_bookmarks = [
+            \ { 'n': '~/.config/nvim/init.vim' },
+            \ { 'f': '~/.config/fish/config.fish' },
+            \ { 'K': '~/.config/kitty/kitty.conf' },
+            \ { 'r': '~/.config/ranger/rc.conf' },
+            \ ]
+
+let g:startify_lists = [
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']                    },
+          \ { 'type': 'files',     'header': ['   Files']                        },
+          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+          \ { 'type': 'sessions',  'header': ['   Sessions']                     },
+          \ ]

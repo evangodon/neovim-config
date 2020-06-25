@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =9
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/evan/.config/nvim/plugged/rnvimr'
+let g:netrw_dirhist_1='/home/evan/.config/nvim/plugged/rnvimr/ranger'
+let g:netrw_dirhist_0='/home/evan/.config/nvim/plugged/rnvimr'
 let g:netrw_dirhist_9='/home/evan/.config/nvim/autoload'
 let g:netrw_dirhist_8='/home/evan/.config/nvim'
 let g:netrw_dirhist_7='/home/evan/Documents/Knowledge Base/Code'
@@ -7,5 +10,3 @@ let g:netrw_dirhist_6='/home/evan/Documents/Knowledge Base'
 let g:netrw_dirhist_5='/home/evan/Documents/Knowledge Base/Linux'
 let g:netrw_dirhist_4='/home/evan/Documents/Knowledge Base'
 let g:netrw_dirhist_3='/home/evan/Documents/Knowledge Base/Learning'
-let g:netrw_dirhist_2='/home/evan/.config/.git'
-let g:netrw_dirhist_1='/home/evan/code/react/portfolio-v3/src/components'
