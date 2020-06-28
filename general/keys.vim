@@ -1,5 +1,7 @@
 if exists('g:vscode')
 
+xnoremap <silent> <A> :<C-u>call <SID>openVSCodeCommandsInVisualMode()<CR>
+
 " Simulate same TAB behavior in VSCode
 nmap <Tab> :Tabnext<CR>
 nmap <S-Tab> :Tabprev<CR>
@@ -60,7 +62,7 @@ inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:which_key_map =  {}
 " Define a separator
 let g:which_key_sep = '→'
-set timeoutlen=500
+set timeoutlen=300
 
 " Move selected line / block of text in visual mode
 " shift + k to move up
@@ -72,12 +74,17 @@ xnoremap J :move '>+1<CR>gv-gv
 nmap <C-_>   <Plug>NERDCommenterToggle
 vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 
+" Fzf
+map <C-f> :Files<CR>
+nnoremap <leader>g :Rg<CR>
+nnoremap <leader>m :Marks<CR>
+
+
 " Which key mappings 
 let g:which_key_map['.'] = [ ':e $MYVIMRC'                , 'open init' ]
 let g:which_key_map[';'] = [ ':Commands'                  , 'commands' ]
 let g:which_key_map['='] = [ '<C-W>='                     , 'balance windows' ]
 let g:which_key_map[','] = [ 'Startify'                   , 'start screen' ]
-let g:which_key_map['d'] = [ ':bd'                        , 'delete buffer']
 let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
 let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
 let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'toggle ranger' ]
@@ -86,9 +93,33 @@ let g:which_key_map['q'] = [ ':q'                         , 'quit' ]
 let g:which_key_map['S'] = [ ':SSave'                     , 'save session' ]
 let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
 let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
-let g:which_key_map['T'] = [ ':Rg'                        , 'search text' ]
+let g:which_key_map['T'] = [ ':Todoist'                   , 'search text' ]
 let g:which_key_map['u'] = [ ':UndotreeToggle'            , 'toggle undo tree' ]
 let g:which_key_map['tm'] = [ ':TableModeToggle'          , 'toggle table mode' ]
+
+
+let g:which_key_map.b = {
+      \ 'name' : '+buffers' ,
+      \ 'd' : [':bd'                                      , 'delete'],
+      \ }
+
+let g:which_key_map.s = {
+      \ 'name' : '+search' ,
+      \ 'b' : [':Buffers'                                 , 'buffers'],
+      \ 't' : [':Rg'                                      , 'text'],
+      \ }
+
+let g:which_key_map.t = {
+      \ 'name' : '+terminal' ,
+      \ ';' : [':FloatermNew --wintype=popup --height=6'        , 'terminal'],
+      \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
+      \ 'g' : [':FloatermNew lazygit'                           , 'git'],
+      \ 'd' : [':FloatermNew lazydocker'                        , 'docker'],
+      \ 'n' : [':FloatermNew node'                              , 'node'],
+      \ 't' : [':FloatermToggle'                                , 'toggle'],
+      \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
+      \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
+      \ }
 
 
 " Register which key map

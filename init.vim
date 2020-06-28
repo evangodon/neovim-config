@@ -25,4 +25,9 @@ source $HOME/.config/nvim/plug-config/fzf.vim
 source $HOME/.config/nvim/plug-config/table-mode.vim
 source $HOME/.config/nvim/plug-config/quickscope.vim
 source $HOME/.config/nvim/plug-config/startify.vim
+source $HOME/.config/nvim/plug-config/floaterm.vim
+source $HOME/.config/nvim/plug-config/todoist.vim
+source $HOME/.config/nvim/plug-config/firenvim.vim
+source $HOME/.config/nvim/plug-config/vem-tabline.vim
+
 

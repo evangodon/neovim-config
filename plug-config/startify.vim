@@ -12,3 +12,12 @@ let g:startify_lists = [
           \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
           \ { 'type': 'sessions',  'header': ['   Sessions']                     },
           \ ]
+
+
+let g:startify_custom_header = [
+            \'    _ __   ___  _____   _(_)_ __ ___',
+            \'   | ''_ \ / _ \/ _ \ \ / / | ''_ ` _ \',
+            \'   | | | |  __/ (_) \ V /| | | | | | |',
+            \'   |_| |_|\___|\___/ \_/ |_|_| |_| |_|',
+            \]
+

@@ -12,4 +12,5 @@ inoreabbrev <expr> __
           \ <SID>isAtStartOfLine('__') ?
           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
+let g:table_mode_disable_tableize_mappings=1
 

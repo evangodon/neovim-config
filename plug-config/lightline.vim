@@ -22,10 +22,12 @@ let g:lightline = {
       \ 'colorscheme': 'tokyonight',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch','readonly', 'modified' ] ]
+      \             [ 'gitbranch','cocstatus', 'readonly', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
+      \   'gitbranch': 'gitbranch#name',
+      \   'cocstatus': 'coc#status',
       \ },
+      \ 'enable': { 'tabline': 0}
       \ }
 

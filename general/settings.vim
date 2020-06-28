@@ -1,9 +1,13 @@
-if exists('g:vscode')
+" Hightlight yanked text
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+augroup END
 
+if exists('g:vscode')
 else
 
 set t_Co=256                                                                                      
-set encoding=UTF-8                                                                                
 set termguicolors                                                                                 
 set nowrap                                                                                        
 syntax on                                                                                         
@@ -44,16 +48,6 @@ highlight CursorLine guibg=#1a1b26 ctermbg=234
 " line numbers
 set number relativenumber
 
-augroup numbertoggle
-  autocmd!
-  autocmd FocusGained,InsertLeave * set relativenumber
-  autocmd FocusLost,InsertEnter  * set norelativenumber
-augroup END
 
-" Hightlight yanked text
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1500)
-augroup END
 
 endif

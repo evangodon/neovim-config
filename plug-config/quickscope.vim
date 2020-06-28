@@ -1,4 +1,4 @@
-" Trigger a highlight in the appropriate direction when pressing these keys:
+"firenvim Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 highlight QuickScopePrimary guifg='#29b6f6' gui=underline ctermfg=155 cterm=underline

@@ -65,8 +65,8 @@ call plug#begin()
   Plug 'preservim/nerdcommenter'
 
   "Buftabline
-  Plug 'ap/vim-buftabline'
-
+  Plug 'pacha/vem-tabline'
+  
   " Colorizer
   Plug 'norcalli/nvim-colorizer.lua'
 
@@ -83,8 +83,15 @@ call plug#begin()
   " Table Mode
   Plug 'dhruvasagar/vim-table-mode'
 
+  " Float term
+  Plug 'voldikss/vim-floaterm'
+
   "Experimental"
-   Plug 'mbbill/undotree'
+  Plug 'mbbill/undotree'
+
+  Plug 'romgrk/todoist.vim', { 'do': ':TodoistInstall' }
+
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 endif
 
