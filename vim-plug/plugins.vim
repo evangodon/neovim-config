@@ -29,7 +29,7 @@ call plug#begin()
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
   " Golang
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
   " Coc
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -92,6 +92,9 @@ call plug#begin()
   Plug 'romgrk/todoist.vim', { 'do': ':TodoistInstall' }
 
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
+  Plug 'justinmk/vim-dirvish'
+  Plug 'kristijanhusak/vim-dirvish-git'
 
 endif
 

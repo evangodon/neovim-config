@@ -43,6 +43,7 @@ tnoremap <Esc> <C-\><C-n>
 noremap  <silent> <C-S>  :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
+
 " Mimic control-w from vscode
 nnoremap <expr> <C-w> len(getbufinfo({'buflisted':1}))  == 1 ? ':q<cr>':':bd<cr>'
 
