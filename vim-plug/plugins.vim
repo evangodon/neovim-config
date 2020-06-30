@@ -91,7 +91,7 @@ call plug#begin()
 
   Plug 'romgrk/todoist.vim', { 'do': ':TodoistInstall' }
 
-  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+  "Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
   Plug 'justinmk/vim-dirvish'
   Plug 'kristijanhusak/vim-dirvish-git'

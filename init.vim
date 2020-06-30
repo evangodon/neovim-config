@@ -1,3 +1,12 @@
+"    _ __   ___  _____   _(_)_ __ ___
+"   | '' \ / _ \/ _ \ \ / / | ''_ ` _ \
+"   | | | |  __/ (_) \ V /| | | | | | |
+"   |_| |_|\___|\___/ \_/ |_|_| |_| |_|
+"
+"
+"
+"
+"
 " Useful commands:
 " :so % - reload config
 "
@@ -15,7 +24,7 @@ source $HOME/.config/nvim/general/theme.vim
 "Config for plugins
 source $HOME/.config/nvim/plug-config/goyo.vim
 source $HOME/.config/nvim/plug-config/lightline.vim
-source $HOME/.config/nvim/plug-config/coc-explorer.vim
+source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/vim-wiki.vim
 source $HOME/.config/nvim/plug-config/nerd-commenter.vim
 source $HOME/.config/nvim/plug-config/vim-go.vim
