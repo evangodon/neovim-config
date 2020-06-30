@@ -5,8 +5,6 @@
 "
 "
 "
-"
-"
 " Useful commands:
 " :so % - reload config
 "
