@@ -3,7 +3,18 @@ let g:tokyonight_style = 'storm' " available: night, storm
 let g:tokyonight_enable_italic = 1
 let g:tokyonight_disable_italic_comment = 1
 
-colorscheme tokyonight
+
+"Change theme depending on the time of day
+let isday = (strftime('%H') % 20) > 7
+
+if isday 
+  set background=light
+  colorscheme one 
+else  
+  set background=dark
+  colorscheme tokyonight
+endif
+
 
 " Add colors to jsx
 hi tsxTagName guifg=#E06C75

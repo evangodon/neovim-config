@@ -22,5 +22,9 @@
   },
   "explorer.file.column.git.icon.added": "",
   "explorer.file.column.git.icon.deleted": "",
-  "explorer.file.column.git.icon.modified": ""
+  "explorer.file.column.git.icon.modified": "",
+
+  "git.addedSign.text": "▌",
+  "git.changedSign.text": "▌",
+  "git.removedSign.text": "▁"
 }

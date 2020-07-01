@@ -106,6 +106,8 @@ else
   map <C-f> :Files<CR>
   nnoremap <leader>g :Rg<CR>
   nnoremap <leader>m :Marks<CR>
+  nnoremap <leader>q :q<CR>
+  nnoremap <leader><Enter> :FloatermToggle<CR>
 
 
   " Which key mappings 
@@ -117,7 +119,6 @@ else
   let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
   let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'toggle ranger' ]
   let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
-  let g:which_key_map['q'] = [ ':q'                         , 'quit' ]
   let g:which_key_map['S'] = [ ':SSave'                     , 'save session' ]
   let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
   let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]

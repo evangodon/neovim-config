@@ -21,6 +21,8 @@ call plug#begin()
   Plug 'bluz71/vim-nightfly-guicolors'
   Plug 'artanikin/vim-synthwave84'
   Plug 'ghifarit53/tokyonight.vim'
+  Plug 'junegunn/seoul256.vim'
+  Plug 'rakr/vim-one'
   
   " JavaScript
   Plug 'pangloss/vim-javascript'
@@ -48,9 +50,6 @@ call plug#begin()
 
   " Move lines
   Plug 'matze/vim-move'
-
-  " Signify for Git
-  Plug 'mhinz/vim-signify'
 
   " Goyo
   Plug 'junegunn/goyo.vim'
@@ -86,15 +85,18 @@ call plug#begin()
   " Float term
   Plug 'voldikss/vim-floaterm'
 
-  "Experimental"
+  "Firenvim"
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
+  " Undo tree"
   Plug 'mbbill/undotree'
-
+  "
+  "Experimental"
   Plug 'romgrk/todoist.vim', { 'do': ':TodoistInstall' }
-
-  "Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-
   Plug 'justinmk/vim-dirvish'
-  Plug 'kristijanhusak/vim-dirvish-git'
+
+  Plug 'michal-h21/vim-zettel'
+
 
 endif
 

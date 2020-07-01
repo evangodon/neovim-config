@@ -1,8 +1,8 @@
+"
 "    _ __   ___  _____   _(_)_ __ ___
 "   | '' \ / _ \/ _ \ \ / / | ''_ ` _ \
 "   | | | |  __/ (_) \ V /| | | | | | |
 "   |_| |_|\___|\___/ \_/ |_|_| |_| |_|
-"
 "
 "
 " Useful commands:
@@ -36,5 +36,7 @@ source $HOME/.config/nvim/plug-config/floaterm.vim
 source $HOME/.config/nvim/plug-config/todoist.vim
 source $HOME/.config/nvim/plug-config/vem-tabline.vim
 source $HOME/.config/nvim/plug-config/firenvim.vim
+source $HOME/.config/nvim/plug-config/vim-zettel.vim
+
 
 
