@@ -4,6 +4,8 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
 augroup END
 
+set clipboard=unnamedplus          " Copy paste between vim and everything else
+
 if exists('g:vscode')
 else
 
@@ -19,7 +21,6 @@ set expandtab                      " expand tabs by default (overloadable per fi
 set shiftround                     " use multiple of shiftwidth when indenting with '<' and '>'
 set shiftwidth=2                   " number of spaces to use for autoindenting
 set hidden                         " required to keep multiple buffers open
-set clipboard=unnamedplus          " Copy paste between vim and everything else
 set mouse=a                        " Enable the mouse
 set colorcolumn=90
 filetype plugin on

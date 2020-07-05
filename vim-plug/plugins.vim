@@ -14,12 +14,9 @@ call plug#begin()
 
   if exists('g:vscode')
   else
+
   " Color Schemes
-  Plug 'dikiaap/minimalist'
   Plug 'joshdick/onedark.vim'
-  Plug 'bluz71/vim-nightfly-guicolors'
-  Plug 'bluz71/vim-nightfly-guicolors'
-  Plug 'artanikin/vim-synthwave84'
   Plug 'ghifarit53/tokyonight.vim'
   Plug 'junegunn/seoul256.vim'
   Plug 'rakr/vim-one'
@@ -86,17 +83,21 @@ call plug#begin()
   Plug 'voldikss/vim-floaterm'
 
   "Firenvim"
-  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+  " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
   " Undo tree"
   Plug 'mbbill/undotree'
-  "
+
+  " Obsession
+  Plug 'tpope/vim-obsession'
+
   "Experimental"
   Plug 'romgrk/todoist.vim', { 'do': ':TodoistInstall' }
   Plug 'justinmk/vim-dirvish'
 
   Plug 'michal-h21/vim-zettel'
 
+  Plug 'kshenoy/vim-signature'
 
 endif
 

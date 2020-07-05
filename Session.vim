@@ -7,12 +7,11 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 todo.md
-badd +5 .netrwhist
+badd +23 init.vim
+badd +1 vim-plug/plugins.vim
 argglobal
 %argdel
-$argadd todo.md
-edit todo.md
+edit vim-plug/plugins.vim
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -31,11 +30,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 24) / 49)
+let s:l = 10 - ((9 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-6
+10
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
@@ -48,6 +47,8 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &so = s:so_save | let &siso = s:siso_save
+let g:this_session = v:this_session
+let g:this_obsession = v:this_session
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

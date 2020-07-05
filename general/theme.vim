@@ -28,3 +28,5 @@ hi ReactProps guifg=#D19A66
 
 
 
+highlight Tabline cterm=none gui=none
+highlight TablineSel cterm=none gui=none
