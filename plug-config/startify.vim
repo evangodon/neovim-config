@@ -6,13 +6,6 @@ let g:startify_bookmarks = [
             \ { 'r': '~/.config/ranger/rc.conf' },
             \ ]
 
-let g:startify_lists = [
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']                    },
-          \ { 'type': 'files',     'header': ['   Files']                        },
-          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
-          \ { 'type': 'sessions',  'header': ['   Sessions']                     },
-          \ ]
-
 
 let g:startify_custom_header = [
             \'    _ __   ___  _____   _(_)_ __ ___',

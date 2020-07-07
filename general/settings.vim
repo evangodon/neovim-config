@@ -39,7 +39,7 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 " Setup Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-" Hightlight the current line
+" Highlight the current line
 set cursorline
 hi cursorline cterm=none term=none
 autocmd WinEnter * setlocal cursorline
@@ -48,6 +48,9 @@ highlight CursorLine guibg=#1a1b26 ctermbg=234
 
 " line numbers
 set number relativenumber
+
+" Spell Check
+autocmd FileType vimwiki setlocal spell spelllang=en_ca
 
 
 

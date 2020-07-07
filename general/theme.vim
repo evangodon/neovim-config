@@ -5,7 +5,7 @@ let g:tokyonight_disable_italic_comment = 1
 
 
 "Change theme depending on the time of day
-let isday = (strftime('%H') % 20) > 7
+let isday = (strftime('%H') % 19) > 7
 
 if isday 
   set background=light
@@ -30,3 +30,8 @@ hi ReactProps guifg=#D19A66
 
 highlight Tabline cterm=none gui=none
 highlight TablineSel cterm=none gui=none
+
+" Set floaterm window's background to black
+hi Floaterm guibg=black
+" Set floating window border line color to cyan, and background to orange
+hi FloatermBorder guibg=orange guifg=cyan

@@ -1,4 +1,3 @@
-"
 "    _ __   ___  _____   _(_)_ __ ___
 "   | '' \ / _ \/ _ \ \ / / | ''_ ` _ \
 "   | | | |  __/ (_) \ V /| | | | | | |
@@ -37,6 +36,9 @@ source $HOME/.config/nvim/plug-config/todoist.vim
 source $HOME/.config/nvim/plug-config/vem-tabline.vim
 source $HOME/.config/nvim/plug-config/firenvim.vim
 source $HOME/.config/nvim/plug-config/vim-zettel.vim
+source $HOME/.config/nvim/plug-config/calendar.vim
 
 
+" Get Google Calendar credentials
+source $HOME/.cache/calendar.vim/credentials.vim
 

@@ -27,9 +27,6 @@ call plug#begin()
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
-  " Golang
-  "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
   " Coc
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -83,7 +80,7 @@ call plug#begin()
   Plug 'voldikss/vim-floaterm'
 
   "Firenvim"
-  " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
   " Undo tree"
   Plug 'mbbill/undotree'
@@ -98,6 +95,8 @@ call plug#begin()
   Plug 'michal-h21/vim-zettel'
 
   Plug 'kshenoy/vim-signature'
+
+  Plug 'itchyny/calendar.vim'
 
 endif
 

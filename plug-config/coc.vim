@@ -10,6 +10,7 @@ let g:coc_global_extensions = [
 	\ 'coc-json',
 	\ 'coc-snippets',
 	\ 'coc-tsserver',
+	\ 'coc-yank'
 \ ]
 
 
