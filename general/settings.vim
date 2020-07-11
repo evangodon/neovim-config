@@ -15,15 +15,16 @@ set nowrap
 syntax on                                                                                         
 
 " General settings
-set autoindent                     " always set autoindenting on
-set copyindent                     " copy the previous indentation on autoindenting
-set expandtab                      " expand tabs by default (overloadable per file type)
-set shiftround                     " use multiple of shiftwidth when indenting with '<' and '>'
-set shiftwidth=2                   " number of spaces to use for autoindenting
-set hidden                         " required to keep multiple buffers open
-set mouse=a                        " Enable the mouse
+set autoindent               " always set autoindenting on
+set copyindent               " copy the previous indentation on autoindenting
+set expandtab                " expand tabs by default (overloadable per file type)
+set shiftround               " use multiple of shiftwidth when indenting with '<' and '>'
+set shiftwidth=2             " number of spaces to use for autoindenting
+set hidden                   " required to keep multiple buffers open
+set mouse=a                  " Enable the mouse
 set colorcolumn=90
 filetype plugin on
+set noswapfile               " Disable swapfiles
 
 set smartindent
 set smarttab " insert tabs on the start of a line according to shiftwidth, not tabstop
@@ -31,7 +32,7 @@ set smarttab " insert tabs on the start of a line according to shiftwidth, not t
 set softtabstop=2 " when hitting <BS>, pretend like a tab is removed, even if spaces
 set tabstop=2 " tabs are n spaces
 
-au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
+au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm, alternatively you can run :source $MYVIMRC
 
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx

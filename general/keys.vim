@@ -25,6 +25,10 @@ else
   nnoremap <silent> <C-N> :bnext<CR>
   nnoremap <silent> <C-P> :bprev<CR>
 
+  " Navigate to beginning or ending of line
+  nnoremap H 0
+  nnoremap L $
+
   " Window navigation and easy create
   function! WinMove(key)
     let t:curwin = winnr()
