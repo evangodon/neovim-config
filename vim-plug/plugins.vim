@@ -58,8 +58,8 @@ call plug#begin()
   " Nerd Commenter
   Plug 'preservim/nerdcommenter'
 
-  "Buftabline
-  Plug 'pacha/vem-tabline'
+  "Buffer line
+  Plug 'mengelbrecht/lightline-bufferline'
   
   " Colorizer
   Plug 'norcalli/nvim-colorizer.lua'
