@@ -20,6 +20,7 @@ call plug#begin()
   Plug 'ghifarit53/tokyonight.vim'
   Plug 'junegunn/seoul256.vim'
   Plug 'rakr/vim-one'
+  Plug 'skbolton/embark'
   
   " JavaScript
   Plug 'pangloss/vim-javascript'
@@ -87,15 +88,15 @@ call plug#begin()
 
   " Obsession
   Plug 'tpope/vim-obsession'
+  
+  " Tree Sitter
+  Plug 'nvim-treesitter/nvim-treesitter'
 
   "Experimental"
   Plug 'romgrk/todoist.vim', { 'do': ':TodoistInstall' }
   Plug 'justinmk/vim-dirvish'
-
   Plug 'michal-h21/vim-zettel'
-
   Plug 'kshenoy/vim-signature'
-
   Plug 'itchyny/calendar.vim'
 
 endif

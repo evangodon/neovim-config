@@ -37,6 +37,7 @@ source $HOME/.config/nvim/plug-config/vem-tabline.vim
 source $HOME/.config/nvim/plug-config/firenvim.vim
 source $HOME/.config/nvim/plug-config/vim-zettel.vim
 source $HOME/.config/nvim/plug-config/calendar.vim
+source $HOME/.config/nvim/plug-config/tree-sitter.vim
 
 
 " Get Google Calendar credentials
