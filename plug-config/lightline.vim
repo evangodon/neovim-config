@@ -1,10 +1,6 @@
 set noshowmode " hide mode status
 set laststatus=2 " always show status line
 
-if exists('g:loaded_gitbranch') || v:version < 700
-  finish
-endif
-
 let g:loaded_gitbranch = 1
 
 let s:save_cpo = &cpo
@@ -20,12 +16,13 @@ function LightlineObsession()
     return '%{ObsessionStatus()}'
 endfunction
 
-
 let &cpo = s:save_cpo
 unlet s:save_cpo
 
 let g:lightline = {
       \ 'colorscheme': 'tokyonight',
+      \ 'separator': {'left': " ", 'right': " "},
+      \ 'subseparator': {'left': '', 'right': ''},
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch','cocstatus', 'obsession', 'readonly', 'modified' ] ],
