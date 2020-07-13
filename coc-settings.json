@@ -10,7 +10,7 @@
     "go"
   ],
 
-  "suggest.minTriggerInputLength": 4,
+  "suggest.minTriggerInputLength": 2,
 
   "explorer.width": 35,
   "explorer.icon.enableNerdfont": true,
@@ -20,9 +20,6 @@
     "<cr>": ["expandable?", "expand", "open"],
     "v": "open:vsplit"
   },
-  "explorer.file.column.git.icon.added": "",
-  "explorer.file.column.git.icon.deleted": "",
-  "explorer.file.column.git.icon.modified": "",
 
   "git.addedSign.text": "▌",
   "git.changedSign.text": "▌",

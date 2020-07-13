@@ -13,6 +13,7 @@ set t_Co=256
 set termguicolors                                                                                 
 set nowrap                                                                                        
 syntax on                                                                                         
+set guifont=DroidSansMono\ Nerd\ Font:h11 
 
 " General settings
 set autoindent               " always set autoindenting on
@@ -32,8 +33,6 @@ set smarttab " insert tabs on the start of a line according to shiftwidth, not t
 set softtabstop=2 " when hitting <BS>, pretend like a tab is removed, even if spaces
 set tabstop=2 " tabs are n spaces
 
-au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm, alternatively you can run :source $MYVIMRC
-
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
@@ -51,7 +50,7 @@ highlight CursorLine guibg=#1a1b26 ctermbg=234
 set number relativenumber
 
 " Spell Check
-autocmd FileType vimwiki setlocal spell spelllang=en_ca
+"autocmd FileType vimwiki setlocal spell spelllang=en_ca
 
 
 

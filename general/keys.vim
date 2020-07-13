@@ -13,8 +13,6 @@ else
   let mapleader = "\<Space>" 
   let g:maplocalleader = ','
 
-
-
   " When going up or down one line, use displayed lines instead of physical lines
   noremap silent! <silent> k gk
   noremap silent! <silent> j gj
@@ -23,7 +21,6 @@ else
 
   " Navigate buffers
   nnoremap <silent> <C-N> :bnext<CR>
-  nnoremap <silent> <C-P> :bprev<CR>
 
   " Navigate to beginning or ending of line
   nnoremap H 0
@@ -120,8 +117,21 @@ else
   " todo: need to fix this
   nnoremap <leader>c   <Plug>NERDCommenterAltDelims<CR>
 
+  " Bufferline
+  nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+  nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+  nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+  nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+  nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+  nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+  nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+  nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+  nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+  nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
   " Fzf
   map <C-f> :Files<CR>
+  map <C-P> :Files<CR>
   nnoremap <leader>g :Rg<CR>
   nnoremap <leader>m :Marks<CR>
   nnoremap <leader>q :q<CR>
@@ -137,6 +147,7 @@ else
   let g:which_key_map[','] = [ 'Startify'                   , 'start screen' ]
   let g:which_key_map["'"] = [ ':Marks'                     , 'search marks' ]
   let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
+  let g:which_key_map['B'] = [ ':Buffers'                   , 'view Buffers' ]
   let g:which_key_map['f'] = [ ':GFiles'                    , 'search files' ]
   let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'toggle ranger' ]
   let g:which_key_map['S'] = [ ':SSave'                     , 'save session' ]
