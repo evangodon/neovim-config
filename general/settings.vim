@@ -6,9 +6,6 @@ augroup END
 
 set clipboard=unnamedplus          " Copy paste between vim and everything else
 
-if exists('g:vscode')
-else
-
 set t_Co=256                                                                                      
 set termguicolors                                                                                 
 set nowrap                                                                                        
@@ -26,6 +23,7 @@ set mouse=a                  " Enable the mouse
 set colorcolumn=90
 filetype plugin on
 set noswapfile               " Disable swapfiles
+set conceallevel=2
 
 set smartindent
 set smarttab " insert tabs on the start of a line according to shiftwidth, not tabstop

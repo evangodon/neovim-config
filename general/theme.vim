@@ -15,7 +15,7 @@ if g:is_day
 else  
   set background=dark
   colorscheme tokyonight  
-  colorscheme embark
+  "colorscheme embark
 endif
 
 

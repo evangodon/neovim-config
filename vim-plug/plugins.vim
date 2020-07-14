@@ -95,11 +95,11 @@ call plug#begin()
   Plug 'rhysd/git-messenger.vim'
 
   "Experimental"
-  Plug 'romgrk/todoist.vim', { 'do': ':TodoistInstall' }
   Plug 'justinmk/vim-dirvish'
   Plug 'michal-h21/vim-zettel'
   Plug 'kshenoy/vim-signature'
   Plug 'itchyny/calendar.vim'
+  Plug  'plasticboy/vim-markdown'
 
 endif
 

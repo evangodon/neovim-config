@@ -13,7 +13,12 @@
 " https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode
 "
 if exists('g:vscode')
-  source $HOME/.config/nvim/general/keys.vim
+
+  source $HOME/.config/nvim/vscode/plugins.vim
+  source $HOME/.config/nvim/vscode/keys.vim
+  source $HOME/.config/nvim/vscode/settings.vim
+  source $HOME/.config/nvim/plug-config/quickscope.vim
+
 else
 
   source $HOME/.config/nvim/vim-plug/plugins.vim
@@ -40,6 +45,7 @@ else
   source $HOME/.config/nvim/plug-config/vim-zettel.vim
   source $HOME/.config/nvim/plug-config/calendar.vim
   source $HOME/.config/nvim/plug-config/tree-sitter.vim
+  source $HOME/.config/nvim/plug-config/dirvish.vim
 
 
   " Get Google Calendar credentials

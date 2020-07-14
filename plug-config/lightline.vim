@@ -21,11 +21,11 @@ let &cpo = s:save_cpo
 unlet s:save_cpo
 
 let g:lightline#bufferline#enable_devicons=1
-let g:lightline#bufferline#filename_modifier=':h'
+let g:lightline#bufferline#filename_modifier=':t'
 let g:lightline#bufferline#show_number=2
 
 let g:lightline = {
-      \ 'colorscheme': g:is_day ? 'one' : 'embark',
+      \ 'colorscheme': g:is_day ? 'one' : 'tokyonight',
       \ 'separator': {'left': " ", 'right': " "},
       \ 'subseparator': {'left': '\\', 'right': '\\'},
       \ 'tabline_separator': { 'left': "", 'right': "" },
