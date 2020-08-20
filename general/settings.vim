@@ -51,5 +51,3 @@ set number relativenumber
 "autocmd FileType vimwiki setlocal spell spelllang=en_ca
 
 
-
-endif

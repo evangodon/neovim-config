@@ -18,24 +18,11 @@ nnoremap L $
 vnoremap H 0
 vnoremap L $
 
-" Window navigation and easy create
-function! WinMove(key)
-  let t:curwin = winnr()
-  exec "wincmd ".a:key
-  if (t:curwin == winnr())
-      if (match(a:key,'[jk]'))
-          wincmd v
-      else
-          wincmd s
-      endif
-      exec "wincmd ".a:key
-  endif
-endfunction
 
-nnoremap <silent> <C-j> :call WinMove('j')<CR>
-nnoremap <silent> <C-h> :call WinMove('h')<CR>
-nnoremap <silent> <C-k> :call WinMove('k')<CR>
-nnoremap <silent> <C-l> :call WinMove('l')<CR>
+nnoremap <silent> <C-h> <C-w><C-h><CR>
+nnoremap <silent> <C-j> <C-w><C-j><CR>
+nnoremap <silent> <C-k> <C-w><C-k><CR>
+nnoremap <silent> <C-l> <C-w><C-l><CR>
 
 " Use alt + hjkl to resize windows
 nnoremap <silent> <M-j>    :resize -2<CR>
@@ -121,7 +108,7 @@ nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
 " Fzf
-map <C-f> :Files<CR>
+map <C-f> :BLines<CR>
 map <C-P> :Files<CR>
 nnoremap <leader>g :Rg<CR>
 nnoremap <leader>m :Marks<CR>
@@ -139,10 +126,10 @@ let g:which_key_map[','] = [ 'Startify'                   , 'start screen' ]
 let g:which_key_map["'"] = [ ':Marks'                     , 'search marks' ]
 let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
 let g:which_key_map['B'] = [ ':Buffers'                   , 'view Buffers' ]
-let g:which_key_map['f'] = [ ':GFiles'                    , 'search files' ]
+let g:which_key_map['f'] = [ ':BLines'                    , 'search in buffer' ]
 let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'toggle ranger' ]
 let g:which_key_map['S'] = [ ':SSave'                     , 'save session' ]
-let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
+let g:which_key_map['Z'] = [ 'Goyo'                       , 'zen' ]
 let g:which_key_map['T'] = [ ':Todoist'                   , 'search text' ]
 let g:which_key_map['u'] = [ ':UndotreeToggle'            , 'toggle undo tree' ]
 let g:which_key_map['O'] = [ ':Obsess'                    , 'toggle obsession state' ]
@@ -154,6 +141,14 @@ let g:which_key_map['tm'] = [ ':TableModeToggle'          , 'toggle table mode' 
 let g:which_key_map.b = {
       \ 'name' : '+buffers' ,
       \ 'd' : [':bd'                                      , 'delete'],
+      \ }
+
+let g:which_key_map.w = {
+      \ 'name' : '+windows' ,
+      \ 'h' : [':wincmd v'                                      , 'delete'],
+      \ 'j' : [':wincmd s'                                      , 'delete'],
+      \ 'k' : [':wincmd s'                                      , 'delete'],
+      \ 'l' : [':wincmd v'                                      , 'delete'],
       \ }
 
 let g:which_key_map.s = {
@@ -172,6 +167,10 @@ let g:which_key_map.t = {
       \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
       \ }
 
+let g:which_key_map.z = {
+      \ 'name' : '+vim-zettel' ,
+      \ 'b' : [':ZettelBackLinks'                               , 'Generate backlinks'],
+      \ }
 
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")

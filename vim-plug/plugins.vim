@@ -37,7 +37,8 @@ call plug#begin()
   Plug 'mhinz/vim-startify'
 
   " Wiki
-  Plug 'vimwiki/vimwiki'
+  "Plug 'vimwiki/vimwiki'
+  Plug 'Traap/vimwiki', {'branch': 'a44d7cc073'}
 
   " Devicons
   Plug 'ryanoasis/vim-devicons'
@@ -89,17 +90,22 @@ call plug#begin()
   Plug 'tpope/vim-obsession'
   
   " Tree Sitter
-  Plug 'nvim-treesitter/nvim-treesitter'
+  "Plug 'nvim-treesitter/nvim-treesitter'
 
   "Git Messenger
   Plug 'rhysd/git-messenger.vim'
 
-  "Experimental"
+  "Vim Dervish
   Plug 'justinmk/vim-dirvish'
+  Plug 'roginfarrer/vim-dirvish-dovish', {'branch': 'main'}
+
+
+  "Experimental"
   Plug 'michal-h21/vim-zettel'
   Plug 'kshenoy/vim-signature'
   Plug 'itchyny/calendar.vim'
   Plug  'plasticboy/vim-markdown'
+  Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 
 endif
 

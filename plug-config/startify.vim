@@ -14,9 +14,4 @@ let g:startify_custom_header = [
             \'   |_| |_|\___|\___/ \_/ |_|_| |_| |_|',
             \]
 
-augroup StartifyEvents
-  autocmd!
-  autocmd Filetype startify execute ':Goyo'
-  autocmd Bufleave * if &filetype == 'startify' | execute ':Goyo'
-augroup END
 
