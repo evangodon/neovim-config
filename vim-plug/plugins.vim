@@ -16,10 +16,10 @@ call plug#begin()
 
   " Color Schemes
   Plug 'joshdick/onedark.vim'
-  Plug 'ghifarit53/tokyonight.vim'
+  Plug 'ghifarit53/tokyonight-vim'
   Plug 'junegunn/seoul256.vim'
   Plug 'rakr/vim-one'
-  Plug 'skbolton/embark'
+  Plug 'embark-theme/vim', { 'as': 'embark' }
   
   " JavaScript
   Plug 'pangloss/vim-javascript'
@@ -61,7 +61,7 @@ call plug#begin()
   "Buffer line
   Plug 'mengelbrecht/lightline-bufferline'
   
-  " Colorizer
+  " Colorizer FIXME
   Plug 'norcalli/nvim-colorizer.lua'
 
   " Ranger
