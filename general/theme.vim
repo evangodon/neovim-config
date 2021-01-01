@@ -3,7 +3,7 @@ let g:tokyonight_style = 'storm' " available: night, storm
 let g:tokyonight_enable_italic = 1
 let g:tokyonight_disable_italic_comment = 1
 "Change theme depending on the time of day
-let g:is_day = (strftime('%H') % 19) > 7
+let g:is_day = (strftime('%H') % 16) > 8
 
 " Set light and dark colorschemes
 let g:day_theme = 'one'
@@ -14,8 +14,8 @@ if g:is_day
   colorscheme one
 else  
   set background=dark
-  colorscheme tokyonight  
-  "colorscheme embark
+  "colorscheme tokyonight  
+  colorscheme embark
 endif
 
 

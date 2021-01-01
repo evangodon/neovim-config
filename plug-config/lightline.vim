@@ -25,7 +25,7 @@ let g:lightline#bufferline#filename_modifier=':t'
 let g:lightline#bufferline#show_number=2
 
 let g:lightline = {
-      \ 'colorscheme': g:is_day ? 'one' : 'tokyonight',
+      \ 'colorscheme': g:is_day ? 'one' : 'embark',
       \ 'separator': {'left': " ", 'right': " "},
       \ 'subseparator': {'left': '\\', 'right': '\\'},
       \ 'tabline_separator': { 'left': "", 'right': "" },
