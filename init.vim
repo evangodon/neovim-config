@@ -47,8 +47,4 @@ else
   source $HOME/.config/nvim/plug-config/dirvish.vim
   "source $HOME/.config/nvim/plug-config/tree-sitter.vim
 
-
-  " Get Google Calendar credentials
-  source $HOME/.cache/calendar.vim/credentials.vim
-
 endif
