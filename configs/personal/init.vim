@@ -45,6 +45,5 @@ else
   source $HOME/.config/nvim/plug-config/vim-zettel.vim
   source $HOME/.config/nvim/plug-config/calendar.vim
   source $HOME/.config/nvim/plug-config/dirvish.vim
-  "source $HOME/.config/nvim/plug-config/tree-sitter.vim
 
 endif

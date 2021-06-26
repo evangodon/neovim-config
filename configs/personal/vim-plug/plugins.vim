@@ -11,15 +11,12 @@ call plug#begin()
   " Quickscope
   Plug 'unblevable/quick-scope'
 
-  if exists('g:vscode')
-  else
-
   " Color Schemes
-  Plug 'joshdick/onedark.vim'
-  Plug 'ghifarit53/tokyonight-vim'
-  Plug 'junegunn/seoul256.vim'
-  Plug 'rakr/vim-one'
-  Plug 'embark-theme/vim', { 'as': 'embark' }
+  " Plug 'joshdick/onedark.vim'
+  " Plug 'ghifarit53/tokyonight-vim'
+  " Plug 'junegunn/seoul256.vim'
+  " Plug 'rakr/vim-one'
+  " Plug 'embark-theme/vim', { 'as': 'embark' }
   
   " JavaScript
   Plug 'pangloss/vim-javascript'
@@ -31,29 +28,29 @@ call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " Lightline
-  Plug 'itchyny/lightline.vim'
+  " Plug 'itchyny/lightline.vim'
 
   " Startify
-  Plug 'mhinz/vim-startify'
+  " Plug 'mhinz/vim-startify'
 
   " Wiki
   "Plug 'vimwiki/vimwiki'
-  Plug 'Traap/vimwiki', {'branch': 'a44d7cc073'}
+  " Plug 'Traap/vimwiki', {'branch': 'a44d7cc073'}
 
   " Devicons
-  Plug 'ryanoasis/vim-devicons'
+  " Plug 'ryanoasis/vim-devicons'
 
   " Move lines
-  Plug 'matze/vim-move'
+  " Plug 'matze/vim-move'
 
   " Goyo
-  Plug 'junegunn/goyo.vim'
+  " Plug 'junegunn/goyo.vim'
 
   " limelight
   Plug 'junegunn/limelight.vim'
 
   " Which key"
-  Plug 'liuchengxu/vim-which-key'
+  " Plug 'liuchengxu/vim-which-key'
 
   " Nerd Commenter
   Plug 'preservim/nerdcommenter'
@@ -62,7 +59,7 @@ call plug#begin()
   Plug 'mengelbrecht/lightline-bufferline'
   
   " Colorizer FIXME
-  Plug 'norcalli/nvim-colorizer.lua'
+  " Plug 'norcalli/nvim-colorizer.lua'
 
   " Ranger
   Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
@@ -107,7 +104,6 @@ call plug#begin()
   Plug  'plasticboy/vim-markdown'
   Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 
-endif
 
 call plug#end()
 

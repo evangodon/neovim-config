@@ -3,38 +3,38 @@
 let mapleader = "\<Space>" 
 let g:maplocalleader = ','
 
-" When going up or down one line, use displayed lines instead of physical lines
-noremap silent! <silent> k gk
-noremap silent! <silent> j gj
-noremap <silent> 0 g0
-noremap <silent> $ g$
+" " When going up or down one line, use displayed lines instead of physical lines
+" noremap silent! <silent> k gk
+" noremap silent! <silent> j gj
+" noremap <silent> 0 g0
+" noremap <silent> $ g$
 
 " Navigate buffers
-nnoremap <silent> <C-N> :bnext<CR>
+" nnoremap <silent> <C-N> :bnext<CR>
 
 " Navigate to beginning or ending of line
-nnoremap H 0
-nnoremap L $
-vnoremap H 0
-vnoremap L $
+" nnoremap H 0
+" nnoremap L $
+" vnoremap H 0
+" vnoremap L $
 
 
-nnoremap <silent> <C-h> <C-w><C-h><CR>
-nnoremap <silent> <C-j> <C-w><C-j><CR>
-nnoremap <silent> <C-k> <C-w><C-k><CR>
-nnoremap <silent> <C-l> <C-w><C-l><CR>
+" nnoremap <silent> <C-h> <C-w><C-h><CR>
+" nnoremap <silent> <C-j> <C-w><C-j><CR>
+" nnoremap <silent> <C-k> <C-w><C-k><CR>
+" nnoremap <silent> <C-l> <C-w><C-l><CR>
 
 " Use alt + hjkl to resize windows
-nnoremap <silent> <M-j>    :resize -2<CR>
-nnoremap <silent> <M-k>    :resize +2<CR>
-nnoremap <silent> <M-h>    :vertical resize -2<CR>
-nnoremap <silent> <M-l>    :vertical resize +2<CR>
+" nnoremap <silent> <M-j>    :resize -2<CR>
+" nnoremap <silent> <M-k>    :resize +2<CR>
+" nnoremap <silent> <M-h>    :vertical resize -2<CR>
+" nnoremap <silent> <M-l>    :vertical resize +2<CR>
 
 " Navigate buffers
-nnoremap <silent> [b       :bprevious<CR>
-nnoremap <silent> ]b       :bnext<CR>
-nnoremap <silent> [B       :bfirst<CR>
-nnoremap <silent> ]B       :blast<CR>
+" nnoremap <silent> [b       :bprevious<CR>
+" nnoremap <silent> ]b       :bnext<CR>
+" nnoremap <silent> [B       :bfirst<CR>
+" nnoremap <silent> ]B       :blast<CR>
 
 " Terminal  Mode
 tnoremap <Esc> <C-\><C-n>

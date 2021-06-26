@@ -5,3 +5,6 @@ todo.md
 Session.vim
 
 .netrwhist
+
+configs/
+!configs/personal
