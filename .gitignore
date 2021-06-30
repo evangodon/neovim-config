@@ -6,5 +6,4 @@ Session.vim
 
 .netrwhist
 
-configs/
-!configs/personal
+external-configs/

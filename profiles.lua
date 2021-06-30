@@ -30,7 +30,7 @@ local profiles = {
 	},
 
 	-- My Config
-	personal = { "~/.config/nvim/configs/personal", {
+	personal = { "~/.config/nvim/personal", {
 			plugins = "packer",
 			preconfigure = "packer",
 		}

@@ -106,4 +106,4 @@ nnoremap <silent> <space>or   <cmd>call VSCodeNotify('workbench.action.openRecen
 "-------------------- UI toggles ---------------------------------------
 nnoremap <silent> <space>ua   <cmd>call VSCodeNotify('workbench.action.toggleActivityBarVisibility')<CR>
 nnoremap <silent> <space>uf   <cmd>call VSCodeNotify('workbench.action.toggleFullScreen')<CR>
-nnoremap <silent> <space>us   <cmd>call VSCodeNotify('workbench.action.selectTheme')<CR>
+nnoremap <silent> <space>ut   <cmd>call VSCodeNotify('workbench.action.selectTheme')<CR>

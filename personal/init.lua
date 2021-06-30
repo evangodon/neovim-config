@@ -13,7 +13,7 @@
 -- [ ] fzf
 
 
-config_root = "~/.config/nvim/configs/personal"
+config_root = "~/.config/nvim/personal"
 
 require('settings')
 require('plugins')
