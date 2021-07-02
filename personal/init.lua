@@ -23,6 +23,7 @@ require('colortheme')
 vim.cmd('source'..config_root..'/vim-plug/plugins.vim')
 
 require('plugin_configs.zen-mode')
+require('plugin_configs.toggleterm')
 
 -- Plugin configs 
 vim.cmd('source'..config_root..'/plug-config/goyo.vim')

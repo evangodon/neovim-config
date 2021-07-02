@@ -34,6 +34,9 @@ return  require('packer').startup(function()
   -- Colorizer
   use 'norcalli/nvim-colorizer.lua'
   
+  -- Terminal
+  use 'akinsho/nvim-toggleterm.lua'
+  
 end)
 
 

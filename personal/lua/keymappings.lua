@@ -1,57 +1,72 @@
+
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true}
+
+
 -- better window movement
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {silent = true})
+map('n', '<C-h>', '<C-w>h', opts)
+map('n', '<C-j>', '<C-w>j', opts)
+map('n', '<C-k>', '<C-w>k', opts)
+map('n', '<C-l>', '<C-w>l', opts)
 
 -- resize with arrows
-vim.api.nvim_set_keymap('n', '<C-Up>', ':resize -2<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-Down>', ':resize +2<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-Left>', ':vertical resize -2<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-Right>', ':vertical resize +2<CR>', {silent = true})
+map('n', '<C-Up>', ':resize -2<CR>', opts)
+map('n', '<C-Down>', ':resize +2<CR>', opts)
+map('n', '<C-Left>', ':vertical resize -2<CR>', opts)
+map('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 
 
 -- better indenting
-vim.api.nvim_set_keymap('v', '<', '<gv', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', '>', '>gv', {noremap = true, silent = true})
+map('v', '<', '<gv', opts)
+map('v', '>', '>gv', opts)
 
 -- Move selected line / block of text in visual mode
-vim.api.nvim_set_keymap('x', 'K', ':move \'<-2<CR>gv-gv', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('x', 'J', ':move \'>+1<CR>gv-gv', {noremap = true, silent = true})
+map('x', 'K', ':move \'<-2<CR>gv-gv', opts)
+map('x', 'J', ':move \'>+1<CR>gv-gv', opts)
 
 -- Better nav for omnicomplete
 vim.cmd('inoremap <expr> <c-j> (\"\\<C-n>\")')
 vim.cmd('inoremap <expr> <c-k> (\"\\<C-p>\")')
 
 -- When going up or down one line, use displayed lines instead of physical lines
-vim.api.nvim_set_keymap('n', 'k', 'gk', {noremap = true})
-vim.api.nvim_set_keymap('n', 'j', 'gj', {noremap = true})
-vim.api.nvim_set_keymap('v', 'k', 'gk', {noremap = true})
-vim.api.nvim_set_keymap('v', '$', 'g$', {noremap = true})
+map('n', 'k', 'gk', {noremap = true})
+map('n', 'j', 'gj', {noremap = true})
+map('v', 'k', 'gk', {noremap = true})
+map('v', '$', 'g$', {noremap = true})
 
 -- Navigate to beginning or ending of line
-vim.api.nvim_set_keymap('n', 'H', '0', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'L', '$', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', 'H', '0', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', 'L', '$', {noremap = true, silent = true})
+map('n', 'H', '0', opts)
+map('v', 'H', '0', opts)
+map('v', 'L', '$', opts)
 
 -- Tab switch buffer
-vim.api.nvim_set_keymap('n', '<TAB>', ':bnext<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-n>', ':bnext<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<S-TAB>', ':bprevious<CR>', {noremap = true, silent = true})
-
--- Terminal 
-vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('t', '<Esc><Esc>', '<C-\\><C-n>:FloatermHide<CR>', {noremap = true, silent = true})
-
+map('n', '<TAB>', ':bnext<CR>', opts)
+map('n', '<C-n>', ':bnext<CR>', opts)
+map('n', '<S-TAB>', ':bprevious<CR>', opts)
 
 -- Toggle comment line
-vim.api.nvim_set_keymap('n', '<C-_', '<Plug>NERDCommenterToggle', {noremap = true})
-vim.api.nvim_set_keymap('v', '<C-_', '<Plug>NERDCommenterToggle<CR>gv', {noremap = true})
+map('n', '<C-_', '<Plug>NERDCommenterToggle', {noremap = true})
+map('v', '<C-_', '<Plug>NERDCommenterToggle<CR>gv', {noremap = true})
 
 -- Search
-vim.api.nvim_set_keymap('n', '<C-f>', ':BLines<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-P>', ':Files<CR>', {noremap = true, silent = true})
+map('n', '<C-f>', ':BLines<CR>', opts)
+map('n', '<C-P>', ':Files<CR>', opts)
+
+map('n', "<leader>c", ":BufferClose<CR>", opts)
+
+-- Which key
+local wk = require("which-key")
+
+vim.g.mapleader = ' '
+
+map("n", "<leader><Enter>", ":ToggleTerm<CR>", opts)
+map('t', '<Esc>', '<C-\\><C-n>', opts)
+
+-- Zen mode
+map("n", "<leader>Z", ":Goyo<CR>", opts)
+
+-- Quit
+map("n", "<leader>q", ":q!<CR>", opts)
 
 
 require("which-key").setup {
@@ -90,15 +105,6 @@ require("which-key").setup {
     show_help = true -- show help message on the command line when the popup is visible
 }
 
-local wk = require("which-key")
-
-vim.g.mapleader = ' '
-
-vim.api.nvim_set_keymap("n", "<leader>Z", ":Goyo<CR>", {noremap = true, silent = true})
-
-vim.api.nvim_set_keymap("n", "<leader><Enter>", ":FloatermToggle<CR>", {noremap = true, silent = true})
-
-vim.api.nvim_set_keymap("n", "<leader>Q", ":q!<CR>", {noremap = true, silent = true})
 
 
 wk.register({

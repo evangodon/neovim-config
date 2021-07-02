@@ -92,6 +92,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
+  ["nvim-toggleterm.lua"] = {
+    loaded = true,
+    path = "/home/evan/.local/share/nvim/site/pack/packer/start/nvim-toggleterm.lua"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/packer.nvim"

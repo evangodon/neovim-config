@@ -11,13 +11,6 @@ call plug#begin()
   " Quickscope
   Plug 'unblevable/quick-scope'
 
-  " Color Schemes
-  " Plug 'joshdick/onedark.vim'
-  " Plug 'ghifarit53/tokyonight-vim'
-  " Plug 'junegunn/seoul256.vim'
-  " Plug 'rakr/vim-one'
-  " Plug 'embark-theme/vim', { 'as': 'embark' }
-  
   " JavaScript
   Plug 'pangloss/vim-javascript'
   Plug 'leafgarland/typescript-vim'
