@@ -27,6 +27,8 @@ vim.o.hidden = true -- Required to keep multiple buffers open multiple buffers
 
 vim.o.foldenable = false -- Disable folding
 
+vim.wo.signcolumn = "yes" -- Always show the signcolumn, otherwise the text shifts
+
 -- Hightlight yanked text
 vim.cmd(' \z
   augroup highlight_yank \z

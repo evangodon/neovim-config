@@ -21,8 +21,6 @@ call plug#begin()
   " Nerd Commenter
   Plug 'preservim/nerdcommenter'
 
-  "Buffer line
-  Plug 'mengelbrecht/lightline-bufferline'
   
   " Colorizer FIXME
   " Plug 'norcalli/nvim-colorizer.lua'

@@ -20,16 +20,9 @@ endfunction
 let &cpo = s:save_cpo
 unlet s:save_cpo
 
-let g:lightline#bufferline#enable_devicons=1
-let g:lightline#bufferline#filename_modifier=':t'
-let g:lightline#bufferline#show_number=2
 
 let g:lightline = {
       \ 'colorscheme': g:is_day ? 'one' : 'embark',
-      \ 'separator': {'left': " ", 'right': " "},
-      \ 'subseparator': {'left': '\\', 'right': '\\'},
-      \ 'tabline_separator': { 'left': "", 'right': "" },
-      \ 'tabline_subseparator': {'left': '/', 'right': '/'},
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch','cocstatus', 'readonly', 'modified' ] ],

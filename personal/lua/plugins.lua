@@ -32,6 +32,7 @@ return  require('packer').startup(function()
 
   -- Devicons
   use 'ryanoasis/vim-devicons'
+  use 'kyazdani42/nvim-web-devicons'
 
   -- Zen Mode todo: Pick one
   use 'folke/zen-mode.nvim'
@@ -56,6 +57,9 @@ return  require('packer').startup(function()
       require('gitsigns').setup()
     end
   }
+
+  -- TabLine
+  use 'romgrk/barbar.nvim'
   
 end)
 

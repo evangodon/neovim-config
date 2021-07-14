@@ -14,7 +14,6 @@ noremap <silent> $ g$
 " Close a tab
 nmap <Space>d :q<CR>
 
-"-------------------- Vim mappings -------------------------------------
 " Leader key
 let mapleader=" "
 inoremap <C-c> <Esc>
