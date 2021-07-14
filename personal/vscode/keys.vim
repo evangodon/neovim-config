@@ -95,6 +95,8 @@ nnoremap <silent> <space>sr   <cmd>call VSCodeNotify('workbench.view.remote')<CR
 " Show terminal
 nnoremap <silent> <space>st   <cmd>call VSCodeNotify('workbench.action.terminal.toggleTerminal')<CR>
 
+nnoremap <silent> <space>T   <cmd>call VSCodeNotify('workbench.action.createTerminalEditor')<CR>
+
 " Show extensions
 nnoremap <silent> <space>sx   <cmd>call VSCodeNotify('workbench.view.extensions')<CR>
 

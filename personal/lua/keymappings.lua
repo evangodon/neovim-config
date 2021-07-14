@@ -2,6 +2,8 @@
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true}
 
+-- Save 
+map('n', '<C-s>', ':w<CR>', opts)
 
 -- better window movement
 map('n', '<C-h>', '<C-w>h', opts)
@@ -37,6 +39,7 @@ map('v', '$', 'g$', {noremap = true})
 -- Navigate to beginning or ending of line
 map('n', 'H', '0', opts)
 map('v', 'H', '0', opts)
+map('n', 'L', '$', opts)
 map('v', 'L', '$', opts)
 
 -- Tab switch buffer
@@ -67,6 +70,8 @@ map("n", "<leader>Z", ":Goyo<CR>", opts)
 
 -- Quit
 map("n", "<leader>q", ":q!<CR>", opts)
+
+map("n", "<leader>G", ":LazyGit<CR>", opts)
 
 
 require("which-key").setup {

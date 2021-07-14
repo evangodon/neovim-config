@@ -11,39 +11,12 @@ call plug#begin()
   " Quickscope
   Plug 'unblevable/quick-scope'
 
-  " JavaScript
-  Plug 'pangloss/vim-javascript'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'peitalin/vim-jsx-typescript'
-  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
   " Coc
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-  " Lightline
-  " Plug 'itchyny/lightline.vim'
-
-  " Startify
-  " Plug 'mhinz/vim-startify'
-
-  " Wiki
-  "Plug 'vimwiki/vimwiki'
-  " Plug 'Traap/vimwiki', {'branch': 'a44d7cc073'}
-
-  " Devicons
-  " Plug 'ryanoasis/vim-devicons'
-
-  " Move lines
-  " Plug 'matze/vim-move'
-
-  " Goyo
-  " Plug 'junegunn/goyo.vim'
-
   " limelight
   Plug 'junegunn/limelight.vim'
-
-  " Which key"
-  " Plug 'liuchengxu/vim-which-key'
 
   " Nerd Commenter
   Plug 'preservim/nerdcommenter'
@@ -84,19 +57,6 @@ call plug#begin()
 
   "Git Messenger
   Plug 'rhysd/git-messenger.vim'
-
-  "Vim Dervish
-  Plug 'justinmk/vim-dirvish'
-  Plug 'roginfarrer/vim-dirvish-dovish', {'branch': 'main'}
-
-
-  "Experimental"
-  Plug 'michal-h21/vim-zettel'
-  Plug 'kshenoy/vim-signature'
-  Plug 'itchyny/calendar.vim'
-  Plug  'plasticboy/vim-markdown'
-  Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
-
 
 call plug#end()
 

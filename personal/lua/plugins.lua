@@ -16,6 +16,13 @@ return  require('packer').startup(function()
   use {'embark-theme/vim',  as = 'embark' }
   use 'folke/tokyonight.nvim'
   use 'rakr/vim-one'
+  
+  
+  -- Javascript / Typescript 
+  use 'pangloss/vim-javascript'
+  use 'leafgarland/typescript-vim'
+  use 'peitalin/vim-jsx-typescript'
+  use 'styled-components/vim-styled-components'
 
   -- Which-key
   use {"folke/which-key.nvim"}
@@ -36,6 +43,9 @@ return  require('packer').startup(function()
   
   -- Terminal
   use 'akinsho/nvim-toggleterm.lua'
+  
+  -- Git
+  use 'kdheepak/lazygit.nvim'
   
 end)
 

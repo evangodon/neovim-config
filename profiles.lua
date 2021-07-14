@@ -16,14 +16,14 @@
 local profiles = {
 
 	-- LunarVim
-	lunarvim = { "~/.config/nvim/configs/lunarvim", {
+	lunarvim = { "~/.config/nvim/external-configs/lunarvim", {
 			plugins = "packer", 
 			preconfigure = "packer:opt" 
 		}
 	},
 	
 	-- NvChad 
-	nvchad = { "~/.config/nvim/configs/nvchad", {
+	nvchad = { "~/.config/nvim/external-configs/nvchad", {
 			plugins = "packer", 
 			preconfigure = "packer:opt" 
 		}
