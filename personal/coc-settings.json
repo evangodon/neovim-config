@@ -19,9 +19,5 @@
   "explorer.keyMappings": {
     "<cr>": ["expandable?", "expand", "open"],
     "v": "open:vsplit"
-  },
-
-  "git.addedSign.text": "▌",
-  "git.changedSign.text": "▌",
-  "git.removedSign.text": "▁"
+  }
 }
