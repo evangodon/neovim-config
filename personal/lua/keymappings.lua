@@ -51,25 +51,25 @@ map('n', '<S-TAB>', ':bprevious<CR>', opts)
 map('n', '<C-_', '<Plug>NERDCommenterToggle', {noremap = true})
 map('v', '<C-_', '<Plug>NERDCommenterToggle<CR>gv', {noremap = true})
 
--- Search
-map('n', '<C-f>', ':BLines<CR>', opts)
-map('n', '<C-P>', ':Files<CR>', opts)
-
-map('n', "<leader>c", ":BufferClose<CR>", opts)
+-- Searching
+map('n', '<C-f>', ':BLines<CR>', opts) -- Search in file
+map('n', '<C-P>', ':Files<CR>', opts) -- Search for file
 
 -- Which key
 local wk = require("which-key")
 
 vim.g.mapleader = ' '
 
+-- Terminal
 map("n", "<leader><Enter>", ":ToggleTerm<CR>", opts)
-map('t', '<Esc>', '<C-\\><C-n>', opts)
+map('t', '<Esc><Esc>', [[<C-\><C-N> :q<CR>]], opts)
+
+-- Closing and Quitting
+map('n', "<leader>c", ":BufferClose<CR>", opts) -- Close Buffer
+map("n", "<leader>q", ":q!<CR>", opts) -- Quit Neovim without saving
 
 -- Zen mode
 map("n", "<leader>Z", ":Goyo<CR>", opts)
-
--- Quit
-map("n", "<leader>q", ":q!<CR>", opts)
 
 map("n", "<leader>G", ":LazyGit<CR>", opts)
 

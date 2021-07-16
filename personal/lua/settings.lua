@@ -29,6 +29,8 @@ vim.o.foldenable = false -- Disable folding
 
 vim.wo.signcolumn = "yes" -- Always show the signcolumn, otherwise the text shifts
 
+vim.wo.fillchars = 'eob: ' -- Remove tilde in sidebar
+
 -- Hightlight yanked text
 vim.cmd(' \z
   augroup highlight_yank \z
@@ -36,3 +38,4 @@ vim.cmd(' \z
       au TextYankPost * silent! lua vim.highlight.on_yank { higroup=\'IncSearch\', timeout=200 } \z
   augroup END \z
 ')
+
