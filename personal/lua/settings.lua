@@ -3,10 +3,9 @@ vim.o.fileencoding = "utf-8" -- The encoding written to file
 vim.o.guifont = "FiraCode Nerd Font:h17"
 vim.bo.smartindent = true -- Makes indenting smart
 vim.bo.copyindent = true -- copy the previous indentation on autoindenting
-
-
 vim.wo.number = true -- set numbered lines
 vim.wo.relativenumber = true -- set relative number
+vim.opt.shell = "/bin/bash" -- Use bash for plugins that run shell commands
 
 vim.wo.cursorline = true -- set highlighting of the current line
 vim.o.showtabline = 2 -- Always show tabs
@@ -39,3 +38,5 @@ vim.cmd(' \z
   augroup END \z
 ')
 
+
+vim.cmd('let g:minimap_auto_start = 1') -- Show minimap

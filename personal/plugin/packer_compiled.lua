@@ -98,6 +98,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/lightline.vim"
   },
+  ["minimap.vim"] = {
+    loaded = true,
+    path = "/home/evan/.local/share/nvim/site/pack/packer/start/minimap.vim"
+  },
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"

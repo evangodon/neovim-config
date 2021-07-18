@@ -61,6 +61,13 @@ return  require('packer').startup(function()
   -- TabLine
   use 'romgrk/barbar.nvim'
   
+  -- Minimap
+  use {
+    'wfxr/minimap.vim',
+    config = function() 
+      vim.cmd('let g:minimap_auto_start = 1')
+    end
+  }
 end)
 
 
