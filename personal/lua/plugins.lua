@@ -66,19 +66,21 @@ return  require('packer').startup(function()
   -- TabLine
   use 'romgrk/barbar.nvim'
   
-  -- Minimap
-  use {
-    'wfxr/minimap.vim',
-    config = function() 
-      vim.cmd('let g:minimap_auto_start = 1')
-    end
-  }
-  
   -- File Explorer
   use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function() require'nvim-tree'.setup {} end
+  }
+  
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function() require("indent_blankline").setup {
+        space_char_blankline = " ",
+        show_current_context = true,
+        show_current_context_start = true,
+    }
+    end
   }
 end)
 
