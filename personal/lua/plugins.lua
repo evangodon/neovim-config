@@ -40,7 +40,12 @@ return  require('packer').startup(function()
   use 'junegunn/goyo.vim'
 
   -- Colorizer
-  use 'norcalli/nvim-colorizer.lua'
+  use {
+    'norcalli/nvim-colorizer.lua', 
+    config = function()
+      require('colorizer').setup()
+    end
+  }
   
   -- Terminal
   use 'akinsho/nvim-toggleterm.lua'
@@ -67,6 +72,13 @@ return  require('packer').startup(function()
     config = function() 
       vim.cmd('let g:minimap_auto_start = 1')
     end
+  }
+  
+  -- File Explorer
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require'nvim-tree'.setup {} end
   }
 end)
 

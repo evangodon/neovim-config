@@ -47,10 +47,6 @@ map('n', '<TAB>', ':bnext<CR>', opts)
 map('n', '<C-n>', ':bnext<CR>', opts)
 map('n', '<S-TAB>', ':bprevious<CR>', opts)
 
--- Toggle comment line
-map('n', '<C-_', '<Plug>NERDCommenterToggle', {noremap = true})
-map('v', '<C-_', '<Plug>NERDCommenterToggle<CR>gv', {noremap = true})
-
 -- Searching
 map('n', '<C-f>', ':BLines<CR>', opts) -- Search in file
 map('n', '<C-P>', ':Files<CR>', opts) -- Search for file
@@ -65,7 +61,7 @@ map("n", "<leader><Enter>", ":ToggleTerm<CR>", opts)
 map('t', '<Esc><Esc>', [[<C-\><C-N> :q<CR>]], opts)
 
 -- Closing and Quitting
-map('n', "<leader>c", ":BufferClose<CR>", opts) -- Close Buffer
+map('n', "<leader>bd", ":BufferClose<CR>", opts) -- Close Buffer
 map("n", "<leader>q", ":q!<CR>", opts) -- Quit Neovim without saving
 
 -- Zen mode

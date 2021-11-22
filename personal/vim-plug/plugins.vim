@@ -18,13 +18,6 @@ call plug#begin()
   " limelight
   Plug 'junegunn/limelight.vim'
 
-  " Nerd Commenter
-  Plug 'preservim/nerdcommenter'
-
-  
-  " Colorizer FIXME
-  " Plug 'norcalli/nvim-colorizer.lua'
-
   " Ranger
   Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 
