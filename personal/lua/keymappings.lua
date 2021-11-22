@@ -74,6 +74,10 @@ map("n", "<leader>Z", ":Goyo<CR>", opts)
 map("n", "<leader>G", ":LazyGit<CR>", opts)
 
 
+-- Open Tree 
+map("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+
+
 require("which-key").setup {
     plugins = {
         marks = true, -- shows a list of your marks on ' and `
