@@ -31,10 +31,10 @@ vim.cmd('inoremap <expr> <c-j> (\"\\<C-n>\")')
 vim.cmd('inoremap <expr> <c-k> (\"\\<C-p>\")')
 
 -- When going up or down one line, use displayed lines instead of physical lines
-map('n', 'k', 'gk', {noremap = true})
-map('n', 'j', 'gj', {noremap = true})
-map('v', 'k', 'gk', {noremap = true})
-map('v', '$', 'g$', {noremap = true})
+map('n', 'k', 'gk', opts)
+map('n', 'j', 'gj', opts)
+map('v', 'k', 'gk', opts)
+map('v', '$', 'g$', opts)
 
 -- Navigate to beginning or ending of line
 map('n', 'H', '0', opts)

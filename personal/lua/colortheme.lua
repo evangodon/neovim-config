@@ -2,7 +2,7 @@
 
 --Change theme depending on the time of day
 local hour = tonumber(os.date("%H"))
-local is_day = hour < 18 and hour > 6
+local is_day = hour < 17 and hour > 6
 
 vim.api.nvim_set_var('is_day', is_day)
 

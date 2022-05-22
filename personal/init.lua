@@ -22,11 +22,11 @@ require('colortheme')
 
 vim.cmd('source'..config_root..'/vim-plug/plugins.vim')
 
+-- Plugin configs 
 require('plugin_configs.zen-mode')
 require('plugin_configs.toggleterm')
 require('plugin_configs.barbar')
 
--- Plugin configs 
 vim.cmd('source'..config_root..'/plug-config/goyo.vim')
 vim.cmd('source'..config_root..'/plug-config/lightline.vim')
 vim.cmd('source'..config_root..'/plug-config/coc.vim')
