@@ -1,5 +1,5 @@
 ---
-https://www.youtube.com/watch?v=ctH-a-1eUME&list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ
+Youtube playlist: https://www.youtube.com/watch?v=ctH-a-1eUME&list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ
 ---
 
 # Neovim from scratch
@@ -9,5 +9,15 @@ https://www.youtube.com/watch?v=ctH-a-1eUME&list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xz
 - set font
 
 2. Custom keymaps
+
 3. Plugins
+
+- Auto-install of plugin manager
+
 4. Color schemes
+
+5. UI
+
+- Explorer
+- Status bar
+- Tabline

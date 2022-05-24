@@ -26,6 +26,7 @@ vim.cmd [[
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
+  vim.notify("Error loading packer")
   return
 end
 
@@ -42,10 +43,14 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  
+  -- Which-key
+  use {"folke/which-key.nvim"}
 
   -- Colorschemes
   use "lunarvim/darkplus.nvim"
   use "embark-theme/vim"
+  use 'rakr/vim-one'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
