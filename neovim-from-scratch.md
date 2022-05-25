@@ -16,7 +16,9 @@ Youtube playlist: https://www.youtube.com/watch?v=ctH-a-1eUME&list=PLhoH5vyxr6Qq
 
 4. Color schemes
 
-5. UI
+5. Completions
+
+6. UI
 
 - Explorer
 - Status bar
