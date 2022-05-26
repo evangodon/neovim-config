@@ -39,12 +39,6 @@ nnoremap <silent> <space>qf   <cmd>call VSCodeNotify('editor.action.quickFix')<C
 nnoremap <silent> <space>gd   <cmd>call VSCodeNotify('editor.action.revealDefinition')<CR>
 
 "-------------------- Buffers ------------------------------------------
-" Close active buffer
-nnoremap <silent> <space>bd   <cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
-nnoremap <silent> <space>h    <cmd>call VSCodeNotify('workbench.action.moveEditorToLeftGroup')<CR>
-nnoremap <silent> <space>j    <cmd>call VSCodeNotify('workbench.action.moveEditorToBelowGroup')<CR>
-nnoremap <silent> <space>k    <cmd>call VSCodeNotify('workbench.action.moveEditorToAboveGroup')<CR>
-nnoremap <silent> <space>l    <cmd>call VSCodeNotify('workbench.action.moveEditorToRightGroup')<CR>
 
 "Reopen closed buffer
 nnoremap <silent> <space>bu   <cmd>call VSCodeNotify('workbench.action.reopenClosedEditor')<CR>
@@ -54,11 +48,6 @@ nnoremap <silent> <TAB>       <cmd>call VSCodeNotify('workbench.action.nextEdito
 nnoremap <silent> <S-TAB>     <cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>
 
 
-"-------------------- Commentary ---------------------------------------
-xmap gc  <Plug>VSCodeCommentary
-nmap gc  <Plug>VSCodeCommentary
-omap gc  <Plug>VSCodeCommentary
-nmap gcc <Plug>VSCodeCommentaryLine
 
 "-------------------- General ------------------------------------------
 nnoremap <silent> <space>.    <cmd>call VSCodeNotify('workbench.action.openSettingsJson')<CR>
@@ -109,3 +98,5 @@ nnoremap <silent> <space>or   <cmd>call VSCodeNotify('workbench.action.openRecen
 nnoremap <silent> <space>ua   <cmd>call VSCodeNotify('workbench.action.toggleActivityBarVisibility')<CR>
 nnoremap <silent> <space>uf   <cmd>call VSCodeNotify('workbench.action.toggleFullScreen')<CR>
 nnoremap <silent> <space>ut   <cmd>call VSCodeNotify('workbench.action.selectTheme')<CR>
+
+
