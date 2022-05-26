@@ -18,8 +18,11 @@ Youtube playlist: https://www.youtube.com/watch?v=ctH-a-1eUME&list=PLhoH5vyxr6Qq
 
 5. Completions
 
-6. UI
+6. LSP
+- lsp language settings
+- add sources to cmp
 
+7. UI
 - Explorer
 - Status bar
 - Tabline

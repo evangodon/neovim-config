@@ -1,7 +1,7 @@
 local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
--- Save 
+-- Save
 map('n', '<C-s>', ':w<CR>', opts)
 
 -- better window movement
@@ -82,6 +82,5 @@ map("n", "<leader>q", ":q!<CR>", opts) -- Quit Neovim without saving
 map("n", "<leader>G", ":LazyGit<CR>", opts)
 
 
--- Open Tree 
-map("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
+-- Open Tree
+map("n", "<leader>e", ":Lexplore<CR>", opts)
