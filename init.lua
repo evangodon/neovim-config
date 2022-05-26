@@ -5,4 +5,6 @@ require "user.plugins"
 
 
 require "plugins.cmp"
+require "plugins.neoscroll"
+require "plugins.whichkey"
 

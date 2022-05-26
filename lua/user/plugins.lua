@@ -47,6 +47,9 @@ return packer.startup(function(use)
   -- Which-key
   use {"folke/which-key.nvim"}
 
+  -- Neoscroll
+  use 'karb94/neoscroll.nvim'
+
   -- Colorschemes
   use "lunarvim/darkplus.nvim"
   use "embark-theme/vim"

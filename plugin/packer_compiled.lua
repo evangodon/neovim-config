@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["neoscroll.nvim"] = {
+    loaded = true,
+    path = "/home/evan/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
+    url = "https://github.com/karb94/neoscroll.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/nvim-cmp",
