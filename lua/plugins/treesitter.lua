@@ -20,6 +20,7 @@ configs.setup {
     additional_vim_regex_highlighting = true,
   },
   indent = { enable = true, disable = { "yaml" } },
+
   rainbow = {
     enable = true,
     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
@@ -29,7 +30,10 @@ configs.setup {
       "#F02E6E",
       "#A37ACC",
       "#F2B482",
-    }, -- table of hex strings
-    -- termcolors = {} -- table of colour name strings
-  }
+    },
+  },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
 }

@@ -77,19 +77,10 @@ map('t', '<Esc><Esc>', [[<C-\><C-N> :q<CR>]], opts)
 map('n', "<leader>bd", ":BufferClose<CR>", opts) -- Close Buffer
 map("n", "<leader>q", ":q!<CR>", opts) -- Quit Neovim without saving
 
--- Zen mode
-
-map("n", "<leader>G", ":LazyGit<CR>", opts)
 
 -- Open Tree
 map("n", "<leader>e", ":Lexplore<CR>", opts)
 
--- Telescrope
-map("n", "<C-P>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
-map("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
-
 
 -- CMDLine
 -- map('n', ':', '<cmd>FineCmdline<CR>', opts)
-
-

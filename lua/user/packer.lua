@@ -44,12 +44,13 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-  use {
+  use { -- Open floating window for command mode
     'VonHeikemen/fine-cmdline.nvim',
     requires = {
       {'MunifTanjim/nui.nvim'}
     }
   }
+  use "numToStr/Comment.nvim" -- Easily comment stuff
 
   -- Which-key
   use { "folke/which-key.nvim" }
@@ -89,6 +90,7 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   use "p00f/nvim-ts-rainbow"
+  use 'JoosepAlviste/nvim-ts-context-commentstring' -- context aware comments
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
