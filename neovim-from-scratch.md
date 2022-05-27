@@ -4,25 +4,28 @@ Youtube playlist: https://www.youtube.com/watch?v=ctH-a-1eUME&list=PLhoH5vyxr6Qq
 
 # Neovim from scratch
 
-1. User options
+## User options
 
-- set font
+- general settings
+- set nerd font for icons
 
-2. Custom keymaps
+## Custom keymaps
 
-3. Plugins
+## Plugins
 
 - Auto-install of plugin manager
 
-4. Color schemes
+## Color schemes
 
-5. Completions
+## Completions
 
-6. LSP
+## LSP
 - lsp language settings
 - add sources to cmp
 
-7. UI
+## UI
 - Explorer
 - Status bar
 - Tabline
+
+## Fuzzy finder with telescope
