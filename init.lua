@@ -9,3 +9,5 @@ require "plugins.neoscroll"
 require "plugins.whichkey"
 require "plugins.telescope"
 require "plugins.treesitter"
+require "plugins.autopairs"
+
