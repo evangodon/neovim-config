@@ -23,6 +23,8 @@ Youtube playlist: https://www.youtube.com/watch?v=ctH-a-1eUME&list=PLhoH5vyxr6Qq
 - lsp language settings
 - add sources to cmp
 
+## Treesitter
+
 ## UI
 - Explorer
 - Status bar
