@@ -1,6 +1,7 @@
 todo.md
 Session.vim
 .netrwhist
+.vscode/
 
 # Compiled Lua sources
 luac.out
