@@ -46,6 +46,12 @@ return packer.startup(function(use)
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
+  use {
+    "akinsho/bufferline.nvim", -- Bufferline
+    requires = {
+      {'famiu/bufdelete.nvim' } -- better buffer delete
+    }
+  }
 
   use { -- Open floating window for command mode
     'VonHeikemen/fine-cmdline.nvim',
