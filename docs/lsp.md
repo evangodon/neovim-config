@@ -5,3 +5,8 @@ See attached server
 
 See available servers
 `:LspInstallInfo`
+
+# Null-LS
+
+Check status of null-ls
+`:NullLsInfo`

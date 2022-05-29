@@ -16,5 +16,3 @@ require "plugins.gitsigns"
 require "plugins.nvim-tree"
 require "plugins.bufferline"
 require "plugins.toggleterm"
-
-
