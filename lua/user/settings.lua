@@ -36,7 +36,7 @@ o.wrap = false -- display lines as one long line
 o.scrolloff = 8 -- is one of my fav
 o.sidescrolloff = 8
 o.guifont = "FiraCode Nerd Font:h17" -- the font used in graphical neovim applications
-o.shell = "/bin/bash" -- Use bash for plugins that run shell commands
+o.shell = "/bin/fish" -- Use bash for plugins that run shell commands
 
 local bo = vim.bo
 
