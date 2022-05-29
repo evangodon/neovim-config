@@ -59,7 +59,7 @@ bufferline.setup({
 		--   return buffer_a.modified > buffer_b.modified
 		-- end
 	},
-	highlights = {
+	_highlights = {
 		fill = {
 			guifg = { attribute = "fg", highlight = "#ff0000" },
 			guibg = { attribute = "bg", highlight = "TabLine" },
@@ -70,8 +70,8 @@ bufferline.setup({
 		},
 
 		buffer_selected = {
-			guifg = { attribute = "fg", highlight = "#ff0000" },
-			guibg = { attribute = "bg", highlight = "#0000ff" },
+			guifg = { attribute = "fg", highlight = "TabLine" },
+			guibg = { attribute = "bg", highlight = "TabLine" },
 		},
 		buffer_visible = {
 			guifg = { attribute = "fg", highlight = "TabLine" },
@@ -86,10 +86,10 @@ bufferline.setup({
 			guifg = { attribute = "fg", highlight = "TabLine" },
 			guibg = { attribute = "bg", highlight = "TabLine" },
 		},
-		-- close_button_selected = {
-		--   guifg = {attribute='fg',highlight='TabLineSel'},
-		--   guibg ={attribute='bg',highlight='TabLineSel'}
-		--   },
+		close_button_selected = {
+			guifg = { attribute = "fg", highlight = "TabLine" },
+			guibg = { attribute = "bg", highlight = "TabLine" },
+		},
 
 		tab_selected = {
 			guifg = { attribute = "fg", highlight = "Normal" },

@@ -70,9 +70,9 @@ nvim_tree.setup({
 		mappings = {
 			custom_only = false,
 			list = {
-				{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-				{ key = "h", cb = tree_cb("close_node") },
-				{ key = "v", cb = tree_cb("vsplit") },
+				{ key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+				{ key = "h", cb = tree_cb "close_node" },
+				{ key = "v", cb = tree_cb "vsplit" },
 			},
 		},
 		number = false,
@@ -111,8 +111,8 @@ nvim_tree.setup({
 vim.api.nvim_create_autocmd("BufEnter", {
 	nested = true,
 	callback = function()
-		if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
-			vim.cmd("quit")
+		if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match "NvimTree_" ~= nil then
+			vim.cmd "quit"
 		end
 	end,
 })
