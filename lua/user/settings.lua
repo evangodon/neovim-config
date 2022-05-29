@@ -35,6 +35,7 @@ o.signcolumn = "yes" -- always show the sign column, otherwise it would shift th
 o.wrap = false -- display lines as one long line
 o.scrolloff = 8 -- is one of my fav
 o.sidescrolloff = 8
+o.laststatus = 3 -- set a global status line
 o.guifont = "FiraCode Nerd Font:h17" -- the font used in graphical neovim applications
 o.shell = "/bin/fish" -- Use bash for plugins that run shell commands
 
@@ -45,11 +46,11 @@ bo.copyindent = true -- copy the previous indentation on autoindenting
 
 vim.wo.fillchars = "eob: " -- Remove tilde in sidebar
 
-o.shortmess:append("c")
+o.shortmess:append "c"
 
-vim.cmd("set whichwrap+=<,>,[,],h,l")
-vim.cmd([[set iskeyword+=-]]) -- define how keywords are grouped
-vim.cmd([[let g:netrw_winsize = 30]]) -- set the size of the netrw window
+vim.cmd "set whichwrap+=<,>,[,],h,l"
+vim.cmd [[set iskeyword+=-]] -- define how keywords are grouped
+vim.cmd [[let g:netrw_winsize = 30]] -- set the size of the netrw window
 
 -- Hightlight yanked text
 vim.highlight.on_yank({ higroup = "visual", timeout = 200 })
