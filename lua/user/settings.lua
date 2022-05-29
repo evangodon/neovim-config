@@ -20,7 +20,7 @@ o.splitright = true -- force all vertical splits to go to the right of current w
 o.swapfile = false -- creates a swapfile
 
 o.termguicolors = true -- set term gui colors (most terminals support this)
-o.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
+o.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
 o.undofile = true -- enable persistent undo
 o.updatetime = 300 -- faster completion (4000ms default)
 o.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
@@ -43,15 +43,13 @@ local bo = vim.bo
 bo.smartindent = true -- Makes indenting smart
 bo.copyindent = true -- copy the previous indentation on autoindenting
 
-vim.wo.fillchars = 'eob: ' -- Remove tilde in sidebar
+vim.wo.fillchars = "eob: " -- Remove tilde in sidebar
 
+o.shortmess:append("c")
 
-
-o.shortmess:append "c"
-
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]] -- define how keywords are grouped
-vim.cmd [[let g:netrw_winsize = 30]] -- set the size of the netrw window
+vim.cmd("set whichwrap+=<,>,[,],h,l")
+vim.cmd([[set iskeyword+=-]]) -- define how keywords are grouped
+vim.cmd([[let g:netrw_winsize = 30]]) -- set the size of the netrw window
 
 -- Hightlight yanked text
 vim.highlight.on_yank({ higroup = "visual", timeout = 200 })
