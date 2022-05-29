@@ -2,7 +2,7 @@ local hour = tonumber(os.date("%H"))
 local is_day = hour < 19 and hour > 6
 
 local LIGHT_THEME = "one"
-local DARK_THEME = "tokyonight"
+local DARK_THEME = "embark"
 
 local colorscheme = is_day and LIGHT_THEME or DARK_THEME
 
