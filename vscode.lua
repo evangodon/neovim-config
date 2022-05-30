@@ -1,11 +1,11 @@
-require("user.settings")
-require("user.keymaps")
+require "user.settings"
+require "user.keymaps"
 
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-function vscodeCmd(cmd)
+local vscodeCmd = function(cmd)
 	return ":call VSCodeNotify('" .. cmd .. "')<CR>"
 end
 
-map("n", "<leader>ut", vscodeCmd("workbench.action.selectTheme"), opts)
+map("n", "<leader>ut", vscodeCmd "workbench.action.selectTheme", opts)
