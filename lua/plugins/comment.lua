@@ -8,7 +8,7 @@ end
 
 comment.setup({
 	pre_hook = function(ctx)
-		local U = require("Comment.utils")
+		local U = require "Comment.utils"
 
 		local location = nil
 		if ctx.ctype == U.ctype.block then
@@ -52,5 +52,6 @@ vim.keymap.set("n", "gb", "<Plug>(comment_toggle_blockwise)")
 
 -- Toggle in VISUAL mode
 vim.keymap.set("x", "gc", "<Plug>(comment_toggle_linewise_visual)")
+vim.keymap.set("x", "<C-_>", "<Plug>(comment_toggle_linewise_visual)")
 vim.keymap.set("x", "gb", "<Plug>(comment_toggle_blockwise_visual)")
-vim.keymap.set("x", "<C-_>", "<Plug>(comment_toggle_blockwise_visual)")
+-- vim.keymap.set("x", "<C-_>", "<Plug>(comment_toggle_blockwise_visual)")
