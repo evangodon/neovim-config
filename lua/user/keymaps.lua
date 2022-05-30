@@ -52,6 +52,9 @@ keymap("v", "H", "0", opts)
 keymap("n", "L", "$", opts)
 keymap("v", "L", "$", opts)
 
+-- clearhightlights
+keymap("n", "<leader>H", ":noh<CR>", opts) -- Quit Neovim without saving
+
 -- Tab switch buffer
 keymap("n", "<TAB>", ":bnext<CR>", opts)
 keymap("n", "<C-n>", ":bnext<CR>", opts)
@@ -61,10 +64,23 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
 -- Terminal
-keymap("n", "<leader><Enter>", ":ToggleTerm<CR>", opts)
 keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 
 -- Closing and Quitting
 keymap("n", "<leader>bd", ":Bdelete<CR>", opts) -- Close Buffer
 keymap("n", "<C-w>", ":Bdelete<CR>", opts) -- Search for file
 keymap("n", "<leader>q", ":q!<CR>", opts) -- Quit Neovim without saving
+
+-- Reload config
+local reloadConfig = function()
+	for name, _ in pairs(package.loaded) do
+		if name:match "^user." or name:match "^plugins." then
+			package.loaded[name] = nil
+		end
+	end
+
+	dofile(vim.env.MYVIMRC)
+	require("notify").notify "Reloaded config"
+end
+
+keymap("n", "<leader>so", reloadConfig, opts) -- Quit Neovim without saving
