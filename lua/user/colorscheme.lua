@@ -1,11 +1,12 @@
 local hour = tonumber(os.date "%H")
 local is_day = hour < 19 and hour > 6
 
-local LIGHT_THEME = "github_light_default"
+local LIGHT_THEME = "catppuccin"
 local DARK_THEME = "catppuccin"
 
 local colorscheme = is_day and LIGHT_THEME or DARK_THEME
 
+vim.g.catppuccin_flavour = is_day and "latte" or "mocha"
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
 if not status_ok then
@@ -19,10 +20,16 @@ if not ok then
 	return
 end
 
-vim.g.catppuccin_flavour = "mocha"
 local colors = require("catppuccin.api.colors").get_colors()
 
-catppuccin.setup()
+catppuccin.setup({
+	integration = {
+		nvimtree = {
+			enabled = true,
+			show_root = true,
+		},
+	},
+})
 catppuccin.remap({
 	Comment = { fg = colors.overlay1 },
 	LineNr = { fg = colors.overlay1 },

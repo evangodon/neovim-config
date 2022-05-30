@@ -1,7 +1,9 @@
 require "user.settings"
 require "user.keymaps"
 require "user.colorscheme"
-require "user.packer"
+require "user.packer-init"
+require "user.plugins"
+require "user.autocommands"
 require "user.lsp"
 
 -- Plugin configs
