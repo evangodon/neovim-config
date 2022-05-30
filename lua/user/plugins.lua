@@ -34,11 +34,10 @@ return packer.startup(function(use)
 	})
 	use "goolord/alpha-nvim"
 
+	-- Neorg
 	use({
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup()
-		end,
+		"nvim-neorg/neorg",
+		requires = "nvim-lua/plenary.nvim",
 	})
 
 	use({ -- Open floating window for command mode
@@ -84,6 +83,12 @@ return packer.startup(function(use)
 	use "neovim/nvim-lspconfig" -- enable LSP
 	use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 	use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+	use({
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup()
+		end,
+	})
 
 	-- Telescope
 	use "nvim-telescope/telescope.nvim"
