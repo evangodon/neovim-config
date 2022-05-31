@@ -10,27 +10,27 @@ local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
 
-local diagnostics = {
-	"diagnostics",
-	sources = { "nvim_diagnostic" },
-	sections = { "error", "warn", "info" },
-	diagnostics_color = {
-		-- Same values as the general color option can be used here.
-		error = "DiagnosticError",
-		warn = "DiagnosticWarn",
-		info = "DiagnosticInfo",
-		hint = "DiagnosticHint",
-	},
-	symbols = { error = "  ", warn = "  ", info = "  " },
-	colored = false,
-	update_in_insert = false,
-	always_visible = true,
-}
+-- local diagnostics = {
+-- 	"diagnostics",
+-- 	sources = { "nvim_diagnostic" },
+-- 	sections = { "error", "warn", "info" },
+-- 	diagnostics_color = {
+-- 		-- Same values as the general color option can be used here.
+-- 		error = "DiagnosticError",
+-- 		warn = "DiagnosticWarn",
+-- 		info = "DiagnosticInfo",
+-- 		hint = "DiagnosticHint",
+-- 	},
+-- 	symbols = { error = "  ", warn = "  ", info = "  " },
+-- 	colored = false,
+-- 	update_in_insert = false,
+-- 	always_visible = true,
+-- }
 
 local diff = {
 	"diff",
 	colored = false,
-	symbols = { added = "ﰂ ", modified = "ﭟ ", removed = "ﯰ" }, -- changes diff symbols
+	symbols = { added = "ﰂ ", modified = "ﭟ ", removed = "ﯰ " }, -- changes diff symbols
 	cond = hide_in_width,
 }
 
@@ -51,11 +51,6 @@ local branch = {
 	"branch",
 	icons_enabled = true,
 	icon = "",
-}
-
-local location = {
-	"location",
-	padding = 0,
 }
 
 local spaces = function()
