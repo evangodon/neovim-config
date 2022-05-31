@@ -60,6 +60,10 @@ nvim_tree.setup({
 				enable = false,
 			},
 		},
+		change_dir = {
+			enable = false,
+			restrict_above_cwd = true,
+		},
 	},
 	view = {
 		width = 30,
@@ -107,17 +111,11 @@ nvim_tree.setup({
 	},
 })
 
--- auto close when is last buffer
--- FIXME
--- vim.api.nvim_create_autocmd("BufEnter", {
--- 	nested = true,
--- 	callback = function()
--- 		if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match "NvimTree_" ~= nil then
--- 			vim.cmd "quit"
--- 		end
--- 	end,
--- })
+local wk_status_ok, wk = pcall(require, "which-key")
+if not wk_status_ok then
+	return
+end
 
-local opts = { noremap = true, silent = true }
-
-vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+wk.register({
+	e = { ":NvimTreeToggle<cr>", "Toggle Nvimtree" },
+}, { prefix = "<leader>" })

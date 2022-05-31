@@ -3,7 +3,7 @@ if not status_ok then
 	return
 end
 
-local actions = require("telescope.actions")
+local actions = require "telescope.actions"
 
 telescope.setup({
 	defaults = {
@@ -95,13 +95,14 @@ telescope.setup({
 	},
 })
 
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-map(
-	"n",
-	"<C-P>",
-	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-	opts
-)
-map("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
+map("n", "<C-p>", function()
+	require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))
+end, opts)
+map("n", "<C-t>", "<cmd>Telescope live_grep<cr>", opts)
+
+
+
+
