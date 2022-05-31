@@ -42,7 +42,7 @@ cmdline.setup({
 })
 
 local can_close = false
-vim.keymap.set("n", "<CR>", function()
+vim.keymap.set("n", "<space><CR>", function()
 	can_close = true
 	cmdline.open({ default_value = "" })
 end, { noremap = true })

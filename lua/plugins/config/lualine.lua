@@ -36,6 +36,7 @@ local branch = {
 	icon = " ",
 }
 
+-- TODO can be better
 local function rootFolder()
 	local cwd = vim.loop.cwd()
 	local dir = string.match(cwd, "/(%w+)$")
