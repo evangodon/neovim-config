@@ -8,6 +8,8 @@
 ## DX
 - [ ] Set up github copilot
 - [ ] Confirm quit when only one buffer left
+  - return to a dashboard
+- [ ] Add dashboard plugin
 - [ ] Set up packer snapshots
 
 ## UI
