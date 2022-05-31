@@ -6,11 +6,11 @@
 - [ ] How to persist folds
 
 ## DX
+- [ ] Set up github copilot
 - [ ] Confirm quit when only one buffer left
 - [ ] Set up packer snapshots
 
 ## UI
-- [ ] Show scrollbar with diagnostics
 - [ ] Show root folder in nvim-tree with catppuccin theme
 - [ ] diagnostics float window borders 
 - [ ] Configure fine-cmdline plugin
@@ -35,3 +35,4 @@
 - [X] Code navigation doc
 - [X] Add italics 
 - [X] Find good light theme
+- [X] Show scrollbar with diagnostics
