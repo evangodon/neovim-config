@@ -18,6 +18,7 @@ return packer.startup(function(use)
 	use "kyazdani42/nvim-tree.lua"
 	use "nvim-lualine/lualine.nvim"
 	use "rcarriga/nvim-notify"
+	use "petertriho/nvim-scrollbar"
 	use({
 		"norcalli/nvim-colorizer.lua",
 		config = function()
