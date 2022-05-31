@@ -6,6 +6,7 @@
 - [ ] How to persist folds
 
 ## DX
+- [ ] Add logic to remember cursor position
 - [ ] Set up github copilot
 - [ ] Confirm quit when only one buffer left
   - return to a dashboard
