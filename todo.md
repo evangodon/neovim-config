@@ -3,18 +3,18 @@
 # TODO
 
 ## Workflow
-- [ ] Code navigation doc
 - [ ] leader key mappings for git actions
+- [ ] Add plugin to remember sessions
 
 ## DX
 - [ ] Confirm quit when only one buffer left
 - [ ] Set up packer snapshots
 
 ## UI
+- [ ] Add italics 
 - [ ] Show root folder in nvim-tree with catppuccin theme
 - [ ] diagnostics float window borders 
 - [ ] Configure fine-cmdline plugin
-- [ ] Improve display of config errors
 
 ## Theme
 - [ ] Find good light theme
@@ -23,6 +23,7 @@
 ## Productivity
 - Figure out a todo manager
   - Neorg
+  - zk.nvim
 
 
 ---
@@ -33,3 +34,4 @@
 - [X] Fix icons in nvim-tree (diagnostics)
 - [X] Add keybindings for moving between buffers
 - [X] Refactor packer files, move plugins to top
+- [X] Code navigation doc

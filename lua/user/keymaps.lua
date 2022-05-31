@@ -1,3 +1,4 @@
+local fn = require "user.functions"
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
@@ -66,21 +67,24 @@ vim.g.mapleader = " "
 -- Terminal
 keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 
+local status_ok, wk = pcall(require, "which-key")
+if not status_ok then
+	return
+end
+
 -- Closing and Quitting
 keymap("n", "<leader>bd", ":Bdelete<CR>", opts) -- Close Buffer
 keymap("n", "<C-w>", ":Bdelete<CR>", opts) -- Search for file
-keymap("n", "<leader>q", ":q!<CR>", opts) -- Quit Neovim without saving
 
--- Reload config
-local reloadConfig = function()
-	for name, _ in pairs(package.loaded) do
-		if name:match "^user." or name:match "^plugins." then
-			package.loaded[name] = nil
-		end
-	end
-
-	dofile(vim.env.MYVIMRC)
-	require("notify").notify "Reloaded config"
-end
-
-keymap("n", "<leader>so", reloadConfig, opts) -- Quit Neovim without saving
+wk.register({
+	so = {
+		fn.reloadConfig,
+		"Reload config",
+	},
+	q = {
+		function()
+			vim.cmd [[quit]]
+		end,
+		"Quit",
+	},
+}, { prefix = "<leader>" })

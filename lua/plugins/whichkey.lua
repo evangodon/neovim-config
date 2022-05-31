@@ -4,5 +4,3 @@ if not status_ok then
 end
 
 wk.setup({})
-
-wk.register({})
