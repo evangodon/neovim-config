@@ -18,6 +18,7 @@
 
 
 ## Productivity
+- Command to open url under cursor
 - Figure out a todo manager
   - Neorg
   - zk.nvim

@@ -1,10 +1,13 @@
+-- List of vim events:
+-- https://tech.saigonist.com/b/code/list-all-vim-script-events.html
+--
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
--- vim.cmd [[
---   augroup packer_user_config
---     autocmd!
---     autocmd BufWritePost plugins/init.lua source <afile> | PackerSync
---   augroup end
--- ]]
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins/init.lua source <afile> | PackerSync
+  augroup end
+]]
 
 -- Hightlight on yank
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
@@ -52,7 +55,8 @@ vim.api.nvim_create_autocmd({ "BufDelete" }, {
 				if choice == confirm then
 					vim.cmd "quitall"
 				else
-					-- open Dashboard here
+					vim.cmd ":Alpha"
+					-- TODO: delete empty buffer
 				end
 			end)
 		end

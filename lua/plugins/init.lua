@@ -33,6 +33,12 @@ packer.startup(function(use)
 	use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
 	use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
 
+	use({
+		"goolord/alpha-nvim",
+		requires = { "kyazdani42/nvim-web-devicons" },
+		config = safe_require "alpha",
+	})
+
 	-- nvim-notify
 	use({
 		"rcarriga/nvim-notify",
