@@ -3,17 +3,18 @@
 ## Workflow
 - [ ] leader key mappings for git actions
 - [ ] Add plugin to remember sessions
-- [ ] How to persist folds
 
 ## DX
+- [ ] How to persist folds
 - [ ] Add logic to remember cursor position
 - [ ] Set up github copilot
 - [ ] Confirm quit when only one buffer left
   - return to a dashboard
-- [ ] Add dashboard plugin
+- [X] configure alpha dashboard plugin
 - [ ] Set up packer snapshots
 
 ## UI
+- [ ] make background dark for toggle term
 - [ ] Show root folder in nvim-tree with catppuccin theme
 - [ ] diagnostics float window borders 
 - [ ] Configure fine-cmdline plugin
@@ -39,3 +40,4 @@
 - [X] Add italics 
 - [X] Find good light theme
 - [X] Show scrollbar with diagnostics
+- [X] Add dashboard plugin
