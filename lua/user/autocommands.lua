@@ -5,3 +5,13 @@
 --     autocmd BufWritePost plugins/init.lua source <afile> | PackerSync
 --   augroup end
 -- ]]
+
+-- TODO: clear command line
+-- function! s:empty_message(timer)
+--     echo ''
+-- endfunction
+--
+-- augroup cmdline
+--     autocmd!
+--     autocmd CmdlineLeave : call timer_start(5000, funcref('s:empty_message'))
+-- augroup END

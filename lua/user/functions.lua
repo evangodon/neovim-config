@@ -2,10 +2,10 @@ local M = {}
 
 -- Reload config
 M.reloadConfig = function()
-  -- Certain packages complain when setup is called twice
+	-- Certain packages complain when setup is called twice
 	package.loaded["nvim-tree"] = nil
 
-  -- My config
+	-- My config
 	for name, _ in pairs(package.loaded) do
 		if name:match "^user." or name:match "^plugins." then
 			package.loaded[name] = nil
