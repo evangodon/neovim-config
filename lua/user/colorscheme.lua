@@ -1,12 +1,13 @@
 local hour = tonumber(os.date "%H")
-local is_day = hour < 19 and hour > 6
+local dark_theme_env_var = os.getenv "NVIM_USE_DARK_THEME"
+local use_light_theme = dark_theme_env_var == "false" and hour < 19 and hour > 6
 
 local LIGHT_THEME = "catppuccin"
 local DARK_THEME = "catppuccin"
 
-local colorscheme = is_day and LIGHT_THEME or DARK_THEME
+local colorscheme = use_light_theme and LIGHT_THEME or DARK_THEME
 
-vim.g.catppuccin_flavour = is_day and "latte" or "mocha"
+vim.g.catppuccin_flavour = use_light_theme and "latte" or "mocha"
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
 if not status_ok then

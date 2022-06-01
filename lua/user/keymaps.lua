@@ -67,14 +67,14 @@ vim.g.mapleader = " "
 -- Terminal
 keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 
+-- Closing and Quitting
+keymap("n", "<leader>bd", ":Bdelete<CR>", opts) -- Close Buffer
+keymap("n", "<C-w>", ":Bdelete<CR>", opts) -- Search for file
+
 local status_ok, wk = pcall(require, "which-key")
 if not status_ok then
 	return
 end
-
--- Closing and Quitting
-keymap("n", "<leader>bd", ":Bdelete<CR>", opts) -- Close Buffer
-keymap("n", "<C-w>", ":Bdelete<CR>", opts) -- Search for file
 
 wk.register({
 	so = {
@@ -83,7 +83,7 @@ wk.register({
 	},
 	q = {
 		function()
-			vim.cmd [[quit]]
+			vim.cmd "quit!"
 		end,
 		"Quit",
 	},
