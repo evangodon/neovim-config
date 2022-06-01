@@ -12,7 +12,7 @@ local setup_plugin = function(pluginName)
 	local status_ok, _ = pcall(require, path)
 
 	if not status_ok then
-		vim.notify("Error loading plugin at path: " .. path)
+		vim.notify("Error loading plugin at path: " .. path, vim.log.levels.WARN)
 		return
 	end
 end
@@ -39,6 +39,9 @@ packer.startup(function(use)
 		"windwp/nvim-autopairs",
 		config = setup_plugin "autopairs",
 	})
+
+	--go.nvim
+	use({ "ray-x/go.nvim", config = setup_plugin "go" })
 
 	-- UI
 	use "kyazdani42/nvim-web-devicons"
