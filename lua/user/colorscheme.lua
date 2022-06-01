@@ -7,7 +7,7 @@ local DARK_THEME = "catppuccin"
 
 local colorscheme = use_light_theme and LIGHT_THEME or DARK_THEME
 
-vim.g.catppuccin_flavour = use_light_theme and "latte" or "mocha"
+vim.g.catppuccin_flavour = use_light_theme and "latte" or "macchiato"
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
 if not status_ok then
