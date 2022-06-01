@@ -6,10 +6,13 @@ if not packer_status_ok then
 	return
 end
 
-local setup_plugin = function(pluginPath)
-	local status_ok, _ = pcall(require, "plugins.config." .. pluginPath)
+local setup_plugin = function(pluginName)
+	local path = ("plugins.config." .. pluginName)
+
+	local status_ok, _ = pcall(require, path)
+
 	if not status_ok then
-		vim.notify("Error loading plugin: " .. pluginPath)
+		vim.notify("Error loading plugin at path: " .. path)
 		return
 	end
 end
@@ -64,11 +67,14 @@ packer.startup(function(use)
 	-- colorizer
 	use({
 		"norcalli/nvim-colorizer.lua",
-		config = setup_plugin "colorizer",
+		config = function()
+			require("colorizer").setup()
+		end,
 	})
 	-- bufferline
 	use({
 		"akinsho/bufferline.nvim", -- Bufferline
+		config = setup_plugin "bufferline",
 		requires = {
 			{ "famiu/bufdelete.nvim" }, -- better buffer delete
 		},
@@ -126,7 +132,6 @@ packer.startup(function(use)
 	-- LSP
 	use({
 		"neovim/nvim-lspconfig",
-		config = setup_plugin "lsp",
 		requires = {
 			"williamboman/nvim-lsp-installer", -- simple to use language server installer
 			"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters

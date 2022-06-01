@@ -1,6 +1,7 @@
 # TODO
 
 ## Workflow
+- [ ] Set up go plugin
 - [ ] leader key mappings for git actions
 - [ ] Add plugin to remember sessions
 
@@ -9,15 +10,17 @@
 - [ ] Add logic to remember cursor position
 - [ ] Set up github copilot
 - [ ] Confirm quit when only one buffer left
-  - return to a dashboard
-- [X] configure alpha dashboard plugin
+      - return to a dashboard
+- [ ] configure alpha dashboard plugin
 - [ ] Set up packer snapshots
+- [ ] Improve telescrope performance by using fzf-native
 
 ## UI
-- [ ] make background dark for toggle term
+- [ ] Show root folder in lualine
 - [ ] Show root folder in nvim-tree with catppuccin theme
 - [ ] diagnostics float window borders 
 - [ ] Configure fine-cmdline plugin
+- [ ] make background dark for toggle term
 
 ## Theme
 - [ ] Create my own theme with colours from embark  

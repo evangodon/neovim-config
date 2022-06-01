@@ -13,7 +13,7 @@ end
 local diff = {
 	"diff",
 	colored = false,
-	symbols = { added = "ﰂ ", modified = "ﱡ ", removed = "ﯰ " }, -- changes diff symbols
+	symbols = { added = "ﰂ ", modified = "• ", removed = "ﯰ " }, -- changes diff symbols
 	cond = hide_in_width,
 }
 
