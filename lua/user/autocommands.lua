@@ -6,12 +6,23 @@
 --   augroup end
 -- ]]
 
--- TODO: clear command line
--- function! s:empty_message(timer)
---     echo ''
--- endfunction
---
--- augroup cmdline
---     autocmd!
---     autocmd CmdlineLeave : call timer_start(5000, funcref('s:empty_message'))
--- augroup END
+-- Clear command line message
+local timer = vim.loop.new_timer()
+local message_duration = 4000
+vim.api.nvim_create_autocmd({ "CmdlineLeave" }, {
+	callback = function()
+		timer:start(
+			message_duration,
+			0,
+			vim.schedule_wrap(function()
+				vim.notify ""
+			end)
+		)
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "CmdlineEnter" }, {
+	callback = function()
+		timer:stop()
+	end,
+})
