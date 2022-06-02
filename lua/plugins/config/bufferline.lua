@@ -8,7 +8,9 @@ end
 
 bufferline.setup({
 	options = {
-		numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+		numbers = function(opts) -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+			return string.format("%s.", opts.lower(opts.ordinal))
+		end,
 		close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
 		right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
 		left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
@@ -45,3 +47,25 @@ bufferline.setup({
 		-- end
 	},
 })
+
+local wk_status_ok, wk = pcall(require, "which-key")
+if not wk_status_ok then
+	return
+end
+
+-- create key map to navigate buffers
+local keymapBufferlineGoToBuffer = function()
+	local keymaps = {}
+
+	for i = 8, 1, -1 do
+		local key = string.format("<leader>%d", i)
+		keymaps[key] = {
+			string.format(":buffer %d<CR>", i),
+			"which_key_ignore",
+		}
+	end
+
+	return keymaps
+end
+
+wk.register(keymapBufferlineGoToBuffer())

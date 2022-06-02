@@ -4,7 +4,6 @@ local opts = { noremap = true, silent = true }
 
 -- Save
 keymap("n", "<C-s>", ":w<CR>", opts)
-
 -- better window movement
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -22,8 +21,13 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Navigate buffers
-keymap("n", "]b", ":bnext<CR>", opts)
-keymap("n", "[b", ":bprevious<CR>", opts)
+keymap("n", "]b", ":bnext<CR>", opts) -- Next buffer
+keymap("n", "<C-n>", ":bnext<CR>", opts)
+keymap("n", "<TAB>", ":bnext<CR>", opts)
+keymap("n", "[b", ":bprevious<CR>", opts) -- Previous buffer
+keymap("n", "<S-TAB>", ":bprevious<CR>", opts)
+keymap("n", "<leader>bd", ":Bdelete<CR>", opts) -- Close buffer
+keymap("n", "<C-w>", ":Bdelete<CR>", opts)
 
 -- Move selected line / block of text in visual mode
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
@@ -56,20 +60,11 @@ keymap("v", "L", "$", opts)
 -- clearhightlights
 keymap("n", "<leader>H", ":noh<CR>", opts) -- Quit Neovim without saving
 
--- Tab switch buffer
-keymap("n", "<TAB>", ":bnext<CR>", opts)
-keymap("n", "<C-n>", ":bnext<CR>", opts)
-keymap("n", "<S-TAB>", ":bprevious<CR>", opts)
-
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
 -- Terminal
 keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
-
--- Closing and Quitting
-keymap("n", "<leader>bd", ":Bdelete<CR>", opts) -- Close Buffer
-keymap("n", "<C-w>", ":Bdelete<CR>", opts) -- Search for file
 
 local status_ok, wk = pcall(require, "which-key")
 if not status_ok then
@@ -86,5 +81,9 @@ wk.register({
 			vim.cmd "quit!"
 		end,
 		"Quit",
+	},
+	["-"] = {
+		":b#<CR>", -- return to last edited buffer
+		"return to last edited buffer",
 	},
 }, { prefix = "<leader>" })
