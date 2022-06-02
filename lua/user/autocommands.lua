@@ -6,7 +6,14 @@
 --   augroup end
 -- ]]
 
--- Clear command line message
+-- Hightlight on yank
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+	callback = function()
+		vim.highlight.on_yank({ higroup = "Visual", timeout = 400 })
+	end,
+})
+
+-- Clear command line message after a few seconds
 local timer = vim.loop.new_timer()
 local message_duration = 4000
 vim.api.nvim_create_autocmd({ "CmdlineLeave" }, {

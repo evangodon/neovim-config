@@ -1,17 +1,16 @@
 # TODO
 
 ## Workflow
-- [ ] Set up go plugin
 - [ ] leader key mappings for git actions
 - [ ] Add plugin to remember sessions
 
 ## DX
 - [ ] How to persist folds
-- [ ] Add logic to remember cursor position
+- [ ] remember last cursor position when opening a file, use autocommand and marks
 - [ ] Set up github copilot
 - [ ] Confirm quit when only one buffer left
       - return to a dashboard
-- [ ] configure alpha dashboard plugin
+- [-] configure alpha dashboard plugin
 - [ ] Set up packer snapshots
 - [ ] Improve telescrope performance by using fzf-native
 
