@@ -100,6 +100,5 @@ local opts = { noremap = true, silent = true }
 
 map("n", "<C-p>", function()
 	require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))
-	-- require("telescope.builtin").find_files()
 end, opts)
 map("n", "<C-t>", "<cmd>Telescope live_grep<cr>", opts)
