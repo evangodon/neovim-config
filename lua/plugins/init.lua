@@ -6,15 +6,26 @@ if not packer_status_ok then
 	return
 end
 
-local setup_plugin = function(pluginName)
+local safe_require = function(pluginName)
 	local path = ("plugins.config." .. pluginName)
 
 	local status_ok, _ = pcall(require, path)
 
 	if not status_ok then
-		vim.notify("Error loading plugin at path: " .. path, vim.log.levels.WARN)
+		require "notify"("Error loading plugin at path: " .. path, vim.log.levels.ERROR)
 		return
 	end
+end
+
+-- call setup() on plugin
+local safe_setup = function(pluginName)
+	local status_ok, plugin = pcall(require, pluginName)
+	if not status_ok then
+		vim.notify("Error loading plugin: " .. pluginName, vim.log.levels.WARN)
+		return
+	end
+
+	plugin.setup()
 end
 
 packer.startup(function(use)
@@ -22,26 +33,36 @@ packer.startup(function(use)
 	use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
 	use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
 
+	-- nvim-notify
+	use({
+		"rcarriga/nvim-notify",
+		config = safe_require "nvim-notify",
+	})
+
 	-- auto-session
 	use({
 		"rmagatti/auto-session",
-		config = setup_plugin "autosession",
+		config = safe_require "autosession",
 	})
 	-- toggleterm
 	use({
 		"akinsho/toggleterm.nvim",
-		config = setup_plugin "toggleterm",
+		config = safe_require "toggleterm",
 	})
 
 	-- # Code
 	-- auto-pairs
 	use({
 		"windwp/nvim-autopairs",
-		config = setup_plugin "autopairs",
+		config = safe_require "autopairs",
 	})
 
 	--go.nvim
-	use({ "ray-x/go.nvim", config = setup_plugin "go" })
+	use({
+		"ray-x/go.nvim",
+		config = safe_require "go",
+		as = "go",
+	})
 
 	-- UI
 	use "kyazdani42/nvim-web-devicons"
@@ -50,34 +71,27 @@ packer.startup(function(use)
 	-- nvim-tree
 	use({
 		"kyazdani42/nvim-tree.lua",
-		config = setup_plugin "nvim-tree",
+		config = safe_require "nvim-tree",
 	})
 	-- lualine
 	use({
 		"nvim-lualine/lualine.nvim",
-		config = setup_plugin "lualine",
-	})
-	-- nvim-notify
-	use({
-		"rcarriga/nvim-notify",
-		config = setup_plugin "nvim-notify",
+		config = safe_require "lualine",
 	})
 	-- scrollbar
 	use({
 		"petertriho/nvim-scrollbar",
-		config = setup_plugin "scrollbar",
+		config = safe_require "scrollbar",
 	})
 	-- colorizer
 	use({
 		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end,
+		config = safe_setup "colorizer",
 	})
 	-- bufferline
 	use({
 		"akinsho/bufferline.nvim", -- Bufferline
-		config = setup_plugin "bufferline",
+		config = safe_require "bufferline",
 		requires = {
 			{ "famiu/bufdelete.nvim" }, -- better buffer delete
 		},
@@ -86,18 +100,16 @@ packer.startup(function(use)
 	--fidget
 	use({
 		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup()
-		end,
+		config = safe_setup "fidget",
 	})
 
-	use({ "numToStr/Comment.nvim", config = setup_plugin "comment" })
+	use({ "numToStr/Comment.nvim", config = safe_require "comment" })
 
 	-- Which-key
-	use({ "folke/which-key.nvim", config = setup_plugin "whichkey" })
+	use({ "folke/which-key.nvim", config = safe_require "whichkey" })
 
 	-- Neoscroll
-	use({ "karb94/neoscroll.nvim", config = setup_plugin "neoscroll" })
+	use({ "karb94/neoscroll.nvim", config = safe_require "neoscroll" })
 
 	-- Colorschemes
 	use "embark-theme/vim"
@@ -111,7 +123,7 @@ packer.startup(function(use)
 	-- cmp plugins
 	use({
 		"hrsh7th/nvim-cmp",
-		config = setup_plugin "cmp",
+		config = safe_require "cmp",
 		requires = {
 			"hrsh7th/cmp-buffer", -- buffer completions
 			"hrsh7th/cmp-path", -- path completions
@@ -125,7 +137,7 @@ packer.startup(function(use)
 	-- Git
 	use({
 		"lewis6991/gitsigns.nvim",
-		config = setup_plugin "gitsigns",
+		config = safe_require "gitsigns",
 	})
 
 	-- snippets
@@ -144,14 +156,14 @@ packer.startup(function(use)
 	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
-		config = setup_plugin "telescope",
+		config = safe_require "telescope",
 	})
 
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
-		config = setup_plugin "treesitter",
+		config = safe_require "treesitter",
 	})
 	use "p00f/nvim-ts-rainbow"
 	use "JoosepAlviste/nvim-ts-context-commentstring" -- context aware comments

@@ -1,5 +1,6 @@
 local status_ok, go = pcall(require, "go")
 if not status_ok then
+	vim.notify "error calling go module"
 	return
 end
 
@@ -11,7 +12,7 @@ if not wk_status_ok then
 end
 
 wk.register({
-	g = {
+	G = {
 		f = { ":GoFillStruct<cr>", "Fill struct" },
 	},
 }, { prefix = "<leader>" })
