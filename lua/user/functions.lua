@@ -16,4 +16,13 @@ M.reloadConfig = function()
 	require("notify").notify "Reloaded config"
 end
 
+local status_ok, wk = pcall(require, "which-key")
+if not status_ok then
+	return
+end
+
+M.leaderKeymaps = function(keys)
+	wk.register(keys, { prefix = "<leader>" })
+end
+
 return M

@@ -3,6 +3,7 @@
 
 local status_ok, gitsigns = pcall(require, "gitsigns")
 if not status_ok then
+	vim.notify "gitsigns failed to loaded"
 	return
 end
 
@@ -48,4 +49,60 @@ gitsigns.setup({
 	yadm = {
 		enable = false,
 	},
+	on_attach = function(bufnr)
+		local fn = require "user.functions"
+		local gs = package.loaded.gitsigns
+
+		local function keymap(mode, l, r, opts)
+			opts = opts or {}
+			opts.buffer = bufnr
+			vim.keymap.set(mode, l, r, opts)
+		end
+
+		-- Navigation
+		keymap("n", "]c", function()
+			if vim.wo.diff then
+				return "]c"
+			end
+			vim.schedule(function()
+				gs.next_hunk()
+			end)
+			return "<Ignore>"
+		end, { expr = true })
+
+		keymap("n", "[c", function()
+			if vim.wo.diff then
+				return "[c"
+			end
+			vim.schedule(function()
+				gs.prev_hunk()
+			end)
+			return "<Ignore>"
+		end, { expr = true })
+
+		-- Actions
+		fn.leaderKeymaps({
+			g = {
+				p = { gs.preview_hunk, "Preview hunk" },
+				b = {
+					gs.toggle_current_line_blame,
+					"Toggle blame",
+				},
+				R = {
+					":Gitsigns reset_hunk<CR>",
+					"Reset hunk",
+				},
+				d = {
+					gs.diffthis,
+					"Diff agaist the index",
+				},
+				D = {
+					function()
+						gs.diffthis "~"
+					end,
+					"Diff against ~",
+				},
+			},
+		})
+	end,
 })

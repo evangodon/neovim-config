@@ -78,7 +78,7 @@ wk.register({
 	},
 	q = {
 		function()
-			vim.cmd "quit!"
+			vim.cmd "quitall!"
 		end,
 		"Quit",
 	},
