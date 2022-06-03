@@ -1,6 +1,15 @@
 local hour = tonumber(os.date "%H")
 local dark_theme_env_var = os.getenv "NVIM_USE_DARK_THEME"
-local use_light_theme = dark_theme_env_var and dark_theme_env_var == "false" or hour < 19 and hour > 6
+local use_light_theme = hour < 19 and hour > 6
+
+if dark_theme_env_var then
+	print(dark_theme_env_var)
+	local stringToBool = {
+		["true"] = true,
+		["false"] = false,
+	}
+	use_light_theme = not stringToBool[dark_theme_env_var]
+end
 
 local LIGHT_THEME = "catppuccin"
 local DARK_THEME = "catppuccin"
@@ -22,6 +31,10 @@ if not ok then
 end
 
 local colors = require("catppuccin.api.colors").get_colors()
+local util = require "catppuccin.utils.util"
+
+-- Set CursorLine color
+vim.cmd(":highlight CursorLine guibg=" .. util.darken(colors.sky, 0.08, colors.base))
 
 catppuccin.setup({
 	integration = {
