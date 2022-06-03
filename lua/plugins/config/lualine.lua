@@ -36,6 +36,12 @@ local branch = {
 	icon = " ",
 }
 
+local rootFolder = function()
+	local cwd = vim.loop.cwd()
+	local dir = string.match(cwd, "/(%w+)$")
+	return dir .. "/"
+end
+
 local spaces = function()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
@@ -52,7 +58,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { mode },
 		lualine_b = { branch, diff },
-		lualine_c = {},
+		lualine_c = { rootFolder },
 		lualine_x = { spaces, "encoding", filetype },
 	},
 	inactive_sections = {
