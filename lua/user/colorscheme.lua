@@ -1,6 +1,6 @@
 local hour = tonumber(os.date "%H")
 local dark_theme_env_var = os.getenv "NVIM_USE_DARK_THEME"
-local use_light_theme = dark_theme_env_var == "false" and hour < 19 and hour > 6
+local use_light_theme = dark_theme_env_var and dark_theme_env_var == "false" or hour < 19 and hour > 6
 
 local LIGHT_THEME = "catppuccin"
 local DARK_THEME = "catppuccin"

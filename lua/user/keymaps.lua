@@ -27,7 +27,7 @@ keymap("n", "<TAB>", ":bnext<CR>", opts)
 keymap("n", "[b", ":bprevious<CR>", opts) -- Previous buffer
 keymap("n", "<S-TAB>", ":bprevious<CR>", opts)
 keymap("n", "<leader>bd", ":Bdelete<CR>", opts) -- Close buffer
-keymap("n", "<C-w>", ":Bdelete<CR>", opts)
+keymap("n", "<C-w>", ":CustomBufferDelete<CR>", opts)
 
 -- Move selected line / block of text in visual mode
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
