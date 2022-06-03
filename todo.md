@@ -3,6 +3,7 @@
 ## Workflow
 - [ ] leader key mappings for git actions
 - [ ] Add plugin to remember sessions
+- [ ] How to find and replace multiple words without lsp and :s
 
 ## DX
 - [ ] How to persist folds
@@ -17,6 +18,7 @@
 ## UI
 - [ ] Show root folder in lualine
 - [ ] Show root folder in nvim-tree with catppuccin theme
+- [ ] Show line indents 
 - [ ] diagnostics float window borders 
 - [ ] Configure fine-cmdline plugin
 - [ ] make background dark for toggle term
