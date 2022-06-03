@@ -2,18 +2,15 @@
 
 ## Workflow
 - [ ] leader key mappings for git actions
-- [ ] Add plugin to remember sessions
 - [ ] How to find and replace multiple words without lsp and :s
 
 ## DX
-- [ ] How to persist folds
 - [ ] remember last cursor position when opening a file, use autocommand and marks
 - [ ] Set up github copilot
-- [ ] Confirm quit when only one buffer left
-      - return to a dashboard
 - [-] configure alpha dashboard plugin
 - [ ] Set up packer snapshots
-- [ ] Improve telescrope performance by using fzf-native
+- [ ] Improve telescope performance by using fzf-native
+- [ ] How to persist folds
 
 ## UI
 - [ ] Show root folder in lualine
@@ -45,3 +42,5 @@
 - [X] Find good light theme
 - [X] Show scrollbar with diagnostics
 - [X] Add dashboard plugin
+- [X] Confirm quit when only one buffer left
+- [X] Add plugin to remember sessions
