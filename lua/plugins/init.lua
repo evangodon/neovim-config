@@ -2,7 +2,7 @@ require "plugins.packer-init"
 
 local packer_status_ok, packer = pcall(require, "packer")
 if not packer_status_ok then
-	vim.notify "Error loading packer"
+	Notify.info "Error loading packer"
 	return
 end
 
@@ -12,7 +12,7 @@ local safe_require = function(pluginName)
 	local status_ok, _ = pcall(require, path)
 
 	if not status_ok then
-		require "notify"("Error loading plugin at path: " .. path, vim.log.levels.ERROR)
+		Notify.error("Error loading plugin at path: " .. path)
 		return
 	end
 end

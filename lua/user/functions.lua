@@ -1,3 +1,22 @@
+Notify = {}
+
+local notify_status_ok, notify = pcall(require, "notify")
+if not notify_status_ok then
+	notify = vim.notify
+end
+
+Notify.info = function(msg)
+	notify(msg, vim.log.levels.INFO)
+end
+
+Notify.warn = function(msg)
+	notify(msg, vim.log.levels.WARN)
+end
+
+Notify.error = function(msg)
+	notify(msg, vim.log.levels.ERROR)
+end
+
 local M = {}
 
 -- Reload config
