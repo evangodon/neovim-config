@@ -39,7 +39,7 @@ local branch = {
 local rootFolder = function()
 	local cwd = vim.loop.cwd()
 	local dir = string.match(cwd, "/(%w+)$")
-	return dir .. "/"
+	return "  " .. dir
 end
 
 local spaces = function()

@@ -3,7 +3,6 @@ local dark_theme_env_var = os.getenv "NVIM_USE_DARK_THEME"
 local use_light_theme = hour < 19 and hour > 6
 
 if dark_theme_env_var then
-	print(dark_theme_env_var)
 	local stringToBool = {
 		["true"] = true,
 		["false"] = false,
@@ -36,6 +35,7 @@ local util = require "catppuccin.utils.util"
 -- Set CursorLine color
 vim.cmd(":highlight CursorLine guibg=" .. util.darken(colors.sky, 0.08, colors.base))
 
+catppuccin.remap({})
 catppuccin.setup({
 	integration = {
 		nvimtree = {
@@ -43,10 +43,4 @@ catppuccin.setup({
 			show_root = true,
 		},
 	},
-})
-catppuccin.remap({
-	DiagnosticError = { bg = colors.none },
-	DiagnosticInfo = { bg = colors.none },
-	DiagnosticHint = { bg = colors.none },
-	DiagnosticWarn = { bg = colors.none },
 })
