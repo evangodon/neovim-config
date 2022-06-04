@@ -14,11 +14,11 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 })
 
 -- Clear command line message after a few seconds
-local timer = vim.loop.new_timer()
+local cmdline_timer = vim.loop.new_timer()
 local message_duration = 4000
 vim.api.nvim_create_autocmd({ "CmdlineLeave" }, {
 	callback = function()
-		timer:start(
+		cmdline_timer:start(
 			message_duration,
 			0,
 			vim.schedule_wrap(function()
@@ -28,8 +28,32 @@ vim.api.nvim_create_autocmd({ "CmdlineLeave" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "CmdlineEnter" }, {
+vim.api.nvim_create_autocmd({ "CmdwinEnter", "CmdlineEnter" }, {
 	callback = function()
-		timer:stop()
+		cmdline_timer:stop()
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufDelete" }, {
+	callback = function()
+		local loaded_buffers = vim.tbl_filter(function(buf)
+			return vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, "buflisted")
+		end, vim.api.nvim_list_bufs())
+
+		if #loaded_buffers == 2 and vim.fn.expand "%" == "" then
+			local yes, no = "yes", "no"
+			vim.ui.select({ yes, no }, {
+				prompt = "Quit Neovim?",
+			}, function(choice)
+				if not choice then
+					return
+				end
+				if choice == yes then
+					vim.cmd "quitall"
+				else
+					-- open Dashboard here
+				end
+			end)
+		end
 	end,
 })
