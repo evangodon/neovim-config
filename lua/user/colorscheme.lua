@@ -34,6 +34,8 @@ local util = require "catppuccin.utils.util"
 
 -- Set CursorLine color
 vim.cmd(":highlight CursorLine guibg=" .. util.darken(colors.sky, 0.08, colors.base))
+-- Fix Gitsigns
+vim.cmd(":highlight GitSignsDeleteLn guifg=" .. colors.red .. " guibg=" .. colors.none)
 
 catppuccin.remap({})
 catppuccin.setup({

@@ -1,8 +1,6 @@
 # TODO
 
 ## Workflow
-- [ ] leader key mappings for git actions
-- [ ] How to find and replace multiple words without lsp and :s
 
 ## DX
 - [ ] remember last cursor position when opening a file, use autocommand and marks
@@ -44,3 +42,5 @@
 - [X] Add dashboard plugin
 - [X] Confirm quit when only one buffer left
 - [X] Add plugin to remember sessions
+- [X] leader key mappings for git actions
+- [X] How to find and replace multiple words without lsp and :s
