@@ -8,7 +8,7 @@ vim.api.nvim_create_user_command("CustomBufferDelete", function()
 	if #loaded_buffers == 1 then
 		vim.ui.input({ prompt = "Quit Neovim? (y/n)" }, function(input)
 			if input == "y" then
-				vim.cmd "quit"
+				vim.cmd "quitall"
 			else
 				cancelled = true
 			end
