@@ -6,7 +6,7 @@ if not packer_status_ok then
 	return
 end
 
-local safe_require = function(pluginName)
+local function safe_require(pluginName)
 	local path = ("plugins.config." .. pluginName)
 
 	local status_ok, _ = pcall(require, path)
@@ -18,10 +18,10 @@ local safe_require = function(pluginName)
 end
 
 -- call setup() on plugin
-local safe_setup = function(pluginName)
+local function safe_setup(pluginName)
 	local status_ok, plugin = pcall(require, pluginName)
 	if not status_ok then
-		vim.notify("Error loading plugin: " .. pluginName, vim.log.levels.WARN)
+		Notify.error("Error loading plugin: " .. pluginName)
 		return
 	end
 
@@ -67,6 +67,13 @@ packer.startup(function(use)
 	-- UI
 	use "kyazdani42/nvim-web-devicons"
 	use "fladson/vim-kitty"
+	use({
+		"VonHeikemen/fine-cmdline.nvim",
+		config = safe_require "fine-cmdline",
+		requires = {
+			{ "MunifTanjim/nui.nvim" },
+		},
+	})
 
 	-- nvim-tree
 	use({
