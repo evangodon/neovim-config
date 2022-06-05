@@ -6,3 +6,5 @@ require "user.usercommands"
 require "user.lsp"
 
 require "plugins"
+
+require "plugins.config.fine-cmdline"
