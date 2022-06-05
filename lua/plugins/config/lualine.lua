@@ -36,13 +36,13 @@ local branch = {
 	icon = " ",
 }
 
-local rootFolder = function()
+local function rootFolder()
 	local cwd = vim.loop.cwd()
 	local dir = string.match(cwd, "/(%w+)$")
 	return "  " .. dir
 end
 
-local spaces = function()
+local function spaces()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 

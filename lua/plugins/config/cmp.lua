@@ -11,8 +11,8 @@ end
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
-	local col = vim.fn.col(".") - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+	local col = vim.fn.col "." - 1
+	return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
 local kind_icons = {
@@ -63,6 +63,7 @@ vim.api.nvim_create_autocmd({ "TextChangedI" }, {
 cmp.setup({
 	completion = {
 		autocomplete = false,
+		keyword_length = 2,
 	},
 	snippet = {
 		expand = function(args)
@@ -83,7 +84,8 @@ cmp.setup({
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		["<Tab>"] = cmp.mapping(function(fallback)
+		-- disable for copilot
+		["disabled<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif luasnip.expandable() then
@@ -124,11 +126,13 @@ cmp.setup({
 				luasnip = "[Snippet]",
 				buffer = "[Buffer]",
 				path = "[Path]",
+				copilot = "[Copilot]",
 			})[entry.source.name]
 			return vim_item
 		end,
 	},
 	sources = {
+		{ name = "copilot", group_index = 1 },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },

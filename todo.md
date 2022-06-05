@@ -3,7 +3,6 @@
 ## Workflow
 
 ## DX
-- [ ] Set up github copilot
 - [-] configure alpha dashboard plugin
 - [ ] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
 - [ ] Improve telescope performance by using fzf-native
@@ -44,3 +43,4 @@
 - [X] Show root folder in lualine
 - [X] Configure fine-cmdline plugin
 - [X] remember last cursor position when opening a file, use autocommand and marks
+- [X] Set up github copilot

@@ -82,8 +82,12 @@ wk.register({
 		end,
 		"Quit",
 	},
+	C = {
+		":Copilot status<CR>",
+		"Check copilot status",
+	},
 	["-"] = {
-		":b#<CR>", -- return to last edited buffer
+		":b#<CR>",
 		"return to last edited buffer",
 	},
 }, { prefix = "<leader>" })
