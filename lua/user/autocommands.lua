@@ -34,6 +34,7 @@ vim.api.nvim_create_autocmd({ "CmdwinEnter", "CmdlineEnter" }, {
 	end,
 })
 
+-- Confirm quit when closing last buffer
 vim.api.nvim_create_autocmd({ "BufDelete" }, {
 	callback = function()
 		local loaded_buffers = vim.tbl_filter(function(buf)
@@ -41,19 +42,26 @@ vim.api.nvim_create_autocmd({ "BufDelete" }, {
 		end, vim.api.nvim_list_bufs())
 
 		if #loaded_buffers == 2 and vim.fn.expand "%" == "" then
-			local yes, no = "yes", "no"
-			vim.ui.select({ yes, no }, {
+			local confirm, cancel = "Confirm", "Cancel"
+			vim.ui.select({ confirm, cancel }, {
 				prompt = "Quit Neovim?",
 			}, function(choice)
 				if not choice then
 					return
 				end
-				if choice == yes then
+				if choice == confirm then
 					vim.cmd "quitall"
 				else
 					-- open Dashboard here
 				end
 			end)
 		end
+	end,
+})
+
+-- Return to last cursor position on enter
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+	callback = function()
+		vim.cmd [['"; normal z.]]
 	end,
 })

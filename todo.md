@@ -3,23 +3,20 @@
 ## Workflow
 
 ## DX
-- [ ] remember last cursor position when opening a file, use autocommand and marks
 - [ ] Set up github copilot
 - [-] configure alpha dashboard plugin
-- [ ] Set up packer snapshots
+- [ ] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
 - [ ] Improve telescope performance by using fzf-native
 - [ ] How to persist folds
 
 ## UI
-- [ ] Show root folder in lualine
-- [ ] Show root folder in nvim-tree with catppuccin theme
-- [ ] Show line indents 
+- [ ] change bg of inactive window, reference  https://gist.github.com/ctaylo21/c3620a945cee6fc3eb3cb0d7f57faf00
+- [ ] Show line indents with plugin
 - [ ] diagnostics float window borders 
-- [ ] Configure fine-cmdline plugin
 - [ ] make background dark for toggle term
+- [ ] Show root folder in nvim-tree with catppuccin theme
+- [ ] Change color of internal errors with highlight
 
-## Theme
-- [ ] Create my own theme with colours from embark  
 
 ## Productivity
 - Figure out a todo manager
@@ -44,3 +41,6 @@
 - [X] Add plugin to remember sessions
 - [X] leader key mappings for git actions
 - [X] How to find and replace multiple words without lsp and :s
+- [X] Show root folder in lualine
+- [X] Configure fine-cmdline plugin
+- [X] remember last cursor position when opening a file, use autocommand and marks

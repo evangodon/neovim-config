@@ -21,6 +21,8 @@ local M = {}
 
 -- Reload config
 M.reloadConfig = function()
+	-- Remove all autocmds
+	vim.cmd [[autocmd!]]
 	-- Certain packages complain when setup is called twice
 	package.loaded["nvim-tree"] = nil
 
