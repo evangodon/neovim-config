@@ -69,6 +69,8 @@ packer.startup(function(use)
 		config = safe_require "go",
 		as = "go",
 	})
+  -- Graphql
+  use ({'jparise/vim-graphql'})
 
 	-- UI
 	use "kyazdani42/nvim-web-devicons"
