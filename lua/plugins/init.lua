@@ -184,7 +184,14 @@ packer.startup(function(use)
 	use "JoosepAlviste/nvim-ts-context-commentstring" -- context aware comments
 
 	-- Github Copilot
-	use({ "github/copilot.vim" })
+	use({
+		"github/copilot.vim",
+		config = function()
+			vim.api.nvim_set_var("copilot_filetypes", {
+				TelescopePrompt = false,
+			})
+		end,
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
