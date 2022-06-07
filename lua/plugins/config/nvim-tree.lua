@@ -66,7 +66,7 @@ nvim_tree.setup({
 		},
 	},
 	view = {
-		width = 30,
+		width = 40,
 		height = 30,
 		hide_root_folder = false,
 		side = "left",
@@ -117,5 +117,5 @@ if not wk_status_ok then
 end
 
 wk.register({
-	e = { ":NvimTreeToggle<cr>", "Toggle Nvimtree" },
+	    e = {function()nvim_tree.toggle(false, true) end, "Toggle Nvimtree" },
 }, { prefix = "<leader>" })

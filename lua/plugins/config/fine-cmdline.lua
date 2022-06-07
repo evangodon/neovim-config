@@ -17,6 +17,7 @@ cmdline.setup({
 		prompt = "  ",
 	},
 	popup = {
+    relative = "editor",
 		position = {
 			row = "20%",
 			col = "50%",

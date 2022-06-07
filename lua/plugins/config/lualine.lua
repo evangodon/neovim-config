@@ -13,8 +13,11 @@ end
 local diff = {
 	"diff",
 	colored = false,
-	symbols = { added = "ﰂ ", modified = "• ", removed = "ﯰ " }, -- changes diff symbols
+	symbols = { added = "ﰂ ", modified = "ﰣ ", removed = "ﯰ " }, -- changes diff symbols
 	cond = hide_in_width,
+	fmt = function(str)
+		return  str.. "  " 
+	end,
 }
 
 local mode = {
