@@ -97,8 +97,19 @@ telescope.setup({
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
+local fn = require("user.functions")
 
 map("n", "<C-p>", function()
 	require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))
 end, opts)
 map("n", "<C-t>", "<cmd>Telescope live_grep<cr>", opts)
+
+fn.leaderKeymaps({
+  b = {
+    function()
+	     require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))
+	  end ,
+    "Open buffer list"
+  }
+})
+
