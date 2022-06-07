@@ -111,11 +111,13 @@ nvim_tree.setup({
 	},
 })
 
-local wk_status_ok, wk = pcall(require, "which-key")
-if not wk_status_ok then
-	return
-end
+local fn = require "user.functions"
 
-wk.register({
-	    e = {function()nvim_tree.toggle(false, true) end, "Toggle Nvimtree" },
-}, { prefix = "<leader>" })
+fn.leaderKeymaps({
+	e = {
+		function()
+			nvim_tree.toggle(false, true)
+		end,
+		"Toggle Nvimtree",
+	},
+})
