@@ -48,18 +48,14 @@ bufferline.setup({
 	},
 })
 
-local wk_status_ok, wk = pcall(require, "which-key")
-if not wk_status_ok then
-	return
-end
+local fn = require "user.functions"
 
 -- create key map to navigate buffers
 local keymapBufferlineGoToBuffer = function()
 	local keymaps = {}
 
 	for i = 8, 1, -1 do
-		local key = string.format("<leader>%d", i)
-		keymaps[key] = {
+		keymaps[tostring(i)] = {
 			string.format(":buffer %d<CR>", i),
 			"which_key_ignore",
 		}
@@ -68,4 +64,12 @@ local keymapBufferlineGoToBuffer = function()
 	return keymaps
 end
 
-wk.register(keymapBufferlineGoToBuffer())
+fn.leaderKeymaps(keymapBufferlineGoToBuffer())
+
+vim.api.nvim_create_autocmd({ "User" }, {
+	pattern = "BDeletePost",
+	callback = function()
+		vim.cmd [[bprevious]]
+	end,
+	desc = "Go to previous buffer after delete",
+})

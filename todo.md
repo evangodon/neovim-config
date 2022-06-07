@@ -1,15 +1,20 @@
 # TODO
 
+## Bug 
+
 ## Workflow
 
 ## DX
+- [ ] Disable Gitsigns in gutter for markdown
 - [-] configure alpha dashboard plugin
 - [ ] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
 - [ ] Improve telescope performance by using fzf-native
 - [ ] How to persist folds
 
 ## UI
+- [ ] Make Visual highlight less dark
 - [ ] change bg of inactive window, reference  https://gist.github.com/ctaylo21/c3620a945cee6fc3eb3cb0d7f57faf00
+- [ ] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
 - [ ] Show line indents with plugin
 - [ ] diagnostics float window borders 
 - [ ] make background dark for toggle term
@@ -45,3 +50,6 @@
 - [X] Configure fine-cmdline plugin
 - [X] remember last cursor position when opening a file, use autocommand and marks
 - [X] Set up github copilot
+- [X] Fix d keymap on macbook (don't add a "disabled" string to a keymap)
+- [X] Disable Github Copilot for telescope
+- [X] Go to next buffer when closing
