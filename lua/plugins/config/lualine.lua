@@ -15,9 +15,6 @@ local diff = {
 	colored = false,
 	symbols = { added = "ﰂ ", modified = "ﰣ ", removed = "ﯰ " }, -- changes diff symbols
 	cond = hide_in_width,
-	fmt = function(str)
-		return  str.. "  " 
-	end,
 }
 
 local mode = {
@@ -62,7 +59,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { mode },
 		lualine_b = { branch, diff },
-		lualine_c = { rootFolder },
+		lualine_c = { rootFolder, "filename" },
 		lualine_x = { spaces, "encoding", filetype },
 	},
 	inactive_sections = {

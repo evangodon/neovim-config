@@ -69,7 +69,7 @@ fn.leaderKeymaps(keymapBufferlineGoToBuffer())
 vim.api.nvim_create_autocmd({ "User" }, {
 	pattern = "BDeletePost",
 	callback = function()
-		vim.cmd [[bprevious]]
+		-- vim.cmd [[bprevious]]
 	end,
 	desc = "Go to previous buffer after delete",
 })
