@@ -20,7 +20,6 @@ null_ls.setup({
 		formatting.prettier,
 		-- Go
 		formatting.gofmt,
-		formatting.goimports,
 		formatting.golines,
 	},
 	on_attach = function(client, bufnr)

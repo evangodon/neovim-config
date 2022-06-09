@@ -90,4 +90,12 @@ wk.register({
 		":b#<CR>",
 		"return to last edited buffer",
 	},
+	["]"] = {
+		":bnext<cr>",
+		"Go to next buffer",
+	},
+	["["] = {
+		":bprev<cr>",
+		"Go to previous buffer",
+	},
 }, { prefix = "<leader>" })

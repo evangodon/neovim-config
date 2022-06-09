@@ -3,7 +3,6 @@
 ## Bug 
 
 ## Workflow
-- [ ] Use go.nvim lsp since it has better defaults
 
 ## DX
 - [ ] Test out async formatting
@@ -14,7 +13,7 @@
 - [ ] How to persist folds
 
 ## UI
-- [ ] Use winbar to show file name and path, use nvim-gps
+- [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8
 - [ ] Make Visual highlight less dark
 - [ ] change bg of inactive window, reference  https://gist.github.com/ctaylo21/c3620a945cee6fc3eb3cb0d7f57faf00
 - [ ] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
@@ -56,3 +55,4 @@
 - [X] Fix d keymap on macbook (don't add a "disabled" string to a keymap)
 - [X] Disable Github Copilot for telescope
 - [X] Go to next buffer when closing
+- [X] Use go.nvim lsp since it has better defaults
