@@ -72,7 +72,7 @@ nvim_tree.setup({
 		side = "left",
 		auto_resize = true,
 		mappings = {
-			custom_only = true,
+			custom_only = false,
 			list = {
 				{ key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
 				{ key = "h", cb = tree_cb "close_node" },

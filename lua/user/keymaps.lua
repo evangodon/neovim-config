@@ -74,14 +74,16 @@ wk.register({
 		"Reload config",
 	},
 	q = {
-		function()
-			vim.cmd "quitall!"
-		end,
+		":quitall!<CR>",
 		"Quit",
 	},
 	l = {
 		":noh<CR>",
 		"Clear highlights",
+	},
+	c = {
+		":close<CR>",
+		"Close window",
 	},
 	C = {
 		":Copilot status<CR>",
