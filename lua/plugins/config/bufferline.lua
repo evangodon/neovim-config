@@ -73,3 +73,9 @@ vim.api.nvim_create_autocmd({ "User" }, {
 	end,
 	desc = "Go to previous buffer after delete",
 })
+
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+keymap("n", "[B", ":BufferLineMovePrev<CR>", opts)
+keymap("n", "]B", ":BufferLineMoveNext<CR>", opts)
