@@ -82,6 +82,10 @@ wk.register({
 		end,
 		"Quit",
 	},
+	l = {
+		":noh<CR>",
+		"Clear highlights",
+	},
 	C = {
 		":Copilot status<CR>",
 		"Check copilot status",

@@ -5,7 +5,8 @@
 ## Workflow
 
 ## DX
-- [ ] Test out async formatting
+- [ ] Figure out why Nvimtree sometimes open file in window
+
 - [ ] Disable Gitsigns in gutter for markdown
 - [-] configure alpha dashboard plugin
 - [ ] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
@@ -56,3 +57,4 @@
 - [X] Disable Github Copilot for telescope
 - [X] Go to next buffer when closing
 - [X] Use go.nvim lsp since it has better defaults
+- [!] Formatting is slow, test out async formatting... ok it's slow when I open a large folder

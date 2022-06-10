@@ -21,6 +21,7 @@ null_ls.setup({
 		-- Go
 		formatting.gofmt,
 		formatting.golines,
+		formatting.goimports,
 	},
 	on_attach = function(client, bufnr)
 		-- Format on save
