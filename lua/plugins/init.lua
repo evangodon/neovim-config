@@ -10,7 +10,6 @@ local function safe_require(pluginName)
 	local path = ("plugins.config." .. pluginName)
 
 	local status_ok, _ = pcall(require, path)
-
 	if not status_ok then
 		Notify.error("Error loading plugin at path: " .. path)
 		return
@@ -32,6 +31,7 @@ packer.startup(function(use)
 	use "wbthomason/packer.nvim" -- Have packer manage itself
 	use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
 	use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
+	use({ "ojroques/vim-oscyank", branch = "main", config = safe_require "oscyank" })
 
 	use({
 		"goolord/alpha-nvim",

@@ -1,21 +1,20 @@
-Notify = {}
-
 local notify_status_ok, notify = pcall(require, "notify")
 if not notify_status_ok then
 	notify = vim.notify
 end
 
-Notify.info = function(msg)
-	notify(msg, vim.log.levels.INFO)
-end
-
-Notify.warn = function(msg)
-	notify(msg, vim.log.levels.WARN)
-end
-
-Notify.error = function(msg)
-	notify(msg, vim.log.levels.ERROR)
-end
+-- Global notification function
+Notify = {
+	info = function(msg)
+		notify(msg, vim.log.levels.INFO)
+	end,
+	warn = function(msg)
+		notify(msg, vim.log.levels.WARN)
+	end,
+	error = function(msg)
+		notify(msg, vim.log.levels.ERROR)
+	end,
+}
 
 local M = {}
 
@@ -42,8 +41,10 @@ if not status_ok then
 	return
 end
 
-M.leaderKeymaps = function(keys)
-	wk.register(keys, { prefix = "<leader>" })
+-- Set leader keymappings
+M.leaderKeymaps = function(keys, opts)
+	local defaults = vim.tbl_extend("keep", { prefix = "<leader>" }, opts or {})
+	wk.register(keys, defaults)
 end
 
 return M
