@@ -57,9 +57,6 @@ keymap("v", "H", "0", opts)
 keymap("n", "L", "$", opts)
 keymap("v", "L", "$", opts)
 
--- clearhightlights
-keymap("n", "<leader>H", ":noh<CR>", opts) -- Quit Neovim without saving
-
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
