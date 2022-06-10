@@ -68,7 +68,7 @@ gitsigns.setup({
 				gs.next_hunk()
 			end)
 			return "<Ignore>"
-		end, { expr = true })
+		end, { expr = true, desc = "Next hunk" })
 
 		keymap("n", "[c", function()
 			if vim.wo.diff then
@@ -78,7 +78,7 @@ gitsigns.setup({
 				gs.prev_hunk()
 			end)
 			return "<Ignore>"
-		end, { expr = true })
+		end, { expr = true, desc = "Previous hunk" })
 
 		-- Actions
 		fn.leaderKeymaps({
