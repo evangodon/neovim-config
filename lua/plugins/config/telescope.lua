@@ -103,16 +103,28 @@ telescope.load_extension "fzf"
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 local fn = require "user.functions"
+local builtin_pickers = require "telescope.builtin"
+local theme = require("telescope.themes").get_dropdown()
 
+-- Find files
 map("n", "<C-p>", function()
-	require("telescope.builtin").find_files(require("telescope.themes").get_dropdown())
+	builtin_pickers.find_files(theme)
 end, opts)
-map("n", "<C-t>", "<cmd>Telescope live_grep<cr>", opts)
+
+-- Use grep on files
+map("n", "<C-t>", function()
+	builtin_pickers.live_grep(theme)
+end, opts)
+
+-- Fuzzy search in buffer
+map("n", "<C-f>", function()
+	builtin_pickers.current_buffer_fuzzy_find(theme)
+end, opts)
 
 fn.leaderKeymaps({
 	b = {
 		function()
-			require("telescope.builtin").buffers(require("telescope.themes").get_dropdown())
+			require("telescope.builtin").buffers(theme)
 		end,
 		"Open buffer list",
 	},
