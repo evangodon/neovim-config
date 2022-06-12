@@ -1,4 +1,3 @@
-			-- stylua: ignore
 local status_ok, cmdline = pcall(require, "fine-cmdline")
 if not status_ok then
 	return

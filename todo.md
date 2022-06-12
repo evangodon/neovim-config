@@ -5,22 +5,21 @@
 ## Workflow
 
 ## DX
-- [ ] Figure out why Nvimtree sometimes open file in window
 
 - [ ] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
 - [ ] How to persist folds
 
 - [-] Disable Gitsigns in gutter for markdown
 - [-] configure alpha dashboard plugin
+- [-] Figure out why Nvimtree sometimes open file in window
 
 ## UI
+- [ ] Fix signcolumns for inactive windows
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8
 - [ ] Make Visual highlight less dark
 - [ ] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
-- [ ] Show line indents with plugin
 - [ ] diagnostics float window borders 
 - [ ] make background dark for toggle term
-- [ ] Show root folder in nvim-tree with catppuccin theme
 - [ ] Change color of internal errors with highlight
 
 
@@ -59,3 +58,5 @@
 - [!] Formatting is slow, test out async formatting... ok it's slow when I open a large folder
 - [X] change bg of inactive window, reference  https://gist.github.com/ctaylo21/c3620a945cee6fc3eb3cb0d7f57faf00
 - [X] Improve telescope performance by using fzf-native
+- [X] Show line indents with plugin
+- [X] Show root folder in nvim-tree with catppuccin theme
