@@ -173,6 +173,7 @@ packer.startup(function(use)
 		"nvim-telescope/telescope.nvim",
 		config = safe_require "telescope",
 	})
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	-- Treesitter
 	use({
