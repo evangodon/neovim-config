@@ -45,11 +45,6 @@ packer.startup(function(use)
 		config = safe_require "nvim-notify",
 	})
 
-	-- auto-session
-	use({
-		"rmagatti/auto-session",
-		config = safe_require "autosession",
-	})
 	-- toggleterm
 	use({
 		"akinsho/toggleterm.nvim",

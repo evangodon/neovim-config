@@ -11,10 +11,10 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- resize with arrows
-keymap("n", "<C-Up>", ":resize -3<CR>", opts)
-keymap("n", "<C-Down>", ":resize +3<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -3<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +3<CR>", opts)
+keymap("n", "<C-Up>", ":resize +3<CR>", opts)
+keymap("n", "<C-Down>", ":resize -3<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize +3<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize -3<CR>", opts)
 
 -- better indenting
 keymap("v", "<", "<gv", opts)
