@@ -8,7 +8,6 @@
 - [ ] Figure out why Nvimtree sometimes open file in window
 
 - [ ] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
-- [ ] Improve telescope performance by using fzf-native
 - [ ] How to persist folds
 
 - [-] Disable Gitsigns in gutter for markdown
@@ -59,3 +58,4 @@
 - [X] Use go.nvim lsp since it has better defaults
 - [!] Formatting is slow, test out async formatting... ok it's slow when I open a large folder
 - [X] change bg of inactive window, reference  https://gist.github.com/ctaylo21/c3620a945cee6fc3eb3cb0d7f57faf00
+- [X] Improve telescope performance by using fzf-native
