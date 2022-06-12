@@ -101,7 +101,7 @@ nvim_tree.setup({
 				},
 				folder = {
 					default = "",
-					open = "",
+					open = " ",
 					empty = "",
 					empty_open = "",
 					symlink = "",

@@ -16,6 +16,32 @@ local DARK_THEME = "catppuccin"
 local colorscheme = use_light_theme and LIGHT_THEME or DARK_THEME
 
 vim.g.catppuccin_flavour = use_light_theme and "latte" or "macchiato"
+
+-- catppuccin
+local ok, catppuccin = pcall(require, "catppuccin")
+if not ok then
+	Notify.error "catppuccin not found!"
+	return
+end
+
+local colors = require("catppuccin.api.colors").get_colors()
+local util = require "catppuccin.utils.util"
+
+-- needs to be called before setting the colorscheme
+catppuccin.remap({
+	CursorLine = { bg = util.darken(colors.sky, 0.08, colors.base) },
+	GitSignsDeleteLn = { fg = colors.red, bg = colors.none },
+})
+catppuccin.setup({
+	integrations = {
+		nvimtree = {
+			enabled = true,
+			show_root = true,
+		},
+	},
+})
+
+-- Set colorscheme
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
 if not status_ok then
@@ -23,26 +49,27 @@ if not status_ok then
 	return
 end
 
--- catppuccin
-local ok, catppuccin = pcall(require, "catppuccin")
-if not ok then
-	return
-end
+-- Dim inactive windows
+vim.api.nvim_set_hl(0, "InactiveWindow", { bg = colors.mantle, fg = colors.none })
+vim.api.nvim_set_hl(0, "ActiveWindow", { bg = colors.base, fg = colors.none })
+vim.opt_local.winhighlight = "Normal:ActiveWindow,NormalNC:InactiveWindow,SignColumn:ActiveWindow"
 
-local colors = require("catppuccin.api.colors").get_colors()
-local util = require "catppuccin.utils.util"
+local wm_group = vim.api.nvim_create_augroup("WindowManagement", {})
 
--- Set CursorLine color
-vim.cmd(":highlight CursorLine guibg=" .. util.darken(colors.sky, 0.08, colors.base))
--- Fix Gitsigns
-vim.cmd(":highlight GitSignsDeleteLn guifg=" .. colors.red .. " guibg=" .. colors.none)
+vim.api.nvim_create_autocmd({ "WinEnter" }, {
+	group = wm_group,
+	callback = function()
+		vim.opt_local.winhighlight = "Normal:ActiveWindow,NormalNC:InactiveWindow,SignColumn:ActiveWindow"
+		if vim.tbl_contains({ "NvimTree" }, vim.bo.filetype) then
+			vim.cmd "Gitsigns toggle_signs false"
+		end
+	end,
+})
 
-catppuccin.remap({})
-catppuccin.setup({
-	integration = {
-		nvimtree = {
-			enabled = true,
-			show_root = true,
-		},
-	},
+vim.api.nvim_create_autocmd({ "WinLeave" }, {
+	group = wm_group,
+	callback = function()
+		vim.opt_local.winhighlight = "Normal:ActiveWindow,NormalNC:InactiveWindow,SignColumn:InactiveWindow"
+		vim.cmd "Gitsigns toggle_signs true"
+	end,
 })
