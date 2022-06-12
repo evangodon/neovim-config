@@ -15,7 +15,7 @@
 
 ## UI
 - [ ] Fix signcolumns for inactive windows
-- [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8
+- [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
 - [ ] Make Visual highlight less dark
 - [ ] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
 - [ ] diagnostics float window borders 
