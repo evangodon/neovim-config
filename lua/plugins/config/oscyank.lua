@@ -21,4 +21,6 @@ local function setToSystemClipboard()
 	})
 end
 
-vim.keymap.set("x", "Y", setToSystemClipboard, { desc = "Yank to system clipboard with vim-oscyank" })
+local keymap_desc = "Copy visual selection to system clipboard"
+vim.keymap.set("x", "Y", setToSystemClipboard, { desc = keymap_desc })
+vim.keymap.set("x", "<C-c>", setToSystemClipboard, { desc = keymap_desc })
