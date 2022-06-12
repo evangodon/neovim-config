@@ -17,7 +17,7 @@ cmdline.setup({
 		prompt = "  ",
 	},
 	popup = {
-    relative = "editor",
+		relative = "editor",
 		position = {
 			row = "20%",
 			col = "50%",
@@ -37,7 +37,7 @@ cmdline.setup({
 			style = borderStyle,
 		},
 		win_options = {
-			winhighlight = "Normal:NormalSB,FloatBorder:FloatBorder",
+			-- winhighlight = "Normal:NormalSB,FloatBorder:FloatBorder",
 		},
 	},
 })
