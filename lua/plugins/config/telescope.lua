@@ -4,14 +4,13 @@ if not status_ok then
 end
 
 local actions = require "telescope.actions"
+local action_layout = require "telescope.actions.layout"
 
 telescope.setup({
 	defaults = {
-
 		prompt_prefix = "  ",
 		selection_caret = " ",
 		path_display = { "truncate" },
-
 		mappings = {
 			i = {
 				["<C-n>"] = actions.cycle_history_next,
@@ -30,8 +29,9 @@ telescope.setup({
 				["<C-v>"] = actions.select_vertical,
 				["<C-t>"] = actions.select_tab,
 
-				["<C-u>"] = actions.preview_scrolling_up,
-				["<C-d>"] = actions.preview_scrolling_down,
+				["<C-u>"] = false,
+				-- ["<C-d>"] = actions.preview_scrolling_down,
+				["<M-p>"] = action_layout.toggle_preview,
 
 				["<PageUp>"] = actions.results_scrolling_up,
 				["<PageDown>"] = actions.results_scrolling_down,
@@ -87,29 +87,33 @@ telescope.setup({
 		-- builtin picker
 	},
 	extensions = {
-		-- Your extension configuration goes here:
-		-- extension_name = {
-		--   extension_config_key = value,
-		-- }
-		-- please take a look at the readme of the extension you want to configure
+		fzf = {
+			fuzzy = true, -- false will only do exact matching
+			override_generic_sorter = true, -- override the generic sorter
+			override_file_sorter = true, -- override the file sorter
+			case_mode = "smart_case", -- or "ignore_case" or "respect_case", default is "smart_case"
+		},
 	},
 })
 
+-- Load extensions
+telescope.load_extension "fzf"
+
+-- Keymaps
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
-local fn = require("user.functions")
+local fn = require "user.functions"
 
 map("n", "<C-p>", function()
-	require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))
+	require("telescope.builtin").find_files(require("telescope.themes").get_dropdown())
 end, opts)
 map("n", "<C-t>", "<cmd>Telescope live_grep<cr>", opts)
 
 fn.leaderKeymaps({
-  b = {
-    function()
-	     require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))
-	  end ,
-    "Open buffer list"
-  }
+	b = {
+		function()
+			require("telescope.builtin").buffers(require("telescope.themes").get_dropdown())
+		end,
+		"Open buffer list",
+	},
 })
-
