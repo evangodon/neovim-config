@@ -101,4 +101,8 @@ wk.register({
 		":bprev<cr>",
 		"Go to previous buffer",
 	},
+	T = {
+		":edit ~/.config/nvim/todo.md<cr>",
+		"Open nvim todo list",
+	},
 }, { prefix = "<leader>" })

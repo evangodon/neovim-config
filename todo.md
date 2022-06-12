@@ -3,11 +3,13 @@
 ## Bug 
 
 ## Workflow
+- [ ] Add notification if editing a file managed by chezmoi
 
 ## DX
 
 - [ ] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
 - [ ] How to persist folds
+- [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
 
 - [-] Disable Gitsigns in gutter for markdown
 - [-] configure alpha dashboard plugin
