@@ -32,6 +32,7 @@ catppuccin.remap({
 	CursorLine = { bg = util.darken(colors.sky, 0.08, colors.base) },
 	GitSignsDeleteLn = { fg = colors.red, bg = colors.none },
 	Visual = { fg = colors.text, bg = util.darken(colors.mauve, 0.08, colors.base) },
+	IndentBlanklineIndent1 = { fg = util.darken(colors.surface1, 0.2, colors.base), bg = colors.none },
 })
 catppuccin.setup({
 	integrations = {

@@ -82,6 +82,7 @@ packer.startup(function(use)
 			{ "MunifTanjim/nui.nvim" },
 		},
 	})
+	use({ "lukas-reineke/indent-blankline.nvim", config = safe_require "indent-blankline" })
 
 	-- nvim-tree
 	use({
