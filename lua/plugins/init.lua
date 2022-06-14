@@ -125,7 +125,6 @@ packer.startup(function(use)
 	-- Colorschemes
 	use "embark-theme/vim"
 	use "folke/tokyonight.nvim"
-	use "projekt0n/github-nvim-theme"
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",

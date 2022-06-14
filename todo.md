@@ -1,12 +1,14 @@
 # TODO
 
 ## Bug 
+- [ ] Why slow writes on ssh
 
 ## Workflow
 - [ ] Add notification if editing a file managed by chezmoi
 
 ## DX
 
+- [ ] Use nvim-cmp throttle instead my implementation
 - [ ] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
 - [ ] How to persist folds
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
@@ -24,6 +26,8 @@
 - [ ] make background dark for toggle term
 - [ ] Change color of internal errors with highlight
 
+## Plugins
+- [ ] Create permalinks https://github.com/ruifm/gitlinker.nvim
 
 ## Productivity
 - Command to open url under cursor
