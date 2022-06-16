@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd({ "BufDelete" }, {
 					vim.cmd "quitall"
 				else
 					vim.cmd ":Alpha"
-					-- TODO: delete empty buffer
+					vim.cmd ":bdelete #"
 				end
 			end)
 		end

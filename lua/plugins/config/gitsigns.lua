@@ -82,13 +82,14 @@ gitsigns.setup({
 
 		-- Actions
 		fn.leaderKeymaps({
-			g = {
+			G = {
+        name = "Git",
 				p = { gs.preview_hunk, "Preview hunk" },
 				b = {
 					gs.toggle_current_line_blame,
 					"Toggle blame",
 				},
-				R = {
+				r = {
 					":Gitsigns reset_hunk<CR>",
 					"Reset hunk",
 				},
