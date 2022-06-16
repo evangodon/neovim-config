@@ -12,7 +12,10 @@ if not wk_status_ok then
 end
 
 wk.register({
-	G = {
+	g = {
+    name = "Go",
 		f = { ":GoFillStruct<cr>", "Fill struct" },
+		i = { ":GoImport<cr>", "Go imports" },
+		g = { ":GoFmt<cr>", "Format" },
 	},
 }, { prefix = "<leader>" })

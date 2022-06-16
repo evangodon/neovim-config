@@ -8,6 +8,7 @@
 
 ## DX
 
+- [ ] Add keybindings for packer and LSP, like LspRestart
 - [ ] Use nvim-cmp throttle instead my implementation
 - [ ] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
 - [ ] How to persist folds
