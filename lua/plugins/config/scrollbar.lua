@@ -17,4 +17,5 @@ end
 
 scrollbar.setup({
 	handle = scrollbar_handle,
+	show_in_active_only = true,
 })

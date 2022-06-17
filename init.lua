@@ -9,3 +9,5 @@ require "user.settings"
 require "user.usercommands"
 
 require "plugins"
+
+require "plugins.config.nvim-tree"

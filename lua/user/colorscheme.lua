@@ -28,6 +28,7 @@ local colors = require("catppuccin.api.colors").get_colors()
 local util = require "catppuccin.utils.util"
 
 -- needs to be called before setting the colorscheme
+-- https://github.com/catppuccin/nvim/tree/main/lua/catppuccin/core/integrations
 catppuccin.remap({
 	CursorLine = { bg = util.darken(colors.sky, 0.08, colors.base) },
 	GitSignsDeleteLn = { fg = colors.red, bg = colors.none },
@@ -54,24 +55,24 @@ end
 -- Dim inactive windows
 vim.api.nvim_set_hl(0, "InactiveWindow", { bg = colors.mantle, fg = colors.none })
 vim.api.nvim_set_hl(0, "ActiveWindow", { bg = colors.base, fg = colors.none })
-vim.opt_local.winhighlight = "Normal:ActiveWindow,NormalNC:InactiveWindow,SignColumn:ActiveWindow"
+local function getWinHighlight(highlights)
+	return "Normal:ActiveWindow,NormalNC:InactiveWindow," .. highlights
+end
+vim.opt_local.winhighlight = getWinHighlight "SignColumn:ActiveWindow"
 
 local wm_group = vim.api.nvim_create_augroup("WindowManagement", {})
 
 vim.api.nvim_create_autocmd({ "WinEnter" }, {
 	group = wm_group,
 	callback = function()
-		vim.opt_local.winhighlight = "Normal:ActiveWindow,NormalNC:InactiveWindow,SignColumn:ActiveWindow"
-		if vim.tbl_contains({ "NvimTree" }, vim.bo.filetype) then
-			vim.cmd "Gitsigns toggle_signs false"
-		end
+		vim.opt_local.winhighlight = getWinHighlight "SignColumn:ActiveWindow,CursorLineSign:ActiveWindow"
+		vim.cmd("Gitsigns toggle_signs " .. tostring(not vim.tbl_contains({ "NvimTree" }, vim.bo.filetype)))
 	end,
 })
 
 vim.api.nvim_create_autocmd({ "WinLeave" }, {
 	group = wm_group,
 	callback = function()
-		vim.opt_local.winhighlight = "Normal:ActiveWindow,NormalNC:InactiveWindow,SignColumn:InactiveWindow"
-		vim.cmd "Gitsigns toggle_signs true"
+		vim.opt_local.winhighlight = getWinHighlight "SignColumn:InactiveWindow,CursorLineSign:InactiveWindow"
 	end,
 })

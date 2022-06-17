@@ -6,16 +6,13 @@ end
 
 go.setup()
 
-local wk_status_ok, wk = pcall(require, "which-key")
-if not wk_status_ok then
-	return
-end
+local fn = require("user.functions")
 
-wk.register({
+fn.leaderKeymaps({
 	g = {
     name = "Go",
 		f = { ":GoFillStruct<cr>", "Fill struct" },
 		i = { ":GoImport<cr>", "Go imports" },
 		g = { ":GoFmt<cr>", "Format" },
-	},
-}, { prefix = "<leader>" })
+},
+})

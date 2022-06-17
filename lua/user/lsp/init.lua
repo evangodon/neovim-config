@@ -6,3 +6,12 @@ end
 require "user.lsp.lsp-installer"
 require "user.lsp.null-ls"
 require("user.lsp.handlers").setup()
+
+local fn = require("user.functions")
+
+fn.leaderKeymaps({
+  L = {
+    name = "LSP",
+    r = { ":LspRestart<cr>", "Restart" },
+  }
+})

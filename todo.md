@@ -8,7 +8,6 @@
 
 ## DX
 
-- [ ] Add keybindings for packer and LSP, like LspRestart
 - [ ] Use nvim-cmp throttle instead my implementation
 - [ ] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
 - [ ] How to persist folds
@@ -67,3 +66,4 @@
 - [X] Improve telescope performance by using fzf-native
 - [X] Show line indents with plugin
 - [X] Show root folder in nvim-tree with catppuccin theme
+- [X] Add keybindings for packer and LSP, like LspRestart
