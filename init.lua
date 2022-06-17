@@ -6,8 +6,5 @@ require "user.colorscheme"
 require "user.keymaps"
 require "user.lsp"
 require "user.settings"
-require "user.usercommands"
 
 require "plugins"
-
-require "plugins.config.nvim-tree"
