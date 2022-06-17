@@ -111,7 +111,7 @@ packer.startup(function(use)
 	--fidget
 	use({
 		"j-hui/fidget.nvim",
-		config = safe_setup "fidget",
+		config = safe_require "fidget",
 	})
 
 	use({ "numToStr/Comment.nvim", config = safe_require "comment" })
