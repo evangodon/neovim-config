@@ -65,19 +65,33 @@ local function lsp_highlight_document(client)
 end
 
 local function lsp_keymaps(bufnr)
-	local opts = { noremap = true, silent = true }
-	local keymap = vim.api.nvim_buf_set_keymap
-	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	keymap(bufnr, "n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	keymap(bufnr, "n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>', opts)
-	keymap(bufnr, "n", "gl", '<cmd>lua vim.diagnostic.open_float({ border = "single" })<CR>', opts)
-	keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>', opts)
-	vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	local function setBufOpts(desc)
+		return { noremap = true, silent = true, buffer = bufnr, desc = desc }
+	end
+	local keymap = vim.keymap.set
+
+	keymap("n", "gD", vim.lsp.buf.declaration, setBufOpts "Jump to declaration")
+	keymap("n", "gd", vim.lsp.buf.definition, setBufOpts "Jump to definition")
+	keymap("n", "gh", vim.lsp.buf.hover, setBufOpts "Hover")
+	keymap("n", "gi", vim.lsp.buf.implementation, setBufOpts "Implementation")
+	keymap("n", "<C-k>", vim.lsp.buf.signature_help, setBufOpts "Signature help")
+	keymap("n", "gr", vim.lsp.buf.references, setBufOpts "Find references")
+	keymap("n", "<F2>", vim.lsp.buf.rename, setBufOpts "Rename")
+	keymap("n", "[d", function()
+		vim.diagnostic.goto_prev({ border = "single" })
+	end, setBufOpts "Jump to previous diagnostic")
+	keymap("n", "gl", function()
+		vim.diagnostic.open_float({ border = "single" })
+	end, setBufOpts "Open diagnostics")
+	keymap("n", "]d", function()
+		vim.diagnostic.goto_next({ border = "single" })
+	end, setBufOpts "Jump to next diagnostic")
+	keymap("n", "<leader>f", vim.lsp.buf.formatting, setBufOpts "Format document")
+
+	vim.api.nvim_create_user_command("Format", function()
+		vim.lsp.buf.formatting()
+	end, {})
 end
 
 M.on_attach = function(client, bufnr)
