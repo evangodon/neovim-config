@@ -75,7 +75,6 @@ nvim_tree.setup({
 		mappings = {
 			custom_only = false,
 			list = {
-				-- todo: disable some keymaps like :w
 				{ key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
 				{ key = "h", cb = tree_cb "close_node" },
 				{ key = "v", cb = tree_cb "vsplit" },
@@ -115,10 +114,15 @@ nvim_tree.setup({
 
 local fn = require "user.functions"
 
+-- Need to call noautocmd before this function
+vim.api.nvim_create_user_command("CustomNvimTreeToggle", function()
+	nvim_tree.toggle(false, true)
+end, {})
+
 fn.leaderKeymaps({
 	e = {
 		function()
-			nvim_tree.toggle(false, true)
+			vim.cmd [[noautocmd CustomNvimTreeToggle]]
 		end,
 		"Toggle Nvimtree",
 	},

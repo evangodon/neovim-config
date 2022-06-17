@@ -195,3 +195,14 @@ packer.startup(function(use)
 		require("packer").sync()
 	end
 end)
+
+
+local fn = require("user.functions")
+
+fn.leaderKeymaps({
+	P = {
+    name = "Packer",
+		u = { ":PackerUpdate<cr>", "Update" },
+		s = { ":PackerSync<cr>", "Sync" },
+	},
+})
