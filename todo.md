@@ -4,7 +4,6 @@
 - [ ] Why slow writes on ssh
 
 ## Workflow
-- [ ] Add notification if editing a file managed by chezmoi
 
 ## DX
 
@@ -18,16 +17,14 @@
 - [-] Figure out why Nvimtree sometimes open file in window
 
 ## UI
-- [ ] Fix signcolumns for inactive windows
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
-- [ ] Make Visual highlight less dark
 - [ ] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
 - [ ] diagnostics float window borders 
 - [ ] make background dark for toggle term
-- [ ] Change color of internal errors with highlight
 
 ## Plugins
 - [ ] Create permalinks https://github.com/ruifm/gitlinker.nvim
+- [ ] Use vale as null-ls source https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/
 
 ## Productivity
 - Command to open url under cursor
@@ -67,3 +64,5 @@
 - [X] Show line indents with plugin
 - [X] Show root folder in nvim-tree with catppuccin theme
 - [X] Add keybindings for packer and LSP, like LspRestart
+- [X] Fix signcolumns for inactive windows
+- [X] Make Visual highlight less dark
