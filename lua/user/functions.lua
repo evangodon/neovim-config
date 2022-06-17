@@ -24,6 +24,7 @@ M.reloadConfig = function()
 	vim.cmd [[autocmd!]]
 	-- Certain packages complain when setup is called twice
 	package.loaded["nvim-tree"] = nil
+	package.loaded["which-key"] = nil
 
 	-- My config
 	for name, _ in pairs(package.loaded) do
