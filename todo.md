@@ -9,12 +9,12 @@
 
 - [ ] Use nvim-cmp throttle instead my implementation
 - [ ] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
-- [ ] How to persist folds
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
 
 - [-] Disable Gitsigns in gutter for markdown
 - [-] configure alpha dashboard plugin
 - [-] Figure out why Nvimtree sometimes open file in window
+- [-] How to persist folds
 
 ## UI
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic

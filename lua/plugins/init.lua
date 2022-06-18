@@ -196,6 +196,17 @@ packer.startup(function(use)
 	end
 end)
 
+local async = require("plenary.async")
+local function packer_sync()
+    async.run(function ()
+        Notify.async('Syncing packer.', 'info', {
+            title = 'Packer'
+        })
+    end)
+    local snap_shot_time = os.date("!%Y-%m-%dT%TZ")
+    vim.cmd('PackerSnapshot ' .. snap_shot_time)
+    vim.cmd('PackerSync')
+end
 
 local fn = require("user.functions")
 
@@ -203,6 +214,6 @@ fn.leaderKeymaps({
 	P = {
     name = "Packer",
 		u = { ":PackerUpdate<cr>", "Update" },
-		s = { ":PackerSync<cr>", "Sync" },
+		s = { packer_sync, "Sync" },
 	},
 })
