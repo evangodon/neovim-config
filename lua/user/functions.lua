@@ -14,6 +14,7 @@ Notify = {
 	error = function(msg)
 		notify(msg, vim.log.levels.ERROR)
 	end,
+  async = notify.async,
 }
 
 local M = {}
