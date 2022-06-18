@@ -6,13 +6,13 @@ end
 
 go.setup()
 
-local fn = require("user.functions")
+local fn = require "user.functions"
 
 fn.leaderKeymaps({
 	g = {
-    name = "Go",
+		name = "Go",
 		f = { ":GoFillStruct<cr>", "Fill struct" },
 		i = { ":GoImport<cr>", "Go imports" },
 		g = { ":GoFmt<cr>", "Format" },
-},
+	},
 })

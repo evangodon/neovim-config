@@ -66,6 +66,6 @@ vim.api.nvim_create_autocmd({ "BufDelete" }, {
 -- Return to last cursor position on enter
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	callback = function()
-		vim.cmd [['"; normal z.]]
+		vim.cmd [[silent! '"; normal z.]]
 	end,
 })
