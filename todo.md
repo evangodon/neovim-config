@@ -1,15 +1,14 @@
 # TODO
 
 ## Bug 
-- [ ] Why slow writes on ssh
 
 ## Workflow
 
 ## DX
 
 - [ ] Use nvim-cmp throttle instead my implementation
-- [ ] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
+- [ ] Create keybinding to follow links for zk notes
 
 - [-] Disable Gitsigns in gutter for markdown
 - [-] configure alpha dashboard plugin
@@ -17,6 +16,7 @@
 - [-] How to persist folds
 
 ## UI
+- [ ] Fix highligh group for markdown links
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
 - [ ] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
 - [ ] diagnostics float window borders 
@@ -67,3 +67,4 @@
 - [X] Fix signcolumns for inactive windows
 - [X] Make Visual highlight less dark
 - [X] Fix UI of zenmode, side windows are grey
+- [X] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
