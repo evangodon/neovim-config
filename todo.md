@@ -66,3 +66,4 @@
 - [X] Add keybindings for packer and LSP, like LspRestart
 - [X] Fix signcolumns for inactive windows
 - [X] Make Visual highlight less dark
+- [X] Fix UI of zenmode, side windows are grey

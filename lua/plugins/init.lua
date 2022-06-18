@@ -12,7 +12,10 @@ local function safe_require(pluginName)
 	local status_ok, _ = pcall(require, path)
 	if not status_ok then
 		Notify.error("Error loading plugin at path: " .. path)
-		return
+		local debugmode = os.getenv "NVIM_DEBUG"
+		if debugmode then
+			require(path)
+		end
 	end
 end
 
@@ -78,6 +81,10 @@ packer.startup(function(use)
 		},
 	})
 	use({ "lukas-reineke/indent-blankline.nvim", config = safe_require "indent-blankline" })
+	use({
+		"folke/zen-mode.nvim",
+		config = safe_require "zenmode",
+	})
 
 	-- nvim-tree
 	use({
@@ -196,23 +203,23 @@ packer.startup(function(use)
 	end
 end)
 
-local async = require("plenary.async")
+local async = require "plenary.async"
 local function packer_sync()
-    async.run(function ()
-        Notify.async('Syncing packer.', 'info', {
-            title = 'Packer'
-        })
-    end)
-    local snap_shot_time = os.date("!%Y-%m-%dT%TZ")
-    vim.cmd('PackerSnapshot ' .. snap_shot_time)
-    vim.cmd('PackerSync')
+	async.run(function()
+		Notify.async("Syncing packer.", "info", {
+			title = "Packer",
+		})
+	end)
+	local snap_shot_time = os.date "!%Y-%m-%dT%TZ"
+	vim.cmd("PackerSnapshot " .. snap_shot_time)
+	vim.cmd "PackerSync"
 end
 
-local fn = require("user.functions")
+local fn = require "user.functions"
 
 fn.leaderKeymaps({
 	P = {
-    name = "Packer",
+		name = "Packer",
 		u = { ":PackerUpdate<cr>", "Update" },
 		s = { packer_sync, "Sync" },
 	},

@@ -1,7 +1,6 @@
 local hour = tonumber(os.date "%H")
 local dark_theme_env_var = os.getenv "NVIM_USE_DARK_THEME"
 local use_light_theme = hour < 19 and hour > 6
-
 if dark_theme_env_var then
 	local stringToBool = {
 		["true"] = true,
@@ -66,7 +65,8 @@ vim.api.nvim_create_autocmd({ "WinEnter" }, {
 	group = wm_group,
 	callback = function()
 		vim.opt_local.winhighlight = getWinHighlight "SignColumn:ActiveWindow,CursorLineSign:ActiveWindow"
-		vim.cmd("Gitsigns toggle_signs " .. tostring(not vim.tbl_contains({ "NvimTree" }, vim.bo.filetype)))
+		local ft = vim.bo.filetype
+		vim.cmd("Gitsigns toggle_signs " .. tostring(not vim.tbl_contains({ "NvimTree" }, ft)))
 	end,
 })
 

@@ -84,6 +84,10 @@ gitsigns.setup({
 		fn.leaderKeymaps({
 			G = {
         name = "Git",
+        s = {
+          gs.toggle_signs,
+          "Toggle signs"
+        },
 				p = { gs.preview_hunk, "Preview hunk" },
 				b = {
 					gs.toggle_current_line_blame,
