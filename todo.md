@@ -1,9 +1,11 @@
 # TODO
 
 ## Bug 
+- [ ] Fix fuzzy search of current window
 
 ## Workflow
 - [ ] Find some way to detect if file is managed by chezmoi
+- [ ] Fix floating term background color and use lazygit plugin
 
 ## DX
 
@@ -17,6 +19,7 @@
 - [-] How to persist folds
 
 ## UI
+- [ ] Add command to Alpha dash to Packer Sync
 - [ ] Fix highligh group for markdown links
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
 - [ ] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
@@ -24,8 +27,7 @@
 - [ ] make background dark for toggle term
 
 ## Plugins
-- [ ] https://github.com/ahmedkhalf/project.nvim 
-- [ ] Replace scrollbar plugin with Find file                                     f
+- [ ] Replace scrollbar plugin with https://github.com/lewis6991/satellite.nvim
 - [ ] Create permalinks https://github.com/ruifm/gitlinker.nvim
 - [ ] Use vale as null-ls source https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/
 
@@ -71,3 +73,4 @@
 - [X] Make Visual highlight less dark
 - [X] Fix UI of zenmode, side windows are grey
 - [X] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
+- [X] https://github.com/ahmedkhalf/project.nvim 

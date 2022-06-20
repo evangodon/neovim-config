@@ -1,4 +1,5 @@
 require "plugins.packer-init"
+require("plugins.packer-keymaps")
 
 local packer_status_ok, packer = pcall(require, "packer")
 if not packer_status_ok then
@@ -93,21 +94,25 @@ packer.startup(function(use)
 		"kyazdani42/nvim-tree.lua",
 		config = safe_require "nvim-tree",
 	})
+
 	-- lualine
 	use({
 		"nvim-lualine/lualine.nvim",
 		config = safe_require "lualine",
 	})
+  
 	-- scrollbar
 	use({
 		"petertriho/nvim-scrollbar",
 		config = safe_require "scrollbar",
 	})
+
 	-- colorizer
 	use({
 		"norcalli/nvim-colorizer.lua",
 		config = safe_setup "colorizer",
 	})
+
 	-- bufferline
 	use({
 		"akinsho/bufferline.nvim", -- Bufferline
@@ -116,6 +121,13 @@ packer.startup(function(use)
 			{ "famiu/bufdelete.nvim" }, -- better buffer delete
 		},
 	})
+
+  -- project.nvim
+  use({
+    "ahmedkhalf/project.nvim",
+    config = safe_require "project",
+  })
+
 
 	--fidget
 	use({
@@ -208,24 +220,3 @@ packer.startup(function(use)
 	end
 end)
 
-local async = require "plenary.async"
-local function packer_sync()
-	async.run(function()
-		Notify.async("Syncing packer.", "info", {
-			title = "Packer",
-		})
-	end)
-	local snap_shot_time = os.date "!%Y-%m-%dT%TZ"
-	vim.cmd("PackerSnapshot " .. snap_shot_time)
-	vim.cmd "PackerSync"
-end
-
-local fn = require "user.functions"
-
-fn.leaderKeymaps({
-	P = {
-		name = "Packer",
-		u = { ":PackerUpdate<cr>", "Update" },
-		s = { packer_sync, "Sync" },
-	},
-})

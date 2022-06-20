@@ -123,9 +123,7 @@ end, opts)
 
 fn.leaderKeymaps({
 	b = {
-		function()
-			require("telescope.builtin").buffers(theme)
-		end,
+		"Telescope <CR>",
 		"Open buffer list",
 	},
 })
