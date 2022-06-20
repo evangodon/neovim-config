@@ -285,6 +285,11 @@ _G.packer_plugins = {
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/vim",
     url = "https://github.com/embark-theme/vim"
   },
+  ["vim-go-templates"] = {
+    loaded = true,
+    path = "/home/evan/.local/share/nvim/site/pack/packer/start/vim-go-templates",
+    url = "https://github.com/cespare/vim-go-templates"
+  },
   ["vim-graphql"] = {
     loaded = true,
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/vim-graphql",
