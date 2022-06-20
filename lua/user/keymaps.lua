@@ -63,12 +63,8 @@ vim.g.mapleader = " "
 -- Terminal
 keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 
-local status_ok, wk = pcall(require, "which-key")
-if not status_ok then
-	return
-end
 
-wk.register({
+fn.leaderKeymaps({
 	so = {
 		fn.reloadConfig,
 		"Reload config",
@@ -105,4 +101,19 @@ wk.register({
 		":edit ~/.config/nvim/todo.md<cr>",
 		"Open nvim todo list",
 	},
-}, { prefix = "<leader>" })
+	t = {
+		name = "Toggle some setting",
+		c = {
+			":ColorizerToggle<cr>",
+			"Toggle Colorizer",
+		},
+		n = {
+			function()
+			  local current_state = vim.opt.relativenumber:get()
+				vim.opt.relativenumber = not current_state
+			  Notify.info((current_state and "Disabled" or "Enabled") .. " relative numbers")
+			end,
+			"Toggle relative number",
+		},
+	},
+})

@@ -67,6 +67,8 @@ packer.startup(function(use)
 		config = safe_require "go",
 		as = "go",
 	})
+  use "cespare/vim-go-templates"
+
 	-- Graphql
 	use({ "jparise/vim-graphql" })
 

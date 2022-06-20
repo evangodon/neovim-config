@@ -3,6 +3,7 @@
 ## Bug 
 
 ## Workflow
+- [ ] Find some way to detect if file is managed by chezmoi
 
 ## DX
 
@@ -23,6 +24,8 @@
 - [ ] make background dark for toggle term
 
 ## Plugins
+- [ ] https://github.com/ahmedkhalf/project.nvim 
+- [ ] Replace scrollbar plugin with Find file                                     f
 - [ ] Create permalinks https://github.com/ruifm/gitlinker.nvim
 - [ ] Use vale as null-ls source https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/
 
