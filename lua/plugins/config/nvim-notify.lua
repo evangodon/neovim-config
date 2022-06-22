@@ -7,7 +7,6 @@ if not status_ok then
 end
 
 notify.setup({
-	background_colour = "Normal",
 	fps = 30,
 	icons = {
 		DEBUG = "  ",
