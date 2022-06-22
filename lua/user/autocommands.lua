@@ -55,6 +55,7 @@ vim.api.nvim_create_autocmd({ "BufDelete" }, {
 				if choice == confirm then
 					vim.cmd "quitall"
 				else
+					vim.cmd ":NvimTreeClose"
 					vim.cmd ":Alpha"
 					vim.cmd ":bdelete #"
 				end
