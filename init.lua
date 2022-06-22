@@ -1,10 +1,11 @@
 require "user.globals"
 
+require "user.colorscheme"
+require "user.settings"
+require "user.functions"
 require "user.autocommands"
 require "user.chezmoi"
-require "user.colorscheme"
 require "user.keymaps"
 require "user.lsp"
-require "user.settings"
 
 require "plugins"

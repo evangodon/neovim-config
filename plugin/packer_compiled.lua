@@ -129,12 +129,6 @@ _G.packer_plugins = {
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["copilot.vim"] = {
-    config = { "\27LJ\2\n^\0\0\4\0\5\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0005\3\4\0B\0\3\1K\0\1\0\1\0\1\20TelescopePrompt\1\22copilot_filetypes\17nvim_set_var\bapi\bvim\0" },
-    loaded = true,
-    path = "/home/evan/.local/share/nvim/site/pack/packer/start/copilot.vim",
-    url = "https://github.com/github/copilot.vim"
-  },
   ["fidget.nvim"] = {
     loaded = true,
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/fidget.nvim",
@@ -328,10 +322,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: copilot.vim
-time([[Config for copilot.vim]], true)
-try_loadstring("\27LJ\2\n^\0\0\4\0\5\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0005\3\4\0B\0\3\1K\0\1\0\1\0\1\20TelescopePrompt\1\22copilot_filetypes\17nvim_set_var\bapi\bvim\0", "config", "copilot.vim")
-time([[Config for copilot.vim]], false)
 if should_profile then save_profiles() end
 
 end)
