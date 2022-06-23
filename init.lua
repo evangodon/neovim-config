@@ -1,8 +1,8 @@
 require "user.globals"
 
+require "user.functions"
 require "user.colorscheme"
 require "user.settings"
-require "user.functions"
 require "user.autocommands"
 require "user.chezmoi"
 require "user.keymaps"
