@@ -102,21 +102,16 @@ fn.leaderKeymaps({
 		"Open nvim todo list",
 	},
 	t = {
-		name = "Toggle some setting",
-		-- Probably can extract some function for these
+		name = "Toggle an option",
 		c = {
 			function()
-			  local current_state = vim.opt:get()
-				vim.opt.cursorcolumn = not current_state
-			  Notify.info((current_state and "Disabled" or "Enabled") .. " cursor column")
+			  fn.toggleVimOption("cursorcolumn")
 			end,
-			"Toggle Colorizer",
+			"Toggle cursorcolumn",
 		},
 		n = {
 			function()
-			  local current_state = vim.opt.relativenumber:get()
-				vim.opt.relativenumber = not current_state
-			  Notify.info((current_state and "Disabled" or "Enabled") .. " relative numbers")
+			  fn.toggleVimOption("relativenumber")
 			end,
 			"Toggle relative number",
 		},

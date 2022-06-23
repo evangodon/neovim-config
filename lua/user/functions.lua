@@ -14,7 +14,7 @@ Notify = {
 	error = function(msg)
 		notify(msg, vim.log.levels.ERROR)
 	end,
-  async = notify.async,
+	async = notify.async,
 }
 
 local M = {}
@@ -47,6 +47,12 @@ end
 M.leaderKeymaps = function(keys, opts)
 	local defaults = vim.tbl_extend("keep", { prefix = "<leader>" }, opts or {})
 	wk.register(keys, defaults)
+end
+
+M.toggleVimOption = function(option)
+	local current_state = vim.opt[option]:get()
+	vim.opt[option] = not current_state
+	Notify.info((current_state and "Disabled" or "Enabled") .. string.format(" option %s", option))
 end
 
 return M
