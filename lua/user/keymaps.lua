@@ -2,8 +2,13 @@ local fn = require "user.functions"
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+-- Format string for ex command
+local function cmd(command)
+	return string.format(":%s<cr>", command)
+end
+
 -- Save
-keymap("n", "<C-s>", ":w<CR>", opts)
+keymap("n", "<C-s>", cmd "w", opts)
 -- better window movement
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -11,23 +16,23 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- resize with arrows
-keymap("n", "<C-Up>", ":resize +3<CR>", opts)
-keymap("n", "<C-Down>", ":resize -3<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize +3<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize -3<CR>", opts)
+keymap("n", "<C-Up>", cmd "resize +3", opts)
+keymap("n", "<C-Down>", cmd "resize -3", opts)
+keymap("n", "<C-Left>", cmd "vertical resize +3", opts)
+keymap("n", "<C-Right>", cmd "vertical resize -3", opts)
 
 -- better indenting
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Navigate buffers
-keymap("n", "]b", ":bnext<CR>", opts) -- Next buffer
-keymap("n", "<C-n>", ":bnext<CR>", opts)
-keymap("n", "<TAB>", ":bnext<CR>", opts)
-keymap("n", "[b", ":bprevious<CR>", opts) -- Previous buffer
-keymap("n", "<S-TAB>", ":bprevious<CR>", opts)
-keymap("n", "<leader>bd", ":Bdelete<CR>", opts) -- TODO: close all buffers but this one
-keymap("n", "<C-w>", ":Bdelete<CR>", opts) -- Close buffer
+keymap("n", "]b", cmd "bnext", opts) -- Next buffer
+keymap("n", "<C-n>", cmd "bnext", opts)
+keymap("n", "<TAB>", cmd "bnext", opts)
+keymap("n", "[b", cmd "bprevious", opts) -- Previous buffer
+keymap("n", "<S-TAB>", cmd "bprevious", opts)
+keymap("n", "<leader>bd", cmd "Bdelete", opts)
+keymap("n", "<C-w>", cmd "Bdelete", opts) -- Close buffer
 
 -- Move selected line / block of text in visual mode
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
@@ -63,22 +68,21 @@ vim.g.mapleader = " "
 -- Terminal
 keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 
-
 fn.leaderKeymaps({
 	so = {
 		fn.reloadConfig,
 		"Reload config",
 	},
 	q = {
-		":quitall!<CR>",
+		cmd "quitall!",
 		"Quit",
 	},
 	l = {
-		":noh<CR>",
+		cmd "noh",
 		"Clear highlights",
 	},
 	c = {
-		":close<CR>",
+		cmd "close",
 		"Close window",
 	},
 	C = {
@@ -86,15 +90,15 @@ fn.leaderKeymaps({
 		"Check copilot status",
 	},
 	["-"] = {
-		":b#<CR>",
+		cmd "b#",
 		"return to last edited buffer",
 	},
 	["]"] = {
-		":bnext<cr>",
+		cmd "bnext",
 		"Go to next buffer",
 	},
 	["["] = {
-		":bprev<cr>",
+		cmd "bprev",
 		"Go to previous buffer",
 	},
 	T = {
@@ -105,13 +109,13 @@ fn.leaderKeymaps({
 		name = "Toggle an option",
 		c = {
 			function()
-			  fn.toggleVimOption("cursorcolumn")
+				fn.toggleVimOption "cursorcolumn"
 			end,
 			"Toggle cursorcolumn",
 		},
 		n = {
 			function()
-			  fn.toggleVimOption("relativenumber")
+				fn.toggleVimOption "relativenumber"
 			end,
 			"Toggle relative number",
 		},

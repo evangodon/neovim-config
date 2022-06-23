@@ -4,11 +4,10 @@
 - [ ] Fix fuzzy search of current window
 
 ## Workflow
-- [ ] Find some way to detect if file is managed by chezmoi
 - [ ] Fix floating term background color and use lazygit plugin
 
 ## DX
-
+- [ ] Close all buffers but this one
 - [ ] Disable <C-t> in NvimTree, instead always open Telescrope live grep
 - [ ] Use nvim-cmp throttle instead my implementation
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
@@ -76,3 +75,4 @@
 - [X] Fix UI of zenmode, side windows are grey
 - [X] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
 - [X] https://github.com/ahmedkhalf/project.nvim 
+- [X] Find some way to detect if file is managed by chezmoi

@@ -35,9 +35,9 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	group = chezmoi,
 	callback = function()
 		local filepath = vim.fn.expand "%:p"
-		local status =  os.execute("chezmoi apply --source-path " .. filepath)
-    if not status then
-      Notify.error("Update to destionation failed")
-    end
+		local status = os.execute("chezmoi apply --source-path " .. filepath)
+		if not status then
+			Notify.error "Update to destionation failed"
+		end
 	end,
 })
