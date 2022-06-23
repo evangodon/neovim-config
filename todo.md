@@ -9,6 +9,7 @@
 
 ## DX
 
+- [ ] Disable <C-t> in NvimTree, instead always open Telescrope live grep
 - [ ] Use nvim-cmp throttle instead my implementation
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
 - [ ] Create keybinding to follow links for zk notes
