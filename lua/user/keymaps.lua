@@ -103,8 +103,13 @@ fn.leaderKeymaps({
 	},
 	t = {
 		name = "Toggle some setting",
+		-- Probably can extract some function for these
 		c = {
-			":ColorizerToggle<cr>",
+			function()
+			  local current_state = vim.opt:get()
+				vim.opt.cursorcolumn = not current_state
+			  Notify.info((current_state and "Disabled" or "Enabled") .. " cursor column")
+			end,
 			"Toggle Colorizer",
 		},
 		n = {
