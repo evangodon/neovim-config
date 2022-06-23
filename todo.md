@@ -19,6 +19,7 @@
 - [-] How to persist folds
 
 ## UI
+- [ ] Make NvimTreeCursorLine go all the way to end of buffer https://github.com/neovim/neovim/issues/14473
 - [ ] Add command to Alpha dash to Packer Sync
 - [ ] Fix highligh group for markdown links
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic

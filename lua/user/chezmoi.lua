@@ -1,6 +1,6 @@
 local chezmoi = vim.api.nvim_create_augroup("chezmoi", {})
 
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	desc = "Prevent edits to files managed by chezoi",
 	pattern = { "*.sh", "*.lua", "*.fish", "*.conf", "*.yml", "*.ini", "*.toml", ".gitconfig", "*.md" },
 	group = chezmoi,
