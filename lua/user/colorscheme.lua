@@ -2,10 +2,7 @@ local hour = tonumber(os.date "%H")
 local dark_theme_env_var = os.getenv "NVIM_USE_DARK_THEME"
 local use_light_theme = hour < 19 and hour > 6
 if dark_theme_env_var then
-	local stringToBool = {
-		["true"] = true,
-		["false"] = false,
-	}
+	local stringToBool = { ["true"] = true, ["false"] = false }
 	use_light_theme = not stringToBool[dark_theme_env_var]
 end
 
@@ -36,6 +33,7 @@ catppuccin.remap({
 	NvimTreeCursorLine = { bg = util.darken(colors.mauve, 0.08, colors.base) },
 	NvimTreeCursorLineNC = { bg = util.darken(colors.mauve, 0.15, colors.base) },
 })
+
 catppuccin.setup({
 	integrations = {
 		nvimtree = {
