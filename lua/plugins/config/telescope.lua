@@ -123,7 +123,7 @@ end, opts)
 
 fn.leaderKeymaps({
 	b = {
-		"Telescope <CR>",
+		":Telescope buffers <CR>",
 		"Open buffer list",
 	},
 })
