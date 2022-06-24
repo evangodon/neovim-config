@@ -93,7 +93,7 @@ gitsigns.setup({
 					gs.toggle_current_line_blame,
 					"Toggle blame",
 				},
-				r = {
+				R = {
 					":Gitsigns reset_hunk<CR>",
 					"Reset hunk",
 				},

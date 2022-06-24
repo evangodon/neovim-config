@@ -4,10 +4,8 @@
 - [ ] Fix fuzzy search of current window
 
 ## Workflow
-- [ ] Fix floating term background color and use lazygit plugin
 
 ## DX
-- [ ] Use nvim-cmp throttle instead my implementation
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
 - [ ] Create keybinding to follow links for zk notes
 - [ ] Close all buffers but this one, need to create function for this https://codereview.stackexchange.com/questions/268130/get-list-of-buffers-from-current-neovim-instance
@@ -76,3 +74,4 @@
 - [X] configure alpha dashboard plugin
 - [X] Find some way to detect if file is managed by chezmoi
 - [X] Add command to Alpha dash to Packer Sync
+- [X] Fix floating term background color and use lazygit plugin
