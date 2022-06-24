@@ -7,25 +7,23 @@
 - [ ] Fix floating term background color and use lazygit plugin
 
 ## DX
-- [ ] Close all buffers but this one
-- [ ] Disable <C-t> in NvimTree, instead always open Telescrope live grep
 - [ ] Use nvim-cmp throttle instead my implementation
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
 - [ ] Create keybinding to follow links for zk notes
+- [ ] Close all buffers but this one, need to create function for this https://codereview.stackexchange.com/questions/268130/get-list-of-buffers-from-current-neovim-instance
 
-- [-] Disable Gitsigns in gutter for markdown
-- [-] configure alpha dashboard plugin
-- [-] Figure out why Nvimtree sometimes open file in window
-- [-] How to persist folds
+<!-- - [-] Disable Gitsigns in gutter for markdown -->
+<!-- - [-] Figure out why Nvimtree sometimes open file in window -->
+<!-- - [-] How to persist folds -->
+<!-- - [-] Disable <C-t> in NvimTree, instead always open Telescrope live grep -->
 
 ## UI
-- [ ] Make NvimTreeCursorLine go all the way to end of buffer https://github.com/neovim/neovim/issues/14473
-- [ ] Add command to Alpha dash to Packer Sync
 - [ ] Fix highligh group for markdown links
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
 - [ ] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
 - [ ] diagnostics float window borders 
 - [ ] make background dark for toggle term
+- [ ] Make NvimTreeCursorLine go all the way to end of buffer https://github.com/neovim/neovim/issues/14473
 
 ## Plugins
 - [ ] Replace scrollbar plugin with https://github.com/lewis6991/satellite.nvim
@@ -75,4 +73,6 @@
 - [X] Fix UI of zenmode, side windows are grey
 - [X] Set up packer snapshots, see https://www.reddit.com/r/neovim/comments/um3epn/what_are_your_prizedfavorite_lua_functions/
 - [X] https://github.com/ahmedkhalf/project.nvim 
+- [X] configure alpha dashboard plugin
 - [X] Find some way to detect if file is managed by chezmoi
+- [X] Add command to Alpha dash to Packer Sync

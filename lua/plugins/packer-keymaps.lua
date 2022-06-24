@@ -2,7 +2,7 @@ local async = require "plenary.async"
 local fn = require "user.functions"
 
 -- Create a snapshot before syncing
-local function packer_sync()
+local function packerSnapshotAndSync()
 	async.run(function()
 		Notify.async("Syncing packer.", "info", {
 			title = "Packer",
@@ -13,11 +13,14 @@ local function packer_sync()
 	vim.cmd "PackerSync"
 end
 
+vim.api.nvim_create_user_command("CreateSnapshotAndSyncPlugins", function()
+	packerSnapshotAndSync()
+end, {})
 
 fn.leaderKeymaps({
 	P = {
 		name = "Packer",
-		u = { ":PackerUpdate<cr>", "Update" },
-		s = { packer_sync, "Sync" },
+		u = { CMD "PackerUpdate", "Update" },
+		s = { packerSnapshotAndSync, "Sync" },
 	},
 })
