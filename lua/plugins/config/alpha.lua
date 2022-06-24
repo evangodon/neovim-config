@@ -28,6 +28,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("t", "  Find text", CMD "Telescope live_grep "),
 	dashboard.button("s", "痢 Sync plugins", CMD "CreateSnapshotAndSyncPlugins"),
 	dashboard.button("c", "  Configuration", CMD "e ~/.config/nvim/init.lua "),
+	dashboard.button("T", "  Open Todo list", CMD ":edit ~/.config/nvim/todo.md<cr>"),
 	dashboard.button("q", "  Quit Neovim", CMD "qa"),
 }
 
