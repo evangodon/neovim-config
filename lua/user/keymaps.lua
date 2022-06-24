@@ -101,10 +101,6 @@ fn.leaderKeymaps({
 		CMD "bprev",
 		"Go to previous buffer",
 	},
-	T = {
-		":edit ~/.config/nvim/todo.md<cr>",
-		"Open nvim todo list",
-	},
 	t = {
 		name = "Toggle an option",
 		c = {
