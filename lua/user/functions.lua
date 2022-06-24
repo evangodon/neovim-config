@@ -3,6 +3,9 @@ if not notify_status_ok then
 	notify = vim.notify
 end
 
+--
+-- Global functions
+--
 -- Global notification function
 Notify = {
 	info = function(msg)
@@ -17,6 +20,18 @@ Notify = {
 	async = notify.async,
 }
 
+-- Pretty print lua code with Notify
+function P(value)
+	if type(value) == "table" then
+		Notify.info(vim.inspect(value))
+		return
+	end
+	Notify.info(value)
+end
+
+--
+-- Module
+--
 local M = {}
 
 -- Reload config

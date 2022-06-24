@@ -3,12 +3,12 @@ local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Format string for ex command
-local function cmd(command)
+function CMD(command)
 	return string.format(":%s<cr>", command)
 end
 
 -- Save
-keymap("n", "<C-s>", cmd "w", opts)
+keymap("n", "<C-s>", CMD "w", opts)
 -- better window movement
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -16,23 +16,22 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- resize with arrows
-keymap("n", "<C-Up>", cmd "resize +3", opts)
-keymap("n", "<C-Down>", cmd "resize -3", opts)
-keymap("n", "<C-Left>", cmd "vertical resize +3", opts)
-keymap("n", "<C-Right>", cmd "vertical resize -3", opts)
+keymap("n", "<C-Up>", CMD "resize +3", opts)
+keymap("n", "<C-Down>", CMD "resize -3", opts)
+keymap("n", "<C-Left>", CMD "vertical resize +3", opts)
+keymap("n", "<C-Right>", CMD "vertical resize -3", opts)
 
 -- better indenting
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Navigate buffers
-keymap("n", "]b", cmd "bnext", opts) -- Next buffer
-keymap("n", "<C-n>", cmd "bnext", opts)
-keymap("n", "<TAB>", cmd "bnext", opts)
-keymap("n", "[b", cmd "bprevious", opts) -- Previous buffer
-keymap("n", "<S-TAB>", cmd "bprevious", opts)
-keymap("n", "<leader>bd", cmd "Bdelete", opts)
-keymap("n", "<C-w>", cmd "Bdelete", opts) -- Close buffer
+keymap("n", "]b", CMD "bnext", opts) -- Next buffer
+keymap("n", "<C-n>", CMD "bnext", opts)
+keymap("n", "<TAB>", CMD "bnext", opts)
+keymap("n", "[b", CMD "bprevious", opts) -- Previous buffer
+keymap("n", "<S-TAB>", CMD "bprevious", opts)
+keymap("n", "<C-w>", CMD "Bdelete", opts) -- Close buffer
 
 -- Move selected line / block of text in visual mode
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
@@ -69,20 +68,21 @@ vim.g.mapleader = " "
 keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 
 fn.leaderKeymaps({
+	B = { CMD "noautocmd %bd|e#|bd#", "Close all buffers but current" },
 	so = {
 		fn.reloadConfig,
 		"Reload config",
 	},
 	q = {
-		cmd "quitall!",
+		CMD "quitall!",
 		"Quit",
 	},
 	l = {
-		cmd "noh",
+		CMD "noh",
 		"Clear highlights",
 	},
 	c = {
-		cmd "close",
+		CMD "close",
 		"Close window",
 	},
 	C = {
@@ -90,15 +90,15 @@ fn.leaderKeymaps({
 		"Check copilot status",
 	},
 	["-"] = {
-		cmd "b#",
+		CMD "b#",
 		"return to last edited buffer",
 	},
 	["]"] = {
-		cmd "bnext",
+		CMD "bnext",
 		"Go to next buffer",
 	},
 	["["] = {
-		cmd "bprev",
+		CMD "bprev",
 		"Go to previous buffer",
 	},
 	T = {

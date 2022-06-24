@@ -118,12 +118,12 @@ end, opts)
 
 -- Fuzzy search in buffer
 map("n", "<C-f>", function()
-	builtin_pickers.current_buffer_fuzzy_find(theme)
+	builtin_pickers.current_buffer_fuzzy_find()
 end, opts)
 
 fn.leaderKeymaps({
 	b = {
-		":Telescope buffers <CR>",
+		CMD "Telescope buffers",
 		"Open buffer list",
 	},
 })

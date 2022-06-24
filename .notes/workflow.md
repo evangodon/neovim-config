@@ -17,3 +17,7 @@
 
 - `Ctrl-p`, find a file
 - `Ctrl-t`, grep all files
+
+# Search and  replace
+- use `s/matchthis/relacewiththis`
+- to keep a certain substring, wrap it with `()` and place with `\1`, e.g. `s/match(.*)/\1` 
