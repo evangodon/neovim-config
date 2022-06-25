@@ -43,6 +43,17 @@ local function rootFolder()
 	return "  " .. dir
 end
 
+local filename = {
+	"filename",
+	fmt = function(str)
+    if string.find(str, "No Name") then
+      return ""
+    end
+
+		return str
+	end,
+}
+
 local function spaces()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
@@ -59,7 +70,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { mode },
 		lualine_b = { branch, diff },
-		lualine_c = { rootFolder, "filename" },
+		lualine_c = { rootFolder, filename },
 		lualine_x = { spaces, "encoding", filetype },
 	},
 	inactive_sections = {
