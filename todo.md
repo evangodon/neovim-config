@@ -1,13 +1,11 @@
 # TODO
 
 ## Bug 
-- [ ] Fix fuzzy search of current window
 
 ## Workflow
 
 ## DX
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
-- [ ] Create keybinding to follow links for zk notes
 - [ ] Close all buffers but this one, need to create function for this https://codereview.stackexchange.com/questions/268130/get-list-of-buffers-from-current-neovim-instance
 
 <!-- - [-] Disable Gitsigns in gutter for markdown -->
@@ -16,7 +14,7 @@
 <!-- - [-] Disable <C-t> in NvimTree, instead always open Telescrope live grep -->
 
 ## UI
-- [ ] Fix highligh group for markdown links
+- [ ] Fix highlight group for markdown links
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
 - [ ] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
 - [ ] diagnostics float window borders 
@@ -75,3 +73,5 @@
 - [X] Find some way to detect if file is managed by chezmoi
 - [X] Add command to Alpha dash to Packer Sync
 - [X] Fix floating term background color and use lazygit plugin
+- [X] Create keybinding to follow links for zk notes
+- [X] Fix fuzzy search of current window

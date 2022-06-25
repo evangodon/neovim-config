@@ -12,7 +12,20 @@ zk.setup({
 		config = {
 			cmd = { "zk", "lsp" },
 			name = "zk",
-			-- on_attach = ...
+			on_attach = function(_, bufnr)
+				local function setBufOpts(desc)
+					return { noremap = true, silent = true, buffer = bufnr, desc = desc }
+				end
+				local keymap = vim.keymap.set
+				-- https://github.com/mickael-menu/zk-nvim#example-mappings
+
+				keymap("n", "gh", vim.lsp.buf.hover, setBufOpts "Preview note")
+				keymap("n", "<CR>", vim.lsp.buf.definition, setBufOpts "Go to note")
+				keymap("n", "gd", vim.lsp.buf.definition, setBufOpts "Go to note")
+				keymap("n", "gl", function()
+					vim.diagnostic.open_float()
+				end, setBufOpts "Open diagnostics")
+			end,
 			-- etc, see `:h vim.lsp.start_client()`
 		},
 		-- automatically attach buffers in a zk notebook that match the given filetypes
@@ -43,7 +56,13 @@ fn.leaderKeymaps({
 				if not in_notebook then
 					return
 				end
-				zk.new({ title = vim.fn.input "Title: " })
+				-- Get list of directories, use ZkCd to go to root
+				-- Show prompt to get selection or use "."
+				-- Add dir option to zk.new
+				local dir = vim.fn.input "Enter which folder: "
+				local title = vim.fn.input(string.format("[%s] Enter title: ", dir))
+
+				zk.new({ title = title, dir = dir })
 			end,
 			"New note",
 		},
