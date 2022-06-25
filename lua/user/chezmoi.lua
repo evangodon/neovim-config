@@ -22,22 +22,29 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	end,
 })
 
-local handle = io.popen "chezmoi source-path"
-if handle == nil then
-	return
-end
-
-local sourcepath = handle:read "*all"
+-- local handle = io.popen "chezmoi source-path"
+-- if handle == nil then
+-- 	return
+-- end
+--
+-- local sourcepath = handle:read "*all"
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	desc = "Apply changes to source files to their destination",
-	pattern = sourcepath,
+	desc = "Apply changes to chezmoi source files to their destination",
+	pattern = "*/chezmoi/**",
 	group = chezmoi,
 	callback = function()
 		local filepath = vim.fn.expand "%:p"
-		local status = os.execute("chezmoi apply --source-path " .. filepath)
-		if not status then
-			Notify.error "Update to destionation failed"
+
+		local update_source_path_cmd = string.format("chezmoi apply --source-path %s >/dev/null 2>&1", filepath)
+		local status = os.execute(update_source_path_cmd)
+
+		if status ~= 0 then
+			-- Check if this file has a destination, if it is then notify, otherwise we don't care
+			local is_in_source_state = os.execute(string.format("chezmoi source-path %s >/dev/null 2>&1", filepath))
+			if is_in_source_state == 0 then
+				Notify.error(string.format("Update to %s destination failed", filepath))
+			end
 		end
 	end,
 })
