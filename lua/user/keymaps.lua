@@ -31,7 +31,7 @@ keymap("n", "<C-n>", CMD "bnext", opts)
 keymap("n", "<TAB>", CMD "bnext", opts)
 keymap("n", "[b", CMD "bprevious", opts) -- Previous buffer
 keymap("n", "<S-TAB>", CMD "bprevious", opts)
-keymap("n", "<C-w>", CMD "Bdelete", opts) -- Close buffer
+keymap("n", "<C-w>", CMD "bdelete", opts) -- Close buffer
 
 -- Move selected line / block of text in visual mode
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
