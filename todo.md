@@ -3,6 +3,7 @@
 ## Bug 
 
 ## Workflow
+- [ ] Switch to vim mode for fish shell
 
 ## DX
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
@@ -14,6 +15,7 @@
 <!-- - [-] Disable <C-t> in NvimTree, instead always open Telescrope live grep -->
 
 ## UI
+- [ ] Add autocmd for fish_indent on fish files
 - [ ] Fix highlight group for markdown links
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
 - [ ] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
@@ -22,6 +24,7 @@
 - [ ] Make NvimTreeCursorLine go all the way to end of buffer https://github.com/neovim/neovim/issues/14473
 
 ## Plugins
+- [ ] https://github.com/romgrk/barbar.nvim
 - [ ] Replace scrollbar plugin with https://github.com/lewis6991/satellite.nvim
 - [ ] Create permalinks https://github.com/ruifm/gitlinker.nvim
 - [ ] Use vale as null-ls source https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/
@@ -75,3 +78,6 @@
 - [X] Fix floating term background color and use lazygit plugin
 - [X] Create keybinding to follow links for zk notes
 - [X] Fix fuzzy search of current window
+- [X] Telescope
+  -- [X] Place prompt to top, see here https://github.com/NvChad/NvChad/blob/main/lua/plugins/configs/telescope.lua
+  -- [-] Configure border characterst to add horizontal padding 
