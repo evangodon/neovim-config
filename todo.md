@@ -15,6 +15,7 @@
 <!-- - [-] Disable <C-t> in NvimTree, instead always open Telescrope live grep -->
 
 ## UI
+- [ ] Partial highlight link with GitSignColumn https://www.reddit.com/r/neovim/comments/oxddk9/how_do_i_get_the_value_from_a_highlight_group/
 - [ ] Add autocmd for fish_indent on fish files
 - [ ] Fix highlight group for markdown links
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic

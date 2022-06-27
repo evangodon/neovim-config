@@ -1,5 +1,5 @@
 require "plugins.packer-init"
-require("plugins.packer-keymaps")
+require "plugins.packer-keymaps"
 
 local packer_status_ok, packer = pcall(require, "packer")
 if not packer_status_ok then
@@ -36,6 +36,14 @@ packer.startup(function(use)
 	use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
 	use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
 	use({ "ojroques/vim-oscyank", branch = "main", config = safe_require "oscyank" })
+  
+	-- Colorschemes
+	use "embark-theme/vim"
+	use "folke/tokyonight.nvim"
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
+	})
 
 	use({
 		"goolord/alpha-nvim",
@@ -68,7 +76,7 @@ packer.startup(function(use)
 		config = safe_require "go",
 		as = "go",
 	})
-  use "cespare/vim-go-templates"
+	use "cespare/vim-go-templates"
 
 	-- Graphql
 	use({ "jparise/vim-graphql" })
@@ -100,7 +108,7 @@ packer.startup(function(use)
 		"nvim-lualine/lualine.nvim",
 		config = safe_require "lualine",
 	})
-  
+
 	-- scrollbar
 	use({
 		"petertriho/nvim-scrollbar",
@@ -115,19 +123,16 @@ packer.startup(function(use)
 
 	-- bufferline
 	use({
-		"akinsho/bufferline.nvim", -- Bufferline
-		config = safe_require "bufferline",
-		requires = {
-			{ "famiu/bufdelete.nvim" }, -- better buffer delete
-		},
+		"romgrk/barbar.nvim",
+		requires = { "kyazdani42/nvim-web-devicons" },
+		config = safe_require "barbar"
 	})
 
-  -- project.nvim
-  use({
-    "ahmedkhalf/project.nvim",
-    config = safe_require "project",
-  })
-
+	-- project.nvim
+	use({
+		"ahmedkhalf/project.nvim",
+		config = safe_require "project",
+	})
 
 	--fidget
 	use({
@@ -143,13 +148,6 @@ packer.startup(function(use)
 	-- Neoscroll
 	use({ "karb94/neoscroll.nvim", config = safe_require "neoscroll" })
 
-	-- Colorschemes
-	use "embark-theme/vim"
-	use "folke/tokyonight.nvim"
-	use({
-		"catppuccin/nvim",
-		as = "catppuccin",
-	})
 
 	-- cmp plugins
 	use({
@@ -211,7 +209,7 @@ packer.startup(function(use)
 	-- })
 
 	-- ZK
-	use({"mickael-menu/zk-nvim", config = safe_require "zk"})
+	use({ "mickael-menu/zk-nvim", config = safe_require "zk" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
@@ -219,4 +217,3 @@ packer.startup(function(use)
 		require("packer").sync()
 	end
 end)
-

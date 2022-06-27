@@ -15,6 +15,8 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
+NvimTreeWidth = 40
+
 nvim_tree.setup({
 	disable_netrw = true,
 	hijack_netrw = true,
@@ -30,10 +32,6 @@ nvim_tree.setup({
 	filters = {
 		custom = { ".git" },
 		exclude = { ".gitignore" },
-	},
-	update_to_buf_dir = {
-		enable = true,
-		auto_open = true,
 	},
 	diagnostics = {
 		enable = true,
@@ -67,12 +65,11 @@ nvim_tree.setup({
 		},
 	},
 	view = {
-		width = 40,
+		width = NvimTreeWidth,
 		height = 30,
 		centralize_selection = true,
 		hide_root_folder = false,
 		side = "left",
-		auto_resize = true,
 		mappings = {
 			custom_only = false,
 			list = {
@@ -116,13 +113,13 @@ nvim_tree.setup({
 
 -- Need to call noautocmd before this function
 vim.api.nvim_create_user_command("CustomNvimTreeToggle", function()
-	nvim_tree.toggle(false, true)
+	nvim_tree.toggle(false, false)
 end, {})
 
 fn.leaderKeymaps({
 	e = {
 		function()
-			vim.cmd [[noautocmd CustomNvimTreeToggle]]
+			vim.cmd [[CustomNvimTreeToggle]]
 		end,
 		"Toggle Nvimtree",
 	},
