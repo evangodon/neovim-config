@@ -17,7 +17,8 @@ vim.g.catppuccin_flavour = use_light_theme and "latte" or "mocha"
 local ok, catppuccin = pcall(require, "catppuccin")
 if not ok then
 	Notify.error "catppuccin not found!"
-	return end
+	return
+end
 
 local colors = require("catppuccin.api.colors").get_colors()
 local util = require "catppuccin.utils.util"
@@ -26,16 +27,19 @@ local util = require "catppuccin.utils.util"
 -- https://github.com/catppuccin/nvim/tree/main/lua/catppuccin/core/integrations
 catppuccin.remap({
 	CursorLine = { bg = util.darken(colors.sky, 0.08, colors.base) },
-	GitSignsDeleteLn = { fg = colors.red, bg = colors.none },
+	GitSignsDeleteLn = { fg = colors.red, bg = 'NONE' },
 	Visual = { fg = colors.text, bg = util.darken(colors.mauve, 0.08, colors.base) },
-  TabLineSel = { fg = colors.text, bg = colors.mantle },
-  -- IndentBlankline
+	TabLineSel = { fg = colors.text, bg = colors.mantle },
+	-- IndentBlankline
 	IndentBlanklineIndent1 = { fg = util.darken(colors.surface1, 0.2, colors.base), bg = colors.none },
-  -- NvimTree
+	-- NvimTree
 	NvimTreeCursorLine = { bg = util.darken(colors.mauve, 0.08, colors.base) },
 	NvimTreeCursorLineNC = { bg = util.darken(colors.mauve, 0.15, colors.base) },
-  -- Barbar
-  BufferCurrentSign = {fg = colors.blue},
+	-- Barbar
+	BufferCurrentSign = { fg = colors.blue },
+	GitSignsChange = { fg = colors.yellow, bg = 'NONE'},
+	GitSignsAdd = { fg = colors.green, bg = 'NONE' },
+	GitSignsDelete = { fg = colors.red, bg = 'NONE' },
 })
 
 catppuccin.setup({
@@ -54,4 +58,3 @@ if not status_ok then
 	vim.notify("colorscheme " .. colorscheme .. " not found!")
 	return
 end
-
