@@ -6,7 +6,8 @@ local colors = require("catppuccin.api.colors").get_colors()
 vim.api.nvim_set_hl(0, "ActiveWindow", { bg = colors.base, fg = colors.none })
 vim.api.nvim_set_hl(0, "InactiveWindow", { bg = colors.mantle, fg = colors.none })
 
--- vim.api.nvim_set_hl(0, "SignColumn", { bg = 'NONE', fg = colors.none })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE", fg = colors.none })
+vim.api.nvim_set_hl(0, "CursorLineSign", { bg = "NONE", fg = colors.none })
 
 local function getWinHighlight(highlights)
 	local default_win_highlights = {
@@ -34,10 +35,7 @@ vim.api.nvim_create_autocmd({ "WinEnter" }, {
 		local ft = vim.bo.filetype
 		local in_nvim_tree = ft == "NvimTree"
 
-		local win_highlights = {
-			SignColumn = "ActiveWindow",
-			CursorLineSign = "ActiveWindow",
-		}
+		local win_highlights = {}
 
 		if in_nvim_tree then
 			win_highlights["CursorLine"] = "NvimTreeCursorLine"
@@ -45,8 +43,6 @@ vim.api.nvim_create_autocmd({ "WinEnter" }, {
 
 		vim.opt_local.winhighlight = getWinHighlight(win_highlights)
 
-		local enable = tostring(not in_nvim_tree)
-		vim.cmd("Gitsigns toggle_signs " .. enable)
 	end,
 })
 
@@ -56,10 +52,7 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
 		local ft = vim.bo.filetype
 		local in_nvim_tree = ft == "NvimTree"
 
-		local win_highlights = {
-			SignColumn = "InactiveWindow",
-			CursorLineSign = "InactiveWindow",
-		}
+		local win_highlights = {}
 
 		if in_nvim_tree then
 			win_highlights["CursorLine"] = "NvimTreeCursorLineNC"
