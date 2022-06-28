@@ -4,11 +4,6 @@
 
 ## Translations
 
-- [:cn: Chinese version](https://github.com/glepnir/nvim-lua-guide-zh)
-- [:es: Spanish version](https://github.com/RicardoRien/nvim-lua-guide/blob/master/README.esp.md)
-- [:brazil: Portuguese version](https://github.com/npxbr/nvim-lua-guide/blob/master/README.pt-br.md)
-- [:jp: Japanese version](https://github.com/willelz/nvim-lua-guide-ja/blob/master/README.ja.md)
-- [:ru: Russian version](https://github.com/kuator/nvim-lua-guide-ru)
 
 ## Introduction
 

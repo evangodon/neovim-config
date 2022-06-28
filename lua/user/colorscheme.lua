@@ -23,12 +23,15 @@ end
 local colors = require("catppuccin.api.colors").get_colors()
 local util = require "catppuccin.utils.util"
 
+local no_color = "NONE" -- colors.none doesn't work for some reason
+
 -- needs to be called before setting the colorscheme
 -- https://github.com/catppuccin/nvim/tree/main/lua/catppuccin/core/integrations
 catppuccin.remap({
 	CursorLine = { bg = util.darken(colors.sky, 0.08, colors.base) },
-	GitSignsDeleteLn = { fg = colors.red, bg = 'NONE' },
+	GitSignsDeleteLn = { fg = colors.red, bg = no_color },
 	Visual = { fg = colors.text, bg = util.darken(colors.mauve, 0.08, colors.base) },
+	VertSplit = { bg = colors.crust, fg = colors.crust },
 	TabLineSel = { fg = colors.text, bg = colors.mantle },
 	-- IndentBlankline
 	IndentBlanklineIndent1 = { fg = util.darken(colors.surface1, 0.2, colors.base), bg = colors.none },
@@ -37,9 +40,9 @@ catppuccin.remap({
 	NvimTreeCursorLineNC = { bg = util.darken(colors.mauve, 0.15, colors.base) },
 	-- Barbar
 	BufferCurrentSign = { fg = colors.blue },
-	GitSignsChange = { fg = colors.yellow, bg = 'NONE'},
-	GitSignsAdd = { fg = colors.green, bg = 'NONE' },
-	GitSignsDelete = { fg = colors.red, bg = 'NONE' },
+	GitSignsChange = { fg = colors.yellow, bg = no_color },
+	GitSignsAdd = { fg = colors.green, bg = no_color },
+	GitSignsDelete = { fg = colors.red, bg = no_color },
 })
 
 catppuccin.setup({

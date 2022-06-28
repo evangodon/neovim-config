@@ -37,6 +37,11 @@ local keymapBufferlineGoToBuffer = function()
 		}
 	end
 
+  keymaps['B'] = {
+    CMD "BufferCloseAllButCurrent",
+    "Close all buffers but current"
+  }
+
 	return keymaps
 end
 

@@ -5,14 +5,20 @@
 ## Workflow
 - [ ] Switch to vim mode for fish shell
 
+## ZK
+- [ ] new template for media files
+- [ ] Look into group feature https://github.com/mickael-menu/zk/blob/main/docs/config-group.md
+
 ## DX
+- [ ] Create new keymap for config reload
+- [ ] Create keymap for saving and source sessions
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
 - [ ] Close all buffers but this one, need to create function for this https://codereview.stackexchange.com/questions/268130/get-list-of-buffers-from-current-neovim-instance
 
 <!-- - [-] Disable Gitsigns in gutter for markdown -->
 <!-- - [-] Figure out why Nvimtree sometimes open file in window -->
 <!-- - [-] How to persist folds -->
-<!-- - [-] Disable <C-t> in NvimTree, instead always open Telescrope live grep -->
+
 
 ## UI
 - [ ] Add background color to border between windows
@@ -34,7 +40,6 @@
 - Command to open url under cursor
 - Figure out a todo manager
   - Neorg
-  - zk.nvim
 
 
 ---
