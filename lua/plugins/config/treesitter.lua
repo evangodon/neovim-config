@@ -5,6 +5,8 @@ end
 
 configs.setup({
 	ensure_installed = {
+		"markdown",
+		"markdown_inline",
 		"fish",
 		"lua",
 		"html",

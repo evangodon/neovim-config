@@ -3,6 +3,7 @@ local bufferline = require "bufferline"
 bufferline.setup({
 	icon_separator_active = "▓",
 	icon_separator_inactive = "▓",
+  letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
 })
 
 local nvim_tree_events = require "nvim-tree.events"
@@ -23,6 +24,7 @@ local opts = { noremap = true, silent = true }
 
 keymap("n", "[B", CMD "BufferMovePrev", opts)
 keymap("n", "]B", CMD "BufferMoveNext", opts)
+keymap("n", "<leader>\\", CMD "BufferPick", opts)
 
 -- create key map to navigate buffers
 local keymapBufferlineGoToBuffer = function()

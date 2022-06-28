@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	group = chezmoi,
 	callback = function()
 		local filepath = vim.fn.expand "%:p"
-		local handle = io.popen(string.format("chezmoi source-path %s", filepath))
+		local handle = io.popen(string.format("chezmoi source-path %s --force", filepath))
 		if handle == nil then
 			return
 		end
