@@ -46,8 +46,8 @@ keymap("v", "p", '"_dP', opts)
 keymap("i", "jk", "<ESC>", opts)
 
 -- Better nav for omnicomplete
-vim.cmd 'inoremap <expr> <c-j> ("\\<C-n>")'
-vim.cmd 'inoremap <expr> <c-k> ("\\<C-p>")'
+keymap("i", "<C-j", "\\<C-n>", opts)
+keymap("i", "<C-k", "\\<C-p>", opts)
 
 -- When going up or down one line, use displayed lines instead of physical lines
 keymap("n", "k", "gk", opts)
@@ -68,7 +68,6 @@ vim.g.mapleader = " "
 keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 
 fn.leaderKeymaps({
-	B = { CMD "noautocmd %bd|e#|bd#", "Close all buffers but current" },
   s = {
     m = {
       function ()
