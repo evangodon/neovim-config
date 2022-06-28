@@ -74,7 +74,6 @@ packer.startup(function(use)
 	use({
 		"ray-x/go.nvim",
 		config = safe_require "go",
-		as = "go",
 	})
 	use "cespare/vim-go-templates"
 

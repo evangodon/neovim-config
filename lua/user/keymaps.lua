@@ -69,7 +69,22 @@ keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 
 fn.leaderKeymaps({
 	B = { CMD "noautocmd %bd|e#|bd#", "Close all buffers but current" },
-	so = {
+  s = {
+    m = {
+      function ()
+        vim.cmd[[mksession default-session.vim]]
+        Notify.info("Created session")
+      end,
+      "Create session",
+    },
+    s = {
+      function ()
+        vim.cmd[[source default-session.vim]]
+      end,
+      "Source session",
+    },
+  },
+	R = {
 		fn.reloadConfig,
 		"Reload config",
 	},
