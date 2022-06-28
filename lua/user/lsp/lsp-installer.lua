@@ -21,6 +21,9 @@ lsp_installer.on_server_ready(function(server)
 
 	if server.name == "gopls" then
 		local go_opts = require("go.lsp").config()
+    if go_opts == nil then
+      error("Go lsp failed to configure, maybe gopls not found")
+    end
 		opts = vim.tbl_deep_extend("force", go_opts, opts)
 	end
 

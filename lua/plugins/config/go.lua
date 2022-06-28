@@ -1,6 +1,6 @@
 local status_ok, go = pcall(require, "go")
 if not status_ok then
-	vim.notify "error calling go module"
+	Notify.error("error calling go module")
 	return
 end
 
