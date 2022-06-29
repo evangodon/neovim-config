@@ -7,13 +7,37 @@ if not status_ok then
 	return
 end
 
+local gitsign_icon = "▒"
+-- local gitsign_icon = "▎"
+local gitsign_icon_delete = "-"
+
 gitsigns.setup({
 	signs = {
-		add = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-		change = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-		delete = { hl = "GitSignsDelete", text = "-", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-		topdelete = { hl = "GitSignsDelete", text = "-", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-		changedelete = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+		add = { hl = "GitSignsAdd", text = gitsign_icon, numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+		change = {
+			hl = "GitSignsChange",
+			text = "",
+			numhl = "GitSignsChangeNr",
+			linehl = "GitSignsChangeLn",
+		},
+		delete = {
+			hl = "GitSignsDelete",
+			text = gitsign_icon_delete,
+			numhl = "GitSignsDeleteNr",
+			linehl = "GitSignsDeleteLn",
+		},
+		topdelete = {
+			hl = "GitSignsDelete",
+			text = gitsign_icon_delete,
+			numhl = "GitSignsDeleteNr",
+			linehl = "GitSignsDeleteLn",
+		},
+		changedelete = {
+			hl = "GitSignsChange",
+			text = gitsign_icon,
+			numhl = "GitSignsChangeNr",
+			linehl = "GitSignsChangeLn",
+		},
 	},
 	signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
 	numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
@@ -83,11 +107,11 @@ gitsigns.setup({
 		-- Actions
 		fn.leaderKeymaps({
 			G = {
-        name = "Git",
-        s = {
-          gs.toggle_signs,
-          "Toggle signs"
-        },
+				name = "Git",
+				s = {
+					gs.toggle_signs,
+					"Toggle signs",
+				},
 				p = { gs.preview_hunk, "Preview hunk" },
 				b = {
 					gs.toggle_current_line_blame,

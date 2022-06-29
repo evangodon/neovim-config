@@ -7,6 +7,7 @@
 
 ## ZK
 - [ ] new template for media files
+- [ ] Use ui components to improve creation of notes, compare dressing.nvim and nui.nvim
 - [ ] Look into group feature https://github.com/mickael-menu/zk/blob/main/docs/config-group.md
 
 ## DX
@@ -27,7 +28,6 @@
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
 - [ ] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
 - [ ] diagnostics float window borders 
-- [ ] make background dark for toggle term
 - [ ] Make NvimTreeCursorLine go all the way to end of buffer https://github.com/neovim/neovim/issues/14473
 
 ## Plugins
@@ -88,3 +88,4 @@
   -- [X] Place prompt to top, see here https://github.com/NvChad/NvChad/blob/main/lua/plugins/configs/telescope.lua
   -- [-] Configure border characterst to add horizontal padding 
 - [X] Partial highlight link with GitSignColumn https://www.reddit.com/r/neovim/comments/oxddk9/how_do_i_get_the_value_from_a_highlight_group/
+- [X] make background dark for toggle term
