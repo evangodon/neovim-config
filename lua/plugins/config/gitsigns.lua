@@ -112,7 +112,7 @@ gitsigns.setup({
 					gs.toggle_signs,
 					"Toggle signs",
 				},
-				p = { gs.preview_hunk, "Preview hunk" },
+				P = { gs.preview_hunk, "Preview hunk" },
 				b = {
 					gs.toggle_current_line_blame,
 					"Toggle blame",

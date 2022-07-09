@@ -11,7 +11,8 @@
 - [ ] Look into group feature https://github.com/mickael-menu/zk/blob/main/docs/config-group.md
 
 ## DX
-- [ ] Create new keymap for config reload
+
+- [ ] Create keymap for `Telescope oldfiles` and to open up multiple files at once
 - [ ] Create keymap for saving and source sessions
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
 - [ ] Close all buffers but this one, need to create function for this https://codereview.stackexchange.com/questions/268130/get-list-of-buffers-from-current-neovim-instance
@@ -22,7 +23,10 @@
 
 
 ## UI
-- [ ] Add background color to border between windows
+- Barbar
+  -- [ ] Change color of buffer not saved (yellow right now)
+  -- [ ] Change color of BufferPick letter
+  -- [ ] Add character to where the "File Tree section is", change BufferOffset highlight
 - [ ] Add autocmd for fish_indent on fish files
 - [ ] Fix highlight group for markdown links
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
@@ -89,3 +93,4 @@
   -- [-] Configure border characterst to add horizontal padding 
 - [X] Partial highlight link with GitSignColumn https://www.reddit.com/r/neovim/comments/oxddk9/how_do_i_get_the_value_from_a_highlight_group/
 - [X] make background dark for toggle term
+- [X] Add background color to border between windows
