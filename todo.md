@@ -3,7 +3,6 @@
 ## Bug 
 
 ## Workflow
-- [ ] Switch to vim mode for fish shell
 
 ## ZK
 - [ ] new template for media files
