@@ -8,7 +8,6 @@ if not status_ok then
 end
 
 local gitsign_icon = "▒"
--- local gitsign_icon = "▎"
 local gitsign_icon_delete = "-"
 
 gitsigns.setup({
@@ -16,7 +15,7 @@ gitsigns.setup({
 		add = { hl = "GitSignsAdd", text = gitsign_icon, numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
 		change = {
 			hl = "GitSignsChange",
-			text = "",
+			text = gitsign_icon,
 			numhl = "GitSignsChangeNr",
 			linehl = "GitSignsChangeLn",
 		},

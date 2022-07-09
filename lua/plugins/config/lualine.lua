@@ -12,9 +12,17 @@ end
 
 local diff = {
 	"diff",
-	colored = false,
-	symbols = { added = "ﰂ ", modified = "ﰣ ", removed = "ﯰ " }, -- changes diff symbols
+	symbols = { added = "洛 ", modified = "  ", removed = "  " },
 	cond = hide_in_width,
+	colored = true,
+	diff_color = {
+		added = "DiffAdd",
+		modified = "DiffChange",
+		removed = "DiffDelete",
+	},
+	fmt = function(str)
+		return str
+	end,
 }
 
 local mode = {
@@ -46,9 +54,9 @@ end
 local filename = {
 	"filename",
 	fmt = function(str)
-    if string.find(str, "No Name") then
-      return ""
-    end
+		if string.find(str, "No Name") then
+			return ""
+		end
 
 		return str
 	end,

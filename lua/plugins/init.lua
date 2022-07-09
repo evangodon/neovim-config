@@ -36,7 +36,7 @@ packer.startup(function(use)
 	use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
 	use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
 	use({ "ojroques/vim-oscyank", branch = "main", config = safe_require "oscyank" })
-  
+
 	-- Colorschemes
 	use "embark-theme/vim"
 	use "folke/tokyonight.nvim"
@@ -95,6 +95,11 @@ packer.startup(function(use)
 		"folke/zen-mode.nvim",
 		config = safe_require "zenmode",
 	})
+  use "stevearc/dressing.nvim"
+	use({
+		"ziontee113/icon-picker.nvim",
+		config = safe_require "iconpicker",
+	})
 
 	-- nvim-tree
 	use({
@@ -124,7 +129,7 @@ packer.startup(function(use)
 	use({
 		"romgrk/barbar.nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
-		config = safe_require "barbar"
+		config = safe_require "barbar",
 	})
 
 	-- project.nvim
@@ -146,7 +151,6 @@ packer.startup(function(use)
 
 	-- Neoscroll
 	use({ "karb94/neoscroll.nvim", config = safe_require "neoscroll" })
-
 
 	-- cmp plugins
 	use({
