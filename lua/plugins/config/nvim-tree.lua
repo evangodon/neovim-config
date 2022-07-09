@@ -36,10 +36,10 @@ nvim_tree.setup({
 	diagnostics = {
 		enable = true,
 		icons = {
-			hint = "",
-			info = "",
-			warning = "",
-			error = "",
+			hint = Icon.diagnostics,
+			info = Icon.diagnostics,
+			warning = Icon.diagnostics,
+			error = Icon.diagnostics,
 		},
 	},
 	update_focused_file = {
@@ -84,13 +84,13 @@ nvim_tree.setup({
 	renderer = {
 		root_folder_modifier = ":t",
 		icons = {
-			git_placement = "after",
-			padding = "  ",
+			git_placement = "before",
+			padding = " ",
 			glyphs = {
 				default = "",
 				symlink = "",
 				git = {
-					unstaged = "•",
+					unstaged = "u",
 					staged = "S",
 					unmerged = "",
 					renamed = "➜",
