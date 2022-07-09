@@ -132,4 +132,8 @@ fn.leaderKeymaps({
 		CMD "Telescope buffers",
 		"Open buffer list",
 	},
+	r = {
+		CMD "Telescope oldfiles",
+		"View recent files",
+	},
 })
