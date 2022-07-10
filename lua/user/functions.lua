@@ -14,6 +14,7 @@ Notify = {
 	warn = function(msg)
 		notify(msg, vim.log.levels.WARN)
 	end,
+
 	error = function(msg)
 		notify(msg, vim.log.levels.ERROR)
 	end,

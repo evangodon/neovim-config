@@ -20,6 +20,7 @@
 
 
 ## UI
+- [ ] Bufferline select letter is still sometimes red, and bg is somethings wrong, can't hardcode that color
 - [ ] Add autocmd for fish_indent on fish files
 - [ ] Fix highlight group for markdown links
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
