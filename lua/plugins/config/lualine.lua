@@ -77,8 +77,8 @@ lualine.setup({
 	},
 	sections = {
 		lualine_a = { mode },
-		lualine_b = { branch, diff },
-		lualine_c = { rootFolder, filename },
+		lualine_b = { branch },
+		lualine_c = { diff, rootFolder, filename },
 		lualine_x = { spaces, "encoding", filetype },
 	},
 	inactive_sections = {

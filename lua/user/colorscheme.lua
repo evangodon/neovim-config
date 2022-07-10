@@ -35,9 +35,9 @@ catppuccin.remap({
 	TabLineSel = { fg = colors.text, bg = colors.mantle },
 	WarningMsg = { fg = colors.flamingo },
 	--lualine
-	DiffAdd = { fg = colors.green, bg = colors.surface1 },
-	DiffChange = { fg = colors.yellow, bg = colors.surface1 },
-	DiffDelete = { fg = colors.red, bg = colors.surface1 },
+	DiffAdd = { fg = colors.green, bg = colors.mantle },
+	DiffChange = { fg = colors.yellow, bg = colors.mantle },
+	DiffDelete = { fg = colors.maroon, bg = colors.mantle },
 
 	-- IndentBlankline
 	IndentBlanklineIndent1 = { fg = util.darken(colors.surface1, 0.2, colors.base), bg = colors.none },
@@ -46,8 +46,8 @@ catppuccin.remap({
 	NvimTreeCursorLineNC = { bg = util.darken(colors.mauve, 0.15, colors.base) },
 	-- Barbar
 	BufferCurrentSign = { fg = colors.blue },
-	BufferCurrentTarget = { fg = colors.red },
-	BufferInactiveTarget = { fg = colors.mauve },
+	BufferCurrentTarget = { fg = colors.red, bg = no_color },
+	BufferInactiveTarget = { fg = colors.mauve, bg = no_color },
 	GitSignsChange = { fg = colors.yellow, bg = no_color },
 	GitSignsAdd = { fg = colors.green, bg = no_color },
 	GitSignsDelete = { fg = colors.red, bg = no_color },
