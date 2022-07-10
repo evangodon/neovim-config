@@ -95,7 +95,7 @@ packer.startup(function(use)
 		"folke/zen-mode.nvim",
 		config = safe_require "zenmode",
 	})
-  use "stevearc/dressing.nvim"
+	use "stevearc/dressing.nvim"
 	use({
 		"ziontee113/icon-picker.nvim",
 		config = safe_require "iconpicker",
@@ -132,10 +132,10 @@ packer.startup(function(use)
 		config = safe_require "barbar",
 	})
 
-	-- project.nvim
+	-- Project management
 	use({
-		"ahmedkhalf/project.nvim",
-		config = safe_require "project",
+		"natecraddock/workspaces.nvim",
+		config = safe_require "workspaces",
 	})
 
 	--fidget

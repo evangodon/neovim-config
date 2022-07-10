@@ -21,7 +21,7 @@ dashboard.section.header.val = {
 	[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 }
 dashboard.section.buttons.val = {
-	dashboard.button("p", "  Find project", CMD "Telescope projects "),
+	dashboard.button("p", "  Find project", CMD "Telescope workspaces"),
 	dashboard.button("r", "  Recently used files", CMD "Telescope oldfiles "),
 	dashboard.button("t", "  Find text", CMD "Telescope live_grep "),
 	dashboard.button("s", "痢 Sync plugins", CMD "CreateSnapshotAndSyncPlugins"),

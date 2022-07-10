@@ -259,11 +259,6 @@ _G.packer_plugins = {
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
-  ["project.nvim"] = {
-    loaded = true,
-    path = "/home/evan/.local/share/nvim/site/pack/packer/start/project.nvim",
-    url = "https://github.com/ahmedkhalf/project.nvim"
-  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
@@ -313,6 +308,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/evan/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
+  },
+  ["workspaces.nvim"] = {
+    loaded = true,
+    path = "/home/evan/.local/share/nvim/site/pack/packer/start/workspaces.nvim",
+    url = "https://github.com/natecraddock/workspaces.nvim"
   },
   ["zen-mode.nvim"] = {
     loaded = true,
