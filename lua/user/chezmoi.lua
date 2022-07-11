@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	group = chezmoi,
 	callback = function()
 		local filepath = vim.fn.expand "%:p"
-		local handle = io.popen(string.format("chezmoi source-path %s --force", filepath))
+		local handle = io.popen(string.format("chezmoi source-path %s", filepath))
 		if handle == nil then
 			return
 		end
@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	callback = function()
 		local filepath = vim.fn.expand "%:p"
 
-		local update_source_path_cmd = string.format("chezmoi apply --source-path %s >/dev/null 2>&1", filepath)
+		local update_source_path_cmd = string.format("chezmoi apply --force --source-path %s >/dev/null 2>&1", filepath)
 		local status = os.execute(update_source_path_cmd)
 
 		if status ~= 0 then
