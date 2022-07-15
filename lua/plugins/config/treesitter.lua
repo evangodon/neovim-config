@@ -3,6 +3,8 @@ if not status_ok then
 	return
 end
 
+-- vim.g.markdown_fenced_languages = { "html", "python", "lua", "vim", "typescript", "javascript" }
+
 configs.setup({
 	ensure_installed = {
 		"markdown",

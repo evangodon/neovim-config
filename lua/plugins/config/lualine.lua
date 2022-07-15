@@ -12,7 +12,7 @@ end
 
 local diff = {
 	"diff",
-	symbols = { added = "洛 ", modified = "  ", removed = "  " },
+	symbols = { added = "洛", modified = " ", removed = " " },
 	cond = hide_in_width,
 	colored = true,
 	diff_color = {

@@ -2,7 +2,18 @@ local chezmoi = vim.api.nvim_create_augroup("chezmoi", {})
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	desc = "Prevent edits to files managed by chezoi",
-	pattern = { "*.sh", "*.lua", "*.fish", "*.conf", "*.yml", "*.ini", "*.toml", ".gitconfig", "*.md" },
+	pattern = {
+		"*.sh",
+		"*.lua",
+		"*.fish",
+		"*.conf",
+		"*.yml",
+		"*.ini",
+		"*.toml",
+		".gitconfig",
+		"*.md",
+		"*/spacebar/*",
+	},
 	group = chezmoi,
 	callback = function()
 		local filepath = vim.fn.expand "%:p"

@@ -10,7 +10,7 @@
 - [ ] Look into group feature https://github.com/mickael-menu/zk/blob/main/docs/config-group.md
 
 ## DX
-
+- [ ] use arrows for navigating in cmp menu
 - [ ] Create keymap for saving and source sessions
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
 
@@ -32,6 +32,9 @@
 - [ ] Replace scrollbar plugin with https://github.com/lewis6991/satellite.nvim
 - [ ] Create permalinks https://github.com/ruifm/gitlinker.nvim
 - [ ] Use vale as null-ls source https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/
+- [ ] nvim-surround
+- [ ] eyeliner which is a lua version of quick-scope
+- [ ] https://github.com/sindrets/diffview.nvim
 
 ## Productivity
 - Command to open url under cursor

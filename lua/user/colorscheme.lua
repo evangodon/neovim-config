@@ -11,7 +11,7 @@ local DARK_THEME = "catppuccin"
 
 local colorscheme = use_light_theme and LIGHT_THEME or DARK_THEME
 
-vim.g.catppuccin_flavour = use_light_theme and "latte" or "mocha"
+vim.g.catppuccin_flavour = use_light_theme and "latte" or "frappe"
 
 -- catppuccin
 local ok, catppuccin = pcall(require, "catppuccin")
