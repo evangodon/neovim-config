@@ -26,10 +26,11 @@ comment.setup({
 
 local opt = { expr = true, remap = true }
 
+-- TODO C-/ only works on macos, use C-_ on linux 
 -- Toggle using count
 vim.keymap.set(
 	"n",
-	"<C-_>",
+	"<C-/>",
 	"v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'",
 	opt
 )
@@ -54,4 +55,4 @@ vim.keymap.set("n", "gb", "<Plug>(comment_toggle_blockwise)")
 vim.keymap.set("x", "gc", "<Plug>(comment_toggle_linewise_visual)")
 vim.keymap.set("x", "<C-_>", "<Plug>(comment_toggle_linewise_visual)")
 vim.keymap.set("x", "gb", "<Plug>(comment_toggle_blockwise_visual)")
--- vim.keymap.set("x", "<C-_>", "<Plug>(comment_toggle_blockwise_visual)")
+vim.keymap.set("x", "<C-/>", "<Plug>(comment_toggle_blockwise_visual)")

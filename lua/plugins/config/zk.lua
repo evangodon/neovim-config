@@ -1,5 +1,8 @@
 -- ZK
+-- https://github.com/mickael-menu/zk
 -- https://github.com/mickael-menu/zk-nvim
+--
+-- Install `zk` with `brew install zk` or `yay -S zk`
 
 local zk = require "zk"
 local zk_util = require "zk.util"
