@@ -10,7 +10,6 @@
 - [ ] Look into group feature https://github.com/mickael-menu/zk/blob/main/docs/config-group.md
 
 ## DX
-- [ ] use arrows for navigating in cmp menu
 - [ ] Create keymap for saving and source sessions
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
 
@@ -96,3 +95,4 @@
   -- [X] Change color of BufferPick letter
 - [X] Close all buffers but this one, need to create function for this https://codereview.stackexchange.com/questions/268130/get-list-of-buffers-from-current-neovim-instance
 - [X] https://github.com/romgrk/barbar.nvim
+- [X] use arrows for navigating in cmp menu
