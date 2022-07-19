@@ -11,7 +11,7 @@ local DARK_THEME = "catppuccin"
 
 local colorscheme = use_light_theme and LIGHT_THEME or DARK_THEME
 
-vim.g.catppuccin_flavour = use_light_theme and "latte" or "frappe"
+vim.g.catppuccin_flavour = use_light_theme and "latte" or "macchiato"
 
 -- catppuccin
 local ok, catppuccin = pcall(require, "catppuccin")
@@ -20,38 +20,13 @@ if not ok then
 	return
 end
 
-local colors = require("catppuccin.api.colors").get_colors()
-local util = require "catppuccin.utils.util"
+local colors = require("catppuccin.palettes").get_palette()
+local util = require "catppuccin.utils.colors"
 
 local no_color = "NONE" -- colors.none doesn't work for some reason
 
 -- needs to be called before setting the colorscheme
 -- https://github.com/catppuccin/nvim/tree/main/lua/catppuccin/core/integrations
-catppuccin.remap({
-	CursorLine = { bg = util.darken(colors.sky, 0.08, colors.base) },
-	GitSignsDeleteLn = { fg = colors.red, bg = no_color },
-	Visual = { fg = colors.text, bg = util.darken(colors.mauve, 0.08, colors.base) },
-	VertSplit = { bg = colors.crust, fg = colors.crust },
-	TabLineSel = { fg = colors.text, bg = colors.mantle },
-	WarningMsg = { fg = colors.flamingo },
-	--lualine
-	DiffAdd = { fg = colors.green, bg = colors.mantle },
-	DiffChange = { fg = colors.yellow, bg = colors.mantle },
-	DiffDelete = { fg = colors.maroon, bg = colors.mantle },
-
-	-- IndentBlankline
-	IndentBlanklineIndent1 = { fg = util.darken(colors.surface1, 0.2, colors.base), bg = colors.none },
-	-- NvimTree
-	NvimTreeCursorLine = { bg = util.darken(colors.mauve, 0.08, colors.base) },
-	NvimTreeCursorLineNC = { bg = util.darken(colors.mauve, 0.15, colors.base) },
-	-- Barbar
-	BufferCurrentSign = { fg = colors.blue },
-	BufferCurrentTarget = { fg = colors.red, bg = no_color },
-	BufferInactiveTarget = { fg = colors.mauve, bg = no_color },
-	GitSignsChange = { fg = colors.yellow, bg = no_color },
-	GitSignsAdd = { fg = colors.green, bg = no_color },
-	GitSignsDelete = { fg = colors.red, bg = no_color },
-})
 
 catppuccin.setup({
 	integrations = {
@@ -59,6 +34,31 @@ catppuccin.setup({
 			enabled = true,
 			show_root = true,
 		},
+	},
+	custom_highlights = {
+		CursorLine = { bg = util.darken(colors.sky, 0.08, colors.base) },
+		GitSignsDeleteLn = { fg = colors.red, bg = no_color },
+		Visual = { fg = colors.text, bg = util.darken(colors.mauve, 0.08, colors.base) },
+		VertSplit = { bg = colors.crust, fg = colors.crust },
+		TabLineSel = { fg = colors.text, bg = colors.mantle },
+		WarningMsg = { fg = colors.flamingo },
+		--lualine
+		DiffAdd = { fg = colors.green, bg = colors.mantle },
+		DiffChange = { fg = colors.yellow, bg = colors.mantle },
+		DiffDelete = { fg = colors.maroon, bg = colors.mantle },
+
+		-- IndentBlankline
+		IndentBlanklineIndent1 = { fg = util.darken(colors.surface1, 0.2, colors.base), bg = colors.none },
+		-- NvimTree
+		NvimTreeCursorLine = { bg = util.darken(colors.mauve, 0.08, colors.base) },
+		NvimTreeCursorLineNC = { bg = util.darken(colors.mauve, 0.15, colors.base) },
+		-- Barbar
+		BufferCurrentSign = { fg = colors.blue },
+		BufferCurrentTarget = { fg = colors.red, bg = no_color },
+		BufferInactiveTarget = { fg = colors.mauve, bg = no_color },
+		GitSignsChange = { fg = colors.yellow, bg = no_color },
+		GitSignsAdd = { fg = colors.green, bg = no_color },
+		GitSignsDelete = { fg = colors.red, bg = no_color },
 	},
 })
 

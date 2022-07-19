@@ -62,10 +62,10 @@ fn.leaderKeymaps({
 				-- Get list of directories, use ZkCd to go to root
 				-- Show prompt to get selection or use "."
 				-- Add dir option to zk.new
-				local dir = vim.fn.input "Enter which folder: "
-				local title = vim.fn.input(string.format("[%s] Enter title: ", dir))
+				local group = vim.fn.input "Enter which group: "
+				local title = vim.fn.input(string.format("[%s] Enter title: ", group))
 
-				zk.new({ title = title, dir = dir })
+				zk.new({ title = title, group = group, dir = group })
 			end,
 			"New note",
 		},

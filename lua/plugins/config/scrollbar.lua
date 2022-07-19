@@ -9,7 +9,7 @@ end
 -- Set scrollbar color
 local scrollbar_handle = {}
 if vim.g.colors_name == "catppuccin" then
-	local colors = require("catppuccin.api.colors").get_colors()
+	local colors = require("catppuccin.palettes").get_palette()
 	scrollbar_handle = {
 		color = colors.surface0,
 	}
