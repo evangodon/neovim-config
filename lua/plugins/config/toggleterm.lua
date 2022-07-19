@@ -1,14 +1,10 @@
 -- Toggleterm
 -- https://github.com/akinsho/toggleterm.nvim
 
-local status_ok, toggleterm = pcall(require, "toggleterm")
-if not status_ok then
-	return
-end
+local toggleterm = require "toggleterm"
 
-
-local mochatheme = require "catppuccin.core.palettes.mocha"
-local termBgColor = mochatheme.base
+local palette = require "catppuccin.palettes.mocha"
+local termBgColor = palette.base
 
 toggleterm.setup({
 	size = 20,
@@ -29,7 +25,7 @@ toggleterm.setup({
 		},
 		FloatBorder = {
 			guibg = termBgColor,
-			guifg = mochatheme.mauve,
+			guifg = palette.mauve,
 		},
 	},
 })

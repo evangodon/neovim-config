@@ -1,7 +1,7 @@
 --
 -- Dim inactive windows
 --
-local colors = require("catppuccin.api.colors").get_colors()
+local colors = require("catppuccin.palettes").get_palette()
 
 vim.api.nvim_set_hl(0, "ActiveWindow", { bg = colors.base, fg = colors.none })
 vim.api.nvim_set_hl(0, "InactiveWindow", { bg = colors.mantle, fg = colors.none })
