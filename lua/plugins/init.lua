@@ -83,13 +83,6 @@ packer.startup(function(use)
 	-- UI
 	use "kyazdani42/nvim-web-devicons"
 	use "fladson/vim-kitty"
-	use({
-		"VonHeikemen/fine-cmdline.nvim",
-		config = safe_require "fine-cmdline",
-		requires = {
-			{ "MunifTanjim/nui.nvim" },
-		},
-	})
 	use({ "lukas-reineke/indent-blankline.nvim", config = safe_require "indent-blankline" })
 	use({
 		"folke/zen-mode.nvim",
