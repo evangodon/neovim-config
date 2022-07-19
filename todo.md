@@ -5,9 +5,6 @@
 ## Workflow
 
 ## ZK
-- [ ] new template for media files
-- [ ] Use ui components to improve creation of notes, compare dressing.nvim and nui.nvim
-- [ ] Look into group feature https://github.com/mickael-menu/zk/blob/main/docs/config-group.md
 
 ## DX
 - [ ] Create keymap for saving and source sessions
@@ -96,3 +93,6 @@
 - [X] Close all buffers but this one, need to create function for this https://codereview.stackexchange.com/questions/268130/get-list-of-buffers-from-current-neovim-instance
 - [X] https://github.com/romgrk/barbar.nvim
 - [X] use arrows for navigating in cmp menu
+- [X] Look into group feature https://github.com/mickael-menu/zk/blob/main/docs/config-group.md
+- [X] new template for media files
+- [X] Use ui components to improve creation of notes, compare dressing.nvim and nui.nvim

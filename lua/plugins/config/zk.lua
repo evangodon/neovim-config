@@ -59,13 +59,20 @@ fn.leaderKeymaps({
 				if not in_notebook then
 					return
 				end
-				-- Get list of directories, use ZkCd to go to root
-				-- Show prompt to get selection or use "."
-				-- Add dir option to zk.new
-				local group = vim.fn.input "Enter which group: "
-				local title = vim.fn.input(string.format("[%s] Enter title: ", group))
-
-				zk.new({ title = title, group = group, dir = group })
+				vim.ui.select({ "media", "books", "none" }, {
+					prompt = "Title",
+					telescope = require("telescope.themes").get_cursor(),
+					relative = "editor",
+				}, function(selected)
+					local group = selected
+					if selected == "none" then
+						group = ""
+					end
+					vim.ui.input(string.format("[%s] Enter title: ", group), function(input)
+						local title = input
+						zk.new({ title = title, group = group, dir = group })
+					end)
+				end)
 			end,
 			"New note",
 		},
