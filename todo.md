@@ -7,8 +7,10 @@
 ## ZK
 
 ## DX
+- [ ] Enable prettier formatting on markdown files
 - [ ] Create keymap for saving and source sessions
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
+- [ ] Smart DD https://www.reddit.com/r/neovim/comments/w0jzzv/smart_dd/
 
 <!-- - [-] Disable Gitsigns in gutter for markdown -->
 <!-- - [-] Figure out why Nvimtree sometimes open file in window -->
