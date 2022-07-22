@@ -3,7 +3,7 @@ local bufferline = require "bufferline"
 bufferline.setup({
 	icon_separator_active = "▓",
 	icon_separator_inactive = "▓",
-  letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
+	letters = "asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP",
 })
 
 local nvim_tree_events = require "nvim-tree.events"
@@ -11,7 +11,7 @@ local bufferline_state = require "bufferline.state"
 local fn = require "user.functions"
 
 nvim_tree_events.on_tree_open(function()
-	bufferline_state.set_offset(NvimTreeWidth, "File Tree")
+	bufferline_state.set_offset(NvimTreeWidth + 1, "File Tree")
 	vim.cmd [[wincmd p]]
 end)
 
@@ -37,10 +37,10 @@ local keymapBufferlineGoToBuffer = function()
 		}
 	end
 
-  keymaps['B'] = {
-    CMD "BufferCloseAllButCurrent",
-    "Close all buffers but current"
-  }
+	keymaps["B"] = {
+		CMD "BufferCloseAllButCurrent",
+		"Close all buffers but current",
+	}
 
 	return keymaps
 end
