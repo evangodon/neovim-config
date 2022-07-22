@@ -7,10 +7,8 @@
 ## ZK
 
 ## DX
-- [ ] Enable prettier formatting on markdown files
 - [ ] Create keymap for saving and source sessions
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
-- [ ] Smart DD https://www.reddit.com/r/neovim/comments/w0jzzv/smart_dd/
 
 <!-- - [-] Disable Gitsigns in gutter for markdown -->
 <!-- - [-] Figure out why Nvimtree sometimes open file in window -->
@@ -98,3 +96,5 @@
 - [X] new template for media files
 - [X] Use ui components to improve creation of notes, compare dressing.nvim and nui.nvim
 - [X] Bufferline select letter is still sometimes red, and bg is somethings wrong, can't hardcode that color
+- [X] Enable prettier formatting on markdown files
+- [X] Smart DD https://www.reddit.com/r/neovim/comments/w0jzzv/smart_dd/
