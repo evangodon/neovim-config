@@ -54,8 +54,9 @@ catppuccin.setup({
 		NvimTreeCursorLineNC = { bg = util.darken(colors.mauve, 0.15, colors.base) },
 		-- Barbar
 		BufferCurrentSign = { fg = colors.blue },
-		BufferCurrentTarget = { fg = colors.red, bg = no_color },
-		BufferInactiveTarget = { fg = colors.mauve, bg = no_color },
+		BufferCurrentTarget = { fg = colors.mauve, bg = no_color },
+		BufferInactiveTarget = { fg = colors.red, bg = colors.mantle },
+		-- GitSigns
 		GitSignsChange = { fg = colors.yellow, bg = no_color },
 		GitSignsAdd = { fg = colors.green, bg = no_color },
 		GitSignsDelete = { fg = colors.red, bg = no_color },
