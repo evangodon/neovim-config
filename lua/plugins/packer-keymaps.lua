@@ -1,5 +1,5 @@
 local async = require "plenary.async"
-local fn = require "user.functions"
+local fn = require "user.functions.utils"
 
 -- Create a snapshot before syncing
 local function packerSnapshotAndSync()

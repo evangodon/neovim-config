@@ -1,5 +1,3 @@
-require "user.globals"
-
 require "user.functions"
 require "user.colorscheme"
 require "user.window_management"
