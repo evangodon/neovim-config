@@ -1,4 +1,5 @@
 local fn = require "user.functions"
+local keyfn = require "user.functions.keyfunc"
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
@@ -61,6 +62,8 @@ keymap("v", "H", "0", opts)
 keymap("n", "L", "$", opts)
 keymap("v", "L", "$", opts)
 
+keymap("n", "dd", keyfn.smart_dd, { noremap = true, expr = true })
+
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
@@ -68,21 +71,21 @@ vim.g.mapleader = " "
 keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 
 fn.leaderKeymaps({
-  s = {
-    m = {
-      function ()
-        vim.cmd[[mksession default-session.vim]]
-        Notify.info("Created session")
-      end,
-      "Create session",
-    },
-    s = {
-      function ()
-        vim.cmd[[source default-session.vim]]
-      end,
-      "Source session",
-    },
-  },
+	s = {
+		m = {
+			function()
+				vim.cmd [[mksession default-session.vim]]
+				Notify.info "Created session"
+			end,
+			"Create session",
+		},
+		s = {
+			function()
+				vim.cmd [[source default-session.vim]]
+			end,
+			"Source session",
+		},
+	},
 	R = {
 		fn.reloadConfig,
 		"Reload config",
