@@ -1,6 +1,7 @@
 local bufferline = require "bufferline"
 
 bufferline.setup({
+	animation = false,
 	icon_separator_active = "▓",
 	icon_separator_inactive = "▓",
 	letters = "asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP",
