@@ -110,7 +110,6 @@ nvim_tree.setup({
 	},
 })
 
-
 -- Need to call noautocmd before this function
 vim.api.nvim_create_user_command("CustomNvimTreeToggle", function()
 	nvim_tree.toggle(false, false)
@@ -122,5 +121,9 @@ fn.leaderKeymaps({
 			vim.cmd [[CustomNvimTreeToggle]]
 		end,
 		"Toggle Nvimtree",
+	},
+	E = {
+		CMD "NvimTreeFocus",
+		"Focus Nvimtree",
 	},
 })
