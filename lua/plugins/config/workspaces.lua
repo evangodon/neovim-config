@@ -7,7 +7,7 @@ local fn = require "user.functions"
 
 workspaces.setup({
 	hooks = {
-		open = { "noautocmd NvimTreeOpen", "Telescope find_files" },
+		open = { "noautocmd NvimTreeOpen" },
 	},
 })
 
