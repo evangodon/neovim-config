@@ -55,9 +55,7 @@ vim.api.nvim_create_autocmd({ "BufDelete" }, {
 				if choice == confirm then
 					vim.cmd "quitall"
 				else
-					vim.cmd ":NvimTreeClose"
-					vim.cmd ":Alpha"
-					vim.cmd ":bdelete #"
+					vim.cmd ":bdelete"
 				end
 			end)
 		end
@@ -68,5 +66,14 @@ vim.api.nvim_create_autocmd({ "BufDelete" }, {
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	callback = function()
 		vim.cmd [[silent! '"; normal z.]]
+	end,
+})
+
+local svelte_group = vim.api.nvim_create_augroup("svelte group", {})
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	group = svelte_group,
+	pattern = { "*.svelte" },
+	callback = function()
+		vim.cmd ":silent !prettier --write %"
 	end,
 })

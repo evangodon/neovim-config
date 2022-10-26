@@ -66,7 +66,6 @@ nvim_tree.setup({
 	},
 	view = {
 		width = NvimTreeWidth,
-		height = 30,
 		centralize_selection = false,
 		hide_root_folder = false,
 		side = "left",
