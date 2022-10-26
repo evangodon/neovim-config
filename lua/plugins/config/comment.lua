@@ -26,11 +26,11 @@ comment.setup({
 
 local opt = { expr = true, remap = true }
 
--- TODO C-/ only works on macos, use C-_ on linux 
+-- TODO C-/ only works on macos, use C-_ on linux
 -- Toggle using count
 vim.keymap.set(
 	"n",
-	"<C-/>",
+	"<C-_>",
 	"v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'",
 	opt
 )
