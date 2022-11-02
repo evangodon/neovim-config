@@ -8,7 +8,6 @@
 
 ## DX
 
-- [ ] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
 - [ ] Create keymap for saving and source sessions
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
 
@@ -100,3 +99,4 @@
 - [x] Bufferline select letter is still sometimes red, and bg is somethings wrong, can't hardcode that color
 - [x] Enable prettier formatting on markdown files
 - [x] Smart DD https://www.reddit.com/r/neovim/comments/w0jzzv/smart_dd/
+- [x] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
