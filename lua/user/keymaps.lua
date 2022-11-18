@@ -5,7 +5,7 @@ local opts = { noremap = true, silent = true }
 
 -- Format string for ex command
 function CMD(command)
-	return string.format(":%s<cr>", command)
+  return string.format(":%s<cr>", command)
 end
 
 -- Save
@@ -32,7 +32,7 @@ keymap("n", "<C-n>", CMD "bnext", opts)
 keymap("n", "<TAB>", CMD "bnext", opts)
 keymap("n", "[b", CMD "bprevious", opts) -- Previous buffer
 keymap("n", "<S-TAB>", CMD "bprevious", opts)
-keymap("n", "<C-w>", CMD "bdelete", opts) -- Close buffer
+keymap("n", "<C-w>", CMD "bnext | BufferClose#", opts) -- Close buffer
 
 -- Move selected line / block of text in visual mode
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
@@ -45,10 +45,6 @@ keymap("v", "p", '"_dP', opts)
 
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
-
--- Better nav for omnicomplete
-keymap("i", "<C-j", "\\<C-n>", opts)
-keymap("i", "<C-k", "\\<C-p>", opts)
 
 -- When going up or down one line, use displayed lines instead of physical lines
 keymap("n", "k", "gk", opts)
@@ -71,66 +67,66 @@ vim.g.mapleader = " "
 keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 
 fn.leaderKeymaps({
-	s = {
-		m = {
-			function()
-				vim.cmd [[mksession default-session.vim]]
-				Notify.info "Created session"
-			end,
-			"Create session",
-		},
-		s = {
-			function()
-				vim.cmd [[source default-session.vim]]
-			end,
-			"Source session",
-		},
-	},
-	R = {
-		fn.reloadConfig,
-		"Reload config",
-	},
-	q = {
-		CMD "quitall!",
-		"Quit",
-	},
-	l = {
-		CMD "noh",
-		"Clear highlights",
-	},
-	c = {
-		CMD "close",
-		"Close window",
-	},
-	C = {
-		":Copilot status<CR>",
-		"Check copilot status",
-	},
-	["-"] = {
-		CMD "b#",
-		"return to last edited buffer",
-	},
-	["]"] = {
-		CMD "bnext",
-		"Go to next buffer",
-	},
-	["["] = {
-		CMD "bprev",
-		"Go to previous buffer",
-	},
-	t = {
-		name = "Toggle an option",
-		c = {
-			function()
-				fn.toggleVimOption "cursorcolumn"
-			end,
-			"Toggle cursorcolumn",
-		},
-		n = {
-			function()
-				fn.toggleVimOption "relativenumber"
-			end,
-			"Toggle relative number",
-		},
-	},
+  s = {
+    m = {
+      function()
+        vim.cmd [[mksession default-session.vim]]
+        Notify.info "Created session"
+      end,
+      "Create session",
+    },
+    s = {
+      function()
+        vim.cmd [[source default-session.vim]]
+      end,
+      "Source session",
+    },
+  },
+  R = {
+    fn.reloadConfig,
+    "Reload config",
+  },
+  q = {
+    CMD "quitall!",
+    "Quit",
+  },
+  l = {
+    CMD "noh",
+    "Clear highlights",
+  },
+  c = {
+    CMD "close",
+    "Close window",
+  },
+  C = {
+    ":Copilot status<CR>",
+    "Check copilot status",
+  },
+  ["-"] = {
+    CMD "b#",
+    "return to last buffer",
+  },
+  ["]"] = {
+    CMD "bnext",
+    "Go to next buffer",
+  },
+  ["["] = {
+    CMD "bprev",
+    "Go to previous buffer",
+  },
+  t = {
+    name = "Toggle an option",
+    c = {
+      function()
+        fn.toggleVimOption "cursorcolumn"
+      end,
+      "Toggle cursorcolumn",
+    },
+    n = {
+      function()
+        fn.toggleVimOption "relativenumber"
+      end,
+      "Toggle relative number",
+    },
+  },
 })
