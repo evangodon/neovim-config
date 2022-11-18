@@ -40,9 +40,7 @@ vim.api.nvim_create_autocmd({ "CmdwinEnter", "CmdlineEnter" }, {
 -- Confirm quit when closing last buffer
 vim.api.nvim_create_autocmd({ "BufDelete" }, {
   callback = function()
-    local loaded_buffers = vim.tbl_filter(function(buf)
-      return vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, "buflisted")
-    end, vim.api.nvim_list_bufs())
+    local loaded_buffers = Get_loaded_buffers()
 
     if #loaded_buffers == 2 and vim.fn.expand "%" == "" then
       local confirm, cancel = "Confirm", "Cancel"
