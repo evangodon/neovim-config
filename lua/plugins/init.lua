@@ -110,6 +110,13 @@ packer.startup(function(use)
     config = safe_require "scrollbar",
   })
 
+  -- todo-comments
+  use({
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = safe_require "todocomments",
+  })
+
   -- colorizer
   use({
     "norcalli/nvim-colorizer.lua",
