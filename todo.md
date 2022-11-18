@@ -25,7 +25,6 @@
 
 ## Plugins
 
-- [ ] Replace scrollbar plugin with https://github.com/lewis6991/satellite.nvim
 - [ ] Create permalinks https://github.com/ruifm/gitlinker.nvim
 - [ ] Use vale as null-ls source https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/
 - [ ] nvim-surround
@@ -100,3 +99,4 @@
 - [x] Enable prettier formatting on markdown files
 - [x] Smart DD https://www.reddit.com/r/neovim/comments/w0jzzv/smart_dd/
 - [x] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
+- [x] Replace scrollbar plugin with https://github.com/lewis6991/satellite.nvim or https://github.com/petertriho/nvim-scrollbar
