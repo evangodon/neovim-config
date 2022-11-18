@@ -32,7 +32,16 @@ keymap("n", "<C-n>", CMD "bnext", opts)
 keymap("n", "<TAB>", CMD "bnext", opts)
 keymap("n", "[b", CMD "bprevious", opts) -- Previous buffer
 keymap("n", "<S-TAB>", CMD "bprevious", opts)
-keymap("n", "<C-w>", CMD "bnext | BufferClose#", opts) -- Close buffer
+
+vim.api.nvim_create_user_command("CloseBuffer", function()
+  local loaded_buffers = Get_loaded_buffers()
+  if #loaded_buffers == 1 then
+    vim.cmd "bdelete"
+  else
+    vim.cmd "bnext|BufferClose#"
+  end
+end, {})
+keymap("n", "<C-w>", CMD "CloseBuffer", opts)
 
 -- Move selected line / block of text in visual mode
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
