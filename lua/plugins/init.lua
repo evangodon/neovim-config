@@ -38,8 +38,6 @@ packer.startup(function(use)
   use({ "ojroques/vim-oscyank", branch = "main", config = safe_require "oscyank" })
 
   -- Colorschemes
-  use "embark-theme/vim"
-  use "folke/tokyonight.nvim"
   use({
     "catppuccin/nvim",
     as = "catppuccin",
