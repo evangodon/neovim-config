@@ -8,6 +8,7 @@
 
 ## DX
 
+- [ ] The chezmoi autocmd shows output at the top which is annoying
 - [ ] Create keymap for saving and source sessions
 - [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
 
