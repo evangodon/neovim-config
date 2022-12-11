@@ -96,13 +96,13 @@ lualine.setup({
     lualine_b = {},
     lualine_c = {},
     lualine_x = {
-      {
-        "filename",
-        file_status = true,
-        newfile_status = false,
-        path = 1,
-        shorting_target = 40,
-      },
+      --[[ { ]]
+      --[[   "filename", ]]
+      --[[   file_status = true, ]]
+      --[[   newfile_status = false, ]]
+      --[[   path = 1, ]]
+      --[[   shorting_target = 40, ]]
+      --[[ }, ]]
     },
     lualine_y = {},
     lualine_z = {},
