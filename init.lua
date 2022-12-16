@@ -5,7 +5,6 @@ require "user.settings"
 require "user.autocommands"
 require "user.chezmoi"
 require "user.keymaps"
-require "user.lsp"
 require "user.icons"
 
 require "plugins"
