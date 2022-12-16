@@ -3,218 +3,236 @@ require "plugins.packer-keymaps"
 
 local packer_status_ok, packer = pcall(require, "packer")
 if not packer_status_ok then
-  Notify.info "Error loading packer"
-  return
+	Notify.info "Error loading packer"
+	return
 end
 
 local function safe_require(pluginName)
-  local path = ("plugins.config." .. pluginName)
+	local path = ("plugins.config." .. pluginName)
 
-  local status_ok, _ = pcall(require, path)
-  if not status_ok then
-    Notify.error("Error loading plugin at path: " .. path)
-    local debugmode = os.getenv "NVIM_DEBUG"
-    if debugmode then
-      require(path)
-    end
-  end
+	local status_ok, _ = pcall(require, path)
+	if not status_ok then
+		Notify.error("Error loading plugin at path: " .. path)
+		local debugmode = os.getenv "NVIM_DEBUG"
+		if debugmode then
+			require(path)
+		end
+	end
 end
 
 -- call setup() on plugin
 local function safe_setup(pluginName)
-  local status_ok, plugin = pcall(require, pluginName)
-  if not status_ok then
-    Notify.error("Error loading plugin: " .. pluginName)
-    return
-  end
+	local status_ok, plugin = pcall(require, pluginName)
+	if not status_ok then
+		Notify.error("Error loading plugin: " .. pluginName)
+		return
+	end
 
-  plugin.setup()
+	plugin.setup()
 end
 
 packer.startup(function(use)
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
-  use({ "ojroques/vim-oscyank", branch = "main", config = safe_require "oscyank" })
+	use "wbthomason/packer.nvim" -- Have packer manage itself
+	use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+	use "nvim-lua/plenary.nvim" -- Useful lua functions used in lots of plugins
+	use({ "ojroques/vim-oscyank", branch = "main", config = safe_require "oscyank" })
 
-  -- Colorschemes
-  use({
-    "catppuccin/nvim",
-    as = "catppuccin",
-  })
+	-- Colorschemes
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
+	})
 
-  use({
-    "goolord/alpha-nvim",
-    requires = { "kyazdani42/nvim-web-devicons" },
-    config = safe_require "alpha",
-  })
+	use({
+		"goolord/alpha-nvim",
+		requires = { "kyazdani42/nvim-web-devicons" },
+		config = safe_require "alpha",
+	})
 
-  -- nvim-notify
-  use({
-    "rcarriga/nvim-notify",
-    config = safe_require "nvim-notify",
-  })
+	-- nvim-notify
+	use({
+		"rcarriga/nvim-notify",
+		config = safe_require "nvim-notify",
+	})
 
-  -- toggleterm
-  use({
-    "akinsho/toggleterm.nvim",
-    config = safe_require "toggleterm",
-  })
+	-- toggleterm
+	use({
+		"akinsho/toggleterm.nvim",
+		config = safe_require "toggleterm",
+	})
 
-  -- # Code
-  -- auto-pairs
-  use({
-    "windwp/nvim-autopairs",
-    config = safe_require "autopairs",
-  })
+	-- # Code
+	-- auto-pairs
+	use({
+		"windwp/nvim-autopairs",
+		config = safe_require "autopairs",
+	})
 
-  --go.nvim
-  use({
-    "ray-x/go.nvim",
-    config = safe_require "go",
-  })
-  use "cespare/vim-go-templates"
+	--go.nvim
+	use({
+		"ray-x/go.nvim",
+		config = safe_require "go",
+	})
+	use "cespare/vim-go-templates"
 
-  -- Graphql
-  use({ "jparise/vim-graphql" })
+	-- Graphql
+	use({ "jparise/vim-graphql" })
 
-  -- UI
-  use "kyazdani42/nvim-web-devicons"
-  use "fladson/vim-kitty"
-  use({ "lukas-reineke/indent-blankline.nvim", config = safe_require "indent-blankline" })
-  use({
-    "folke/zen-mode.nvim",
-    config = safe_require "zenmode",
-  })
-  use "stevearc/dressing.nvim"
-  use({
-    "ziontee113/icon-picker.nvim",
-    config = safe_require "iconpicker",
-  })
+	-- UI
+	use "kyazdani42/nvim-web-devicons"
+	use "fladson/vim-kitty"
+	use({ "lukas-reineke/indent-blankline.nvim", config = safe_require "indent-blankline" })
+	use({
+		"folke/zen-mode.nvim",
+		config = safe_require "zenmode",
+	})
+	use "stevearc/dressing.nvim"
+	use({
+		"ziontee113/icon-picker.nvim",
+		config = safe_require "iconpicker",
+	})
 
-  -- nvim-tree
-  use({
-    "kyazdani42/nvim-tree.lua",
-    config = safe_require "nvim-tree",
-  })
+	-- nvim-tree
+	use({
+		"kyazdani42/nvim-tree.lua",
+		config = safe_require "nvim-tree",
+	})
 
-  -- lualine
-  use({
-    "nvim-lualine/lualine.nvim",
-    config = safe_require "lualine",
-  })
+	-- lualine
+	use({
+		"nvim-lualine/lualine.nvim",
+		config = safe_require "lualine",
+	})
 
-  -- scrollbar
-  use({
-    "petertriho/nvim-scrollbar",
-    config = safe_require "scrollbar",
-  })
+	-- scrollbar
+	use({
+		"petertriho/nvim-scrollbar",
+		config = safe_require "scrollbar",
+	})
 
-  -- todo-comments
-  use({
-    "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = safe_require "todocomments",
-  })
+	-- todo-comments
+	use({
+		"folke/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = safe_require "todocomments",
+	})
 
-  -- colorizer
-  use({
-    "norcalli/nvim-colorizer.lua",
-    config = safe_setup "colorizer",
-  })
+	-- colorizer
+	use({
+		"norcalli/nvim-colorizer.lua",
+		config = safe_setup "colorizer",
+	})
 
-  -- bufferline
-  use({
-    "romgrk/barbar.nvim",
-    requires = { "kyazdani42/nvim-web-devicons" },
-    config = safe_require "barbar",
-  })
+	-- bufferline
+	use({
+		"romgrk/barbar.nvim",
+		requires = { "kyazdani42/nvim-web-devicons" },
+		config = safe_require "barbar",
+	})
 
-  -- Project management
-  use({
-    "natecraddock/workspaces.nvim",
-    config = safe_require "workspaces",
-  })
+	-- Project management
+	use({
+		"natecraddock/workspaces.nvim",
+		config = safe_require "workspaces",
+	})
 
-  --fidget
-  use({
-    "j-hui/fidget.nvim",
-    config = safe_require "fidget",
-  })
+	--fidget
+	use({
+		"j-hui/fidget.nvim",
+		config = safe_require "fidget",
+	})
 
-  use({ "numToStr/Comment.nvim", config = safe_require "comment" })
+	use({ "numToStr/Comment.nvim", config = safe_require "comment" })
 
-  -- Which-key
-  use({ "folke/which-key.nvim", config = safe_require "whichkey" })
+	-- Which-key
+	use({ "folke/which-key.nvim", config = safe_require "whichkey" })
 
-  -- Neoscroll
-  use({ "karb94/neoscroll.nvim", config = safe_require "neoscroll" })
+	-- Neoscroll
+	use({ "karb94/neoscroll.nvim", config = safe_require "neoscroll" })
 
-  -- cmp plugins
-  use({
-    "hrsh7th/nvim-cmp",
-    config = safe_require "cmp",
-    requires = {
-      "hrsh7th/cmp-buffer", -- buffer completions
-      "hrsh7th/cmp-path", -- path completions
-      "hrsh7th/cmp-cmdline", -- cmdline completions
-      "saadparwaiz1/cmp_luasnip", -- snippet completions
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lua",
-    },
-  })
+	-- cmp plugins
+	use({
+		"hrsh7th/nvim-cmp",
+		config = safe_require "cmp",
+		requires = {
+			"hrsh7th/cmp-buffer", -- buffer completions
+			"hrsh7th/cmp-path", -- path completions
+			"hrsh7th/cmp-cmdline", -- cmdline completions
+			"saadparwaiz1/cmp_luasnip", -- snippet completions
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+		},
+	})
 
-  -- Gitsigns
-  use({
-    "lewis6991/gitsigns.nvim",
-    config = safe_require "gitsigns",
-  })
+	-- Gitsigns
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = safe_require "gitsigns",
+	})
 
-  -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+	-- snippets
+	use "L3MON4D3/LuaSnip" --snippet engine
+	use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-  -- LSP
-  use({
-    "neovim/nvim-lspconfig",
-    requires = {
-      "williamboman/nvim-lsp-installer", -- simple to use language server installer
-      "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-    },
-  })
+	-- LSP
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		requires = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
 
-  -- Telescope
-  use({
-    "nvim-telescope/telescope.nvim",
-    config = safe_require "telescope",
-  })
-  use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lua" },
 
-  -- Treesitter
-  use({
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    config = safe_require "treesitter",
-  })
-  use "p00f/nvim-ts-rainbow"
-  use "JoosepAlviste/nvim-ts-context-commentstring" -- context aware comments
+			-- Snippets
+			{ "L3MON4D3/LuaSnip" },
+			{ "rafamadriz/friendly-snippets" },
+		},
+	})
+	use({
+		"neovim/nvim-lspconfig",
+		"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+	})
 
-  -- Github Copilot
-  -- use({
-  -- 	"github/copilot.vim",
-  -- 	config = function()
-  -- 		vim.api.nvim_set_var("copilot_filetypes", {
-  -- 			TelescopePrompt = false,
-  -- 		})
-  -- 	end,
-  -- })
+	-- Telescope
+	use({
+		"nvim-telescope/telescope.nvim",
+		config = safe_require "telescope",
+	})
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
-  -- ZK
-  use({ "mickael-menu/zk-nvim", config = safe_require "zk" })
+	-- Treesitter
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+		config = safe_require "treesitter",
+	})
+	use "p00f/nvim-ts-rainbow"
+	use "JoosepAlviste/nvim-ts-context-commentstring" -- context aware comments
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
+	-- Github Copilot
+	-- use({
+	-- 	"github/copilot.vim",
+	-- 	config = function()
+	-- 		vim.api.nvim_set_var("copilot_filetypes", {
+	-- 			TelescopePrompt = false,
+	-- 		})
+	-- 	end,
+	-- })
+
+	-- ZK
+	use({ "mickael-menu/zk-nvim", config = safe_require "zk" })
+
+	-- Automatically set up your configuration after cloning packer.nvim
+	-- Put this at the end after all plugins
+	if PACKER_BOOTSTRAP then
+		require("packer").sync()
+	end
 end)
