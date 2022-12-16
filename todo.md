@@ -6,15 +6,11 @@
 
 ## ZK
 
+- [ ] Improve the Add new note keymap so that it works in any notebook
+
 ## DX
 
-- [ ] The chezmoi autocmd shows output at the top which is annoying
-- [ ] Create keymap for saving and source sessions
-- [ ] Test out another session manager https://github.com/Shatur/neovim-session-manager
-
 <!-- - [-] Disable Gitsigns in gutter for markdown -->
-<!-- - [-] Figure out why Nvimtree sometimes open file in window -->
-<!-- - [-] How to persist folds -->
 
 ## UI
 
@@ -31,6 +27,8 @@
 - [ ] nvim-surround
 - [ ] eyeliner which is a lua version of quick-scope
 - [ ] https://github.com/sindrets/diffview.nvim
+- [ ] https://github.com/cbochs/grapple.nvim
+- [ ] https://github.com/stevearc/resession.nvim
 
 ## Productivity
 
@@ -101,3 +99,4 @@
 - [x] Smart DD https://www.reddit.com/r/neovim/comments/w0jzzv/smart_dd/
 - [x] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
 - [x] Replace scrollbar plugin with https://github.com/lewis6991/satellite.nvim or https://github.com/petertriho/nvim-scrollbar
+- [x] The chezmoi autocmd shows output at the top which is annoying
