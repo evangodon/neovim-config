@@ -9,7 +9,7 @@ function CMD(command)
 end
 
 -- Save
-keymap("n", "<C-s>", CMD "w", opts)
+keymap("n", "<C-s>", CMD "update", opts)
 -- better window movement
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -68,6 +68,12 @@ keymap("n", "L", "$", opts)
 keymap("v", "L", "$", opts)
 
 keymap("n", "dd", keyfn.smart_dd, { noremap = true, expr = true })
+
+keymap("n", "<Esc>", function()
+  require("notify").dismiss() -- clear notifications
+  CMD "nohl" -- clear highlights
+  CMD "echo " -- clear short-message
+end)
 
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
