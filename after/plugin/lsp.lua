@@ -11,7 +11,7 @@ lsp.ensure_installed({
 })
 
 lsp.set_preferences({
-	suggest_lsp_servers = false,
+	suggest_lsp_servers = true,
 	sign_icons = {
 		error = "•",
 		warn = "•",
@@ -29,10 +29,11 @@ lsp.configure("sumneko_lua", require "user.lsp.settings.sumneko_lua")
 lsp.configure("jsonls", require "user.lsp.settings.jsonls")
 
 -- Keymaps
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
 	local function setBufOpts(desc)
 		return { noremap = true, silent = true, buffer = bufnr, desc = desc }
 	end
+
 	local keymap = vim.keymap.set
 
 	keymap("n", "gD", vim.lsp.buf.declaration, setBufOpts "Jump to declaration")
