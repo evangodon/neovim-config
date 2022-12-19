@@ -20,25 +20,17 @@ packer.startup(function(use)
 	})
 
 	-- nvim-notify
-	use({
-		"rcarriga/nvim-notify",
-	})
+	use({ "rcarriga/nvim-notify" })
 
 	-- toggleterm
-	use({
-		"akinsho/toggleterm.nvim",
-	})
+	use({ "akinsho/toggleterm.nvim" })
 
 	-- # Code
 	-- auto-pairs
-	use({
-		"windwp/nvim-autopairs",
-	})
+	use({ "windwp/nvim-autopairs" })
 
 	--go.nvim
-	use({
-		"ray-x/go.nvim",
-	})
+	use({ "ray-x/go.nvim" })
 	use "cespare/vim-go-templates"
 
 	-- Graphql
@@ -48,28 +40,18 @@ packer.startup(function(use)
 	use "kyazdani42/nvim-web-devicons"
 	use "fladson/vim-kitty"
 	use({ "lukas-reineke/indent-blankline.nvim" })
-	use({
-		"folke/zen-mode.nvim",
-	})
+	use({ "folke/zen-mode.nvim" })
 	use "stevearc/dressing.nvim"
-	use({
-		"ziontee113/icon-picker.nvim",
-	})
+	use({ "ziontee113/icon-picker.nvim" })
 
 	-- nvim-tree
-	use({
-		"kyazdani42/nvim-tree.lua",
-	})
+	use({ "kyazdani42/nvim-tree.lua" })
 
 	-- lualine
-	use({
-		"nvim-lualine/lualine.nvim",
-	})
+	use({ "nvim-lualine/lualine.nvim" })
 
 	-- scrollbar
-	use({
-		"petertriho/nvim-scrollbar",
-	})
+	use({ "petertriho/nvim-scrollbar" })
 
 	-- todo-comments
 	use({
@@ -78,9 +60,7 @@ packer.startup(function(use)
 	})
 
 	-- colorizer
-	use({
-		"norcalli/nvim-colorizer.lua",
-	})
+	use({ "norcalli/nvim-colorizer.lua" })
 
 	-- bufferline
 	use({
@@ -89,14 +69,10 @@ packer.startup(function(use)
 	})
 
 	-- Project management
-	use({
-		"natecraddock/workspaces.nvim",
-	})
+	use({ "natecraddock/workspaces.nvim" })
 
 	--fidget
-	use({
-		"j-hui/fidget.nvim",
-	})
+	use({ "j-hui/fidget.nvim" })
 
 	use({ "numToStr/Comment.nvim" })
 
@@ -154,9 +130,7 @@ packer.startup(function(use)
 	})
 
 	-- Telescope
-	use({
-		"nvim-telescope/telescope.nvim",
-	})
+	use({ "nvim-telescope/telescope.nvim" })
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	-- Treesitter
