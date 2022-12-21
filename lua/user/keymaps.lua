@@ -83,6 +83,7 @@ keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 
 -- Disable recording
 keymap("n", "Q", "<nop>", opts)
+keymap("n", "q", "<nop>", opts)
 
 fn.leaderKeymaps({
 	s = {
