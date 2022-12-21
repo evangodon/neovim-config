@@ -9,10 +9,9 @@ packer.startup(function(use)
 	use({ "ojroques/vim-oscyank", branch = "main" })
 
 	-- Colorschemes
-	use({
-		"catppuccin/nvim",
-		as = "catppuccin",
-	})
+	use({ "catppuccin/nvim", as = "catppuccin" })
+
+	use "EdenEast/nightfox.nvim" -- Packer
 
 	use({
 		"goolord/alpha-nvim",
