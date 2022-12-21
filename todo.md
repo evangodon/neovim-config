@@ -18,7 +18,6 @@
 - [ ] Fix highlight group for markdown links
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
 - [ ] diagnostics float window borders
-- [ ] Make NvimTreeCursorLine go all the way to end of buffer https://github.com/neovim/neovim/issues/14473
 
 ## Plugins
 

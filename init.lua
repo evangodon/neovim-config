@@ -1,4 +1,5 @@
 require "user.functions"
+--require "user.catppuccin"
 require "user.colorscheme"
 require "user.window_management"
 require "user.settings"
