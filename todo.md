@@ -78,7 +78,7 @@
 - [x] Create keybinding to follow links for zk notes
 - [x] Fix fuzzy search of current window
 - [x] Telescope
-      -- [X] Place prompt to top, see here https://github.com/NvChad/NvChad/blob/main/lua/plugins/configs/telescope.lua
+      -- [x] Place prompt to top, see here https://github.com/NvChad/NvChad/blob/main/lua/plugins/configs/telescope.lua
       -- [-] Configure border characterst to add horizontal padding
 - [x] Partial highlight link with GitSignColumn https://www.reddit.com/r/neovim/comments/oxddk9/how_do_i_get_the_value_from_a_highlight_group/
 - [x] make background dark for toggle term
