@@ -1,6 +1,3 @@
-
-
-
 Icon = {
-  diagnostics = "•",
+	diagnostics = "•",
 }

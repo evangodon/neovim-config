@@ -1,6 +1,3 @@
---
--- Module
---
 local M = {}
 
 -- Reload config
@@ -22,14 +19,11 @@ M.reloadConfig = function()
   require("notify").notify "Reloaded config"
 end
 
-local status_ok, wk = pcall(require, "which-key")
-if not status_ok then
-  return
-end
 
 -- Set leader keymappings
 M.leaderKeymaps = function(keys, opts)
   local defaults = vim.tbl_extend("keep", { prefix = "<leader>" }, opts or {})
+  local wk = require "which-key"
   wk.register(keys, defaults)
 end
 
