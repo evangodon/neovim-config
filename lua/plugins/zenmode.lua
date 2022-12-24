@@ -33,7 +33,7 @@ function M.config()
 		end,
 	})
 
-	fn.leaderKeymaps({
+	fn.registerKeyMap({
 		Z = {
 			":noautocmd ZenMode<CR>",
 			"Zen Mode",

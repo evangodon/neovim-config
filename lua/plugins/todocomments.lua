@@ -72,7 +72,7 @@ function M.config()
 	})
 
 	local fn = require "user.functions"
-	fn.leaderKeymaps({
+	fn.registerKeyMap({
 		T = {
 			CMD "TodoTelescope",
 			"Use telescope to search todos",

@@ -59,7 +59,7 @@ function M.config()
 	end
 
 	local fn = require "user.functions"
-	fn.leaderKeymaps({
+	fn.registerKeyMap({
 		D = {
 			function()
 				dash:toggle()

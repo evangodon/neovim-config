@@ -55,7 +55,7 @@ function M.config()
 		return true
 	end
 
-	fn.leaderKeymaps({
+	fn.registerKeyMap({
 		z = {
 			name = "zk",
 			-- New Note

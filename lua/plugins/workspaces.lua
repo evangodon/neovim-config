@@ -18,7 +18,7 @@ function M.config()
 
 	telescope.load_extension "workspaces"
 
-	fn.leaderKeymaps({
+	fn.registerKeyMap({
 		p = {
 			CMD "Telescope workspaces",
 			"View projects",

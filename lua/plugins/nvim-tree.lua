@@ -121,7 +121,7 @@ function M.config()
 		nvim_tree.toggle(false, false)
 	end, {})
 
-	fn.leaderKeymaps({
+	fn.registerKeyMap({
 		e = {
 			function()
 				vim.cmd [[CustomNvimTreeToggle]]
