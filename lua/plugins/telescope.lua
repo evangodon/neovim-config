@@ -136,7 +136,7 @@ function M.config()
 	-- Fuzzy search in buffer
 	map("n", "<C-f>", builtin_pickers.current_buffer_fuzzy_find, opts "Fuzzy find current buffer")
 
-	fn.leaderKeymaps({
+	fn.registerKeyMap({
 		b = {
 			CMD "Telescope buffers",
 			"Open buffer list",

@@ -14,10 +14,8 @@
 
 ## UI
 
-- [ ] Add autocmd for fish_indent on fish files
-- [ ] Fix highlight group for markdown links
+- [ ] change border color of terminal
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
-- [ ] diagnostics float window borders
 
 ## Plugins
 

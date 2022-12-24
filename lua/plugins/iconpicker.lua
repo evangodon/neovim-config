@@ -12,7 +12,7 @@ function M.config()
 	require "icon-picker"
 
 
-	fn.leaderKeymaps({
+	fn.registerKeyMap({
 		I = {
 			CMD "PickIcons",
 			"Pick a nerd font icon",

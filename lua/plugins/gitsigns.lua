@@ -105,7 +105,7 @@ function M.config()
       end, { expr = true, desc = "Previous hunk" })
 
       -- Actions
-      fn.leaderKeymaps({
+      fn.registerKeyMap({
         G = {
           name = "Git",
           s = {

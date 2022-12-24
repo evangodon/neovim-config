@@ -10,7 +10,7 @@ function M.config()
 
 	local fn = require "user.functions"
 
-	fn.leaderKeymaps({
+	fn.registerKeyMap({
 		g = {
 			name = "Go",
 			f = { ":GoFillStruct<cr>", "Fill struct" },
