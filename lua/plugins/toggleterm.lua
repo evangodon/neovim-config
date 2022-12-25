@@ -3,6 +3,8 @@
 --
 local M = {
   "akinsho/toggleterm.nvim",
+  keys = [[<c-\>]],
+  lazy = true,
 }
 
 function M.config()

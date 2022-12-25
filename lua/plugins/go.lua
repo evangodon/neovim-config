@@ -1,7 +1,7 @@
 local M = {
 	"ray-x/go.nvim",
+	ft = "go",
 }
-
 
 function M.config()
 	local go = require "go"

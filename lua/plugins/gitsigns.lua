@@ -3,6 +3,8 @@
 --
 local M = {
   "lewis6991/gitsigns.nvim",
+  lazy = true,
+  event = "BufReadPre",
 }
 
 function M.config()
@@ -135,7 +137,6 @@ function M.config()
       })
     end,
   })
-
 end
 
 return M
