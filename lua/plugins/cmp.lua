@@ -9,6 +9,7 @@ local M = {
 		"rafamadriz/friendly-snippets", -- a bunch of snippets to use
 		"L3MON4D3/LuaSnip",
 	},
+	event = "InsertEnter",
 }
 
 function M.config()

@@ -14,7 +14,7 @@
 
 ## UI
 
-- [ ] change border color of terminal
+- [ ] change border color of terminal and use default hightlights
 - [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
 
 ## Plugins

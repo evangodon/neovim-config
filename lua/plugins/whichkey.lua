@@ -1,12 +1,12 @@
 local M = {
-	"folke/which-key.nvim",
+  "folke/which-key.nvim",
+  lazy = true,
+  event = "VeryLazy",
 }
 
 function M.config()
-	local wk = require "which-key"
-
-
-	wk.setup()
+  local wk = require "which-key"
+  wk.setup()
 end
 
 return M
