@@ -13,7 +13,7 @@ function M.config()
 	lsp.preset "recommended"
 
 	lsp.ensure_installed({
-		"tsserver",
+		"denols",
 		"eslint",
 		"sumneko_lua",
 		"gopls",

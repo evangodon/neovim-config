@@ -9,6 +9,9 @@ function M.config()
   indent_blankline.setup({
     show_current_context = false,
     show_current_context_start = true,
+    filetype_exclude = {
+      "markdown",
+    },
   })
 end
 

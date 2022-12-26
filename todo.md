@@ -10,6 +10,7 @@
 
 ## DX
 
+- [ ] How to use Deno lsp and TypeScript lsp seperately
 <!-- - [-] Disable Gitsigns in gutter for markdown -->
 
 ## UI
