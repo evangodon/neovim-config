@@ -27,7 +27,7 @@ function M.config()
 		dashboard.button("s", "痢 Sync plugins", CMD "CreateSnapshotAndSyncPlugins"),
 		dashboard.button("c", "  Configuration", CMD "e ~/.config/nvim/init.lua "),
 		dashboard.button("T", "  Open Todo list", CMD ":edit ~/.config/nvim/todo.md<cr>"),
-		dashboard.button("q", "  Quit Neovim", CMD "qa"),
+		dashboard.button("q", "  Quit", CMD "qa"),
 	}
 
 	local function footer()
