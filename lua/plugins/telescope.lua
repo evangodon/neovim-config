@@ -25,25 +25,16 @@ function M.config()
 					["<C-n>"] = actions.cycle_history_next,
 					["<C-p>"] = actions.cycle_history_prev,
 
-					["<C-j>"] = actions.move_selection_next,
-					["<C-k>"] = actions.move_selection_previous,
-
 					["<C-c>"] = actions.close,
-
-					["<Down>"] = actions.move_selection_next,
-					["<Up>"] = actions.move_selection_previous,
 
 					["<CR>"] = actions.select_default,
 					["<C-x>"] = actions.select_horizontal,
 					["<C-v>"] = actions.select_vertical,
 					["<C-t>"] = actions.select_tab,
 
-					["<C-u>"] = false,
-					-- ["<C-d>"] = actions.preview_scrolling_down,
+					["<C-u>"] = actions.preview_scrolling_up,
+					["<C-d>"] = actions.preview_scrolling_down,
 					["<M-p>"] = action_layout.toggle_preview,
-
-					["<PageUp>"] = actions.results_scrolling_up,
-					["<PageDown>"] = actions.results_scrolling_down,
 
 					["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 					["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
@@ -71,16 +62,11 @@ function M.config()
 					["M"] = actions.move_to_middle,
 					["L"] = actions.move_to_bottom,
 
-					["<Down>"] = actions.move_selection_next,
-					["<Up>"] = actions.move_selection_previous,
 					["gg"] = actions.move_to_top,
 					["G"] = actions.move_to_bottom,
 
 					["<C-u>"] = actions.preview_scrolling_up,
 					["<C-d>"] = actions.preview_scrolling_down,
-
-					["<PageUp>"] = actions.results_scrolling_up,
-					["<PageDown>"] = actions.results_scrolling_down,
 
 					["?"] = actions.which_key,
 				},
@@ -116,8 +102,11 @@ function M.config()
 	})
 
 	-- Load extensions
-	--telescope.load_extension "fzf"
+	-- telescope.load_extension "fzf"
+	telescope.load_extension "knowledge_base"
+end
 
+function M.init()
 	-- Keymaps
 	local map = vim.keymap.set
 	local opts = function(desc)
@@ -144,6 +133,10 @@ function M.config()
 		r = {
 			CMD "Telescope oldfiles",
 			"View recent files",
+		},
+		k = {
+			CMD "Telescope knowledge_base list",
+			"View knowledge base",
 		},
 	})
 end
