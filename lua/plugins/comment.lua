@@ -7,6 +7,7 @@ local M = {
   dependencies = {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
+  event = "VeryLazy",
 }
 
 function M.config()
