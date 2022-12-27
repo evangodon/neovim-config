@@ -6,6 +6,8 @@
 --
 local M = {
 	"mickael-menu/zk-nvim",
+	lazy = true,
+	event = "VeryLazy",
 }
 
 function M.config()
@@ -107,8 +109,6 @@ function M.config()
 			},
 		},
 	})
-
-
 end
 
 return M

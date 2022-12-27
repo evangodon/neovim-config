@@ -1,6 +1,7 @@
 local M = {
 	"ojroques/vim-oscyank",
 	branch = "main",
+	event = "VeryLazy",
 }
 
 function M.config()
