@@ -126,10 +126,6 @@ function M.config()
       end,
       "Toggle Nvimtree",
     },
-    E = {
-      CMD "NvimTreeFocus",
-      "Focus Nvimtree",
-    },
   })
 end
 

@@ -1,4 +1,5 @@
 local keyfn = require "user.functions.keyfunc"
+local env = require "user.env"
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
@@ -138,5 +139,11 @@ fn.registerKeyMap({
       end,
       "Toggle relative number",
     },
+  },
+  E = {
+    function()
+      env.printValues()
+    end,
+    "Show all values in .env file",
   },
 })
