@@ -82,7 +82,7 @@ function M.init()
   fn.registerKeyMap({
     T = {
       CMD "TodoTelescope",
-      "Use telescope to search todos",
+      "Telescope todos",
     },
   })
 end
