@@ -2,33 +2,41 @@ local M = {}
 
 M.envValues = {}
 
-function M.prepareValues()
-  if #M.envValues ~= 0 then
-    return
-  end
+local function readFile()
+  local values = {}
   local file = assert(io.open(".env", "r"))
 
   for line in file:lines() do
     local key, value = string.match(line, '([%w_]*)="+(.+)"')
-    M.envValues[key] = value
+    values[key] = value
   end
 
   file:close()
+  return values
 end
 
-function M.printValues()
-  M.prepareValues()
-  P(M.envValues)
-end
-
-function M.get(key)
-  local ok, envValues = pcall(M.prepareValues)
+local function prepareValues()
+  if #M.envValues ~= 0 then
+    return
+  end
+  local ok, values = pcall(readFile)
   if not ok then
     Notify.error ".env file not found"
     return ""
   end
 
-  local value = envValues[key]
+  M.envValues = values
+end
+
+function M.printValues()
+  prepareValues()
+  P(M.envValues)
+end
+
+function M.get(key)
+  prepareValues()
+
+  local value = M.envValues[key]
 
   if value == nil then
     Notify.error(key .. " not found")

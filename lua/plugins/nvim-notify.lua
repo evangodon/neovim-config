@@ -3,7 +3,6 @@
 
 local M = {
   "rcarriga/nvim-notify",
-  lazy = "false",
 }
 
 function M.config()
@@ -23,6 +22,21 @@ function M.config()
     render = "default",
     stages = "static",
     timeout = 3000,
+  })
+end
+
+-- Keep reference to original notify
+VimNotify = vim.notify
+
+function M.init()
+  vim.notify = require "notify"
+
+  local fn = require "user.functions"
+  fn.registerKeyMap({
+    N = {
+      CMD "Notifications",
+      "See Notifications",
+    },
   })
 end
 
