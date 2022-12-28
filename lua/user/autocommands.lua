@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd({ "CmdlineLeave" }, {
       message_duration,
       0,
       vim.schedule_wrap(function()
-        VimNotify ""
+        -- vim.notify ""
       end)
     )
   end,

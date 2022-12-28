@@ -1,18 +1,21 @@
 local M = {
-  "simrat39/symbols-outline.nvim",
+	"simrat39/symbols-outline.nvim",
+	event = "BufReadPre",
 }
 
 function M.config()
-  require("symbols-outline").setup({
-    width = 25,
-  })
+	require("symbols-outline").setup({
+		width = 25,
+	})
+end
 
-  require("user.functions").registerKeyMap({
-    S = {
-      CMD "SymbolsOutline",
-      "Toggle Symbols Outline",
-    },
-  })
+function M.init()
+	require("user.functions").registerKeyMap({
+		S = {
+			CMD "SymbolsOutline",
+			"Toggle Symbols Outline",
+		},
+	})
 end
 
 return M

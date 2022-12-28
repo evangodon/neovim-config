@@ -5,6 +5,7 @@ local M = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 	},
+	event = "BufReadPre",
 }
 
 function M.config()

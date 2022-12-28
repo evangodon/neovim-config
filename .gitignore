@@ -3,6 +3,7 @@ Session.vim
 .vscode/
 
 .env
+startup.log
 
 # Compiled Lua sources
 luac.out
