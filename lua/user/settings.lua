@@ -18,6 +18,7 @@ o.smartindent = true -- make indenting smarter again
 o.splitbelow = true -- force all horizontal splits to go below current window
 o.splitright = true -- force all vertical splits to go to the right of current window
 o.swapfile = false -- creates a swapfile
+o.cmdheight = 0 -- hide cmd line
 
 o.termguicolors = true -- set term gui colors (most terminals support this)
 o.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
