@@ -1,13 +1,5 @@
 # TODO
 
-## Bug
-
-## Workflow
-
-## ZK
-
-- [ ] Improve the Add new note keymap so that it works in any notebook
-
 ## DX
 
 - [ ] How to use Deno lsp and TypeScript lsp seperately

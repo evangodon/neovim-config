@@ -9,6 +9,8 @@ local M = {
 	event = "VeryLazy",
 }
 
+-- TODO: [ ] Improve the Add new note keymap so that it works in any notebook
+
 function M.config()
 	local zk = require "zk"
 	local zk_util = require "zk.util"
