@@ -7,6 +7,11 @@ function M.config()
 	local neoscroll = require "neoscroll"
 
 	neoscroll.setup({
+		mappings = {
+			"<C-u>",
+			"<C-d>",
+			"zz",
+		},
 		hide_cursor = true,
 	})
 end
