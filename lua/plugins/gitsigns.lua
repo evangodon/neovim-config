@@ -3,7 +3,6 @@
 --
 local M = {
   "lewis6991/gitsigns.nvim",
-  lazy = true,
   event = "BufReadPre",
 }
 
@@ -114,12 +113,12 @@ function M.config()
             gs.toggle_signs,
             "Toggle signs",
           },
-          P = { gs.preview_hunk, "Preview hunk" },
+          p = { gs.preview_hunk, "Preview hunk" },
           b = {
             gs.toggle_current_line_blame,
             "Toggle blame",
           },
-          R = {
+          r = {
             ":Gitsigns reset_hunk<CR>",
             "Reset hunk",
           },
