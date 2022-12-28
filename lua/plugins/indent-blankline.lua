@@ -1,18 +1,18 @@
 local M = {
-  "lukas-reineke/indent-blankline.nvim",
-  event = "BufReadPre",
+	"lukas-reineke/indent-blankline.nvim",
+	event = "BufReadPre",
 }
 
 function M.config()
-  local indent_blankline = require "indent_blankline"
+	local indent_blankline = require "indent_blankline"
 
-  indent_blankline.setup({
-    show_current_context = false,
-    show_current_context_start = true,
-    filetype_exclude = {
-      "markdown",
-    },
-  })
+	indent_blankline.setup({
+		show_current_context = false,
+		show_current_context_start = true,
+		filetype_exclude = {
+			"markdown",
+		},
+	})
 end
 
 return M

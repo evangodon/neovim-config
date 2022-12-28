@@ -3,21 +3,26 @@
 --
 local M = {
 	"natecraddock/workspaces.nvim",
+	cmd = "Telescope workspaces",
 }
 
 function M.config()
 	local workspaces = require "workspaces"
-	local telescope = require "telescope"
-	local fn = require "user.functions"
 
 	workspaces.setup({
 		hooks = {
 			open = { "noautocmd NvimTreeOpen" },
 		},
 	})
+end
+
+function M.init()
+	local telescope = require "telescope"
+	local workspaces = require "workspaces"
 
 	telescope.load_extension "workspaces"
 
+	local fn = require "user.functions"
 	fn.registerKeyMap({
 		p = {
 			CMD "Telescope workspaces",

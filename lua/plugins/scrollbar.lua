@@ -3,6 +3,7 @@
 --
 local M = {
 	"petertriho/nvim-scrollbar",
+	event = "BufReadPre",
 }
 
 function M.config()

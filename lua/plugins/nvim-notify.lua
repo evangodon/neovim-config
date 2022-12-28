@@ -25,8 +25,6 @@ function M.config()
   })
 end
 
--- Keep reference to original notify
-VimNotify = vim.notify
 
 function M.init()
   vim.notify = require "notify"
