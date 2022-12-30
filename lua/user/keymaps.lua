@@ -47,9 +47,6 @@ keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
 
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
-
 -- When going up or down one line, use displayed lines instead of physical lines
 keymap("n", "k", "gk", opts)
 keymap("n", "j", "gj", opts)
@@ -125,21 +122,22 @@ fn.registerKeyMap({
     CMD "bprev",
     "Go to previous buffer",
   },
-  t = {
-    name = "Toggle an option",
-    c = {
-      function()
-        fn.toggleVimOption "cursorcolumn"
-      end,
-      "Toggle cursorcolumn",
-    },
-    r = {
-      function()
-        fn.toggleVimOption "relativenumber"
-      end,
-      "Toggle relative number",
-    },
-  },
+  -- TODO: create function for this
+  --[[ t = { 
+		name = "Toggle an option",
+		c = {
+			function()
+				fn.toggleVimOption "cursorcolumn"
+			end,
+			"Toggle cursorcolumn",
+		},
+		r = {
+			function()
+				fn.toggleVimOption "relativenumber"
+			end,
+			"Toggle relative number",
+		},
+	}, ]]
   E = {
     function()
       env.printValues()

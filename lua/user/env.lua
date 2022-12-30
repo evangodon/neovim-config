@@ -4,7 +4,9 @@ M.envValues = {}
 
 local function readFile()
   local values = {}
-  local file = assert(io.open(".env", "r"))
+  local envPath = vim.env.HOME .. "/.config/nvim/.env"
+
+  local file = assert(io.open(envPath, "r"))
 
   for line in file:lines() do
     local key, value = string.match(line, '([%w_]*)="+(.+)"')
@@ -21,7 +23,7 @@ local function prepareValues()
   end
   local ok, values = pcall(readFile)
   if not ok then
-    Notify.error ".env file not found"
+    Notify.error("error reading env file" .. values)
     return ""
   end
 

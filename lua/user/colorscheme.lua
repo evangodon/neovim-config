@@ -18,7 +18,7 @@ local themes = {
   carbonfox = "carbonfox",
 }
 
-local LIGHT_THEME = themes.dayfox
+local LIGHT_THEME = themes.dawnfox
 local DARK_THEME = themes.carbonfox
 
 local colorscheme = use_light_theme and LIGHT_THEME or DARK_THEME
