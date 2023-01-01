@@ -47,22 +47,13 @@ function M.config()
     icon = "",
   }
 
-  -- TODO can be better https://www.reddit.com/r/neovim/comments/zz5ov1/gist_highlight_the_repo_root_in_your_statusline/
-  local function rootFolder()
-    local cwd = vim.loop.cwd()
-    local dir = string.match(cwd, "/(%w+)$")
-    return "  " .. dir
-  end
-
-  local filename = {
-    "filename",
-    fmt = function(str)
-      if string.find(str, "No Name") then
-        return ""
-      end
-
-      return str
+  local project_root = {
+    function()
+      return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
     end,
+    icon = "",
+    cond = hide_in_width,
+    separator = "",
   }
 
   local function spaces()
@@ -82,7 +73,7 @@ function M.config()
     sections = {
       lualine_a = { mode },
       lualine_b = { branch },
-      lualine_c = { diff, rootFolder, { "filename", path = 1 } },
+      lualine_c = { diff, project_root, { "filename", path = 1 } },
       lualine_x = { spaces, "encoding", filetype },
     },
     inactive_sections = {
