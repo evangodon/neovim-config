@@ -24,12 +24,10 @@
 ## Productivity
 
 - Command to open url under cursor
-- Figure out a todo manager
-  - Neorg
 
 ---
 
-# Done
+# DONE
 
 - [x] Remove diagnostics from lualine? don't seem to look at them much
 - [x] Fix icons in nvim-tree (diagnostics)

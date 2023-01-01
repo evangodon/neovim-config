@@ -6,7 +6,7 @@
 --
 local M = {
 	"mickael-menu/zk-nvim",
-	event = "VeryLazy",
+	ft = "markdown",
 }
 
 -- TODO: [ ] Improve the Add new note keymap so that it works in any notebook

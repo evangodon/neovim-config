@@ -3,12 +3,11 @@
 --
 local M = {
 	"folke/zen-mode.nvim",
-	event = "VeryLazy",
+	cmd = { "ZenMode" },
 }
 
 function M.config()
 	local zenmode = require "zen-mode"
-	local fn = require "user.functions"
 
 	zenmode.setup({
 		window = {
@@ -33,7 +32,10 @@ function M.config()
 			vim.cmd [[ScrollbarShow]]
 		end,
 	})
+end
 
+function M.init()
+	local fn = require "user.functions"
 	fn.registerKeyMap({
 		Z = {
 			":noautocmd ZenMode<CR>",
