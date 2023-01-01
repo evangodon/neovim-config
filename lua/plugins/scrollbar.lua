@@ -3,6 +3,7 @@
 --
 local M = {
 	"petertriho/nvim-scrollbar",
+	cmd = { "ZenMode" },
 	event = "BufReadPre",
 }
 

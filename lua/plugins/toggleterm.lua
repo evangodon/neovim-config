@@ -49,7 +49,10 @@ function M.init()
   -- Custom Terminals
   local Terminal = require("toggleterm.terminal").Terminal
 
-  local todo = Terminal:new({ cmd = "todo interactive", close_on_exit = true })
+  local todo = Terminal:new({
+    cmd = "todo interactive",
+    hidden = true,
+  })
 
   local dash = Terminal:new({ cmd = "dash", hidden = true })
 
@@ -57,7 +60,7 @@ function M.init()
 
   local fn = require "user.functions"
   fn.registerKeyMap({
-    t = {
+    tt = {
       function()
         todo:toggle()
       end,
