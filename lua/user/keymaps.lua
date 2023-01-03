@@ -27,6 +27,7 @@ keymap("n", "<C-n>", CMD "bnext", opts)
 keymap("n", "<TAB>", CMD "bnext", opts)
 keymap("n", "[b", CMD "bprevious", opts) -- Previous buffer
 keymap("n", "<S-TAB>", CMD "bprevious", opts)
+keymap("n", "<BS>", CMD "bprevious", opts)
 
 vim.api.nvim_create_user_command("CloseBuffer", function()
 	local loaded_buffers = Get_loaded_buffers()
