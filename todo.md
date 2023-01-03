@@ -71,3 +71,4 @@
 - [x] Replace scrollbar plugin with https://github.com/lewis6991/satellite.nvim or https://github.com/petertriho/nvim-scrollbar
 - [x] The chezmoi autocmd shows output at the top which is annoying
 - [x] eyeliner which is a lua version of quick-scope
+

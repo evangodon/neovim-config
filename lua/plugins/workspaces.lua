@@ -29,6 +29,7 @@ function M.init()
       "View projects",
     },
     W = {
+      name = "Workspaces",
       A = {
         function()
           local cwd = vim.loop.cwd()
