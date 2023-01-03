@@ -11,7 +11,7 @@ function M.config()
     icon_separator_active = "▓",
     icon_separator_inactive = "▓",
     icon_pinned = "車",
-    letters = "asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP",
+    letters = "asdfjklghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP",
   })
 end
 
