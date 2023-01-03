@@ -44,7 +44,7 @@ function M.init()
 	vim.api.nvim_create_autocmd({ "TermOpen" }, {
 		callback = function()
 			local opts = { noremap = true }
-			vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+			vim.api.nvim_buf_set_keymap(0, "t", "<C-n>", [[<C-\><C-n>]], opts)
 		end,
 	})
 
@@ -52,7 +52,7 @@ function M.init()
 	local Terminal = require("toggleterm.terminal").Terminal
 
 	local todo = Terminal:new({
-		cmd = "todo interactive",
+		cmd = "go run ~/code/todo-app interactive",
 		hidden = true,
 	})
 
