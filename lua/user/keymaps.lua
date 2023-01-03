@@ -30,12 +30,12 @@ keymap("n", "<S-TAB>", CMD "bprevious", opts)
 keymap("n", "<BS>", CMD "bprevious", opts)
 
 vim.api.nvim_create_user_command("CloseBuffer", function()
-	local loaded_buffers = Get_loaded_buffers()
-	if #loaded_buffers == 1 then
-		vim.cmd "bdelete"
-	else
-		vim.cmd "bnext|BufferClose#"
-	end
+  local loaded_buffers = Get_loaded_buffers()
+  if #loaded_buffers == 1 then
+    vim.cmd "bdelete"
+  else
+    vim.cmd "bnext|BufferClose#"
+  end
 end, {})
 keymap("n", "<C-w>", CMD "CloseBuffer", opts)
 
@@ -63,9 +63,9 @@ keymap("v", "L", "$", opts)
 keymap("n", "dd", keyfn.smart_dd, { noremap = true, expr = true })
 
 keymap("n", "<Esc>", function()
-	require("notify").dismiss() -- clear notifications
-	CMD "nohl" -- clear highlights
-	CMD "echo " -- clear short-message
+  require("notify").dismiss() -- clear notifications
+  CMD "nohl" -- clear highlights
+  CMD "echo " -- clear short-message
 end)
 
 keymap("", "<Space>", "<Nop>", opts)
@@ -80,47 +80,32 @@ keymap("n", "q", "<nop>", opts)
 local fn = require "user.functions.utils"
 
 fn.registerKeyMap({
-	s = {
-		m = {
-			function()
-				vim.cmd [[mksession default-session.vim]]
-				Notify.info "Created session"
-			end,
-			"Create session",
-		},
-		s = {
-			function()
-				vim.cmd [[source default-session.vim]]
-			end,
-			"Source session",
-		},
-	},
-	q = {
-		CMD "quitall!",
-		"Quit",
-	},
-	l = {
-		CMD "noh",
-		"Clear highlights",
-	},
-	c = {
-		CMD "close",
-		"Close window",
-	},
-	["-"] = {
-		CMD "b#",
-		"return to last buffer",
-	},
-	["]"] = {
-		CMD "bnext",
-		"Go to next buffer",
-	},
-	["["] = {
-		CMD "bprev",
-		"Go to previous buffer",
-	},
-	-- TODO: create function for this
-	--[[ t = { 
+  q = {
+    CMD "quitall!",
+    "Quit",
+  },
+  l = {
+    CMD "noh",
+    "Clear highlights",
+  },
+  c = {
+    CMD "close",
+    "Close window",
+  },
+  ["-"] = {
+    CMD "b#",
+    "return to last buffer",
+  },
+  ["]"] = {
+    CMD "bnext",
+    "Go to next buffer",
+  },
+  ["["] = {
+    CMD "bprev",
+    "Go to previous buffer",
+  },
+  -- TODO: create function for this
+  --[[ t = { 
 		name = "Toggle an option",
 		c = {
 			function()
@@ -135,10 +120,10 @@ fn.registerKeyMap({
 			"Toggle relative number",
 		},
 	}, ]]
-	E = {
-		function()
-			env.printValues()
-		end,
-		"Show all values in .env file",
-	},
+  E = {
+    function()
+      env.printValues()
+    end,
+    "Show all values in .env file",
+  },
 })

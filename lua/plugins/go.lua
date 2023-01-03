@@ -21,7 +21,23 @@ function M.init()
       f = { ":GoFillStruct<cr>", "Fill struct" },
       i = { ":GoImport<cr>", "Go imports" },
       g = { ":GoFmt<cr>", "Format" },
-      e = { ":GoIfErr<cr>", "Add err if statement" },
+      e = { ":GoIfErr<cr>", "Add err if" },
+      t = {
+        CMD "GoTestFile -v",
+        "Run tests for current File",
+      },
+      T = {
+        CMD "GoTestPkg -v",
+        "Run tests for current package",
+      },
+      a = {
+        CMD "GoAlt!",
+        "Switch between go and test file",
+      },
+      A = {
+        CMD "GoAddTest",
+        "Add test for current func",
+      },
     },
   })
 end
