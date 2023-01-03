@@ -36,8 +36,21 @@ function M.config()
 	})
 
 	-- LSP server configurations
+	local lspconfig = require "lspconfig"
 	lsp.configure("sumneko_lua", require "user.lsp.settings.sumneko_lua")
 	lsp.configure("jsonls", require "user.lsp.settings.jsonls")
+	lsp.configure("tsserver", {
+		root_dir = lspconfig.util.root_pattern "package.json",
+		init_options = {
+			lint = true,
+		},
+	})
+	lsp.configure("denols", {
+		root_dir = lspconfig.util.root_pattern "deno.json",
+		init_options = {
+			lint = true,
+		},
+	})
 
 	-- Keymaps
 	lsp.on_attach(function(_, bufnr)
