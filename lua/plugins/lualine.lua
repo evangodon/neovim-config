@@ -9,7 +9,7 @@ local M = {
 function M.config()
   local lualine = require "lualine"
 
-  local hide_in_width = function()
+  local function hide_in_width()
     return vim.fn.winwidth(0) > 80
   end
 
