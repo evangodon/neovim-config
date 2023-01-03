@@ -1,5 +1,5 @@
 vim.api.nvim_create_user_command("Scratch", function()
-	vim.cmd [[
+  vim.cmd [[
     noswapfile hide enew
     setlocal buftype=nofile
     setlocal bufhidden=hide
