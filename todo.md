@@ -1,34 +1,20 @@
 # TODO
 
-## DX
-
+- [ ] change border color of terminal and use default hightlights, need to update TODO app
 - [ ] Fix cmp position when it opens
-- [ ] How to use Deno lsp and TypeScript lsp seperately
-
-## UI
-
-- [ ] change border color of terminal and use default hightlights
-- [ ] Use winbar to show file name and path, use nvim-gps, need Neovim 0.8. See https://github.com/SmiteshP/nvim-navic
-
-## Plugins
-
 - [ ] Use neo-tree plugin
 - [ ] Create permalinks https://github.com/ruifm/gitlinker.nvim
 - [ ] Use vale as null-ls source https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/
 - [ ] nvim-surround
-- [ ] eyeliner which is a lua version of quick-scope
 - [ ] https://github.com/sindrets/diffview.nvim
 - [ ] https://github.com/cbochs/grapple.nvim
 - [ ] https://github.com/stevearc/resession.nvim
 
-## Productivity
-
-- Command to open url under cursor
-
----
+# IN-PROGRESS
 
 # DONE
 
+- [x] How to use Deno lsp and TypeScript lsp seperately
 - [x] Remove diagnostics from lualine? don't seem to look at them much
 - [x] Fix icons in nvim-tree (diagnostics)
 - [x] Add keybindings for moving between buffers
@@ -50,7 +36,6 @@
 - [x] Disable Github Copilot for telescope
 - [x] Go to next buffer when closing
 - [x] Use go.nvim lsp since it has better defaults
-- [!] Formatting is slow, test out async formatting... ok it's slow when I open a large folder
 - [x] change bg of inactive window, reference https://gist.github.com/ctaylo21/c3620a945cee6fc3eb3cb0d7f57faf00
 - [x] Improve telescope performance by using fzf-native
 - [x] Show line indents with plugin
@@ -68,15 +53,11 @@
 - [x] Create keybinding to follow links for zk notes
 - [x] Fix fuzzy search of current window
 - [x] Telescope
-      -- [x] Place prompt to top, see here https://github.com/NvChad/NvChad/blob/main/lua/plugins/configs/telescope.lua
-      -- [-] Configure border characterst to add horizontal padding
+- [x] Place prompt to top, see here https://github.com/NvChad/NvChad/blob/main/lua/plugins/configs/telescope.lua
 - [x] Partial highlight link with GitSignColumn https://www.reddit.com/r/neovim/comments/oxddk9/how_do_i_get_the_value_from_a_highlight_group/
 - [x] make background dark for toggle term
 - [x] Add background color to border between windows
 - [x] Create keymap for `Telescope oldfiles` and to open up multiple files at once
-- Barbar
-  -- [X] Change color of buffer not saved (yellow right now)
-  -- [X] Change color of BufferPick letter
 - [x] Close all buffers but this one, need to create function for this https://codereview.stackexchange.com/questions/268130/get-list-of-buffers-from-current-neovim-instance
 - [x] https://github.com/romgrk/barbar.nvim
 - [x] use arrows for navigating in cmp menu
@@ -89,3 +70,4 @@
 - [x] Use winbar to show path of open buffer https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/init.lua#L46-L66
 - [x] Replace scrollbar plugin with https://github.com/lewis6991/satellite.nvim or https://github.com/petertriho/nvim-scrollbar
 - [x] The chezmoi autocmd shows output at the top which is annoying
+- [x] eyeliner which is a lua version of quick-scope
