@@ -86,6 +86,10 @@ function M.config()
       current_buffer_fuzzy_find = {
         theme = "dropdown",
       },
+      buffers = {
+        theme = "dropdown",
+        previewer = false,
+      },
       -- Default configuration for builtin pickers goes here:
       -- picker_name = {
       --   picker_config_key = value,
@@ -130,7 +134,9 @@ function M.init()
 
   fn.registerKeyMap({
     b = {
-      CMD "Telescope buffers",
+      function()
+        builtin_pickers.buffers({ ignore_current_buffer = true })
+      end,
       "Open buffer list",
     },
     r = {

@@ -53,7 +53,7 @@ function M.init()
   local Terminal = require("toggleterm.terminal").Terminal
 
   local todo = Terminal:new({
-    cmd = "go run ~/code/todo.md interactive",
+    cmd = "todomd interactive",
     hidden = true,
   })
 
