@@ -1,13 +1,11 @@
 # TODO
 
 - [ ] change border color of terminal and use default hightlights, need to update TODO app
-- [ ] Fix cmp position when it opens
 - [ ] Use neo-tree plugin
 - [ ] Create permalinks https://github.com/ruifm/gitlinker.nvim
 - [ ] Use vale as null-ls source https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/
 - [ ] nvim-surround
 - [ ] https://github.com/sindrets/diffview.nvim
-- [ ] https://github.com/cbochs/grapple.nvim
 - [ ] https://github.com/stevearc/resession.nvim
 
 # IN-PROGRESS
@@ -71,4 +69,5 @@
 - [x] Replace scrollbar plugin with https://github.com/lewis6991/satellite.nvim or https://github.com/petertriho/nvim-scrollbar
 - [x] The chezmoi autocmd shows output at the top which is annoying
 - [x] eyeliner which is a lua version of quick-scope
+- [x] https://github.com/cbochs/grapple.nvim
 

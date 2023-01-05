@@ -30,9 +30,9 @@ function M.config()
 				TabLineSel = { fg = colors.text, bg = colors.mantle },
 				WarningMsg = { fg = colors.flamingo },
 				--lualine
-				DiffAdd = { fg = colors.green, bg = colors.mantle },
-				DiffChange = { fg = colors.yellow, bg = colors.mantle },
-				DiffDelete = { fg = colors.maroon, bg = colors.mantle },
+				DiffAdd = { fg = colors.green, bg = no_color },
+				DiffChange = { fg = colors.yellow, bg = no_color },
+				DiffDelete = { fg = colors.maroon, bg = no_color },
 
 				-- IndentBlankline
 				IndentBlanklineIndent1 = { fg = util.darken(colors.surface1, 0.2, colors.base), bg = colors.none },

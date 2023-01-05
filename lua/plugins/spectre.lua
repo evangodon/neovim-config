@@ -44,14 +44,12 @@ function M.init()
 	})
 
 	fn.registerKeyMap({
-		s = {
+		F = {
 			name = "Spectre",
-			o = {
-				function()
-					spectre.open()
-				end,
-				"Open [s]prectre",
-			},
+			function()
+				spectre.open()
+			end,
+			"[F]ind and Replace",
 		},
 	})
 end

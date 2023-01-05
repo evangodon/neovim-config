@@ -51,31 +51,10 @@ function M.config()
 		TypeParameter = "",
 	}
 
-	local timer = vim.loop.new_timer()
-	local debounce_rate = 300
-
-	-- Debounce the autocomplete
-	vim.api.nvim_create_autocmd({ "TextChangedI" }, {
-		pattern = { "*" },
-		callback = function()
-			timer:start(
-				debounce_rate,
-				0,
-				vim.schedule_wrap(function()
-					require("cmp").complete({ reason = require("cmp").ContextReason.Auto })
-				end)
-			)
-		end,
-	})
-
 	cmp.setup({
-		completion = {
-			autocomplete = false,
-			keyword_length = 2,
-		},
 		snippet = {
 			expand = function(args)
-				luasnip.lsp_expand(args.body) -- For `luasnip` users.
+				luasnip.lsp_expand(args.body)
 			end,
 		},
 		mapping = {
@@ -141,7 +120,7 @@ function M.config()
 			end,
 		},
 		sources = {
-			{ name = "copilot", group_index = 1 },
+			--	{ name = "copilot", group_index = 1 },
 			{ name = "nvim_lsp" },
 			{ name = "nvim_lua" },
 			{ name = "luasnip" },

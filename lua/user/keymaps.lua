@@ -28,7 +28,9 @@ keymap("n", "<TAB>", CMD "bnext", opts)
 keymap("n", "[b", CMD "bprevious", opts) -- Previous buffer
 keymap("n", "<S-TAB>", CMD "bprevious", opts)
 keymap("n", "<BS>", CMD "b#", opts)
-keymap("n", "<leader>g", ":ls<CR>:b<Space>", opts)
+
+-- Navigate tabs
+-- TODO: add keymaps
 
 vim.api.nvim_create_user_command("CloseBuffer", function()
 	local loaded_buffers = Get_loaded_buffers()

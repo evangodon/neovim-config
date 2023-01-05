@@ -30,7 +30,7 @@ function M.config()
     },
     highlights = {
       NormalFloat = {
-        -- guibg = termBgColor,
+        guibg = termBgColor,
       },
       FloatBorder = {
         -- guibg = termBgColor,
@@ -59,7 +59,11 @@ function M.init()
 
   local dash = Terminal:new({ cmd = "dash", hidden = true })
 
-  local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+  --[[ local lazygit = Terminal:new({ cmd = "lazygit", hidden = true }) ]]
+  local opts = { noremap = true, silent = true }
+  vim.keymap.set("n", "t", function()
+    todo:toggle()
+  end, opts)
 
   local fn = require "user.functions"
   fn.registerKeyMap({
@@ -77,9 +81,7 @@ function M.init()
     },
     G = {
       l = {
-        function()
-          lazygit:toggle()
-        end,
+        CMD [[silent! !kitty @ launch --cwd=current --type=overlay --tab-title="Lazygit" --title="Lazygit" lazygit]],
         "Open [l]azygit",
       },
     },
