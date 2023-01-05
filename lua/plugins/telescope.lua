@@ -134,10 +134,12 @@ function M.init()
 
   fn.registerKeyMap({
     b = {
-      function()
-        builtin_pickers.buffers({ ignore_current_buffer = true })
-      end,
-      "Open buffer list",
+      b = {
+        function()
+          builtin_pickers.buffers({ ignore_current_buffer = true, initial_mode = "normal" })
+        end,
+        "Open buffer list",
+      },
     },
     r = {
       CMD "Telescope oldfiles",
@@ -146,6 +148,14 @@ function M.init()
     k = {
       CMD "Telescope knowledge_base list",
       "View knowledge base",
+    },
+    m = {
+      builtin_pickers.marks,
+      "View Marks",
+    },
+    d = {
+      CMD "Telescope diagnostics",
+      "View Diagnostics",
     },
   })
 end

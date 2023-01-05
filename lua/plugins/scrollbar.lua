@@ -10,21 +10,12 @@ local M = {
 function M.config()
 	local scrollbar = require "scrollbar"
 
-	-- Set scrollbar color
-	local scrollbar_handle = {}
-	if vim.g.colors_name == "catppuccin" then
-		local colors = require("catppuccin.palettes").get_palette()
-		scrollbar_handle = {
-			color = colors.surface0,
-		}
-	end
-
 	-- Setup gitsigns integration
 	local git_icon = "│"
 	require("scrollbar.handlers.gitsigns").setup()
 
 	scrollbar.setup({
-		handle = scrollbar_handle,
+		handle = {},
 		handlers = {
 			gitsigns = false,
 		},

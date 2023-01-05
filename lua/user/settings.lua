@@ -56,4 +56,4 @@ vim.cmd [[set iskeyword+=-]] -- define how keywords are grouped
 vim.cmd [[let g:netrw_winsize = 30]] -- set the size of the netrw window
 
 -- Hightlight yanked text
-vim.highlight.on_yank({ higroup = "visual", timeout = 200 })
+vim.highlight.on_yank({ higroup = "IncSearch", timeout = 400 })
