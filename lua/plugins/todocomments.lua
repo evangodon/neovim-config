@@ -80,9 +80,11 @@ end
 function M.init()
   local fn = require "user.functions"
   fn.registerKeyMap({
-    T = {
-      CMD "TodoTelescope",
-      "Telescope todos",
+    t = {
+      c = {
+        CMD "TodoTelescope",
+        "Telescope todos",
+      },
     },
   })
 end

@@ -27,15 +27,16 @@ keymap("n", "<C-n>", CMD "bnext", opts)
 keymap("n", "<TAB>", CMD "bnext", opts)
 keymap("n", "[b", CMD "bprevious", opts) -- Previous buffer
 keymap("n", "<S-TAB>", CMD "bprevious", opts)
-keymap("n", "<BS>", CMD "bprevious", opts)
+keymap("n", "<BS>", CMD "b#", opts)
+keymap("n", "<leader>g", ":ls<CR>:b<Space>", opts)
 
 vim.api.nvim_create_user_command("CloseBuffer", function()
-  local loaded_buffers = Get_loaded_buffers()
-  if #loaded_buffers == 1 then
-    vim.cmd "bdelete"
-  else
-    vim.cmd "bnext|BufferClose#"
-  end
+	local loaded_buffers = Get_loaded_buffers()
+	if #loaded_buffers == 1 then
+		vim.cmd "bdelete"
+	else
+		vim.cmd "bnext|BufferClose#"
+	end
 end, {})
 keymap("n", "<C-w>", CMD "CloseBuffer", opts)
 
@@ -63,9 +64,9 @@ keymap("v", "L", "$", opts)
 keymap("n", "dd", keyfn.smart_dd, { noremap = true, expr = true })
 
 keymap("n", "<Esc>", function()
-  require("notify").dismiss() -- clear notifications
-  CMD "nohl" -- clear highlights
-  CMD "echo " -- clear short-message
+	require("notify").dismiss() -- clear notifications
+	CMD "nohl" -- clear highlights
+	CMD "echo " -- clear short-message
 end)
 
 keymap("", "<Space>", "<Nop>", opts)
@@ -80,50 +81,45 @@ keymap("n", "q", "<nop>", opts)
 local fn = require "user.functions.utils"
 
 fn.registerKeyMap({
-  q = {
-    CMD "quitall!",
-    "Quit",
-  },
-  l = {
-    CMD "noh",
-    "Clear highlights",
-  },
-  c = {
-    CMD "close",
-    "Close window",
-  },
-  ["-"] = {
-    CMD "b#",
-    "return to last buffer",
-  },
-  ["]"] = {
-    CMD "bnext",
-    "Go to next buffer",
-  },
-  ["["] = {
-    CMD "bprev",
-    "Go to previous buffer",
-  },
-  -- TODO: create function for this
-  --[[ t = { 
-		name = "Toggle an option",
+	q = {
+		CMD "quitall!",
+		"Quit",
+	},
+	l = {
+		CMD "noh",
+		"Clear highlights",
+	},
+	c = {
+		CMD "close",
+		"Close window",
+	},
+	["-"] = {
+		CMD "b#",
+		"return to last buffer",
+	},
+	["]"] = {
+		CMD "bnext",
+		"Go to next buffer",
+	},
+	["["] = {
+		CMD "bprev",
+		"Go to previous buffer",
+	},
+	T = {
+		name = "Toggle vim option",
 		c = {
-			function()
-				fn.toggleVimOption "cursorcolumn"
-			end,
-			"Toggle cursorcolumn",
+			fn.toggleVimOption "cursorcolumn",
+			"cursorcolumn",
 		},
 		r = {
-			function()
-				fn.toggleVimOption "relativenumber"
-			end,
-			"Toggle relative number",
+			fn.toggleVimOption "relativenumber",
+			"relative number",
 		},
-	}, ]]
-  E = {
-    function()
-      env.printValues()
-    end,
-    "Show all values in .env file",
-  },
+	},
+	E = {
+		function()
+			env.printValues()
+		end,
+		"Show all values in .env file",
+	},
 })
