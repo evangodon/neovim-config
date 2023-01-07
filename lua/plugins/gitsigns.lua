@@ -106,7 +106,7 @@ function M.config()
 			end, { expr = true, desc = "Previous hunk" })
 
 			-- Actions
-			fn.registerKeyMap({
+			fn.register_key_map({
 				G = {
 					name = "Git",
 					p = { gs.preview_hunk, "Preview hunk" },

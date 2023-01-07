@@ -43,7 +43,7 @@ function M.init()
   keymap("n", "]B", CMD "BufferMoveNext", opts)
   keymap("n", "<leader>\\", CMD "BufferPick", opts)
 
-  fn.registerKeyMap({
+  fn.register_key_map({
     B = {
       CMD "BufferCloseAllButCurrent",
       "Close all buffers but current",

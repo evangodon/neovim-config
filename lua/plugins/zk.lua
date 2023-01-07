@@ -63,7 +63,7 @@ function M.init()
 		return true
 	end
 
-	fn.registerKeyMap({
+	fn.register_key_map({
 		z = {
 			name = "zk",
 			-- New Note

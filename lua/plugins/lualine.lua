@@ -81,8 +81,8 @@ function M.config()
 		sections = {
 			lualine_a = { mode },
 			lualine_b = { branch },
-			lualine_c = { diff, project_root, { "filename", path = 1 } },
-			lualine_x = { grapple_key, spaces, "encoding", filetype },
+			lualine_c = { diff, project_root, { "filename", path = 1 }, grapple_key },
+			lualine_x = { spaces, "encoding", filetype },
 		},
 		inactive_sections = {
 			lualine_a = {},

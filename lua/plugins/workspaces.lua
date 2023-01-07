@@ -23,7 +23,7 @@ function M.init()
 	telescope.load_extension "workspaces"
 
 	local fn = require "user.functions"
-	fn.registerKeyMap({
+	fn.register_key_map({
 		W = {
 			name = "Workspaces",
 			A = {
