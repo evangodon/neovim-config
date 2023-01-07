@@ -2,14 +2,10 @@
 -- Dim inactive windows
 --
 
-local fn = vim.fn
+local utils = require "user.functions.utils"
 
-local function get_color(group, attr)
-	return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
-end
-
-vim.api.nvim_set_hl(0, "ActiveWindow", { bg = get_color("Normal", "bg#"), fg = "NONE" })
-vim.api.nvim_set_hl(0, "InactiveWindow", { bg = get_color("NvimTreeNormal", "bg#"), fg = "NONE" })
+vim.api.nvim_set_hl(0, "ActiveWindow", { bg = utils.get_color("Normal", "bg#"), fg = "NONE" })
+vim.api.nvim_set_hl(0, "InactiveWindow", { bg = utils.get_color("NvimTreeNormal", "bg#"), fg = "NONE" })
 
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE", fg = "NONE" })
 vim.api.nvim_set_hl(0, "CursorLineSign", { bg = "NONE", fg = "NONE" })

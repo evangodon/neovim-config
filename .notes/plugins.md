@@ -1,0 +1,6 @@
+- [ ] Use neo-tree plugin
+- [ ] Create permalinks https://github.com/ruifm/gitlinker.nvim
+- [ ] Use vale as null-ls source https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/
+- [ ] nvim-surround
+- [ ] https://github.com/sindrets/diffview.nvim
+- [ ] https://github.com/stevearc/resession.nvim
