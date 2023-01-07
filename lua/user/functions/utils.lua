@@ -34,4 +34,9 @@ function M.toggleVimOption(option)
 	end
 end
 
+function M.get_color(group, attr)
+	local fn = vim.fn
+	return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
+end
+
 return M
