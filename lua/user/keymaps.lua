@@ -82,7 +82,7 @@ keymap("n", "q", "<nop>", opts)
 
 local fn = require "user.functions.utils"
 
-fn.registerKeyMap({
+fn.register_key_map({
 	q = {
 		CMD "quitall!",
 		"Quit",

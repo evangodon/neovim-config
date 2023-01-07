@@ -63,7 +63,7 @@ function M.init()
 	end, opts)
 
 	local fn = require "user.functions"
-	fn.registerKeyMap({
+	fn.register_key_map({
 		tt = {
 			function()
 				todo:toggle()

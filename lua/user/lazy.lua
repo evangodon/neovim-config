@@ -22,7 +22,7 @@ require("lazy").setup("plugins", {
 	debug = false,
 })
 
-require("user.functions").registerKeyMap({ L = {
+require("user.functions").register_key_map({ L = {
 	CMD "Lazy",
 	"Open Lazy manager",
 } })

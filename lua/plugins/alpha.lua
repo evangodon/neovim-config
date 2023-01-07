@@ -43,7 +43,7 @@ function M.config()
 
   dashboard.opts.opts.noautocmd = true
 
-  fn.registerKeyMap({
+  fn.register_key_map({
     A = {
       ":Alpha<CR>",
       "Open Alpha dashboard",

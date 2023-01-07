@@ -33,7 +33,7 @@ if not status_ok then
   return
 end
 
-require("user.functions").registerKeyMap({
+require("user.functions").register_key_map({
   C = {
     CMD "Telescope colorscheme",
     "Telescope [c]olorschemes",
