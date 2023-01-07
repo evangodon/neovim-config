@@ -29,7 +29,7 @@ function M.init()
   vim.notify = require "notify"
 
   local fn = require "user.functions"
-  fn.registerKeyMap({
+  fn.register_key_map({
     N = {
       CMD "Notifications",
       "See Notifications",

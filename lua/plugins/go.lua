@@ -19,7 +19,7 @@ function M.init()
 		pattern = "*.go",
 		callback = function(args)
 			local bufnr = args.buf or vim.api.nvim_get_current_buf()
-			fn.registerKeyMap({
+			fn.register_key_map({
 				g = {
 					name = "Go",
 					buffer = bufnr,

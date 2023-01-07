@@ -79,7 +79,7 @@ end
 
 function M.init()
   local fn = require "user.functions"
-  fn.registerKeyMap({
+  fn.register_key_map({
     t = {
       c = {
         CMD "TodoTelescope",

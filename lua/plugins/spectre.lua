@@ -43,7 +43,7 @@ function M.init()
 		end,
 	})
 
-	fn.registerKeyMap({
+	fn.register_key_map({
 		F = {
 			name = "Spectre",
 			function()

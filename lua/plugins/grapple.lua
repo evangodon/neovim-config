@@ -2,7 +2,7 @@ local backslash = [[\]]
 
 local M = {
   "cbochs/grapple.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = { "nvim-lua/plenary.nvim", "folke/which-key.nvim" },
   keys = backslash,
 }
 
@@ -20,34 +20,110 @@ function M.config()
     },
 
     integrations = {
-      ---Support for saving tag state using resession.nvim
       resession = false,
     },
   })
 end
 
--- TODO: add keymaps with letters
--- TODO: Get all tags and show kepmaps for active tags
+local function register_key_map(key, action, desc)
+  local whichkey = require "which-key"
+  local rhs = action == "<Nop>" and "which_key_ignore" or { action, desc }
+  key = tostring(key)
+
+  whichkey.register({ [key] = rhs }, {
+    prefix = backslash,
+    mode = "n",
+  })
+end
+
+-- Add GrappleSelect keymap and center viewport
+local function add_select_keymap(key)
+  register_key_map(key, CMD("GrappleSelect key=" .. key .. "|zz"), "Select tag [" .. key .. "]")
+end
+
+-- Remove GrappleSelect keymap
+local function remove_select_keymap(key)
+  register_key_map(key, "<Nop>", "")
+end
+
+-- Unset all select keymaps
+local function unset_select_keymaps()
+  local s = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+  for i = 1, #s do
+    local key = s:sub(i, i)
+    register_key_map(key, "<Nop>", "")
+  end
+end
+
+-- Set keymaps for active tags
+local function set_named_select_keymap()
+  local settings = require "grapple.settings"
+  local scope = require("grapple.state").ensure_loaded(settings.scope)
+  local popup_items = require("grapple.tags").full_tags(scope)
+  for _, v in pairs(popup_items) do
+    local key = tostring(v.key)
+    if #key == 1 then
+      add_select_keymap(key)
+    end
+  end
+end
+
+-- Update all Grapple select keymaps
+local groupname = vim.api.nvim_create_augroup("grapple-update", {})
+vim.api.nvim_create_autocmd({ "BufLeave" }, {
+  group = groupname,
+  callback = function()
+    if vim.bo.filetype == "grapple" then
+      unset_select_keymaps()
+      set_named_select_keymap()
+    end
+  end,
+})
+
 -- TODO: Show tag next to buffer name
+-- TODO: Create main jump tag keymap
 function M.init()
   local grapple = require "grapple"
-  local keymap = vim.keymap.set
+  local whichkey = require "which-key"
 
-  local function set_opts(desc)
-    return { noremap = true, silent = true, desc = desc }
-  end
+  set_named_select_keymap()
 
-  keymap("n", backslash .. "=", grapple.tag, set_opts "Tag")
-  keymap("n", backslash .. "-", grapple.untag, set_opts "Untag")
-  keymap("n", backslash .. backslash, grapple.popup_tags, set_opts "Popup Tags")
-  keymap("n", backslash .. "]", grapple.cycle_forward, set_opts "Cycle Forward")
-  keymap("n", backslash .. "[", grapple.cycle_forward, set_opts "Cycle Back")
-  for i = 5, 1, -1 do
-    local num = tostring(i)
-    keymap("n", backslash .. num, function()
-      grapple.select({ key = i })
-    end, set_opts("Select" .. num))
-  end
+  whichkey.register({
+    ["="] = {
+      function()
+        grapple.tag()
+        local key = grapple.key()
+        add_select_keymap(key)
+      end,
+      "Tag",
+    },
+    ["-"] = {
+      function()
+        local key = grapple.key()
+        remove_select_keymap(key)
+        grapple.untag()
+      end,
+      "Untag",
+    },
+    [backslash] = {
+      function()
+        grapple.popup_tags()
+      end,
+      "View tags",
+    },
+    ["]"] = {
+      grapple.cycle_forward,
+      "Cycle forward",
+    },
+    ["["] = {
+      grapple.cycle_back,
+      "Cycle back",
+    },
+  }, {
+    prefix = backslash,
+    mode = "n",
+  })
 end
 
 return M

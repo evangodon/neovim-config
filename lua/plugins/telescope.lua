@@ -130,7 +130,7 @@ function M.init()
 	-- Fuzzy search in buffer
 	map("n", "<C-f>", builtin_pickers.current_buffer_fuzzy_find, opts "Fuzzy find current buffer")
 
-	fn.registerKeyMap({
+	fn.register_key_map({
 		b = { builtin_pickers.buffers, "Open buffer list" },
 		G = {
 			s = {
