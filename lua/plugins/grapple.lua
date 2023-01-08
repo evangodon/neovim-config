@@ -47,7 +47,7 @@ local function remove_select_keymap(key)
 end
 
 -- Unset all select keymaps
-local function unset_select_keymaps()
+local function unset_all_select_keymaps()
 	local s = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 	for i = 1, #s do
@@ -76,7 +76,7 @@ vim.api.nvim_create_autocmd({ "BufLeave" }, {
 	group = groupname,
 	callback = function()
 		if vim.bo.filetype == "grapple" then
-			unset_select_keymaps()
+			unset_all_select_keymaps()
 			set_named_select_keymap()
 		end
 	end,
