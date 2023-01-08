@@ -33,14 +33,14 @@ keymap("n", "<BS>", CMD "bprevious", opts)
 -- TODO: add keymaps
 
 vim.api.nvim_create_user_command("CloseBuffer", function()
-  local loaded_buffers = Get_loaded_buffers()
-  if #loaded_buffers == 0 then
-    return
-  elseif #loaded_buffers == 1 then
-    vim.cmd "bdelete"
-  else
-    vim.cmd "bprevious|bdelete#"
-  end
+	local loaded_buffers = Get_loaded_buffers()
+	if #loaded_buffers == 0 then
+		return
+	elseif #loaded_buffers == 1 then
+		vim.cmd "bdelete"
+	else
+		vim.cmd "bprevious|bdelete#"
+	end
 end, {})
 keymap("n", "<C-w>", CMD "CloseBuffer", opts)
 
@@ -68,9 +68,9 @@ keymap("v", "L", "$", opts)
 keymap("n", "dd", keyfn.smart_dd, { noremap = true, expr = true })
 
 keymap("n", "<Esc>", function()
-  require("notify").dismiss() -- clear notifications
-  CMD "nohl" -- clear highlights
-  CMD "echo " -- clear short-message
+	require("notify").dismiss({}) -- clear notifications
+	CMD "nohl" -- clear highlights
+	CMD "echo " -- clear short-message
 end)
 
 keymap("", "<Space>", "<Nop>", opts)
@@ -85,45 +85,45 @@ keymap("n", "q", "<nop>", opts)
 local fn = require "user.functions.utils"
 
 fn.register_key_map({
-  q = {
-    CMD "quitall!",
-    "Quit",
-  },
-  l = {
-    CMD "noh",
-    "Clear highlights",
-  },
-  c = {
-    CMD "close",
-    "Close window",
-  },
-  ["-"] = {
-    CMD "b#",
-    "return to last buffer",
-  },
-  ["]"] = {
-    CMD "bnext",
-    "Go to next buffer",
-  },
-  ["["] = {
-    CMD "bprev",
-    "Go to previous buffer",
-  },
-  T = {
-    name = "Toggle vim option",
-    c = {
-      fn.toggleVimOption "cursorcolumn",
-      "cursorcolumn",
-    },
-    r = {
-      fn.toggleVimOption "relativenumber",
-      "relative number",
-    },
-  },
-  E = {
-    function()
-      env.printValues()
-    end,
-    "Show all values in .env file",
-  },
+	q = {
+		CMD "quitall!",
+		"Quit",
+	},
+	l = {
+		CMD "noh",
+		"Clear highlights",
+	},
+	c = {
+		CMD "close",
+		"Close window",
+	},
+	["-"] = {
+		CMD "b#",
+		"return to last buffer",
+	},
+	["]"] = {
+		CMD "bnext",
+		"Go to next buffer",
+	},
+	["["] = {
+		CMD "bprev",
+		"Go to previous buffer",
+	},
+	T = {
+		name = "Toggle vim option",
+		c = {
+			fn.toggleVimOption "cursorcolumn",
+			"cursorcolumn",
+		},
+		r = {
+			fn.toggleVimOption "relativenumber",
+			"relative number",
+		},
+	},
+	E = {
+		function()
+			env.printValues()
+		end,
+		"Show all values in .env file",
+	},
 })
