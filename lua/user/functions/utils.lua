@@ -16,7 +16,7 @@ M.reloadConfig = function()
   end
 
   dofile(vim.env.MYVIMRC)
-  require("notify").notify "Reloaded config"
+  Notify.info "Reloaded config"
 end
 
 -- Set leader keymappings

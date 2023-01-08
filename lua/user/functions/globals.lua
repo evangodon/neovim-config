@@ -20,9 +20,10 @@ function P(value)
 end
 
 function Get_loaded_buffers()
+  local all_buffers = vim.api.nvim_list_bufs()
   local loaded_buffers = vim.tbl_filter(function(buf)
     return vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, "buflisted")
-  end, vim.api.nvim_list_bufs())
+  end, all_buffers)
   return loaded_buffers
 end
 
