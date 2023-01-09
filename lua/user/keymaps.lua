@@ -1,5 +1,3 @@
-local keyfn = require "user.functions.keyfunc"
-local env = require "user.env"
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
@@ -28,9 +26,6 @@ keymap("n", "<TAB>", CMD "bnext", opts)
 keymap("n", "[b", CMD "bprevious", opts) -- Previous buffer
 keymap("n", "<S-TAB>", CMD "bprevious", opts)
 keymap("n", "<BS>", CMD "b#", opts)
-
--- Navigate tabs
--- TODO: add keymaps
 
 vim.api.nvim_create_user_command("CloseBuffer", function()
   local loaded_buffers = Get_loaded_buffers()
@@ -65,7 +60,14 @@ keymap("v", "H", "0", opts)
 keymap("n", "L", "$", opts)
 keymap("v", "L", "$", opts)
 
-keymap("n", "dd", keyfn.smart_dd, { noremap = true, expr = true })
+-- Prevent overiding the last yank when deleting empty line
+keymap("n", "dd", function()
+  if vim.api.nvim_get_current_line():match "^%s*$" then
+    return '"_dd'
+  else
+    return "dd"
+  end
+end, { expr = true, noremap = true })
 
 keymap("n", "<Esc>", function()
   require("notify").dismiss({}) -- clear notifications
@@ -132,7 +134,7 @@ fn.register_key_map({
   },
   E = {
     function()
-      env.printValues()
+      require("user.env").printValues()
     end,
     "Show all values in .env file",
   },
