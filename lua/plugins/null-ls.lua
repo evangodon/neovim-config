@@ -5,6 +5,7 @@ local M = {
   "jose-elias-alvarez/null-ls.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   event = "BufReadPre",
+  enabled = false,
 }
 
 function M.config()
@@ -19,8 +20,6 @@ function M.config()
   null_ls.setup({
     debug = false,
     sources = {
-      -- Lua
-      -- formatting.stylua,
       -- JS
       formatting.prettier,
     },
