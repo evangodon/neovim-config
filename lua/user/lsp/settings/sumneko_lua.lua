@@ -7,6 +7,8 @@ return {
           indent_style = "tab",
           tab_width = "2",
           indent_width = "2",
+          quote_style = "AutoPreferDouble",
+          call_parentheses = "NoSingleString",
         },
       },
       diagnostics = {
