@@ -27,9 +27,12 @@ function M.config()
 		  ScrollbarHide
 		  Gitsigns toggle_signs false
 		]]
+      local opts = { noremap = true, silent = true }
+      vim.keymap.set("n", "q", CMD "close", opts)
     end,
     on_close = function()
       vim.cmd [[ScrollbarShow]]
+      vim.keymap.set("n", "q", "<Nop>")
     end,
   })
 end
