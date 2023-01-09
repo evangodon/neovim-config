@@ -23,10 +23,6 @@ function M.config()
 			formatting.stylua,
 			-- JS
 			formatting.prettier,
-			-- Go
-			formatting.gofmt,
-			formatting.golines,
-			formatting.goimports,
 		},
 		on_attach = function(client, bufnr)
 			-- Format on save
