@@ -76,7 +76,6 @@ function M.config()
 		keymap("n", "]d", function()
 			vim.diagnostic.goto_next({ border = "single" })
 		end, setBufOpts "Jump to next diagnostic")
-		keymap("n", "<leader>f", vim.lsp.buf.formatting, setBufOpts "Format document")
 	end)
 
 	lsp.setup()
