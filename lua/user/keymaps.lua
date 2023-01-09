@@ -109,6 +109,16 @@ fn.register_key_map({
 		CMD "bprev",
 		"Go to previous buffer",
 	},
+	t = {
+		a = {
+			CMD "$tabnew | NvimTreeOpen",
+			"New tab",
+		},
+		c = {
+			CMD "tabclose",
+			"Close tab",
+		},
+	},
 	T = {
 		name = "Toggle vim option",
 		c = {
