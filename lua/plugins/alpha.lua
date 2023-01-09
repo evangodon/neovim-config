@@ -4,18 +4,17 @@
 local M = {
   "goolord/alpha-nvim",
   dependencies = { "kyazdani42/nvim-web-devicons" },
+  enabled = true,
   lazy = false,
 }
 
 function M.config()
   local alpha = require "alpha"
-  local fn = require "user.functions.utils"
 
   local dashboard = require "alpha.themes.dashboard"
   local header = "▒▒  NEOVIM  ▒▒"
 
   dashboard.section.header.val = { "", "", header, "" }
-  dashboard.section.header.opts = { position = "center" }
 
   dashboard.section.buttons.val = {
     dashboard.button("p", "  Find project", CMD "Telescope workspaces  initial_mode=normal"),
@@ -37,6 +36,7 @@ function M.config()
 
   dashboard.opts.opts.noautocmd = true
 
+  local fn = require "user.functions.utils"
   fn.register_key_map({
     A = {
       ":Alpha<CR>",
