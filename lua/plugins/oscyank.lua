@@ -4,6 +4,7 @@ local M = {
   event = "VeryLazy",
 }
 
+-- TODO: replace with https://github.com/ojroques/nvim-osc52
 function M.config()
   local notify = require "notify"
 

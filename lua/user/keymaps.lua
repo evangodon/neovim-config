@@ -60,6 +60,9 @@ keymap("v", "H", "0", opts)
 keymap("n", "L", "$", opts)
 keymap("v", "L", "$", opts)
 
+-- Start search and replace in visual mode
+keymap("v", "f", ":s/", opts)
+
 -- Prevent overiding the last yank when deleting empty line
 keymap("n", "dd", function()
   if vim.api.nvim_get_current_line():match "^%s*$" then

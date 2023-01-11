@@ -5,7 +5,7 @@ local M = {
   "jose-elias-alvarez/null-ls.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   event = "BufReadPre",
-  enabled = false,
+  enabled = true,
 }
 
 function M.config()
