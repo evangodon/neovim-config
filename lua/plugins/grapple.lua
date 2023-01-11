@@ -1,9 +1,11 @@
 local backslash = [[\]]
+local jump_leader = "<leader>j"
+
 
 local M = {
   "cbochs/grapple.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "folke/which-key.nvim" },
-  keys = backslash,
+  keys = { backslash, jump_leader }
 }
 
 function M.config()
@@ -31,7 +33,7 @@ local function register_key_map(key, action, desc)
   key = tostring(key)
 
   whichkey.register({ [key] = rhs }, {
-    prefix = backslash,
+    prefix = jump_leader,
     mode = "n",
   })
 end
@@ -73,7 +75,7 @@ end
 
 -- Update all Grapple select keymaps
 local groupname = vim.api.nvim_create_augroup("grapple-update", {})
-vim.api.nvim_create_autocmd({ "BufHidden" }, {
+vim.api.nvim_create_autocmd({ "BufLeave" }, {
   group = groupname,
   callback = function()
     if vim.bo.filetype == "grapple" then
@@ -91,6 +93,17 @@ function M.init()
 
   set_named_select_keymap()
 
+  vim.keymap.set("n", "<leader>J", function()
+    grapple.toggle()
+    local key = grapple.key()
+    if key == nil then
+      Notify.info("Removed key")
+      return
+    end
+    local buffer_name = vim.api.nvim_call_function("bufname", {})
+    add_select_keymap(key, buffer_name)
+    Notify.info(string.format("Tagged with key [%s]", key))
+  end, { noremap = true, silent = true })
   whichkey.register({
     ["="] = {
       function()
