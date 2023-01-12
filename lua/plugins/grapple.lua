@@ -85,6 +85,7 @@ vim.api.nvim_create_autocmd({ "BufLeave" }, {
   end,
 })
 
+-- TODO: run the above autocommand  logic in async using plenary
 -- TODO: Show tag next to buffer name
 -- TODO: Create main jump tag keymap
 function M.init()
