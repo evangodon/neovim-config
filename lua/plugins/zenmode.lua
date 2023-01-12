@@ -24,14 +24,16 @@ function M.config()
     },
     on_open = function()
       vim.cmd [[
-		  ScrollbarHide
-		  Gitsigns toggle_signs false
+        ScrollbarHide
+        Gitsigns toggle_signs false
 		]]
-      local opts = { noremap = true, silent = true }
-      vim.keymap.set("n", "q", CMD "close", opts)
+      vim.keymap.set("n", "q", CMD "close", { noremap = true, silent = true })
     end,
     on_close = function()
-      vim.cmd [[ScrollbarShow]]
+      vim.cmd [[
+        ScrollbarShow
+        Gitsigns toggle_signs true
+      ]]
       vim.keymap.set("n", "q", "<Nop>")
     end,
   })

@@ -38,7 +38,9 @@ o.scrolloff = 8 -- start scrolling before hitting top or bottom of screen
 o.sidescrolloff = 8
 o.laststatus = 3 -- set a global status line
 o.guifont = "FiraCode Nerd Font:h17" -- the font used in graphical neovim applications
-o.fillchars = { eob = " ", vert = " " } -- Don't show `~` character on nonexistent lines, and | character between buffers
+o.fillchars = { eob = " " } -- Don't show `~` character on nonexistent lines, and | character between buffers
+o.fillchars:append "vert: "
+
 
 -- o.shell = "/bin/fish"
 
