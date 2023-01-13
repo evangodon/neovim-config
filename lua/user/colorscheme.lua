@@ -33,6 +33,24 @@ if not status_ok then
   return
 end
 
+-- Floating windows
+local function set_float_window_bg()
+  local util = require "user.functions.utils"
+  local float_window_bg = util.get_color("NormalFloat", "bg#")
+  vim.api.nvim_set_hl(0, "FloatBorder", { bg = float_window_bg })
+end
+
+set_float_window_bg()
+
+local wm_group = vim.api.nvim_create_augroup("float-window", {})
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+  group = wm_group,
+  callback = function()
+    set_float_window_bg()
+  end,
+})
+
+-- Keymaps
 require("user.functions").register_key_map({
   C = {
     CMD "Telescope colorscheme",
