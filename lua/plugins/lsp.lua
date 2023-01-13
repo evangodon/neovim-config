@@ -106,9 +106,7 @@ function M.config()
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = augroup,
         buffer = bufnr,
-        callback = function()
-          format()
-        end,
+        callback = format,
       })
     end
 
