@@ -4,7 +4,7 @@
 local M = {
   "goolord/alpha-nvim",
   dependencies = { "kyazdani42/nvim-web-devicons" },
-  enabled = false,
+  enabled = true,
   lazy = false,
 }
 
@@ -36,6 +36,11 @@ function M.config()
 
   dashboard.opts.opts.noautocmd = true
 
+  alpha.setup(dashboard.opts)
+
+end
+
+function M.init()
   local fn = require "user.functions.utils"
   fn.register_key_map({
     A = {
@@ -43,8 +48,6 @@ function M.config()
       "Open Alpha dashboard",
     },
   })
-
-  alpha.setup(dashboard.opts)
 end
 
 return M
