@@ -4,10 +4,9 @@
 
 local M = {
   "kyazdani42/nvim-tree.lua",
-  lazy = false,
+  cmd = { "NvimTreeToggle", "NvimTreeOpen" }
 }
 
-local fn = require "user.functions"
 
 function M.config()
   local nvim_tree = require "nvim-tree"
@@ -114,16 +113,16 @@ function M.config()
       },
     },
   })
+end
 
-  -- Need to call noautocmd before this function
-  vim.api.nvim_create_user_command("CustomNvimTreeToggle", function()
-    nvim_tree.toggle(false, false)
-  end, {})
+function M.init()
+  local fn = require("user.functions.utils")
 
   fn.register_key_map({
     e = {
       function()
-        vim.cmd [[CustomNvimTreeToggle]]
+        local nvim_tree = require "nvim-tree"
+        nvim_tree.toggle(false, true)
       end,
       "Toggle Nvimtree",
     },
