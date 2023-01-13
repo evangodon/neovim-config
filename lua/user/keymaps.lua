@@ -89,6 +89,10 @@ keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 keymap("n", "Q", "<nop>", opts)
 keymap("n", "q", "<nop>", opts)
 
+-- Leader key mappings
+
+keymap("n", "<leader>O", CMD"OpenSlides", opts)
+
 local fn = require "user.functions.utils"
 
 fn.register_key_map({
@@ -129,11 +133,11 @@ fn.register_key_map({
   T = {
     name = "Toggle vim option",
     c = {
-      fn.toggleVimOption "cursorcolumn",
+      fn.toggle_option "cursorcolumn",
       "cursorcolumn",
     },
     r = {
-      fn.toggleVimOption "relativenumber",
+      fn.toggle_option "relativenumber",
       "relative number",
     },
   },
