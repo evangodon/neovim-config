@@ -141,7 +141,7 @@ function M.init()
       },
     },
     r = { builtin_pickers.oldfiles, "View recent files" },
-    k = {
+    K = {
       CMD "Telescope knowledge_base list",
       "View knowledge base",
     },
