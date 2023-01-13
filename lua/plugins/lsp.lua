@@ -2,7 +2,13 @@ local M = {
   "VonHeikemen/lsp-zero.nvim",
   dependencies = {
     "neovim/nvim-lspconfig",
-    "williamboman/mason.nvim",
+    { "williamboman/mason.nvim", config = function()
+      require("mason").setup({
+        ui = {
+          border = "single"
+        }
+      })
+    end },
     "williamboman/mason-lspconfig.nvim",
   },
   event = "BufReadPre",

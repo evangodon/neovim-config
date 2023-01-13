@@ -26,7 +26,7 @@ M.register_key_map = function(keys, opts)
   wk.register(keys, defaults)
 end
 
-function M.toggleVimOption(option)
+function M.toggle_option(option)
   return function()
     local current_state = vim.opt[option]:get()
     vim.opt[option] = not current_state
