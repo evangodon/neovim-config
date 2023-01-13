@@ -66,6 +66,25 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   end,
 })
 
+-- close some filetypes with <q>
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "qf",
+    "help",
+    "man",
+    "notify",
+    "lspinfo",
+    "spectre_panel",
+    "startuptime",
+    "tsplayground",
+    "PlenaryTestPopup",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", CMD "close", { buffer = event.buf, silent = true })
+  end,
+})
+
 -- TODO: set this up with default highlight groups
 --
 --[[ vim.api.nvim_create_autocmd("ModeChanged", { ]]
