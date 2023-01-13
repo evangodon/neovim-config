@@ -91,7 +91,7 @@ keymap("n", "q", "<nop>", opts)
 
 -- Leader key mappings
 
-keymap("n", "<leader>O", CMD"OpenSlides", opts)
+keymap("n", "<leader>O", CMD "OpenSlides", opts)
 
 local fn = require "user.functions.utils"
 
@@ -118,6 +118,10 @@ fn.register_key_map({
   },
   ["["] = {
     CMD "bprev",
+    "Go to previous buffer",
+  },
+  ["<TAB>"] = {
+    CMD "Telescope buffers",
     "Go to previous buffer",
   },
   t = {
