@@ -38,6 +38,7 @@ function M.config()
       },
     },
     palettes = {
+      -- Use old colors for dayfox
       dayfox = {
         black = S.new("#1d344f", "#24476f", "#1c2f44", true),
         red = S.new("#b95d76", "#c76882", "#ac5169", true),
