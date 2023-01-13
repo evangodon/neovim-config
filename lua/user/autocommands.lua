@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd({ "BufDelete" }, {
   callback = function()
     local loaded_buffers = Get_loaded_buffers()
     if #loaded_buffers == 2 and vim.fn.expand "%" == "" then
-      -- vim.cmd "Alpha"
+      vim.cmd "Alpha"
       vim.cmd "bdelete #"
     end
   end,
@@ -93,19 +93,22 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- TODO: set this up with default highlight groups
---
---[[ vim.api.nvim_create_autocmd("ModeChanged", { ]]
---[[   callback = function() ]]
---[[     local modes = { ]]
---[[       ["i"] = "#7aa2f7", ]]
---[[       ["c"] = "#e0af68", ]]
---[[       ["v"] = "#c678dd", ]]
---[[       ["V"] = "#c678dd", ]]
---[[       [""] = "#c678dd", ]]
---[[     } ]]
---[[     vim.api.nvim_set_hl(0, "CursorLineNr", { ]]
---[[       foreground = modes[vim.api.nvim_get_mode().mode] or "#737aa2", ]]
---[[     }) ]]
---[[   end, ]]
---[[ }) ]]
+-- Change color of cursorline on mode change (DISABLED)
+local util = require("user.functions.utils")
+local cursorline_color = util.get_color("CursorLineNr", "fg#")
+
+vim.api.nvim_create_autocmd("ModeChanged", {
+  callback = function()
+    local modes = {
+      --[[ ["i"] = "#7aa2f7", ]]
+      --[[ ["c"] = "#e0af68", ]]
+      --[[ ["v"] = "#c678dd", ]]
+      --[[ ["V"] = "#c678dd", ]]
+      --[[ [""] = "#c678dd", ]]
+    }
+    local fg = modes[vim.api.nvim_get_mode().mode] or cursorline_color
+    vim.api.nvim_set_hl(0, "CursorLineNr", {
+      foreground = fg
+    })
+  end,
+})
