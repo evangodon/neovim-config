@@ -21,7 +21,7 @@ function M.config()
     debug = false,
     sources = {
       -- JS
-      formatting.prettier,
+      formatting.prettierd,
     },
     on_attach = function(client, bufnr)
       -- Format on save

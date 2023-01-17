@@ -5,7 +5,7 @@ local M = {
   "goolord/alpha-nvim",
   dependencies = { "kyazdani42/nvim-web-devicons" },
   enabled = true,
-  lazy = false,
+  cmd = "Alpha"
 }
 
 function M.config()
@@ -44,7 +44,7 @@ function M.init()
   local fn = require "user.functions.utils"
   fn.register_key_map({
     A = {
-      ":Alpha<CR>",
+      CMD "Alpha",
       "Open Alpha dashboard",
     },
   })
