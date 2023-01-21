@@ -88,6 +88,7 @@ function M.config()
     renderer = {
       root_folder_modifier = ":t",
       icons = {
+        webdev_colors = true,
         git_placement = "before",
         padding = " ",
         glyphs = {
