@@ -144,6 +144,13 @@ fn.register_key_map({
       fn.toggle_option "relativenumber",
       "relative number",
     },
+    l = {
+      function()
+        local level = vim.opt.conceallevel:get()
+        vim.opt.conceallevel = level == 2 and 0 or 2
+      end,
+      "conceal level",
+    },
   },
   E = {
     function()

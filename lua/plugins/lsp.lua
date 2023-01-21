@@ -62,7 +62,6 @@ function M.config()
   lsp.configure("sumneko_lua", require "user.lsp.settings.sumneko_lua")
   lsp.configure("jsonls", require "user.lsp.settings.jsonls")
   lsp.configure("tsserver", {
-    root_dir = lspconfig.util.root_pattern "package.json",
     init_options = {
       lint = true,
     },

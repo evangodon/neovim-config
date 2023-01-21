@@ -10,17 +10,18 @@
 -- ]]
 
 -- Open Alpha when deleting last buffer
-local groupname = vim.api.nvim_create_augroup("buffer-close", {})
-vim.api.nvim_create_autocmd({ "BufDelete" }, {
-  group = groupname,
-  callback = function()
-    local loaded_buffers = Get_loaded_buffers()
-    if #loaded_buffers == 2 and vim.fn.expand "%" == "" then
-      vim.cmd "Alpha"
-      vim.cmd "bdelete #"
-    end
-  end,
-})
+--[[ local groupname = vim.api.nvim_create_augroup("buffer-close", {}) ]]
+--[[ vim.api.nvim_create_autocmd({ "BufDelete" }, { ]]
+--[[   group = groupname, ]]
+--[[   callback = function() ]]
+--[[     local loaded_buffers = Get_loaded_buffers() ]]
+--[[     if #loaded_buffers == 2 and vim.fn.expand "%" == "" then ]]
+--[[       -- TODO: check if alpha exists ]]
+--[[       -- vim.cmd "Alpha" ]]
+--[[       vim.cmd "bdelete #" ]]
+--[[     end ]]
+--[[   end, ]]
+--[[ }) ]]
 
 -- Hightlight on yank
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
