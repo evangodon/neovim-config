@@ -10,7 +10,7 @@ function M.config()
   local gitsigns = require "gitsigns"
   local kitty = require "user.functions.kitty"
 
-  local gitsign_icon = "▒"
+  local gitsign_icon = "│"
   local gitsign_icon_delete = "-"
 
   gitsigns.setup({
@@ -133,8 +133,8 @@ function M.config()
             function()
               kitty.launch({ program = "lazygit" })
             end,
-            "Open Lazygit"
-          }
+            "Open Lazygit",
+          },
         },
       })
     end,
