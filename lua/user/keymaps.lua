@@ -28,7 +28,6 @@ keymap("n", "<S-TAB>", CMD "bprevious", opts)
 keymap("n", "<BS>", CMD "b#", opts)
 keymap("n", "<leader>lb", ":ls<CR>:b<space>", opts)
 
-
 vim.api.nvim_create_user_command("CloseBuffer", function()
   local loaded_buffers = Get_loaded_buffers()
   if #loaded_buffers == 0 then
@@ -132,6 +131,14 @@ fn.register_key_map({
     c = {
       CMD "tabclose",
       "Close tab",
+    },
+    n = {
+      CMD "tabnext",
+      "Next tab",
+    },
+    p = {
+      CMD "tabprevious",
+      "Next tab",
     },
   },
   T = {

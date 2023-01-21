@@ -22,6 +22,9 @@ function M.config()
     sources = {
       -- JS
       formatting.prettier,
+
+      -- Lua
+      formatting.stylua,
     },
     on_attach = function(client, bufnr)
       -- Format on save

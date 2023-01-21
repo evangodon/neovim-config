@@ -21,8 +21,8 @@ require("lazy").setup("plugins", {
   },
   debug = false,
   ui = {
-    border = "single"
-  }
+    border = "single",
+  },
 })
 
 require("user.functions").register_key_map({ L = {

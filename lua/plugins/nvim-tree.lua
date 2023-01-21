@@ -4,9 +4,9 @@
 
 local M = {
   "kyazdani42/nvim-tree.lua",
-  cmd = { "NvimTreeToggle", "NvimTreeOpen" }
+  cmd = { "NvimTreeToggle", "NvimTreeOpen" },
+  lazy = false,
 }
-
 
 function M.config()
   local nvim_tree = require "nvim-tree"
@@ -71,7 +71,7 @@ function M.config()
     view = {
       width = NvimTreeWidth,
       centralize_selection = false,
-      hide_root_folder = false,
+      hide_root_folder = true,
       side = "left",
       mappings = {
         custom_only = false,
@@ -117,7 +117,7 @@ function M.config()
 end
 
 function M.init()
-  local fn = require("user.functions.utils")
+  local fn = require "user.functions.utils"
 
   fn.register_key_map({
     e = {

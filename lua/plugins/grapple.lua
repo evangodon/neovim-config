@@ -1,11 +1,10 @@
 local backslash = [[\]]
 local jump_leader = "<leader>j"
 
-
 local M = {
   "cbochs/grapple.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "folke/which-key.nvim" },
-  keys = { backslash, jump_leader }
+  keys = { backslash, jump_leader },
 }
 
 function M.config()
@@ -98,11 +97,12 @@ function M.init()
     grapple.toggle()
     local key = grapple.key()
     if key == nil then
-      Notify.info("Removed key")
+      Notify.info "Removed key"
       return
     end
     local buffer_name = vim.api.nvim_call_function("bufname", {})
     add_select_keymap(key, buffer_name)
+    CMD "redrawtabline"
     Notify.info(string.format("Tagged with key [%s]", key))
   end, { noremap = true, silent = true })
   whichkey.register({
@@ -138,12 +138,14 @@ function M.init()
         local key = grapple.key()
         remove_select_keymap(key)
         grapple.untag()
+        CMD "redrawtabline"
       end,
       "Untag",
     },
     [backslash] = {
       function()
         grapple.popup_tags()
+        CMD "redrawtabline"
       end,
       "View tags",
     },
