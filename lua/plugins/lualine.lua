@@ -8,7 +8,7 @@ local M = {
 
 function M.config()
   local lualine = require "lualine"
-  local  icons = require "user.icons"
+  local icons = require "user.icons"
 
   local function hide_in_width()
     return vim.fn.winwidth(0) > 80
@@ -70,10 +70,13 @@ function M.config()
   local filename = {
     "filename",
     path = 1,
+    symbols = {
+      modified = "[+]",
+      readonly = "[-]",
+      unnamed = "[No Name]",
+      newfile = "[New]",
+    },
     fmt = function(str)
-      if string.find(str, "No Name") then
-        return ""
-      end
       return string.gsub(str, "/", " › ")
     end,
   }
@@ -83,6 +86,9 @@ function M.config()
   local diagnostics = {
     "diagnostics",
     symbols = { error = dot, warn = dot, info = dot, hint = dot },
+    fmt = function(str)
+      return str
+    end,
   }
 
   lualine.setup({

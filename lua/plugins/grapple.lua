@@ -40,7 +40,7 @@ end
 -- Add GrappleSelect keymap and center viewport
 local function add_select_keymap(key, filename)
   local name = string.match(filename, "[^/]+$")
-  register_key_map(key, CMD("GrappleSelect key=" .. key) .. " |zz", "Go to [" .. name .. "]")
+  register_key_map(key, CMD("GrappleSelect key=" .. key) .. " |zz", "Jump to [" .. name .. "]")
 end
 
 -- Remove GrappleSelect keymap

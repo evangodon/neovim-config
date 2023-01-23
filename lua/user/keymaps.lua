@@ -123,6 +123,19 @@ fn.register_key_map({
     CMD "Telescope buffers",
     "Go to previous buffer",
   },
+  B = {
+    function()
+      local cur_bufid = vim.api.nvim_get_current_buf()
+      local buffers = vim.api.nvim_list_bufs()
+
+      for _, buf_id in ipairs(buffers) do
+      if vim.api.nvim_buf_is_valid(buf_id) and vim.bo[buf_id].buflisted and buf_id ~= cur_bufid then
+          vim.api.nvim_buf_delete(buf_id, {})
+        end
+      end
+    end,
+    "Delete all buffers but current",
+  },
   t = {
     a = {
       CMD "$tabnew | NvimTreeOpen",
