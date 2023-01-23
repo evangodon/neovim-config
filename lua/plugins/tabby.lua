@@ -33,8 +33,6 @@ local theme = {
   left = "",
 } ]]
 
--- TODO: scope buffers to tabs, see https://github.com/tiagovla/scope.nvim
-
 function M.config()
   local utils = require "user.functions.utils"
   local tabby_utils = require "tabby.util"

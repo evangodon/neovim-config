@@ -1,7 +1,7 @@
-local M = {}
+local U = {}
 
 -- Reload config
-M.reloadConfig = function()
+U.reloadConfig = function()
   -- Remove all autocmds
   vim.cmd [[autocmd!]]
   -- Certain packages complain when setup is called twice
@@ -20,13 +20,13 @@ M.reloadConfig = function()
 end
 
 -- Set leader keymappings
-M.register_key_map = function(keys, opts)
+U.register_key_map = function(keys, opts)
   local defaults = vim.tbl_extend("keep", { prefix = "<leader>" }, opts or {})
   local wk = require "which-key"
   wk.register(keys, defaults)
 end
 
-function M.toggle_option(option)
+function U.toggle_option(option)
   return function()
     local current_state = vim.opt[option]:get()
     vim.opt[option] = not current_state
@@ -34,7 +34,7 @@ function M.toggle_option(option)
   end
 end
 
-function M.get_color(group, attr)
+function U.get_color(group, attr)
   local fn = vim.fn
   return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
 end
@@ -104,10 +104,10 @@ local superscript = {
   ["Z"] = "ᶻ",
 }
 
-function M.get_superscript(char)
+function U.get_superscript(char)
   local str_char = tostring(char)
   local sup = superscript[str_char]
   return sup and sup or char
 end
 
-return M
+return U
