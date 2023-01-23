@@ -21,21 +21,18 @@ end
 
 local theme = {
   fill = "TabLineFill",
-  head = "TabLine",
+  head = "TabLineSel",
   current_tab = "TabLineSel",
   tab = "TabLine",
   win = "TabLine",
   tail = "TabLine",
 }
 
-local sep = {
+--[[ local sep = {
   right = "",
   left = "",
-}
+} ]]
 
--- TODO: handle empty files
--- TODO: command to rename tab with ui.input
--- TODO: command to delete all buffers but current
 -- TODO: scope buffers to tabs, see https://github.com/tiagovla/scope.nvim
 
 function M.config()
@@ -74,12 +71,12 @@ function M.config()
       local tab_name = tabby_utils.get_tab_name(tabid, function()
         return tabid
       end)
-      local icon = is_current_tab and " " or " "
+      local icon = is_current_tab and "" or ""
       table.insert(parts, {
         type = "tab",
         tabid = tabid,
         label = {
-          string.format(" %s%s ", icon, tab_name),
+          string.format(" %s %s ", icon, tab_name),
           hl = theme.fill,
         },
       })
@@ -97,6 +94,9 @@ function M.config()
         local is_active = bufid == cur_bufid
         local hl = is_active and theme.current_tab or theme.tab
         local buf_name = vim.api.nvim_buf_get_name(bufid)
+        if buf_name == "" then
+          buf_name = "[No Name]"
+        end
         buf_name = vim.fn.fnamemodify(buf_name, ":t")
         local grapple_key = get_grapple_key(bufid)
         local grapple_key_sup = utils.get_superscript(grapple_key)
@@ -111,6 +111,9 @@ function M.config()
         })
       end
     end
+
+    table.insert(parts, space)
+    table.insert(parts, spring)
 
     return parts
   end

@@ -41,7 +41,6 @@ o.guifont = "FiraCode Nerd Font:h17" -- the font used in graphical neovim applic
 o.fillchars = { eob = " " } -- Don't show `~` character on nonexistent lines, and | character between buffers
 o.fillchars:append "vert: "
 
-
 -- o.shell = "/bin/fish"
 
 local bo = vim.bo
