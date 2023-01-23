@@ -92,6 +92,12 @@ keymap("n", "q", "<nop>", opts)
 
 keymap("n", "<leader>O", CMD "OpenSlides", opts)
 
+-- Tab Navigation
+keymap("n", "<leader>1", CMD "normal! 1gt", opts)
+keymap("n", "<leader>2", CMD "normal! 2gt", opts)
+keymap("n", "<leader>3", CMD "normal! 3gt", opts)
+keymap("n", "<leader>4", CMD "normal! 4gt", opts)
+
 local fn = require "user.functions.utils"
 
 fn.register_key_map({
@@ -129,7 +135,7 @@ fn.register_key_map({
       local buffers = vim.api.nvim_list_bufs()
 
       for _, buf_id in ipairs(buffers) do
-      if vim.api.nvim_buf_is_valid(buf_id) and vim.bo[buf_id].buflisted and buf_id ~= cur_bufid then
+        if vim.api.nvim_buf_is_valid(buf_id) and vim.bo[buf_id].buflisted and buf_id ~= cur_bufid then
           vim.api.nvim_buf_delete(buf_id, {})
         end
       end
