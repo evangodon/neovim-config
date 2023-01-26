@@ -10,7 +10,7 @@ local M = {
 function M.config()
   local configs = require "nvim-treesitter.configs"
 
-  -- vim.g.markdown_fenced_languages = { "html", "python", "lua", "vim", "typescript", "javascript" }
+  vim.g.markdown_fenced_languages = { "html", "python", "lua", "vim", "typescript", "javascript" }
 
   configs.setup({
     ensure_installed = {

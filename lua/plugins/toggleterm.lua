@@ -54,6 +54,11 @@ function M.init()
     hidden = true,
   })
 
+  local jrnl = Terminal:new({
+    cmd = "jrnl today",
+    hidden = true,
+  })
+
   local dash = Terminal:new({ cmd = "dash", hidden = true })
 
   --[[ local lazygit = Terminal:new({ cmd = "lazygit", hidden = true }) ]]
@@ -77,6 +82,10 @@ function M.init()
       "Open [D]ashboard",
     },
   })
+
+  vim.api.nvim_create_user_command("Jrnl", function()
+    jrnl:toggle()
+  end, { nargs = 0 })
 end
 
 return M

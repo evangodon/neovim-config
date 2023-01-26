@@ -2,13 +2,16 @@ local M = {
   "VonHeikemen/lsp-zero.nvim",
   dependencies = {
     "neovim/nvim-lspconfig",
-    { "williamboman/mason.nvim", config = function()
-      require("mason").setup({
-        ui = {
-          border = "single"
-        }
-      })
-    end },
+    {
+      "williamboman/mason.nvim",
+      config = function()
+        require("mason").setup({
+          ui = {
+            border = "single",
+          },
+        })
+      end,
+    },
     "williamboman/mason-lspconfig.nvim",
   },
   event = "BufReadPre",
@@ -62,14 +65,15 @@ function M.config()
   lsp.configure("sumneko_lua", require "user.lsp.settings.sumneko_lua")
   lsp.configure("jsonls", require "user.lsp.settings.jsonls")
   lsp.configure("tsserver", {
+    root_dir = lspconfig.util.root_pattern "package.json",
     init_options = {
-      lint = true,
+      lint = false,
     },
   })
   lsp.configure("denols", {
-    root_dir = lspconfig.util.root_pattern "deno.json",
+    root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
     init_options = {
-      lint = true,
+      lint = false,
     },
   })
 
@@ -105,13 +109,15 @@ function M.config()
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = augroup,
         buffer = bufnr,
-        callback = format,
+        callback = function()
+          format()
+        end,
       })
     end
-
   end)
 
-  lsp.setup()
+  lsp.setup({})
+  require("lspconfig.ui.windows").default_options.border = "single"
 end
 
 return M

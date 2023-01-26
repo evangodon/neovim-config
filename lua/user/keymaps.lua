@@ -28,6 +28,7 @@ keymap("n", "<S-TAB>", CMD "bprevious", opts)
 keymap("n", "<BS>", CMD "b#", opts)
 keymap("n", "<leader>lb", ":ls<CR>:b<space>", opts)
 
+-- TODO: fix backspace to only go back to listed buffers
 vim.api.nvim_create_user_command("CloseBuffer", function()
   local loaded_buffers = Get_loaded_buffers()
   if #loaded_buffers == 0 then
@@ -104,10 +105,6 @@ fn.register_key_map({
   q = {
     CMD "quitall!",
     "Quit",
-  },
-  l = {
-    CMD "noh",
-    "Clear highlights",
   },
   c = {
     CMD "close",
