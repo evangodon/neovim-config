@@ -75,8 +75,8 @@ function M.config()
         DiffAdd = { fg = "palette.green", bg = "NONE" },
         DiffChange = { fg = "palette.yellow", bg = "NONE" },
         DiffDelete = { fg = "palette.red", bg = "NONE" },
-        VertSplit = { fg = "palette.bg2", bg = "palette.bg2"  },
-        TabLineSel = {bg = "palette.red"},
+        VertSplit = { fg = "palette.bg2", bg = "palette.bg2" },
+        TabLineSel = { bg = "palette.red" },
       },
     },
   })

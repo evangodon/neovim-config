@@ -94,7 +94,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Change color of cursorline on mode change (DISABLED)
-local util = require("user.functions.utils")
+local util = require "user.functions.utils"
 local cursorline_color = util.get_color("CursorLineNr", "fg#")
 
 vim.api.nvim_create_autocmd("ModeChanged", {
@@ -108,7 +108,7 @@ vim.api.nvim_create_autocmd("ModeChanged", {
     }
     local fg = modes[vim.api.nvim_get_mode().mode] or cursorline_color
     vim.api.nvim_set_hl(0, "CursorLineNr", {
-      foreground = fg
+      foreground = fg,
     })
   end,
 })
