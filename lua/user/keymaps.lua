@@ -77,6 +77,7 @@ end, { expr = true, noremap = true })
 keymap("n", "<Esc>", function()
   require("notify").dismiss({}) -- clear notifications
   CMD "nohl" -- clear highlights
+  CMD "nohlsearch" -- clear highlights
   CMD "echo " -- clear short-message
 end)
 

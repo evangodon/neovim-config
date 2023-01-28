@@ -32,8 +32,8 @@ function M.config()
     },
     highlight = {
       enable = true, -- false will disable the whole extension
-      disable = { "" }, -- list of language that will be disabled
-      additional_vim_regex_highlighting = true,
+      disable = {}, -- list of language that will be disabled
+      additional_vim_regex_highlighting = false, -- disable since it creates weird highlights in typescript
     },
     indent = { enable = true, disable = { "yaml" } },
 
