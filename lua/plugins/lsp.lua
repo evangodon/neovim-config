@@ -2,6 +2,7 @@ local M = {
   "VonHeikemen/lsp-zero.nvim",
   dependencies = {
     "neovim/nvim-lspconfig",
+    "hrsh7th/nvim-cmp",
     {
       "williamboman/mason.nvim",
       config = function()
@@ -47,6 +48,7 @@ function M.config()
   })
 
   lsp.set_preferences({
+    manage_nvim_cmp = false, -- managed in ./cmp.lua
     suggest_lsp_servers = true,
     sign_icons = {
       error = "•",
@@ -57,7 +59,7 @@ function M.config()
   })
 
   vim.diagnostic.config({
-    virtual_text = true,
+    virtual_text = false,
   })
 
   -- LSP server configurations
@@ -66,6 +68,7 @@ function M.config()
   lsp.configure("jsonls", require "user.lsp.settings.jsonls")
   lsp.configure("tsserver", {
     root_dir = lspconfig.util.root_pattern "package.json",
+    single_file_support = false,
     init_options = {
       lint = false,
     },
@@ -103,17 +106,19 @@ function M.config()
     end, setBufOpts "Jump to next diagnostic")
 
     -- Format on save
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    --[[ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     if client.supports_method "textDocument/formatting" then
       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = augroup,
         buffer = bufnr,
         callback = function()
-          format()
+          vim.lsp.buf.format({
+            bufnr = bufnr,
+          })
         end,
       })
-    end
+    end ]]
   end)
 
   lsp.setup({})
