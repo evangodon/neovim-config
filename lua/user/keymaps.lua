@@ -27,6 +27,7 @@ keymap("n", "[b", CMD "bprevious", opts) -- Previous buffer
 keymap("n", "<S-TAB>", CMD "bprevious", opts)
 keymap("n", "<BS>", CMD "b#", opts)
 keymap("n", "<leader>lb", ":ls<CR>:b<space>", opts)
+keymap("n", "<leader>\\", CMD "Telescope buffers", opts)
 
 -- TODO: fix backspace to only go back to listed buffers
 vim.api.nvim_create_user_command("CloseBuffer", function()
