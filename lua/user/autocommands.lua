@@ -86,13 +86,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "gitcommit", "markdown" },
-  callback = function()
-    vim.opt_local.wrap = true
-  end,
-})
-
 -- Change color of cursorline on mode change (DISABLED)
 local util = require "user.functions.utils"
 local cursorline_color = util.get_color("CursorLineNr", "fg#")
