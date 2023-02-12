@@ -121,10 +121,10 @@ function M.config()
     },
     sources = {
       --	{ name = "copilot", group_index = 1 },
-      { name = "nvim_lsp" },
+      { name = "nvim_lsp", keyword_length = 1 },
       { name = "nvim_lua" },
-      { name = "luasnip" },
-      { name = "buffer" },
+      { name = "luasnip", keyword_length = 2 },
+      { name = "buffer", keyword_length = 3 },
       { name = "path" },
     },
     confirm_opts = {
