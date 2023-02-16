@@ -48,7 +48,7 @@ function M.config()
       -- "#A37ACC",
       -- },
     },
-    incremental_selection = {
+    --[[ incremental_selection = {
       enable = true,
       keymaps = {
         init_selection = "<CR>",
@@ -56,7 +56,7 @@ function M.config()
         scope_incremental = "<S-CR>",
         node_decremental = "<BS>",
       },
-    },
+    }, ]]
     context_commentstring = {
       enable = true,
       enable_autocmd = false,

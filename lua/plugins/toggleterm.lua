@@ -12,6 +12,7 @@ function M.config()
   local toggleterm = require "toggleterm"
 
   local border_color = utils.get_color("DiffChange", "fg#")
+  local background_color = "#181825"
 
   toggleterm.setup({
     size = 20,
@@ -22,7 +23,7 @@ function M.config()
     persist_size = true,
     direction = "float",
     shade_terminals = false,
-    shading_factor = 2,
+    shading_factor = -100,
     close_on_exit = true,
     shell = vim.o.shell,
     float_opts = {
@@ -30,10 +31,14 @@ function M.config()
       height = 22,
     },
     --[[ highlights = {
-			FloatBorder = {
-				guifg = border_color,
-			},
-		}, ]]
+      NormalFloat = {
+        guibg = background_color,
+      },
+      FloatBorder = {
+        guifg = border_color,
+        guibg = background_color,
+      },
+    }, ]]
   })
 end
 

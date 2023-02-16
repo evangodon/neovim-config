@@ -4,8 +4,9 @@
 local M = {
   "goolord/alpha-nvim",
   dependencies = { "kyazdani42/nvim-web-devicons" },
-  enabled = false,
-  cmd = "Alpha"
+  enabled = true,
+  cmd = "Alpha",
+  lazy = false,
 }
 
 function M.config()
@@ -37,7 +38,6 @@ function M.config()
   dashboard.opts.opts.noautocmd = true
 
   alpha.setup(dashboard.opts)
-
 end
 
 function M.init()

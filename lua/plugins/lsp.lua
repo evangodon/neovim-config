@@ -42,7 +42,6 @@ function M.config()
   lsp.ensure_installed({
     "denols",
     "eslint",
-    "sumneko_lua",
     "gopls",
     "jsonls",
   })
@@ -64,7 +63,7 @@ function M.config()
 
   -- LSP server configurations
   local lspconfig = require "lspconfig"
-  lsp.configure("sumneko_lua", require "user.lsp.settings.sumneko_lua")
+  lsp.configure("lua_ls", require "user.lsp.settings.luals")
   lsp.configure("jsonls", require "user.lsp.settings.jsonls")
   lsp.configure("tsserver", {
     root_dir = lspconfig.util.root_pattern "package.json",
@@ -74,7 +73,7 @@ function M.config()
     },
   })
   lsp.configure("denols", {
-    root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+    root_dir = lspconfig.util.root_pattern("deno.json", "deno.lock"),
     init_options = {
       lint = false,
     },
@@ -82,6 +81,15 @@ function M.config()
 
   -- Keymaps
   lsp.on_attach(function(client, bufnr)
+    -- Handle tsserver and denols
+    if lspconfig.util.root_pattern "deno.json"(vim.fn.getcwd()) then
+      if client.name == "tsserver" then
+        client.stop()
+        return
+      end
+    end
+
+    -- KEYMAPS
     local function setBufOpts(desc)
       return { noremap = true, silent = true, buffer = bufnr, desc = desc }
     end
@@ -105,7 +113,7 @@ function M.config()
       vim.diagnostic.goto_next({ border = "single" })
     end, setBufOpts "Jump to next diagnostic")
 
-    -- Format on save
+    -- FORMAT ON SAVE
     --[[ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     if client.supports_method "textDocument/formatting" then
       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -113,8 +121,14 @@ function M.config()
         group = augroup,
         buffer = bufnr,
         callback = function()
+          local ft = vim.bo[bufnr].filetype
+          local have_nls = #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
+
           vim.lsp.buf.format({
             bufnr = bufnr,
+            filter = function(buf_client)
+              return have_nls and buf_client.name == "null-ls" or buf_client.name ~= "null-ls"
+            end,
           })
         end,
       })
