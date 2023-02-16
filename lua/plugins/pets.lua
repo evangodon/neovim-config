@@ -9,6 +9,7 @@ local M = {
 }
 
 function M.config()
+  -- TODO: fix https://github.com/edluffy/hologram.nvim/issues/25
   require("pets").setup({})
 end
 

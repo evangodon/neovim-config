@@ -97,7 +97,7 @@ function M.config()
       theme = "auto",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
-      disabled_filetypes = { statusline = { "dashboard", "NvimTree", "Outline" }, winbar = { "NvimTree" } },
+      disabled_filetypes = { statusline = { "dashboard", "NvimTree", "Outline" }, winbar = { "NvimTree", "alpha" } },
       always_divide_middle = true,
     },
     extensions = { "symbols-outline", "toggleterm" },

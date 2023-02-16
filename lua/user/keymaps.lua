@@ -36,6 +36,8 @@ vim.api.nvim_create_user_command("CloseBuffer", function()
     return
   elseif #loaded_buffers == 1 then
     vim.cmd "bdelete"
+    vim.cmd "Alpha"
+    vim.cmd "bdelete#"
   else
     vim.cmd "bprevious|bdelete#"
   end

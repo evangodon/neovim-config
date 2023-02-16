@@ -5,7 +5,8 @@
 -- Install `zk` with `brew install zk` or `yay -S zk`
 --
 local M = {
-  "mickael-menu/zk-nvim", ft = "markdown",
+  "mickael-menu/zk-nvim",
+  ft = "markdown",
 }
 
 -- TODO: [ ] Improve the Add new note keymap so that it works in any notebook
@@ -85,6 +86,11 @@ function M.init()
           end)
         end,
         "New note",
+      },
+      -- Backlinks
+      b = {
+        CMD "ZkBacklinks",
+        "View backlinks",
       },
       -- Open Note
       o = {
