@@ -98,6 +98,7 @@ keymap("n", "q", "<nop>", opts)
 keymap("n", "<leader>O", CMD "OpenSlides", opts)
 
 -- Tab Navigation
+-- TODO: add descriptions
 keymap("n", "<leader>1", CMD "normal! 1gt", opts)
 keymap("n", "<leader>2", CMD "normal! 2gt", opts)
 keymap("n", "<leader>3", CMD "normal! 3gt", opts)

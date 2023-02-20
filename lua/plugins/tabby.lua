@@ -63,21 +63,23 @@ function M.config()
 
     -- TABS
     local tabs = vim.api.nvim_list_tabpages()
-    local current_tab = vim.api.nvim_get_current_tabpage()
-    for _, tabid in ipairs(tabs) do
-      local is_current_tab = tabid == current_tab
-      local tab_name = tabby_utils.get_tab_name(tabid, function()
-        return tabid
-      end)
-      local icon = is_current_tab and "" or ""
-      table.insert(parts, {
-        type = "tab",
-        tabid = tabid,
-        label = {
-          string.format(" %s %s ", icon, tab_name),
-          hl = theme.fill,
-        },
-      })
+    if #tabs > 1 then
+      local current_tab = vim.api.nvim_get_current_tabpage()
+      for _, tabid in ipairs(tabs) do
+        local is_current_tab = tabid == current_tab
+        local tab_name = tabby_utils.get_tab_name(tabid, function()
+          return tabid
+        end)
+        local icon = is_current_tab and "" or ""
+        table.insert(parts, {
+          type = "tab",
+          tabid = tabid,
+          label = {
+            string.format(" %s %s ", icon, tab_name),
+            hl = theme.fill,
+          },
+        })
+      end
     end
 
     table.insert(parts, spring)
