@@ -28,14 +28,43 @@ local theme = {
   tail = "TabLine",
 }
 
+function split(inputstr, sep)
+  if sep == nil then
+    sep = "%s"
+  end
+  local t = {}
+  for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+    table.insert(t, str)
+  end
+  return t
+end
+
 --[[ local sep = {
   right = "",
   left = "",
 } ]]
-
 function M.config()
   local utils = require "user.functions.utils"
   local tabby_utils = require "tabby.util"
+
+  local function shortenPath(buf_path)
+    local relativeToCurDir = vim.fn.fnamemodify(buf_path, ":.")
+    local head = vim.fn.fnamemodify(relativeToCurDir, ":h")
+    local tail = vim.fn.fnamemodify(buf_path, ":t")
+
+    local path_segments = split(head, "/")
+    local length = #path_segments
+
+    local path = ""
+    if path_segments[length] ~= nil then
+      path = path_segments[length] .. "/"
+    end
+    if path_segments[length - 1] ~= nil then
+      path = path .. path_segments[length - 1] .. "/"
+    end
+
+    return path .. tail
+  end
 
   local components = function()
     local space = {
@@ -88,25 +117,41 @@ function M.config()
     local cur_bufid = vim.api.nvim_get_current_buf()
     -- local buffers = vim.fn.tabpagebuflist()
     local buffers = vim.api.nvim_list_bufs()
+    local buf_names = {}
+    -- Keep track of buffer names to check for duplicates
+    for _, bufid in ipairs(buffers) do
+      if vim.api.nvim_buf_is_valid(bufid) and vim.bo[bufid].buflisted then
+        local buf_path = vim.api.nvim_buf_get_name(bufid)
+        local name = vim.fn.fnamemodify(buf_path, ":t")
+        buf_names[name] = buf_names[name] == nil and 1 or buf_names[name] + 1
+      end
+    end
 
     for _, bufid in ipairs(buffers) do
       if vim.api.nvim_buf_is_valid(bufid) and vim.bo[bufid].buflisted then
         local is_active = bufid == cur_bufid
         local hl = is_active and theme.current_tab or theme.tab
-        local buf_name = vim.api.nvim_buf_get_name(bufid)
-        if buf_name == "" then
-          buf_name = "[No Name]"
+        local buf_path = vim.api.nvim_buf_get_name(bufid)
+        if buf_path == "" then
+          buf_path = "[No Name]"
         end
-        buf_name = vim.fn.fnamemodify(buf_name, ":t")
+        local buffer_name = ""
+        local buf_name = vim.fn.fnamemodify(buf_path, ":t")
+        if buf_names[buf_name] == 1 then
+          buffer_name = buf_name
+        else
+          buffer_name = shortenPath(buf_path)
+        end
         local grapple_key = get_grapple_key(bufid)
         local grapple_key_sup = utils.get_superscript(grapple_key)
         local icon = is_active and "" or ""
-        local is_modified = vim.api.nvim_buf_get_option(bufid, "modified") and "●" or ""
+        local is_modified = vim.api.nvim_buf_get_option(bufid, "modified") and "● " or ""
 
+        table.insert(parts, space)
         table.insert(parts, {
           type = "text",
           text = {
-            string.format(" %s %s%s %s ", icon, buf_name, grapple_key_sup, is_modified),
+            string.format(" %s %s%s %s", icon, buffer_name, grapple_key_sup, is_modified),
             hl = hl,
           },
         })
