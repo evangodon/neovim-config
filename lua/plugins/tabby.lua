@@ -6,8 +6,16 @@ local M = {
   lazy = false,
 }
 
-local cwd = function()
-  return "  " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " "
+local function pad(str, length)
+  local padding = string.rep(" ", (length - #str) / 2)
+  return padding .. str .. padding
+end
+
+local function cwd()
+  local f = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+  f = " " .. f
+  f = pad(f, 18)
+  return f
 end
 
 local function get_grapple_key(bufid)
@@ -28,7 +36,7 @@ local theme = {
   tail = "TabLine",
 }
 
-function split(inputstr, sep)
+local function split(inputstr, sep)
   if sep == nil then
     sep = "%s"
   end
