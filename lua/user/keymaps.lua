@@ -153,13 +153,9 @@ fn.register_key_map({
       CMD "tabclose",
       "Close tab",
     },
-    n = {
-      CMD "tabnext",
-      "Next tab",
-    },
     p = {
-      CMD "tabprevious",
-      "Next tab",
+      CMD "OpenTabNewWorkspace",
+      "Open tab in new workspace",
     },
   },
   T = {
