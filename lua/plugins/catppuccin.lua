@@ -27,13 +27,13 @@ function M.config()
         GitSignsDeleteLn = { fg = colors.red, bg = no_color },
         Visual = { fg = colors.text, bg = util.darken(colors.mauve, 0.08, colors.base) },
         VertSplit = { bg = colors.crust, fg = colors.crust },
-        TabLineSel = { fg = colors.text, bg = colors.mantle },
+        TabLineSel = { fg = colors.blue, bg = colors.mantle },
+        TabLine = { fg = colors.overlay2, bg = colors.mantle },
         WarningMsg = { fg = colors.flamingo },
         --lualine
         DiffAdd = { fg = colors.green, bg = no_color },
         DiffChange = { fg = colors.yellow, bg = no_color },
         DiffDelete = { fg = colors.maroon, bg = no_color },
-
         -- IndentBlankline
         IndentBlanklineIndent1 = { fg = util.darken(colors.surface1, 0.2, colors.base), bg = colors.none },
         -- NvimTree
