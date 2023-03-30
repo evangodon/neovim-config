@@ -78,11 +78,18 @@ function M.config()
       lint = false,
     },
   })
+  lsp.configure("yamlls", {
+    settings = {
+      yaml = {
+        keyOrdering = false,
+      },
+    },
+  })
 
   -- Keymaps
   lsp.on_attach(function(client, bufnr)
     -- Handle tsserver and denols
-    if lspconfig.util.root_pattern "deno.json"(vim.fn.getcwd()) then
+    if lspconfig.util.root_pattern "deno.json" (vim.fn.getcwd()) then
       if client.name == "tsserver" then
         client.stop()
         return
