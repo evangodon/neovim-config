@@ -29,17 +29,16 @@ keymap("n", "<BS>", CMD "b#", opts)
 keymap("n", "<leader>lb", ":ls<CR>:b<space>", opts)
 keymap("n", "<leader>\\", CMD "Telescope buffers", opts)
 
--- TODO: fix backspace to only go back to listed buffers
 vim.api.nvim_create_user_command("CloseBuffer", function()
   local loaded_buffers = Get_loaded_buffers()
   if #loaded_buffers == 0 then
     return
   elseif #loaded_buffers == 1 then
-    vim.cmd "bdelete"
+    vim.cmd "confirm bdelete"
     vim.cmd "Alpha"
     vim.cmd "bdelete#"
   else
-    vim.cmd "bprevious|bdelete#"
+    vim.cmd "bprevious|confirm bdelete#"
   end
 end, {})
 keymap("n", "<C-w>", CMD "CloseBuffer", opts)
