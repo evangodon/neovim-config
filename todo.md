@@ -1,5 +1,8 @@
 # TODO
 
+- [ ] Truncate the git branch name in lua status bar
+- [ ] Disable format on save for markdown
+- [ ] Handle unsaved changes for C-w keymap, ask to write changes or not
 - [ ] Show file icon in status line next to file type
 
 # IN-PROGRESS
