@@ -9,6 +9,7 @@ local M = {
 function M.config()
   local lualine = require "lualine"
   local icons = require "user.icons"
+  local utils = require "user.functions.utils"
 
   local function hide_in_width()
     return vim.fn.winwidth(0) > 80
@@ -46,6 +47,9 @@ function M.config()
     "branch",
     icons_enabled = true,
     icon = "",
+    fmt = function(str)
+      return utils.truncate_string(str, 20)
+    end,
   }
 
   local project_root = {
