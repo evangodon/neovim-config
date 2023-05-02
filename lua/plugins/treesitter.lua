@@ -10,7 +10,7 @@ local M = {
 function M.config()
   local configs = require "nvim-treesitter.configs"
 
-  vim.g.markdown_fenced_languages = { "html", "python", "lua", "vim", "typescript", "javascript" }
+  vim.g.markdown_fenced_languages = { "html", "python", "lua", "vim", "typescript", "javascript", "sql" }
 
   configs.setup({
     ensure_installed = {
@@ -24,6 +24,7 @@ function M.config()
       "typescript",
       "tsx",
       "go",
+      "sql",
     },
     sync_install = false,
     ignore_install = { "" }, -- List of parsers to ignore installing
@@ -36,7 +37,6 @@ function M.config()
       additional_vim_regex_highlighting = false, -- disable since it creates weird highlights in typescript
     },
     indent = { enable = true, disable = { "yaml" } },
-
     rainbow = {
       enable = true,
       -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
