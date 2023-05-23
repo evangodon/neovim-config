@@ -22,7 +22,6 @@
 --[[     end ]]
 --[[   end, ]]
 --[[ }) ]]
-
 -- Hightlight on yank
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
@@ -103,5 +102,13 @@ vim.api.nvim_create_autocmd("ModeChanged", {
     vim.api.nvim_set_hl(0, "CursorLineNr", {
       foreground = fg,
     })
+  end,
+})
+
+-- Close quickfix menu after selecting choice
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "qf" },
+  callback = function(event)
+    vim.keymap.set("n", "<CR>", "<CR>:cclose<CR>", { buffer = event.buf, silent = true, noremap = true })
   end,
 })
