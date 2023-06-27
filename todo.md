@@ -1,5 +1,7 @@
 # TODO
 
+- [ ] Enable mouse click in buffer line
+- [ ] Setup LSP for grammar.
 - [ ] Disable format on save for markdown
 - [ ] Show file icon in status line next to file type
 
@@ -13,4 +15,3 @@
 - [x] only show key in superscript if key is one character long
 - [x] Create tab command to create new tab in new dir
 - [x] Truncate the git branch name in lua status bar
-
