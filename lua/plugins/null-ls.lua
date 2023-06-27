@@ -15,7 +15,7 @@ function M.config()
   local formatting = null_ls.builtins.formatting
   -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 
-  local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+  local augroup = vim.api.nvim_create_augroup("null-ls-Formatting", {})
 
   null_ls.setup({
     debug = false,
