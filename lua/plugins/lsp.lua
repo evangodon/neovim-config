@@ -78,6 +78,12 @@ function M.config()
       lint = false,
     },
   })
+  lspconfig.eslint.setup({
+    root_dir = lspconfig.util.root_pattern(".eslintrc.json", ".eslintrc.js", "package.json", "tsconfig.json", ".git"),
+    settings = {
+      format = false,
+    },
+  })
   lsp.configure("yamlls", {
     settings = {
       yaml = {
@@ -89,7 +95,7 @@ function M.config()
   -- Keymaps
   lsp.on_attach(function(client, bufnr)
     -- Handle tsserver and denols
-    if lspconfig.util.root_pattern "deno.json" (vim.fn.getcwd()) then
+    if lspconfig.util.root_pattern "deno.json"(vim.fn.getcwd()) then
       if client.name == "tsserver" then
         client.stop()
         return

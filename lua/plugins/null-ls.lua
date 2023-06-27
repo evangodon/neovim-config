@@ -21,7 +21,9 @@ function M.config()
     debug = false,
     sources = {
       -- JS
-      formatting.prettier,
+      -- formatting.prettier,
+
+      formatting.eslint_d,
 
       -- Lua
       formatting.stylua,

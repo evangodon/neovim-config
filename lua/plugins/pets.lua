@@ -5,7 +5,7 @@ local M = {
     "edluffy/hologram.nvim",
   },
   event = "VeryLazy",
-  enabled = false,
+  enabled = true,
 }
 
 function M.config()
