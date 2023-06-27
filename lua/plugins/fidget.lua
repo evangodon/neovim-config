@@ -1,6 +1,7 @@
 local M = {
   "j-hui/fidget.nvim",
   event = "LspAttach",
+  tag = "legacy",
 }
 
 function M.config()

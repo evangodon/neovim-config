@@ -1,6 +1,6 @@
 local hour = tonumber(os.date "%H")
 local dark_theme_env_var = os.getenv "NVIM_USE_DARK_THEME"
-local use_light_theme = hour < 16 and hour > 6
+local use_light_theme = hour < 20 and hour > 6
 if dark_theme_env_var then
   local stringToBool = { ["true"] = true, ["false"] = false }
   use_light_theme = not stringToBool[dark_theme_env_var]
@@ -12,7 +12,6 @@ local themes = {
   catppuccinFrappe = "catppuccin-frappe",
   catppuccinMacchiato = "catppuccin-macchiato",
   catppuccinMocha = "catppuccin-mocha",
-
   dayfox = "dayfox",
   dawnfox = "dawnfox",
   duskfox = "duskfox",
@@ -20,8 +19,8 @@ local themes = {
   carbonfox = "carbonfox",
 }
 
-local LIGHT_THEME = themes.dawnfox
-local DARK_THEME = themes.carbonfox
+local LIGHT_THEME = themes.catppuccinLatte
+local DARK_THEME = themes.catppuccinFrappe
 
 local colorscheme = use_light_theme and LIGHT_THEME or DARK_THEME
 
