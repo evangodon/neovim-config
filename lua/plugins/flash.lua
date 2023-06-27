@@ -13,7 +13,7 @@ local M = {
       end,
       desc = "Flash",
     },
-    {
+    --[[ {
       "S",
       mode = { "n", "o", "x" },
       function()
@@ -21,7 +21,7 @@ local M = {
         require("flash").treesitter()
       end,
       desc = "Flash Treesitter",
-    },
+    }, ]]
     {
       "r",
       mode = "o",
