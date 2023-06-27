@@ -18,33 +18,27 @@ local M = {
   event = "BufReadPre",
 }
 
-local function format()
-  local buf = vim.api.nvim_get_current_buf()
-  local ft = vim.bo[buf].filetype
-  local have_nls = #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
-
-  vim.lsp.buf.format({
-    bufnr = buf,
-    filter = function(client)
-      if have_nls then
-        return client.name == "null-ls"
-      end
-      return client.name ~= "null-ls"
-    end,
-  })
-end
+local server = {
+  ts = "tsserver",
+  deno = "denols",
+  lua = "lua_ls",
+  eslint = "eslint",
+  go = "gopls",
+  json = "jsonls",
+  yaml = "yamlls",
+}
 
 function M.config()
   local lsp = require "lsp-zero"
 
   lsp.preset "recommended"
 
-  lsp.ensure_installed({
-    "denols",
-    "eslint",
-    "gopls",
-    "jsonls",
-  })
+  local install_servers = {}
+  for k, v in pairs(server) do
+    table.insert(install_servers, v)
+  end
+
+  lsp.ensure_installed(install_servers)
 
   lsp.set_preferences({
     manage_nvim_cmp = false, -- managed in ./cmp.lua
@@ -63,16 +57,17 @@ function M.config()
 
   -- LSP server configurations
   local lspconfig = require "lspconfig"
-  lsp.configure("lua_ls", require "user.lsp.settings.luals")
-  lsp.configure("jsonls", require "user.lsp.settings.jsonls")
-  lsp.configure("tsserver", {
+  lsp.configure(server.lua, require "user.lsp.settings.luals")
+  lsp.configure(server.json, require "user.lsp.settings.jsonls")
+  lsp.configure(server.ts, {
     root_dir = lspconfig.util.root_pattern "package.json",
     single_file_support = false,
     init_options = {
       lint = false,
+      format = false,
     },
   })
-  lsp.configure("denols", {
+  lsp.configure(server.deno, {
     root_dir = lspconfig.util.root_pattern("deno.json", "deno.lock"),
     init_options = {
       lint = false,
@@ -84,7 +79,7 @@ function M.config()
       format = false,
     },
   })
-  lsp.configure("yamlls", {
+  lsp.configure(server.yaml, {
     settings = {
       yaml = {
         keyOrdering = false,
@@ -127,8 +122,8 @@ function M.config()
     end, setBufOpts "Jump to next diagnostic")
 
     -- FORMAT ON SAVE
-    --[[ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     if client.supports_method "textDocument/formatting" then
+      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = augroup,
@@ -139,13 +134,20 @@ function M.config()
 
           vim.lsp.buf.format({
             bufnr = bufnr,
-            filter = function(buf_client)
-              return have_nls and buf_client.name == "null-ls" or buf_client.name ~= "null-ls"
+            filter = function(client)
+              -- Disable tsserver formatting
+              if client.name == "tsserver" then
+                return false
+              end
+              if have_nls then
+                return client.name == "null-ls"
+              end
+              return client.name ~= "null-ls"
             end,
           })
         end,
       })
-    end ]]
+    end
   end)
 
   lsp.setup({})
