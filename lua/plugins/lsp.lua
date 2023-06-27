@@ -90,7 +90,7 @@ function M.config()
   -- Keymaps
   lsp.on_attach(function(client, bufnr)
     -- Handle tsserver and denols
-    if lspconfig.util.root_pattern "deno.json"(vim.fn.getcwd()) then
+    if lspconfig.util.root_pattern "deno.json" (vim.fn.getcwd()) then
       if client.name == "tsserver" then
         client.stop()
         return
@@ -134,15 +134,15 @@ function M.config()
 
           vim.lsp.buf.format({
             bufnr = bufnr,
-            filter = function(client)
+            filter = function(buf_client)
               -- Disable tsserver formatting
-              if client.name == "tsserver" then
+              if buf_client.name == "tsserver" then
                 return false
               end
               if have_nls then
-                return client.name == "null-ls"
+                return buf_client.name == "null-ls"
               end
-              return client.name ~= "null-ls"
+              return buf_client.name ~= "null-ls"
             end,
           })
         end,
