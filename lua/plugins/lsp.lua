@@ -30,11 +30,12 @@ local server = {
 
 function M.config()
   local lsp = require "lsp-zero"
+  local format = require "lsp/format"
 
   lsp.preset "recommended"
 
   local install_servers = {}
-  for k, v in pairs(server) do
+  for _, v in pairs(server) do
     table.insert(install_servers, v)
   end
 
@@ -122,32 +123,7 @@ function M.config()
     end, setBufOpts "Jump to next diagnostic")
 
     -- FORMAT ON SAVE
-    if client.supports_method "textDocument/formatting" then
-      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          local ft = vim.bo[bufnr].filetype
-          local have_nls = #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
-
-          vim.lsp.buf.format({
-            bufnr = bufnr,
-            filter = function(buf_client)
-              -- Disable tsserver formatting
-              if buf_client.name == "tsserver" then
-                return false
-              end
-              if have_nls then
-                return buf_client.name == "null-ls"
-              end
-              return buf_client.name ~= "null-ls"
-            end,
-          })
-        end,
-      })
-    end
+    format.setup()
   end)
 
   lsp.setup({})
