@@ -15,32 +15,18 @@ function M.config()
   local formatting = null_ls.builtins.formatting
   -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 
-  local augroup = vim.api.nvim_create_augroup("null-ls-Formatting", {})
+  -- local augroup = vim.api.nvim_create_augroup("null-ls-Formatting", {})
 
   null_ls.setup({
     debug = false,
     sources = {
       -- JS
-      -- formatting.prettier,
-
-      formatting.eslint_d,
+      formatting.prettier,
+      -- formatting.eslint_d,
 
       -- Lua
       formatting.stylua,
     },
-    on_attach = function(client, bufnr)
-      -- Format on save
-      if client.supports_method "textDocument/formatting" then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          group = augroup,
-          buffer = bufnr,
-          callback = function()
-            vim.lsp.buf.format({ bufnr = bufnr })
-          end,
-        })
-      end
-    end,
   })
 end
 
