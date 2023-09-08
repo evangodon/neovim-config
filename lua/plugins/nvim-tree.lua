@@ -79,12 +79,7 @@ end
 
 function M.config()
   local nvim_tree = require "nvim-tree"
-
-  local nvim_tree_config = require "nvim-tree.config"
-
-  local tree_cb = nvim_tree_config.nvim_tree_callback
-
-  NvimTreeWidth = 40
+  local treeWidth = 40
 
   local icon = {
     diagnostics = "•",
@@ -133,7 +128,7 @@ function M.config()
       },
     },
     view = {
-      width = NvimTreeWidth,
+      width = treeWidth,
       centralize_selection = false,
       side = "left",
       number = false,
