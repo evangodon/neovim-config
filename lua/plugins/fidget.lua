@@ -10,6 +10,7 @@ function M.config()
   fidget.setup({
     text = {
       spinner = "dots_pulse",
+      done = "DONE",
     },
   })
 end
