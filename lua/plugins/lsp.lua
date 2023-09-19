@@ -61,7 +61,7 @@ function M.config()
   lsp.configure(server.lua, require "user.lsp.settings.luals")
   lsp.configure(server.json, require "user.lsp.settings.jsonls")
   lsp.configure(server.ts, {
-    root_dir = lspconfig.util.root_pattern "package.json",
+    root_dir = lspconfig.util.root_pattern ".git",
     single_file_support = false,
     init_options = {
       lint = false,
@@ -91,7 +91,7 @@ function M.config()
   -- Keymaps
   lsp.on_attach(function(client, bufnr)
     -- Handle tsserver and denols
-    if lspconfig.util.root_pattern "deno.json" (vim.fn.getcwd()) then
+    if lspconfig.util.root_pattern "deno.json"(vim.fn.getcwd()) then
       if client.name == "tsserver" then
         client.stop()
         return
@@ -126,7 +126,7 @@ function M.config()
     format.setup()
   end)
 
-  lsp.setup({})
+  lsp.setup()
   require("lspconfig.ui.windows").default_options.border = "single"
 end
 
