@@ -29,7 +29,7 @@ function M.init()
     callback = function(args)
       local bufnr = args.buf or vim.api.nvim_get_current_buf()
       fn.register_key_map({
-        g = {
+        G = {
           name = "Go",
           buffer = bufnr,
           f = { CMD "GoFillStruct", "Fill struct" },

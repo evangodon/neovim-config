@@ -2,6 +2,7 @@ local M = {
   "ojroques/vim-oscyank",
   branch = "main",
   event = "VeryLazy",
+  cmd = { "OSCYankReg" },
 }
 
 -- TODO: replace with https://github.com/ojroques/nvim-osc52

@@ -108,7 +108,7 @@ function M.config()
 
       -- Actions
       fn.register_key_map({
-        G = {
+        g = {
           name = "Git",
           p = { gs.preview_hunk, "Preview hunk" },
           b = {
