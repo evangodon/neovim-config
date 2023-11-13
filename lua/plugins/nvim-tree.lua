@@ -154,7 +154,7 @@ function M.config()
             ignored = "◌",
           },
           folder = {
-            default = "  ",
+            default = "󰉋 ",
             open = "  ",
             empty = " ",
             empty_open = "  ",
