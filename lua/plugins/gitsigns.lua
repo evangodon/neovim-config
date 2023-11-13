@@ -120,8 +120,8 @@ function M.config()
             "Reset hunk",
           },
           d = {
-            gs.diffthis,
-            "Diff agaist the index",
+            CMD "DiffviewOpen",
+            "Open diff view",
           },
           D = {
             function()
