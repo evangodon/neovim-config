@@ -19,7 +19,7 @@ local function cwd()
 end
 
 local function get_grapple_key(bufid)
-  local key = require("grapple").key({ buffer = bufid })
+  local key = require("grapple").find({ buffer = bufid })
   if key == nil then
     return ""
   end
