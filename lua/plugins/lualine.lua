@@ -61,8 +61,8 @@ function M.config()
   }
   local grapple_key = {
     function()
-      local key = require("grapple").key()
-      return " " .. key .. ""
+      local tag = require("grapple").name_or_index()
+      return " " .. tag .. ""
     end,
     cond = require("grapple").exists,
   }
