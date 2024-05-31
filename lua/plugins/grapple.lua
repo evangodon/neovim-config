@@ -41,6 +41,7 @@ function M.init()
     else
       Notify.info("Remove tag from " .. bufname)
     end
+    CMD "redrawtabline"
   end, { noremap = true, silent = true })
 
   whichkey.register({
