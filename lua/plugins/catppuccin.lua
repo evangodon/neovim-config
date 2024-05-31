@@ -39,11 +39,6 @@ function M.config()
         -- NvimTree
         NvimTreeCursorLine = { bg = util.darken(colors.mauve, 0.08, colors.base) },
         NvimTreeCursorLineNC = { bg = util.darken(colors.mauve, 0.15, colors.base) },
-        -- Barbar
-        BufferCurrent = { fg = colors.text },
-        BufferCurrentSign = { fg = colors.blue },
-        BufferCurrentTarget = { fg = colors.mauve, bg = no_color },
-        BufferInactiveTarget = { fg = colors.red, bg = colors.mantle },
         -- GitSigns
         GitSignsChange = { fg = colors.yellow, bg = no_color },
         GitSignsAdd = { fg = colors.green, bg = no_color },
