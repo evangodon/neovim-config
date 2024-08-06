@@ -36,6 +36,11 @@ function M.config()
         },
       },
     },
+    exclude = {
+      filetypes = {
+        "markdown",
+      },
+    },
   })
 end
 
