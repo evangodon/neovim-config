@@ -12,6 +12,8 @@ function M.config()
 
   vim.g.markdown_fenced_languages = { "html", "python", "lua", "vim", "typescript", "javascript", "sql" }
 
+  require("ts_context_commentstring").setup({})
+
   configs.setup({
     ensure_installed = {
       "markdown",
@@ -57,10 +59,6 @@ function M.config()
         node_decremental = "<BS>",
       },
     }, ]]
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
   })
 end
 
