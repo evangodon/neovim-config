@@ -44,6 +44,7 @@
   "pets.nvim": { "branch": "main", "commit": "94b4724e031fc3c9b6da19bdef574f44fabcca16" },
   "plenary.nvim": { "branch": "master", "commit": "36aaceb6e93addd20b1b18f94d86aecc552f30c4" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
+  "render-markdown.nvim": { "branch": "main", "commit": "96988cc76414a2f69a57c5dbaca7bf9336c9cb52" },
   "symbols-outline.nvim": { "branch": "master", "commit": "512791925d57a61c545bc303356e8a8f7869763c" },
   "tabby.nvim": { "branch": "main", "commit": "a57286c76cd7336940f8221f3df486a4dd26673f" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "9bc8237565ded606e6c366a71c64c0af25cd7a50" },
