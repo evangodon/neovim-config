@@ -13,7 +13,7 @@ end
 
 local function cwd()
   local f = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-  f = " " .. f
+  f = "  " .. f
   f = pad(f, 18)
   return f
 end
