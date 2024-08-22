@@ -39,8 +39,9 @@ function M.config()
 
   local filetype = {
     "filetype",
-    icons_enabled = false,
+    icons_enabled = true,
     icon = nil,
+    colored = false,
   }
 
   local branch = {
@@ -62,13 +63,29 @@ function M.config()
   local grapple_key = {
     function()
       local tag = require("grapple").name_or_index()
-      return " " .. tag .. ""
+      return " " .. tag .. ""
     end,
     cond = require("grapple").exists,
   }
 
   local function spaces()
-    return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+    return "󱁐 " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+  end
+
+  local function lsp_status()
+    local clients = vim.lsp.get_active_clients()
+    if next(clients) == nil then
+      return "" -- No LSP attached
+    end
+
+    local buf_clients = vim.lsp.buf_get_clients()
+    local count = 0
+
+    for _ in pairs(buf_clients) do
+      count = count + 1
+    end
+
+    return " " .. count
   end
 
   local filename = {
@@ -109,7 +126,7 @@ function M.config()
       lualine_a = { mode },
       lualine_b = { branch },
       lualine_c = { diff, project_root },
-      lualine_x = { grapple_key, spaces, "encoding" },
+      lualine_x = { grapple_key, spaces, lsp_status },
       lualine_y = { filetype },
     },
     inactive_sections = {
