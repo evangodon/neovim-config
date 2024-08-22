@@ -93,8 +93,9 @@ function M.config()
     hijack_cursor = false,
     update_cwd = true,
     filters = {
+      dotfiles = false,
       custom = { ".git" },
-      exclude = { ".gitignore" },
+      exclude = { ".gitignore", ".github" },
     },
     diagnostics = {
       enable = true,
