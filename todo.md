@@ -1,8 +1,6 @@
 # TODO
 
-- [ ] Enable mouse click in buffer line
 - [ ] Setup LSP for grammar.
-- [ ] Disable format on save for markdown
 - [ ] Show file icon in status line next to file type
 
 # IN-PROGRESS
