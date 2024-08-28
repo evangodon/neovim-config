@@ -9,19 +9,6 @@
 --   augroup end
 -- ]]
 
--- Open Alpha when deleting last buffer
---[[ local groupname = vim.api.nvim_create_augroup("buffer-close", {}) ]]
---[[ vim.api.nvim_create_autocmd({ "BufDelete" }, { ]]
---[[   group = groupname, ]]
---[[   callback = function() ]]
---[[     local loaded_buffers = Get_loaded_buffers() ]]
---[[     if #loaded_buffers == 2 and vim.fn.expand "%" == "" then ]]
---[[       -- TODO: check if alpha exists ]]
---[[       -- vim.cmd "Alpha" ]]
---[[       vim.cmd "bdelete #" ]]
---[[     end ]]
---[[   end, ]]
---[[ }) ]]
 -- Hightlight on yank
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
@@ -86,24 +73,24 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Change color of cursorline on mode change (DISABLED)
-local util = require "user.functions.utils"
-local cursorline_color = util.get_color("CursorLineNr", "fg#")
-
-vim.api.nvim_create_autocmd("ModeChanged", {
-  callback = function()
-    local modes = {
-      --[[ ["i"] = "#7aa2f7", ]]
-      --[[ ["c"] = "#e0af68", ]]
-      --[[ ["v"] = "#c678dd", ]]
-      --[[ ["V"] = "#c678dd", ]]
-      --[[ [""] = "#c678dd", ]]
-    }
-    local fg = modes[vim.api.nvim_get_mode().mode] or cursorline_color
-    vim.api.nvim_set_hl(0, "CursorLineNr", {
-      foreground = fg,
-    })
-  end,
-})
+--[[ local util = require "user.functions.utils" ]]
+--[[ local cursorline_color = util.get_color("CursorLineNr", "fg#") ]]
+--[[]]
+--[[ vim.api.nvim_create_autocmd("ModeChanged", { ]]
+--[[   callback = function() ]]
+--[[     local modes = { ]]
+--[[       --[[ ["i"] = "#7aa2f7", ]]
+--[[       --[[ ["c"] = "#e0af68", ]]
+--[[       --[[ ["v"] = "#c678dd", ]]
+--[[       --[[ ["V"] = "#c678dd", ]]
+--[[       --[[ [""] = "#c678dd", ]]
+--[[     } ]]
+--[[     local fg = modes[vim.api.nvim_get_mode().mode] or cursorline_color ]]
+--[[     vim.api.nvim_set_hl(0, "CursorLineNr", { ]]
+--[[       foreground = fg, ]]
+--[[     }) ]]
+--[[   end, ]]
+--[[ }) ]]
 
 -- Close quickfix menu after selecting choice
 vim.api.nvim_create_autocmd("FileType", {
