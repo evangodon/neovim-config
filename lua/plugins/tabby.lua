@@ -12,10 +12,7 @@ local function pad(str, length)
 end
 
 local function cwd()
-  local f = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-  f = "  " .. f
-  f = pad(f, 18)
-  return f
+  return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 end
 
 local function get_grapple_key(bufid)
@@ -88,8 +85,8 @@ function M.config()
     local head = {
       type = "text",
       text = {
-        cwd(),
-        hl = theme.head,
+        pad(" " .. cwd(), 18),
+        hl = theme.tab,
       },
     }
 
