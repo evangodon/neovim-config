@@ -31,6 +31,9 @@ M.config = function()
       checked = {
         icon = "  󰱒 ",
       },
+      custom = {
+        moved = { raw = "[->]", rendered = "  ->", highlight = "RenderMarkdownTodo" },
+      },
     },
     code = {
       -- Determines how code blocks & inline code are rendered:
