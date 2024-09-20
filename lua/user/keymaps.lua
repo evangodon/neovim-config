@@ -29,6 +29,18 @@ keymap("n", "<BS>", CMD "b#", opts)
 keymap("n", "<leader>lb", ":ls<CR>:b<space>", opts)
 keymap("n", "<leader>\\", CMD "Telescope buffers", opts)
 
+-- Navigate quickfix list
+local function set_quickfix_keymaps()
+  vim.api.nvim_buf_set_keymap(0, "n", "<TAB>", CMD "cnext", opts)
+  vim.api.nvim_buf_set_keymap(0, "n", "<S-TAB>", CMD "cprev", opts)
+end
+
+-- Autocommand to set keymaps when entering a quickfix buffer
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = set_quickfix_keymaps,
+})
+
 vim.api.nvim_create_user_command("CloseBuffer", function()
   local loaded_buffers = Get_loaded_buffers()
   if #loaded_buffers == 0 then

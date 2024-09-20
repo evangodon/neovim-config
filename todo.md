@@ -1,12 +1,15 @@
 # TODO
 
+- [ ] Update colors used for markdown headers
+- [ ] create command to diable lualine + tabline for todo list
 - [ ] Setup LSP for grammar.
-- [ ] Show file icon in status line next to file type
 
 # IN-PROGRESS
 
 # DONE
 
+- [x] Show file icon in status line next to file type
+- [x] Change markdown icon used for bullet points to something smaller
 - [x] Handle unsaved changes for C-w keymap, ask to write changes or not
 - [x] hide tab numbers if only one tab
 - [x] Prevent tabline from shifting around when you change tab
