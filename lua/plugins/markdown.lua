@@ -17,7 +17,7 @@ M.config = function()
       -- Replaces '#+'
       icons = { h(1), h(2), h(3), h(4), h(5), h(6) },
       -- Added to the sign column if enabled
-      signs = { "󰫎 " },
+      signs = { "" },
       width = "block",
       right_pad = 1,
     },
@@ -32,6 +32,7 @@ M.config = function()
         icon = "  󰱒 ",
       },
       custom = {
+        inprogress = { raw = "[-]", rendered = "  󰥔", highlight = "RenderMarkdownTodo" },
         moved = { raw = "[->]", rendered = "  ->", highlight = "RenderMarkdownTodo" },
       },
     },
