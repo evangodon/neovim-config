@@ -141,8 +141,8 @@ function M.config()
     winbar = {
       lualine_a = {},
       lualine_b = { filename },
-      lualine_c = {},
-      lualine_x = { diagnostics },
+      lualine_c = { diagnostics },
+      lualine_x = {},
       lualine_y = {},
       lualine_z = {},
     },
