@@ -43,6 +43,12 @@ function M.config()
         GitSignsChange = { fg = colors.yellow, bg = no_color },
         GitSignsAdd = { fg = colors.green, bg = no_color },
         GitSignsDelete = { fg = colors.red, bg = no_color },
+        RenderMarkdownH1Bg = { fg = colors.red, bg = no_color },
+        RenderMarkdownH2Bg = { fg = colors.peach, bg = no_color },
+        RenderMarkdownH3Bg = { fg = colors.yellow, bg = no_color },
+        RenderMarkdownH4Bg = { fg = colors.green, bg = no_color },
+        RenderMarkdownH5Bg = { fg = colors.sky, bg = no_color },
+        RenderMarkdownH6Bg = { fg = colors.lavender, bg = no_color },
       }
     end,
   })
