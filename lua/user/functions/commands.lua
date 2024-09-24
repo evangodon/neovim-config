@@ -41,3 +41,20 @@ vim.api.nvim_create_user_command("OpenTabNewWorkspace", function()
     vim.cmd("tcd" .. path)
   end)
 end, { nargs = 0 })
+
+vim.api.nvim_create_user_command("HideUI", function()
+  -- Hide lualine
+  require("lualine").hide({
+    place = { "statusline", "tabline", "winbar" },
+    unhide = false,
+  })
+
+  -- Hide gitsigns
+  require("gitsigns").toggle_signs(false)
+
+  vim.cmd "ScrollbarHide"
+
+  vim.o.laststatus = 0
+  vim.o.showtabline = 0
+  vim.o.relativenumber = false
+end, { nargs = 0 })
