@@ -1,8 +1,11 @@
 # TODO
 
+- [ ] Update deprecate code in `lua/lsp/format.lua`
 - [ ] Update colors used for markdown headers
+
 - [ ] create command to diable lualine + tabline for todo list
 - [ ] Setup LSP for grammar.
+
 
 # IN-PROGRESS
 
