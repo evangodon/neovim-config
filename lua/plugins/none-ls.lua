@@ -2,7 +2,7 @@
 -- https://github.com/jose-elias-alvarez/null-ls.nvim
 
 local M = {
-  "jose-elias-alvarez/null-ls.nvim",
+  "nvimtools/none-ls.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   event = "BufReadPre",
   enabled = true,

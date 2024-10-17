@@ -19,7 +19,7 @@ local M = {
 }
 
 local server = {
-  ts = "tsserver",
+  ts = "ts_ls",
   deno = "denols",
   lua = "lua_ls",
   eslint = "eslint",

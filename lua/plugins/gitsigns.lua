@@ -12,34 +12,25 @@ function M.config()
 
   local gitsign_icon = "│"
   local gitsign_icon_delete = "-"
+  local gitsign_icon_top_delete = "‾"
+  local gitsign_untracked = "┆"
 
   gitsigns.setup({
     signs = {
-      add = { hl = "GitSignsAdd", text = gitsign_icon, numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-      change = {
-        hl = "GitSignsChange",
-        text = gitsign_icon,
-        numhl = "GitSignsChangeNr",
-        linehl = "GitSignsChangeLn",
-      },
-      delete = {
-        hl = "GitSignsDelete",
-        text = gitsign_icon_delete,
-        numhl = "GitSignsDeleteNr",
-        linehl = "GitSignsDeleteLn",
-      },
-      topdelete = {
-        hl = "GitSignsDelete",
-        text = gitsign_icon_delete,
-        numhl = "GitSignsDeleteNr",
-        linehl = "GitSignsDeleteLn",
-      },
-      changedelete = {
-        hl = "GitSignsChange",
-        text = gitsign_icon,
-        numhl = "GitSignsChangeNr",
-        linehl = "GitSignsChangeLn",
-      },
+      add = { text = gitsign_icon },
+      change = { text = gitsign_icon },
+      delete = { text = gitsign_icon_delete },
+      topdelete = { text = gitsign_icon_top_delete },
+      changedelete = { text = gitsign_icon },
+      untracked = { text = gitsign_untracked },
+    },
+    signs_staged = {
+      add = { text = gitsign_icon },
+      change = { text = gitsign_icon },
+      delete = { text = gitsign_icon_delete },
+      topdelete = { text = gitsign_icon_top_delete },
+      changedelete = { text = gitsign_icon },
+      untracked = { text = gitsign_untracked },
     },
     signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
     numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
@@ -57,9 +48,6 @@ function M.config()
       delay = 1000,
       ignore_whitespace = false,
     },
-    current_line_blame_formatter_opts = {
-      relative_time = false,
-    },
     sign_priority = 6,
     update_debounce = 100,
     status_formatter = nil, -- Use default
@@ -71,9 +59,6 @@ function M.config()
       relative = "cursor",
       row = 0,
       col = 1,
-    },
-    yadm = {
-      enable = false,
     },
     on_attach = function(bufnr)
       local fn = require "user.functions"
