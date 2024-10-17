@@ -1,3 +1,4 @@
+--- Open files and lines in GitHub
 local M = {
   "almo7aya/openingh.nvim",
   event = { "VeryLazy" },
