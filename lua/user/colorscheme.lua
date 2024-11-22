@@ -20,7 +20,7 @@ local themes = {
 }
 
 local LIGHT_THEME = themes.catppuccinLatte
-local DARK_THEME = themes.catppuccinFrappe
+local DARK_THEME = themes.nightfox
 
 local colorscheme = use_light_theme and LIGHT_THEME or DARK_THEME
 
@@ -50,9 +50,10 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 })
 
 -- Keymaps
-require("user.functions").register_key_map({
-  C = {
-    CMD "Telescope colorscheme",
-    "Telescope [c]olorschemes",
-  },
+local wk = require "which-key"
+
+wk.add({
+  LeaderKey "C",
+  CMD "Telescope colorscheme",
+  desc = "Telescope [colorscheme]",
 })

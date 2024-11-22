@@ -26,7 +26,6 @@ keymap("n", "<TAB>", CMD "bnext", opts)
 keymap("n", "[b", CMD "bprevious", opts) -- Previous buffer
 keymap("n", "<S-TAB>", CMD "bprevious", opts)
 keymap("n", "<BS>", CMD "b#", opts)
-keymap("n", "<leader>lb", ":ls<CR>:b<space>", opts)
 keymap("n", "<leader>\\", CMD "Telescope buffers", opts)
 
 -- Navigate quickfix list
@@ -99,91 +98,18 @@ keymap("n", "q", "<nop>", opts)
 
 -- Leader key mappings
 
-keymap("n", "<leader>O", CMD "OpenSlides", opts)
-
--- Tab Navigation
--- TODO: add descriptions
-keymap("n", "<leader>1", CMD "normal! 1gt", opts)
-keymap("n", "<leader>2", CMD "normal! 2gt", opts)
-keymap("n", "<leader>3", CMD "normal! 3gt", opts)
-keymap("n", "<leader>4", CMD "normal! 4gt", opts)
-
 local fn = require "user.functions.utils"
+local wk = require "which-key"
 
-fn.register_key_map({
-  q = {
-    CMD "quitall!",
-    "Quit",
-  },
-  c = {
-    CMD "close",
-    "Close window",
-  },
-  ["-"] = {
-    CMD "b#",
-    "return to last buffer",
-  },
-  ["]"] = {
-    CMD "bnext",
-    "Go to next buffer",
-  },
-  ["["] = {
-    CMD "bprev",
-    "Go to previous buffer",
-  },
-  ["<TAB>"] = {
-    CMD "Telescope buffers",
-    "Go to previous buffer",
-  },
-  B = {
-    function()
-      local cur_bufid = vim.api.nvim_get_current_buf()
-      local buffers = vim.api.nvim_list_bufs()
+wk.add({
+  { LeaderKey "q", CMD "quitall!", desc = "Force quit" },
+  { LeaderKey "c", CMD "close", desc = "Close window" },
+  { LeaderKey "O", CMD "OpenSlides", desc = "Open file in slides" },
+  { LeaderKey "B", fn.close_all_buffers_but_current, desc = "Close all buffers but current" },
+})
 
-      for _, buf_id in ipairs(buffers) do
-        if vim.api.nvim_buf_is_valid(buf_id) and vim.bo[buf_id].buflisted and buf_id ~= cur_bufid then
-          vim.api.nvim_buf_delete(buf_id, {})
-        end
-      end
-    end,
-    "Delete all buffers but current",
-  },
-  t = {
-    a = {
-      CMD "$tabnew | NvimTreeOpen",
-      "New tab",
-    },
-    c = {
-      CMD "tabclose",
-      "Close tab",
-    },
-    p = {
-      CMD "OpenTabNewWorkspace",
-      "Open tab in new workspace",
-    },
-  },
-  T = {
-    name = "Toggle vim option",
-    c = {
-      fn.toggle_option "cursorcolumn",
-      "cursorcolumn",
-    },
-    r = {
-      fn.toggle_option "relativenumber",
-      "relative number",
-    },
-    l = {
-      function()
-        local level = vim.opt.conceallevel:get()
-        vim.opt.conceallevel = level == 2 and 0 or 2
-      end,
-      "conceal level",
-    },
-  },
-  E = {
-    function()
-      require("user.env").printValues()
-    end,
-    "Show all values in .env file",
-  },
+wk.add({
+  { LeaderKey "T", group = "Toggle option" },
+  { LeaderKey "Tc", fn.toggle_option "cursorcolumn", desc = "Toggle cursorcolumn" },
+  { LeaderKey "Tr", fn.toggle_option "relativenumber", desc = "Toggle relativenumber" },
 })

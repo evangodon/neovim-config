@@ -24,8 +24,3 @@ require("lazy").setup("plugins", {
     border = "single",
   },
 })
-
-require("user.functions").register_key_map({ L = {
-  CMD "Lazy",
-  "Open Lazy manager",
-} })

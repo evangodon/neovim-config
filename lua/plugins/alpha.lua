@@ -40,14 +40,6 @@ function M.config()
   alpha.setup(dashboard.opts)
 end
 
-function M.init()
-  local fn = require "user.functions.utils"
-  fn.register_key_map({
-    A = {
-      CMD "Alpha",
-      "Open Alpha dashboard",
-    },
-  })
-end
+function M.init() end
 
 return M

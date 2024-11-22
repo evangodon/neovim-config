@@ -1,13 +1,11 @@
 # TODO
 
-- [ ] Update deprecate code in `lua/lsp/format.lua`
-- [ ] Update colors used for markdown headers
-
-- [ ] create command to diable lualine + tabline for todo list
-- [ ] Setup LSP for grammar.
-
+- [ ] Add keymaps for Opening links in gitHub
+- [ ] Add https://github.com/folke/lazydev.nvim
 
 # IN-PROGRESS
+
+- [ ] Update all which-key config and remove all unused keybindings
 
 # DONE
 
@@ -19,3 +17,5 @@
 - [x] only show key in superscript if key is one character long
 - [x] Create tab command to create new tab in new dir
 - [x] Truncate the git branch name in lua status bar
+- [x] create command to diable lualine + tabline for todo list
+

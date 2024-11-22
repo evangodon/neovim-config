@@ -40,12 +40,9 @@ function M.config()
 end
 
 function M.init()
-  local fn = require "user.functions"
-  fn.register_key_map({
-    Z = {
-      ":noautocmd ZenMode<CR>",
-      "Zen Mode",
-    },
+  local wk = require "which-key"
+  wk.add({
+    { LeaderKey "Z", ":noautocmd ZenMode<CR>", desc = "Enable Zen Mode" },
   })
 end
 
