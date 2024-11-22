@@ -34,3 +34,8 @@ end
 function CMD(command)
   return string.format(":%s<cr>", command)
 end
+
+-- Format string for ex command
+function LeaderKey(key)
+  return string.format("<leader>%s", key)
+end

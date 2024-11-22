@@ -120,4 +120,21 @@ function U.get_superscript(char)
   return sup and sup or char
 end
 
+function U.close_all_buffers_but_current()
+  local cur_bufid = vim.api.nvim_get_current_buf()
+  local buffers = vim.api.nvim_list_bufs()
+
+  for _, buf_id in ipairs(buffers) do
+    if vim.api.nvim_buf_is_valid(buf_id) and vim.bo[buf_id].buflisted and buf_id ~= cur_bufid then
+      vim.api.nvim_buf_delete(buf_id, {})
+    end
+  end
+end
+
+function U.keymap(mode, key, action)
+  local keymap = vim.keymap.set
+  local opts = { noremap = true, silent = true }
+  keymap(mode, key, action, opts)
+end
+
 return U

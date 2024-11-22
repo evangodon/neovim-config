@@ -92,7 +92,7 @@ function M.config()
   lsp.on_attach(function(client, bufnr)
     -- Handle tsserver and denols
     if lspconfig.util.root_pattern "deno.json"(vim.fn.getcwd()) then
-      if client.name == "tsserver" then
+      if client.name == server.ts then
         client.stop()
         return
       end

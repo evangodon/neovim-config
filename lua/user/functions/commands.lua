@@ -58,3 +58,8 @@ vim.api.nvim_create_user_command("HideUI", function()
   vim.o.showtabline = 0
   vim.o.relativenumber = false
 end, { nargs = 0 })
+
+-- Print all env values
+vim.api.nvim_create_user_command("PrintEnvValues", function()
+  require("user.env").printValues()
+end, { nargs = 0 })

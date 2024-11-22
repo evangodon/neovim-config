@@ -27,13 +27,10 @@ end
 
 function M.init()
   vim.notify = require "notify"
+  local wk = require "which-key"
 
-  local fn = require "user.functions"
-  fn.register_key_map({
-    N = {
-      CMD "Notifications",
-      "See Notifications",
-    },
+  wk.add({
+    { LeaderKey "N", CMD "Notifications", desc = "See Notifications" },
   })
 end
 

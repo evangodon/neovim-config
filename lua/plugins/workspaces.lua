@@ -2,44 +2,39 @@
 -- https://github.com/natecraddock/workspaces.nvim
 --
 local M = {
-	"natecraddock/workspaces.nvim",
-	cmd = "Telescope workspaces",
+  "natecraddock/workspaces.nvim",
+  cmd = "Telescope workspaces",
 }
 
 function M.config()
-	local workspaces = require "workspaces"
+  local workspaces = require "workspaces"
 
-	workspaces.setup({
-		hooks = {
-			open = { "noautocmd NvimTreeOpen" },
-		},
-	})
+  workspaces.setup({
+    hooks = {
+      open = { "noautocmd NvimTreeOpen" },
+    },
+  })
 end
 
 function M.init()
-	local telescope = require "telescope"
-	local workspaces = require "workspaces"
+  local telescope = require "telescope"
+  local workspaces = require "workspaces"
 
-	telescope.load_extension "workspaces"
+  telescope.load_extension "workspaces"
 
-	local fn = require "user.functions"
-	fn.register_key_map({
-		W = {
-			name = "Workspaces",
-			A = {
-				function()
-					local cwd = vim.loop.cwd()
-					local workspace_name = vim.fn.input(string.format("[%s] Workspace name: ", cwd))
-					workspaces.add(workspace_name, cwd)
-				end,
-				"Create new workspace",
-			},
-			D = {
-				CMD "WorkspacesRemove",
-				"Create new workspace",
-			},
-		},
-	})
+  local function add_new_workspace()
+    local cwd = vim.fn.getcwd()
+    local workspace_name = vim.fn.input(string.format("Workspace name for [%S]", cwd))
+    workspaces.add(cwd, workspace_name)
+  end
+
+  local wk = require "which-key"
+
+  wk.add({
+    { LeaderKey "w", group = "Workspaces" },
+    { LeaderKey "wa", add_new_workspace, desc = "Add workspace with name" },
+    { LeaderKey "wo", CMD "Telescope workspaces", desc = "Open workspace" },
+  })
 end
 
 return M

@@ -30,7 +30,7 @@ function M.config()
       border = "curved",
       height = 22,
     },
-    --[[ highlights = {
+    highlights = {
       NormalFloat = {
         guibg = background_color,
       },
@@ -38,7 +38,7 @@ function M.config()
         guifg = border_color,
         guibg = background_color,
       },
-    }, ]]
+    },
   })
 end
 
@@ -54,42 +54,30 @@ function M.init()
   -- Custom Terminals
   local Terminal = require("toggleterm.terminal").Terminal
 
-  local todo = Terminal:new({
+  local todoTui = Terminal:new({
     cmd = "todo interactive",
     hidden = true,
   })
 
-  local jrnl = Terminal:new({
-    cmd = "jrnl today",
+  local dailyNote = Terminal:new({
+    cmd = "zk daily",
     hidden = true,
   })
 
-  local dash = Terminal:new({ cmd = "dash", hidden = true })
+  local wk = require "which-key"
 
-  --[[ local lazygit = Terminal:new({ cmd = "lazygit", hidden = true }) ]]
-  local opts = { noremap = true, silent = true }
-  vim.keymap.set("n", "T", function()
-    todo:toggle()
-  end, opts)
-
-  local fn = require "user.functions"
-  fn.register_key_map({
-    tt = {
+  wk.add({
+    {
+      LeaderKey "to",
       function()
-        todo:toggle()
+        todoTui:toggle()
       end,
-      "Open [t]odo tui",
-    },
-    D = {
-      function()
-        dash:toggle()
-      end,
-      "Open [D]ashboard",
+      desc = "Open the todo tui app",
     },
   })
 
-  vim.api.nvim_create_user_command("Jrnl", function()
-    jrnl:toggle()
+  vim.api.nvim_create_user_command("DailyNote", function()
+    dailyNote:toggle()
   end, { nargs = 0 })
 end
 

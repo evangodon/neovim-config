@@ -78,14 +78,9 @@ function M.config()
 end
 
 function M.init()
-  local fn = require "user.functions"
-  fn.register_key_map({
-    t = {
-      c = {
-        CMD "TodoTelescope",
-        "Telescope todos",
-      },
-    },
+  local wk = require "which-key"
+  wk.add({
+    { LeaderKey "tt", CMD "TodoTelescope", desc = "View todos in Telescope" },
   })
 end
 

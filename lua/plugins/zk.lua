@@ -60,62 +60,10 @@ function M.init()
     return true
   end
 
-  fn.register_key_map({
-    z = {
-      name = "zk",
-      -- New Note
-      n = {
-        function()
-          local in_notebook = fileIsInNotebook()
-          if not in_notebook then
-            return
-          end
-          vim.ui.select({ "media", "books", "none" }, {
-            prompt = "Title",
-            telescope = require("telescope.themes").get_cursor(),
-            relative = "editor",
-          }, function(selected)
-            local group = selected
-            if selected == "none" then
-              group = ""
-            end
-            vim.ui.input(string.format("[%s] Enter title: ", group), function(input)
-              local title = input
-              zk.new({ title = title, group = group, dir = group })
-            end)
-          end)
-        end,
-        "New note",
-      },
-      -- Backlinks
-      b = {
-        CMD "ZkBacklinks",
-        "View backlinks",
-      },
-      -- Open Note
-      o = {
-        function()
-          local in_notebook = fileIsInNotebook()
-          if not in_notebook then
-            return
-          end
-          zk.edit({}, { title = "Zk Notes" })
-        end,
-        "Open note",
-      },
-      -- See Links
-      l = {
-        function()
-          local in_notebook = fileIsInNotebook()
-          if not in_notebook then
-            return
-          end
-          local buffer = vim.api.nvim_buf_get_name(0)
-          zk.edit({ linkedBy = { buffer } }, { title = "Zk Links" })
-        end,
-        "See links",
-      },
-    },
+  local wk = require "which-key"
+
+  wk.add({
+    { LeaderKey "z", group = "zk" },
   })
 end
 

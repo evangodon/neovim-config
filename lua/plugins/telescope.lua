@@ -118,7 +118,7 @@ function M.init()
     desc = desc or ""
     return { noremap = true, silent = true, desc = desc }
   end
-  local fn = require "user.functions"
+  local wk = require "which-key"
   local builtin_pickers = require "telescope.builtin"
 
   -- Find files
@@ -130,30 +130,12 @@ function M.init()
   -- Fuzzy search in buffer
   map("n", "<C-f>", builtin_pickers.current_buffer_fuzzy_find, opts "Fuzzy find current buffer")
 
-  fn.register_key_map({
-    b = { builtin_pickers.buffers, "Open buffer list" },
-    G = {
-      s = {
-        function()
-          builtin_pickers.git_status({ ignore_current_buffer = true, initial_mode = "normal" })
-        end,
-        "Git Status",
-      },
-    },
-    r = { builtin_pickers.oldfiles, "View recent files" },
-    R = { builtin_pickers.resume, "Resume last search" },
-    K = {
-      CMD "Telescope knowledge_base list",
-      "View knowledge base",
-    },
-    m = {
-      builtin_pickers.marks,
-      "View Marks",
-    },
-    d = {
-      CMD "Telescope diagnostics",
-      "View Diagnostics",
-    },
+  wk.add({
+    { LeaderKey "r", builtin_pickers.oldfiles, desc = "View recent files" },
+    { LeaderKey "R", builtin_pickers.resume, desc = "Resume last search" },
+    { LeaderKey "d", CMD "telescope diagnostics", desc = "View diagnostics" },
+    { LeaderKey "K", CMD "Telescope knowledge_base list", desc = "View knowledge base" },
+    { LeaderKey "m", builtin_pickers.marks, desc = "View marks" },
   })
 end
 

@@ -28,9 +28,9 @@ end
 
 function M.init()
   local grapple = require "grapple"
-  local whichkey = require "which-key"
+  local util = require "user.functions.utils"
 
-  vim.keymap.set("n", "<leader>J", function()
+  util.keymap("n", "<leader>J", function()
     grapple.toggle()
     local bufnr = vim.api.nvim_get_current_buf()
     local bufpath = vim.api.nvim_buf_get_name(bufnr)
@@ -42,28 +42,12 @@ function M.init()
       Notify.info("Remove tag from " .. bufname)
     end
     CMD "redrawtabline"
-  end, { noremap = true, silent = true })
+  end)
 
-  whichkey.register({
-    [backslash] = {
-      function()
-        grapple.toggle_tags()
-        CMD "redrawtabline"
-      end,
-      "View tags",
-    },
-    ["]"] = {
-      grapple.cycle_forward,
-      "Cycle forward",
-    },
-    ["["] = {
-      grapple.cycle_backward,
-      "Cycle back",
-    },
-  }, {
-    prefix = backslash,
-    mode = "n",
-  })
+  util.keymap("n", backslash .. backslash, function()
+    grapple.toggle_tags()
+    CMD "redrawtabline"
+  end)
 end
 
 return M

@@ -61,7 +61,6 @@ function M.config()
       col = 1,
     },
     on_attach = function(bufnr)
-      local fn = require "user.functions"
       local gs = package.loaded.gitsigns
 
       local function keymap(mode, l, r, opts)
@@ -73,54 +72,38 @@ function M.config()
       -- Navigation
       keymap("n", "]c", function()
         if vim.wo.diff then
-          return "]c"
+          vim.cmd.normal({ "]c", bang = true })
+        else
+          gitsigns.nav_hunk "next"
         end
-        vim.schedule(function()
-          gs.next_hunk()
-        end)
-        return "<Ignore>"
-      end, { expr = true, desc = "Next hunk" })
+      end)
 
       keymap("n", "[c", function()
         if vim.wo.diff then
-          return "[c"
+          vim.cmd.normal({ "[c", bang = true })
+        else
+          gitsigns.nav_hunk "prev"
         end
-        vim.schedule(function()
-          gs.prev_hunk()
-        end)
-        return "<Ignore>"
-      end, { expr = true, desc = "Previous hunk" })
+      end)
 
-      -- Actions
-      fn.register_key_map({
-        g = {
-          name = "Git",
-          p = { gs.preview_hunk, "Preview hunk" },
-          b = {
-            gs.toggle_current_line_blame,
-            "Toggle blame",
-          },
-          r = {
-            ":Gitsigns reset_hunk<CR>",
-            "Reset hunk",
-          },
-          d = {
-            CMD "DiffviewOpen",
-            "Open diff view",
-          },
-          D = {
-            function()
-              gs.diffthis "~"
-            end,
-            "Diff against ~",
-          },
-          l = {
-            function()
-              kitty.launch({ program = "lazygit" })
-            end,
-            "Open Lazygit",
-          },
-        },
+      local function launch_lazygit()
+        kitty.launch({ program = "lazygit" })
+      end
+
+      local function diff_againt_parent()
+        gs.diffthis "~"
+      end
+
+      local wk = require "which-key"
+
+      wk.add({
+        { LeaderKey "g", group = "Git" },
+        { LeaderKey "gp", gs.preview_hunk, desc = "[P]review hunk" },
+        { LeaderKey "gb", gs.toggle_current_line_blame, desc = "Toggle git [b]lame" },
+        { LeaderKey "gr", gs.reset_hunk, desc = "[R]eset hunk" },
+        { LeaderKey "gd", gs.diffthis, desc = "[D]iff" },
+        { LeaderKey "gD", diff_againt_parent, desc = "[D]iff against parent" },
+        { LeaderKey "gl", launch_lazygit, desc = "Lauch [l]azygit" },
       })
     end,
   })

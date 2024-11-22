@@ -168,14 +168,15 @@ function M.config()
 end
 
 function M.init()
-  local fn = require "user.functions.utils"
-  fn.register_key_map({
-    e = {
+  local wk = require "which-key"
+  local api = require "nvim-tree.api"
+  wk.add({
+    {
+      LeaderKey "e",
       function()
-        local api = require "nvim-tree.api"
         api.tree.toggle(false, true)
       end,
-      "Toggle Nvimtree",
+      desc = "Toggle File Tree",
     },
   })
 

@@ -13,38 +13,20 @@ function M.config()
 end
 
 function M.init()
-  local fn = require "user.functions"
+  local wk = require "which-key"
 
   vim.api.nvim_create_autocmd("LspAttach", {
     pattern = "*.go",
     callback = function(args)
       local bufnr = args.buf or vim.api.nvim_get_current_buf()
-      fn.register_key_map({
-        G = {
-          name = "Go",
-          buffer = bufnr,
-          f = { CMD "GoFillStruct", "Fill struct" },
-          d = { CMD "GoDoc", "Go doc" },
-          i = { CMD "GoImport", "Go imports" },
-          g = { CMD "GoFmt", "Format" },
-          e = { CMD "GoIfErr", "Add err if" },
-          t = {
-            CMD "GoTestFile -v",
-            "Run tests for current File",
-          },
-          T = {
-            CMD "GoTestPkg -v",
-            "Run tests for current package",
-          },
-          a = {
-            CMD "GoAlt!",
-            "Switch between go and test file",
-          },
-          A = {
-            CMD "GoAddTest",
-            "Add test for current func",
-          },
-        },
+
+      wk.add({
+        { LeaderKey "G", group = "Go" },
+        { LeaderKey "Gf", CMD "GoFillStruct", desc = "Fill struct", buffer = bufnr },
+        { LeaderKey "Gi", CMD "GoImports", desc = "Go imports", buffer = bufnr },
+        { LeaderKey "Ge", CMD "GoIfErr", desc = "Add if err", buffer = bufnr },
+        { LeaderKey "Gd", CMD "GoDoc", desc = "Go doc", buffer = bufnr },
+        { LeaderKey "Gt", CMD "GoTestFile -v", desc = "Run tests for current file", buffer = bufnr },
       })
     end,
   })
