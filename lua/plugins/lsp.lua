@@ -74,12 +74,12 @@ function M.config()
       lint = false,
     },
   })
-  lspconfig.eslint.setup({
-    root_dir = lspconfig.util.root_pattern(".eslintrc.json", ".eslintrc.js", "package.json", "tsconfig.json", ".git"),
-    settings = {
-      format = false,
-    },
-  })
+  --[[ lspconfig.eslint.setup({ ]]
+  --[[   root_dir = lspconfig.util.root_pattern(".eslintrc.json", ".eslintrc.js", "package.json", "tsconfig.json", ".git"), ]]
+  --[[   settings = { ]]
+  --[[     format = false, ]]
+  --[[   }, ]]
+  --[[ }) ]]
   lsp.configure(server.yaml, {
     settings = {
       yaml = {
