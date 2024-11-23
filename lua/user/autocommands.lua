@@ -99,3 +99,26 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "<CR>", "<CR>:cclose<CR>", { buffer = event.buf, silent = true, noremap = true })
   end,
 })
+
+-- Add color highlighting to .rasi files (the config for rofi)
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.rasi", "*.rasi.tmpl" },
+  command = "set filetype=css",
+})
+
+-- When using the tmpl files for Chezmoi, change the file type to the destination file type
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.*.tmpl" },
+  callback = function()
+    local is_rasi_tmpl = vim.fn.expand("%:t"):match "^.*%.rasi.tmpl$"
+    if is_rasi_tmpl then
+      return
+    end
+
+    local ft = vim.fn.expand("%:t"):match "^.*%.(.*)%.tmpl$"
+
+    if ft then
+      vim.bo.filetype = ft
+    end
+  end,
+})
