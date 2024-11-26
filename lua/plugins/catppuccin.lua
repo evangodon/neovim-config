@@ -15,6 +15,8 @@ function M.config()
   catppuccin.setup({
     dim_inactive = {
       enabled = false,
+      shade = "dark",
+      percentage = 0.2,
     },
     integrations = {
       nvimtree = {
@@ -51,6 +53,9 @@ function M.config()
         RenderMarkdownH6Bg = { fg = colors.lavender, bg = no_color },
       }
     end,
+    color_overrides = {
+      mocha = {},
+    },
   })
 end
 

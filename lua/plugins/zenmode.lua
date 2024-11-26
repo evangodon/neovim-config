@@ -12,7 +12,7 @@ function M.config()
   zenmode.setup({
     window = {
       backdrop = 1,
-      width = 100,
+      width = 120,
       height = 30,
     },
     plugins = {

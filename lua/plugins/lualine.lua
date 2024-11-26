@@ -36,9 +36,7 @@ function M.config()
 
   local mode = {
     "mode",
-    fmt = function(str)
-      return "-- " .. str .. " --"
-    end,
+    icons_enabled = true,
   }
 
   local filetype = {
@@ -51,7 +49,7 @@ function M.config()
   local branch = {
     "branch",
     icons_enabled = true,
-    icon = "",
+    icon = "",
     fmt = function(str)
       return utils.truncate_string(str, 20)
     end,
@@ -127,7 +125,7 @@ function M.config()
     sections = {
       lualine_a = { mode },
       lualine_b = { branch },
-      lualine_c = { diff, project_root },
+      lualine_c = { diff },
       lualine_x = { grapple_key, spaces, lsp_status },
       lualine_y = { filetype },
     },

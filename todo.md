@@ -1,11 +1,10 @@
 # TODO
 
-- [ ] Add keymaps for Opening links in gitHub
-- [ ] Add https://github.com/folke/lazydev.nvim
+- [ ] Organize themes into dark and light tables and set background = light
+- [ ] Clean up the lsp diagnostics, change icon, change how inline errors are show
+- [ ] Create catppucin override to use embark colors
 
 # IN-PROGRESS
-
-- [ ] Update all which-key config and remove all unused keybindings
 
 # DONE
 
@@ -18,4 +17,5 @@
 - [x] Create tab command to create new tab in new dir
 - [x] Truncate the git branch name in lua status bar
 - [x] create command to diable lualine + tabline for todo list
-
+- [x] Add keymaps for Opening links in gitHub
+- [x] Update all which-key config and remove all unused keybindings

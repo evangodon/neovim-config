@@ -14,7 +14,7 @@ function M.config()
 
   indent_blankline.setup({
     indent = {
-      char = "│",
+      char = "",
       tab_char = nil,
       highlight = highlight,
       smart_indent_cap = false,
