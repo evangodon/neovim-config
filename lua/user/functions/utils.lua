@@ -131,9 +131,14 @@ function U.close_all_buffers_but_current()
   end
 end
 
-function U.keymap(mode, key, action)
+---@param mode string | table
+---@param key string
+---@param action string | function
+---@param desc string?
+function U.keymap(mode, key, action, desc)
   local keymap = vim.keymap.set
-  local opts = { noremap = true, silent = true }
+  local opts = { noremap = true, silent = true, desc = desc or "" }
+
   keymap(mode, key, action, opts)
 end
 
