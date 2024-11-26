@@ -4,12 +4,16 @@
 local M = {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
+  dependencies = {
+    "cbochs/grapple.nvim",
+  },
 }
 
 function M.config()
   local lualine = require "lualine"
   local icons = require "user.icons"
   local utils = require "user.functions.utils"
+  local grapple = require "grapple"
 
   local function hide_in_width()
     return vim.fn.winwidth(0) > 80
@@ -17,7 +21,7 @@ function M.config()
 
   local diff = {
     "diff",
-    symbols = { added = "󰜄 ", modified = " ", removed = " " },
+    symbols = { added = " ", modified = " ", removed = " " },
     cond = hide_in_width,
     colored = true,
     diff_color = {
@@ -62,25 +66,23 @@ function M.config()
   }
   local grapple_key = {
     function()
-      local tag = require("grapple").name_or_index()
+      local tag = grapple.name_or_index()
       return " " .. tag .. ""
     end,
-    cond = require("grapple").exists,
+    cond = grapple.exists,
   }
 
   local function spaces()
-    return "󱁐 " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+    return "󱁐 " .. vim.bo.shiftwidth
   end
 
   local function lsp_status()
-    local clients = vim.lsp.get_active_clients()
-    if next(clients) == nil then
-      return "" -- No LSP attached
+    local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
+    if next(buf_clients) == nil then
+      return "" -- No LSP attached to current buffer
     end
 
-    local buf_clients = vim.lsp.buf_get_clients()
     local count = 0
-
     for _ in pairs(buf_clients) do
       count = count + 1
     end
