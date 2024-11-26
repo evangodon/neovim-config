@@ -2,7 +2,10 @@ local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Save
-keymap("n", "<C-s>", CMD "update", opts)
+keymap("n", "<C-s>", function()
+  vim.cmd "silent! update"
+end, { desc = "Save the file if modified", noremap = true, silent = true })
+
 -- better window movement
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -40,6 +43,8 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = set_quickfix_keymaps,
 })
 
+vim.api.nvim_del_keymap("n", "<C-W>d")
+vim.api.nvim_del_keymap("n", "<C-W><C-D>")
 vim.api.nvim_create_user_command("CloseBuffer", function()
   local loaded_buffers = Get_loaded_buffers()
   if #loaded_buffers == 0 then

@@ -6,6 +6,65 @@ local M = {
   priority = 1000,
 }
 
+local colorOverridesEmbarkLight = {
+  rosewater = "#f5e0dc",
+  flamingo = "#f2cdcd",
+  pink = "#f5c2e7",
+  mauve = "#cba6f7",
+  red = "#F02E6E",
+  maroon = "#F48FB1",
+  peach = "#F2B482",
+  yellow = "#FFE6B3",
+  green = "#7FE9C3",
+  teal = "#ABF8F7",
+  sky = "#63F2F1",
+  sapphire = "#91DDFF",
+  blue = "#78A8FF",
+  lavender = "#7676FF",
+  text = "#2E2F45",
+  subtext1 = "#a4b0c6",
+  subtext0 = "#929db6",
+  overlay2 = "#7e8a9e",
+  overlay1 = "#6b7687",
+  overlay0 = "#5a6374",
+  surface2 = "#e2e6f1",
+  surface1 = "#d0d5e3",
+  surface0 = "#b0b8d1",
+  base = "#f1f5fc",
+  mantle = "#e2e7f0",
+  crust = "#f4f7fc",
+}
+
+local colorOverridesEmbark = {
+  rosewater = "#e8d8d3",
+  flamingo = "#e0b8b8",
+  pink = "#e2b6d4",
+  mauve = "#b395d7",
+  red = "#F02E6E",
+  maroon = "#F48FB1",
+  peach = "#F2B482",
+  yellow = "#FFE6B3",
+  green = "#7FE9C3",
+  teal = "#ABF8F7",
+  sky = "#63F2F1",
+  sapphire = "#91DDFF",
+  blue = "#78A8FF",
+  lavender = "#7676FF",
+  text = "#CBE3E7",
+  subtext1 = "#a4b0c6",
+  subtext0 = "#929db6",
+  overlay2 = "#7e8a9e",
+  overlay1 = "#6b7687",
+  overlay0 = "#5a6374",
+  surface2 = "#4a4f63",
+  surface1 = "#585273",
+  surface0 = "#3E3859",
+  base = "#1E1C31",
+  -- TODO make  crust darker
+  mantle = "#19172A",
+  crust = "#100E23",
+}
+
 function M.config()
   local catppuccin = require "catppuccin"
   local util = require "catppuccin.utils.colors"
@@ -23,6 +82,10 @@ function M.config()
         enabled = true,
         show_root = true,
       },
+      gitsigns = true,
+      notify = true,
+      treesitter = true,
+      cmp = true,
     },
     custom_highlights = function(colors)
       return {
@@ -54,7 +117,9 @@ function M.config()
       }
     end,
     color_overrides = {
-      mocha = {},
+      -- todo: fix colors
+      -- latte = colorOverridesEmbarkLight,
+      mocha = colorOverridesEmbark,
     },
   })
 end
