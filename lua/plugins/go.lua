@@ -9,7 +9,11 @@ local M = {
 function M.config()
   local go = require "go"
 
-  go.setup()
+  go.setup({
+    diagnostic = {
+      signs = true,
+    },
+  })
 end
 
 function M.init()
