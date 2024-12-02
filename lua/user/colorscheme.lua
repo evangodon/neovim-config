@@ -24,6 +24,10 @@ local DARK_THEME = themes.catppuccinMocha
 
 local colorscheme = use_light_theme and LIGHT_THEME or DARK_THEME
 
+if use_light_theme then
+  vim.g.background = "light"
+end
+
 -- Set colorscheme
 local status_ok, _ = pcall(vim.cmd.colorscheme, colorscheme)
 

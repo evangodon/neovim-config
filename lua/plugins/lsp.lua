@@ -44,17 +44,23 @@ function M.config()
   lsp.set_preferences({
     manage_nvim_cmp = false, -- managed in ./cmp.lua
     suggest_lsp_servers = true,
-    sign_icons = {
-      error = "•",
-      warn = "•",
-      hint = "•",
-      info = "•",
-    },
   })
 
   vim.diagnostic.config({
     virtual_text = false,
   })
+
+  local custom_signs = {
+    Error = "󰯈",
+    Warn = "",
+    Hint = "󰮯",
+    Info = "󰮯",
+  }
+
+  for type, icon in pairs(custom_signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+  end
 
   -- LSP server configurations
   local lspconfig = require "lspconfig"
