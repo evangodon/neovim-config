@@ -21,7 +21,7 @@ function M.config()
 
   local diff = {
     "diff",
-    symbols = { added = " ", modified = " ", removed = " " },
+    symbols = { added = "", modified = "", removed = "" },
     cond = hide_in_width,
     colored = true,
     diff_color = {
@@ -30,7 +30,8 @@ function M.config()
       removed = "DiffDelete",
     },
     fmt = function(str)
-      return str
+      local withSuperscripts = utils.all_nums_to_superscript(str)
+      return withSuperscripts
     end,
   }
 
