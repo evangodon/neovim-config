@@ -1,19 +1,18 @@
 local M = {}
 
-
 -- Open program in kitty overlay
-function M.launch(opts)
-  opts = opts and opts or {}
+--- @param command string
+--- @param opts? { cwd?: string }
+function M.launch(command, opts)
+  opts = opts or {}
+  local cwd = opts.cwd or "current"
 
-  if opts.program == nil then
-    Notify.error("No program was passed in")
+  if command == nil then
+    Notify.error "Command required for kitty launch"
     return
   end
 
-  local program = opts.program
-  local args = opts.args and opts.args or ""
-
-  local cmd = string.format("kitty @ launch --cwd=current --type=overlay %s %s", program, args)
+  local cmd = string.format("kitty @ launch --cwd=%s --type=overlay %s", cwd, command)
   local function print_stderr(_, data)
     if data[1] ~= "" then
       Notify.error(data[1])

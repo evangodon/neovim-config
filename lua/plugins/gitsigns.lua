@@ -87,7 +87,7 @@ function M.config()
       end)
 
       local function launch_lazygit()
-        kitty.launch({ program = "lazygit" })
+        kitty.launch "lazygit"
       end
 
       local function diff_againt_parent()

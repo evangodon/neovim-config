@@ -19,7 +19,8 @@ vim.api.nvim_create_user_command("OpenSlides", function()
   local kitty = require "user.functions.kitty"
   local path = vim.fn.expand "%:p"
 
-  kitty.launch({ program = "slides", args = path })
+  local command = string.format("slides %s", path)
+  kitty.launch(command)
 end, { nargs = 0 })
 
 vim.api.nvim_create_user_command("OpenTabNewWorkspace", function()
