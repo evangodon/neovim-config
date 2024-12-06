@@ -142,4 +142,11 @@ function U.keymap(mode, key, action, desc)
   keymap(mode, key, action, opts)
 end
 
+---@param input string
+function U.all_nums_to_superscript(input)
+  return (input:gsub("%d", function(digit)
+    return superscript[digit] or digit
+  end))
+end
+
 return U
