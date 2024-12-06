@@ -1,6 +1,11 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+---@param desc string
+local function optsWithDesc(desc)
+  return { noremap = true, silent = true }
+end
+
 -- Save
 keymap("n", "<C-s>", function()
   vim.cmd "silent! update"
@@ -40,7 +45,7 @@ end
 -- Duplicate a line and comment out the first line
 keymap("n", "yc", function()
   vim.api.nvim_feedkeys("yygccp", "m", false)
-end)
+end, optsWithDesc "Copy line and comment out the original")
 
 -- Autocommand to set keymaps when entering a quickfix buffer
 vim.api.nvim_create_autocmd("FileType", {

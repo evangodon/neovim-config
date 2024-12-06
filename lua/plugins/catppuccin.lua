@@ -114,6 +114,11 @@ function M.config()
         RenderMarkdownH4Bg = { fg = colors.green, bg = no_color },
         RenderMarkdownH5Bg = { fg = colors.sky, bg = no_color },
         RenderMarkdownH6Bg = { fg = colors.lavender, bg = no_color },
+
+        -- Code tokens
+        String = { fg = colors.green },
+        ["@tag"] = { fg = colors.sky },
+        ["@tag.attribute.tsx"] = { fg = colors.yellow },
       }
     end,
     color_overrides = {
