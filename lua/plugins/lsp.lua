@@ -28,6 +28,30 @@ local server = {
   yaml = "yamlls",
 }
 
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "󰯈",
+      [vim.diagnostic.severity.WARN] = "󱙝",
+      [vim.diagnostic.severity.HINT] = "⚑",
+      [vim.diagnostic.severity.INFO] = "»",
+    },
+  },
+})
+
+local custom_signs = {
+  Error = "󰯈",
+  Warn = "󱙝",
+  Hint = "",
+  Info = "󰮯",
+}
+
+for type, icon in pairs(custom_signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
+
 function M.config()
   local lsp = require "lsp-zero"
   local format = require "lsp/format"
@@ -45,22 +69,6 @@ function M.config()
     manage_nvim_cmp = false, -- managed in ./cmp.lua
     suggest_lsp_servers = true,
   })
-
-  vim.diagnostic.config({
-    virtual_text = false,
-  })
-
-  local custom_signs = {
-    Error = "󰯈",
-    Warn = "",
-    Hint = "󰮯",
-    Info = "󰮯",
-  }
-
-  for type, icon in pairs(custom_signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-  end
 
   -- LSP server configurations
   local lspconfig = require "lspconfig"

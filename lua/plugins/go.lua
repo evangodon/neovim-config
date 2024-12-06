@@ -12,6 +12,7 @@ function M.config()
   go.setup({
     diagnostic = {
       signs = true,
+      virtual_text = false,
     },
   })
 end
