@@ -7,8 +7,6 @@ local M = {
 
 -- TODO: replace with https://github.com/ojroques/nvim-osc52
 function M.config()
-  local notify = require "notify"
-
   -- Use OSCYANK to copy visual selection to system clipboard
   local function setToSystemClipboard()
     local register = "o"
@@ -21,13 +19,7 @@ function M.config()
 
     -- Show what was copied
     local copied = vim.fn.getreg(register)
-    notify(copied, "info", {
-      title = "Copied to system clipboard",
-      on_open = function(win)
-        local buf = vim.api.nvim_win_get_buf(win)
-        vim.api.nvim_buf_set_option(buf, "filetype", "lua")
-      end,
-    })
+    Notify.info(copied)
   end
 
   local keymap_desc = "Copy visual selection to system clipboard"

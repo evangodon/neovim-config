@@ -22,9 +22,7 @@ function M.with_output_from(cmd, on_open)
 
   -- Run the command in the buffer with terminal emulation
   vim.fn.termopen(cmd, {
-    on_exit = function(num, data)
-      P(data)
-    end,
+    on_exit = function() end,
   })
 
   local function close_window()
