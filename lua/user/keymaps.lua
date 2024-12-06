@@ -37,6 +37,11 @@ local function set_quickfix_keymaps()
   vim.api.nvim_buf_set_keymap(0, "n", "<S-TAB>", CMD "cprev", opts)
 end
 
+-- Duplicate a line and comment out the first line
+keymap("n", "yc", function()
+  vim.api.nvim_feedkeys("yygccp", "m", false)
+end)
+
 -- Autocommand to set keymaps when entering a quickfix buffer
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "qf",
