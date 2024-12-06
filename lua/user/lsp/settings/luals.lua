@@ -12,7 +12,7 @@ return {
         },
       },
       diagnostics = {
-        globals = { "vim", "require" },
+        globals = { "vim", "require", "Snacks" },
       },
       workspace = {
         library = {

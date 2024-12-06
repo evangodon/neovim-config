@@ -3,15 +3,15 @@
 -- Global notification function
 Notify = {}
 function Notify.info(msg)
-  vim.notify(msg, vim.log.levels.INFO)
+  Snacks.notify.info(msg)
 end
 
 function Notify.warn(msg)
-  vim.notify(msg, vim.log.levels.WARN)
+  Snacks.notify.warn(msg)
 end
 
 function Notify.error(msg)
-  vim.notify(msg, vim.log.levels.ERROR)
+  Snacks.notify.error(msg)
 end
 
 -- Pretty print lua code with Notify
