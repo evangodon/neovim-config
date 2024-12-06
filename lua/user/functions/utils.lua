@@ -149,4 +149,16 @@ function U.all_nums_to_superscript(input)
   end))
 end
 
+-- Function to strip ANSI escape codes
+---@param lines string[]
+function U.strip_ansi_codes(lines)
+  local stripped = {}
+  for i, line in ipairs(lines) do
+    local cleaned_line = string.gsub(line, "\x1b%[[0-9;]*m", "")
+
+    table.insert(stripped, i, cleaned_line)
+  end
+  return stripped
+end
+
 return U
