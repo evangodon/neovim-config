@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 
 ---@param desc string
 local function optsWithDesc(desc)
-  return { noremap = true, silent = true }
+  return { noremap = true, silent = true, desc = desc or "" }
 end
 
 -- Save

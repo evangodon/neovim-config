@@ -1,8 +1,9 @@
 # TODO
 
+- [ ] Big Job: reorginzae lsp files
+- [ ] Big Job: replace nvim-cmp with blink
 - [ ] Organize themes into dark and light tables and set background = light
-- [ ] Clean up the lsp diagnostics, change icon, change how inline errors are show
-- [ ] Create catppucin override to use embark colors
+- [ ] Add Lazydev plugin
 
 # IN-PROGRESS
 
@@ -19,3 +20,5 @@
 - [x] create command to diable lualine + tabline for todo list
 - [x] Add keymaps for Opening links in gitHub
 - [x] Update all which-key config and remove all unused keybindings
+- [x] Clean up the lsp diagnostics, change icon, change how inline errors are show
+- [x] Create catppucin override to use embark colors

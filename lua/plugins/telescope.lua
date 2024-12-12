@@ -109,14 +109,15 @@ end
 
 function M.init()
   local telescope = require "telescope"
+
   -- Load extensions
-  -- telescope.load_extension "fzf"
+  telescope.load_extension "fzf"
   telescope.load_extension "knowledge_base"
+
   -- Keymaps
   local map = vim.keymap.set
   local opts = function(desc)
-    desc = desc or ""
-    return { noremap = true, silent = true, desc = desc }
+    return { noremap = true, silent = true, desc = desc or "" }
   end
   local wk = require "which-key"
   local builtin_pickers = require "telescope.builtin"
