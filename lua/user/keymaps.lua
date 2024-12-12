@@ -111,6 +111,9 @@ keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 keymap("n", "Q", "<nop>", opts)
 keymap("n", "q", "<nop>", opts)
 
+-- Select workd
+keymap("n", "<CR>", "viw", opts)
+
 -- Leader key mappings
 
 local fn = require "user.functions.utils"
