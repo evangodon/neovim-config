@@ -150,7 +150,7 @@ function M.config()
         local grapple_key = get_grapple_key(bufid)
         local grapple_key_sup = utils.get_superscript(grapple_key)
         local icon = is_active and "" or ""
-        local is_modified = vim.api.nvim_buf_get_option(bufid, "modified") and "● " or ""
+        local is_modified = vim.api.nvim_get_option_value("modified", { buf = bufid }) and "● " or ""
 
         table.insert(parts, space)
         table.insert(parts, {
