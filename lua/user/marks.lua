@@ -9,6 +9,7 @@ local sign_cache = {}
 
 --- The sign and autocommand group name.
 local sign_group_name = "mariasolos/marks_signs"
+local utils = require "user.functions.utils"
 
 ---@param mark string
 ---@return boolean
@@ -66,7 +67,9 @@ local function register_mark(mark, bufnr, line)
   -- Create the sign.
   local sign_name = "Marks_" .. mark
   if not sign_cache[sign_name] then
-    vim.fn.sign_define(sign_name, { text = mark, texthl = "DiagnosticSignOk" })
+    local text = utils.get_superscript(mark) or mark
+
+    vim.fn.sign_define(sign_name, { text = text, texthl = "DiagnosticSignOk" })
     sign_cache[sign_name] = true
   end
   vim.fn.sign_place(id, sign_group_name, sign_name, bufnr, {
