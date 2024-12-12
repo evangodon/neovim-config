@@ -13,6 +13,15 @@ local M = {
         })
       end,
     },
+    {
+      "folke/lazydev.nvim",
+      ft = "lua",
+      opts = {
+        library = {
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
+      },
+    },
     "williamboman/mason-lspconfig.nvim",
   },
   event = "BufReadPre",
@@ -55,6 +64,8 @@ end
 function M.config()
   local lsp = require "lsp-zero"
   local format = require "lsp/format"
+  local telescope_pickers = require "telescope.builtin"
+  local telescope_theme = require "telescope.themes"
 
   lsp.preset "recommended"
 
@@ -102,6 +113,13 @@ function M.config()
     },
   })
 
+  local telescope_ivy_theme = telescope_theme.get_ivy({
+    layout_config = { height = 0.5 },
+    initial_mode = "normal",
+    preview_title = "Preview",
+    show_line = false, -- Disable the line preview that appears after the colon
+  })
+
   -- Keymaps
   lsp.on_attach(function(client, bufnr)
     -- Handle tsserver and denols
@@ -123,8 +141,13 @@ function M.config()
     keymap("n", "gd", vim.lsp.buf.definition, setBufOpts "Jump to definition")
     keymap("n", "gh", vim.lsp.buf.hover, setBufOpts "Hover")
     keymap("n", "gI", vim.lsp.buf.implementation, setBufOpts "Implementation")
+    keymap("n", "gi", function()
+      telescope_pickers.lsp_implementations(telescope_ivy_theme)
+    end, setBufOpts "Implementation")
     keymap("n", "<C-k>", vim.lsp.buf.signature_help, setBufOpts "Signature help")
-    keymap("n", "gr", vim.lsp.buf.references, setBufOpts "Find references")
+    keymap("n", "gr", function()
+      telescope_pickers.lsp_references(telescope_ivy_theme)
+    end, setBufOpts "Find references")
     keymap("n", "<F2>", vim.lsp.buf.rename, setBufOpts "Rename")
     keymap("n", "[d", function()
       vim.diagnostic.goto_prev({ border = "single" })
