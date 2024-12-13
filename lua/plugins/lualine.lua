@@ -56,13 +56,6 @@ function M.config()
     end,
   }
 
-  local project_root = {
-    function()
-      return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-    end,
-    icon = "",
-    cond = hide_in_width,
-  }
   local grapple_key = {
     function()
       local tag = grapple.name_or_index()
