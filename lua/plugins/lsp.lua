@@ -62,30 +62,31 @@ for type, icon in pairs(custom_signs) do
 end
 
 function M.config()
-  local lsp = require "lsp-zero"
+  local lsp_zero = require "lsp-zero"
   local format = require "lsp/format"
   local telescope_pickers = require "telescope.builtin"
   local telescope_theme = require "telescope.themes"
+  local lspconfig = require "lspconfig"
 
-  lsp.preset "recommended"
+  lsp_zero.preset "recommended"
 
   local install_servers = {}
   for _, v in pairs(server) do
     table.insert(install_servers, v)
   end
 
-  lsp.ensure_installed(install_servers)
+  lsp_zero.ensure_installed(install_servers)
 
-  lsp.set_preferences({
+  lsp_zero.set_preferences({
     manage_nvim_cmp = false, -- managed in ./cmp.lua
     suggest_lsp_servers = true,
+    cmp_capabilities = false,
   })
 
   -- LSP server configurations
-  local lspconfig = require "lspconfig"
-  lsp.configure(server.lua, require "user.lsp.settings.luals")
-  lsp.configure(server.json, require "user.lsp.settings.jsonls")
-  lsp.configure(server.ts, {
+  lsp_zero.configure(server.lua, require "user.lsp.settings.luals")
+  lsp_zero.configure(server.json, require "user.lsp.settings.jsonls")
+  lsp_zero.configure(server.ts, {
     root_dir = lspconfig.util.root_pattern ".git",
     single_file_support = false,
     init_options = {
@@ -93,7 +94,7 @@ function M.config()
       format = false,
     },
   })
-  lsp.configure(server.deno, {
+  lsp_zero.configure(server.deno, {
     root_dir = lspconfig.util.root_pattern("deno.json", "deno.lock"),
     init_options = {
       lint = false,
@@ -105,7 +106,7 @@ function M.config()
   --[[     format = false, ]]
   --[[   }, ]]
   --[[ }) ]]
-  lsp.configure(server.yaml, {
+  lsp_zero.configure(server.yaml, {
     settings = {
       yaml = {
         keyOrdering = false,
@@ -117,11 +118,11 @@ function M.config()
     layout_config = { height = 0.5 },
     initial_mode = "normal",
     preview_title = "Preview",
-    show_line = false, -- Disable the line preview that appears after the colon
+    show_line = true,
   })
 
   -- Keymaps
-  lsp.on_attach(function(client, bufnr)
+  lsp_zero.on_attach(function(client, bufnr)
     -- Handle tsserver and denols
     if lspconfig.util.root_pattern "deno.json"(vim.fn.getcwd()) then
       if client.name == server.ts then
@@ -163,7 +164,7 @@ function M.config()
     format.setup()
   end)
 
-  lsp.setup()
+  lsp_zero.setup()
   require("lspconfig.ui.windows").default_options.border = "single"
 end
 

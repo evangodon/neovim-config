@@ -7,7 +7,7 @@ M.cache = {}
 M.last_tab = 0
 
 function M.on_tab_new_entered()
-  vim.api.nvim_buf_set_option(0, "buflisted", true)
+  vim.bo[0].buflisted = true
 end
 
 function M.on_tab_enter()
@@ -15,7 +15,7 @@ function M.on_tab_enter()
   local buf_nums = M.cache[tab]
   if buf_nums then
     for _, k in pairs(buf_nums) do
-      vim.api.nvim_buf_set_option(k, "buflisted", true)
+      vim.bo[k].buflisted = true
     end
   end
 end
@@ -25,7 +25,7 @@ function M.on_tab_leave()
   local buf_nums = Get_loaded_buffers()
   M.cache[tab] = buf_nums
   for _, k in pairs(buf_nums) do
-    vim.api.nvim_buf_set_option(k, "buflisted", false)
+    vim.bo[k].buflisted = true
   end
   M.last_tab = tab
 end
