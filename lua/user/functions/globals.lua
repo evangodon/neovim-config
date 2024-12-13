@@ -25,7 +25,7 @@ function Get_loaded_buffers()
     if not buf or buf < 1 then
       return false
     end
-    return vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option_value("buflisted", { buf = buf })
+    return vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buflisted
   end, all_buffers)
   return loaded_buffers
 end

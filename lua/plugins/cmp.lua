@@ -10,6 +10,7 @@ local M = {
     "L3MON4D3/LuaSnip",
   },
   event = "InsertEnter",
+  enabled = false,
 }
 
 function M.config()
