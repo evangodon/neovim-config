@@ -1,6 +1,9 @@
 # TODO
 
+- [ ] Big Job: reorginzae lsp files
+- [ ] Big Job: replace nvim-cmp with blink
 - [ ] Organize themes into dark and light tables and set background = light
+- [ ] Add Lazydev plugin
 
 # IN-PROGRESS
 
