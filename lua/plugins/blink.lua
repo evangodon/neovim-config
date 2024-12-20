@@ -7,6 +7,9 @@ local M = {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
+    enabled = function()
+      return not vim.tbl_contains({ "DressingInput" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"
+    end,
     keymap = { preset = "enter" },
 
     appearance = {
