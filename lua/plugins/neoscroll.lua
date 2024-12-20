@@ -12,7 +12,7 @@ function M.config()
       "<C-d>",
       "zz",
     },
-    hide_cursor = true,
+    hide_cursor = false,
   })
 end
 
