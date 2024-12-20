@@ -1,7 +1,9 @@
 # TODO
 
-- [ ] Big Job: reorginzae lsp files
-- [ ] Big Job: replace nvim-cmp with blink
+- [ ] Big Job: reorganize lsp files
+- [x] Big Job: replace nvim-cmp with blink
+- [ ] Remove nvim-autopairs for mini.pairs
+- [ ] Remove alpha for snack dashboard
 - [ ] Organize themes into dark and light tables and set background = light
 - [ ] Add Lazydev plugin
 

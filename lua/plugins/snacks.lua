@@ -10,6 +10,7 @@ function M.config()
   local snacks = require "snacks"
 
   snacks.setup({
+    ---@type snacks.Config
     opts = {
       notify = true,
       notifier = { style = "compact" },
