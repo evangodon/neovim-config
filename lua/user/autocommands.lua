@@ -30,7 +30,6 @@ vim.api.nvim_create_autocmd({ "CmdlineLeave" }, {
     )
   end,
 })
-
 vim.api.nvim_create_autocmd({ "CmdwinEnter", "CmdlineEnter" }, {
   callback = function()
     cmdline_timer:stop()

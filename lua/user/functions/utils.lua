@@ -120,6 +120,7 @@ function U.get_superscript(char)
   return sup and sup or char
 end
 
+-- TODO: handle buffer with unsaved change
 function U.close_all_buffers_but_current()
   local cur_bufid = vim.api.nvim_get_current_buf()
   local buffers = vim.api.nvim_list_bufs()

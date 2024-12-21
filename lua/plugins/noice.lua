@@ -26,7 +26,7 @@ function M.config()
       },
     },
     messages = {
-      enabled = false,
+      enabled = true,
     },
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -49,6 +49,17 @@ function M.config()
       long_message_to_split = true, -- long messages will be sent to a split
       inc_rename = false, -- enables an input dialog for inc-rename.nvim
       lsp_doc_border = false, -- add a border to hover docs and signature help
+    },
+  })
+
+  local wk = require "which-key"
+  wk.add({
+    {
+      LeaderKey "N",
+      function()
+        vim.cmd "NoiceHistory"
+      end,
+      desc = "See Notifications",
     },
   })
 end

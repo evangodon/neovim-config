@@ -68,8 +68,6 @@ function M.config()
   local telescope_theme = require "telescope.themes"
   local lspconfig = require "lspconfig"
 
-  lsp_zero.preset "recommended"
-
   local install_servers = {}
   for _, v in pairs(server) do
     table.insert(install_servers, v)
