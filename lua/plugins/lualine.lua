@@ -50,7 +50,7 @@ function M.config()
   local branch = {
     "branch",
     icons_enabled = true,
-    icon = "",
+    icon = "",
     fmt = function(str)
       return utils.truncate_string(str, 20)
     end,
@@ -59,13 +59,15 @@ function M.config()
   local grapple_key = {
     function()
       local tag = grapple.name_or_index()
-      return " " .. tag .. ""
+      local tag_sup = utils.all_nums_to_superscript(tostring(tag))
+      return "" .. tag_sup
     end,
     cond = grapple.exists,
   }
 
   local function spaces()
-    return "󱁐 " .. vim.bo.shiftwidth
+    local num_spaces = utils.all_nums_to_superscript(tostring(vim.bo.shiftwidth))
+    return "󱁐" .. num_spaces
   end
 
   local function lsp_status()
@@ -79,7 +81,7 @@ function M.config()
       count = count + 1
     end
 
-    return " " .. count
+    return "" .. utils.all_nums_to_superscript(tostring(count))
   end
 
   local filename = {

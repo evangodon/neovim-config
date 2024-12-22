@@ -29,14 +29,14 @@ function M.notify(formatters)
     local line = "- **" .. client.name .. "**"
     if client.name == "null-ls" then
       line = line
-          .. " ("
-          .. table.concat(
-            vim.tbl_map(function(f)
-              return "`" .. f.name .. "`"
-            end, formatters.null_ls),
-            ", "
-          )
-          .. ")"
+        .. " ("
+        .. table.concat(
+          vim.tbl_map(function(f)
+            return "`" .. f.name .. "`"
+          end, formatters.null_ls),
+          ", "
+        )
+        .. ")"
     end
     table.insert(lines, line)
   end
@@ -97,9 +97,9 @@ end
 ---@param client lsp.Client
 function M.supports_format(client)
   if
-      client.config
-      and client.config.capabilities
-      and client.config.capabilities.documentFormattingProvider == false
+    client.config
+    and client.config.capabilities
+    and client.config.capabilities.documentFormattingProvider == false
   then
     return false
   end

@@ -1,8 +1,11 @@
 local M = {
-  "VonHeikemen/lsp-zero.nvim",
+  "neovim/nvim-lspconfig",
+  cmd = { "LspInfo", "LspInstall", "LspStart" },
+  event = { "BufReadPre", "BufNewFile" },
+
   dependencies = {
-    "neovim/nvim-lspconfig",
-    "hrsh7th/nvim-cmp",
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim" },
     {
       "williamboman/mason.nvim",
       config = function()
@@ -22,16 +25,19 @@ local M = {
         },
       },
     },
-    "williamboman/mason-lspconfig.nvim",
+    {
+      "williamboman/mason.nvim",
+      lazy = false,
+      opts = {},
+    },
   },
-  event = "BufReadPre",
 }
 
-local server = {
+local lsp_server = {
   ts = "ts_ls",
   deno = "denols",
   lua = "lua_ls",
-  eslint = "eslint",
+  --eslint = "eslint",
   go = "gopls",
   json = "jsonls",
   yaml = "yamlls",
@@ -62,108 +68,57 @@ for type, icon in pairs(custom_signs) do
 end
 
 function M.config()
-  local lsp_zero = require "lsp-zero"
   local format = require "lsp/format"
-  local telescope_pickers = require "telescope.builtin"
-  local telescope_theme = require "telescope.themes"
   local lspconfig = require "lspconfig"
+  local mason = require "mason-lspconfig"
 
-  local install_servers = {}
-  for _, v in pairs(server) do
-    table.insert(install_servers, v)
+  -- Styling
+  require("lspconfig.ui.windows").default_options.border = "single"
+
+  local ensure_installed = {}
+  for _, value in pairs(lsp_server) do
+    table.insert(ensure_installed, value)
   end
 
-  lsp_zero.ensure_installed(install_servers)
-
-  lsp_zero.set_preferences({
-    manage_nvim_cmp = false, -- managed in ./cmp.lua
-    suggest_lsp_servers = true,
-    cmp_capabilities = false,
-  })
-
-  -- LSP server configurations
-  lsp_zero.configure(server.lua, require "user.lsp.settings.luals")
-  lsp_zero.configure(server.json, require "user.lsp.settings.jsonls")
-  lsp_zero.configure(server.ts, {
-    root_dir = lspconfig.util.root_pattern ".git",
-    single_file_support = false,
-    init_options = {
-      lint = false,
-      format = false,
+  mason.setup({
+    ensure_installed = ensure_installed,
+    handlers = {
+      function(server_name)
+        require("lspconfig")[server_name].setup({})
+      end,
+      -- Go
+      [lsp_server.go] = function()
+        lspconfig.gopls.setup({})
+      end,
+      -- Deno
+      [lsp_server.deno] = function()
+        lspconfig.denols.setup({
+          root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+        })
+      end,
+      -- Typescript
+      [lsp_server.ts] = function()
+        lspconfig[lsp_server.ts].setup({
+          root_dir = lspconfig.util.root_pattern "package.json",
+          single_file_support = false,
+        })
+      end,
+      -- Lua
+      [lsp_server.lua] = function()
+        lspconfig[lsp_server.lua].setup(require "lsp.luals")
+      end,
+      -- Yaml
+      [lsp_server.yaml] = function()
+        lspconfig[lsp_server.yaml].setup({
+          settings = {
+            yaml = {
+              keyOrdering = false,
+            },
+          },
+        })
+      end,
     },
   })
-  lsp_zero.configure(server.deno, {
-    root_dir = lspconfig.util.root_pattern("deno.json", "deno.lock"),
-    init_options = {
-      lint = false,
-    },
-  })
-  --[[ lspconfig.eslint.setup({ ]]
-  --[[   root_dir = lspconfig.util.root_pattern(".eslintrc.json", ".eslintrc.js", "package.json", "tsconfig.json", ".git"), ]]
-  --[[   settings = { ]]
-  --[[     format = false, ]]
-  --[[   }, ]]
-  --[[ }) ]]
-  lsp_zero.configure(server.yaml, {
-    settings = {
-      yaml = {
-        keyOrdering = false,
-      },
-    },
-  })
-
-  local telescope_ivy_theme = telescope_theme.get_ivy({
-    layout_config = { height = 0.5 },
-    initial_mode = "normal",
-    preview_title = "Preview",
-    show_line = true,
-  })
-
-  -- Keymaps
-  lsp_zero.on_attach(function(client, bufnr)
-    -- Handle tsserver and denols
-    if lspconfig.util.root_pattern "deno.json"(vim.fn.getcwd()) then
-      if client.name == server.ts then
-        client.stop()
-        return
-      end
-    end
-
-    -- KEYMAPS
-    local function setBufOpts(desc)
-      return { noremap = true, silent = true, buffer = bufnr, desc = desc }
-    end
-
-    local keymap = vim.keymap.set
-
-    keymap("n", "gD", vim.lsp.buf.declaration, setBufOpts "Jump to declaration")
-    keymap("n", "gd", vim.lsp.buf.definition, setBufOpts "Jump to definition")
-    keymap("n", "gh", vim.lsp.buf.hover, setBufOpts "Hover")
-    keymap("n", "gI", vim.lsp.buf.implementation, setBufOpts "Implementation")
-    keymap("n", "gi", function()
-      telescope_pickers.lsp_implementations(telescope_ivy_theme)
-    end, setBufOpts "Implementation")
-    keymap("n", "<C-k>", vim.lsp.buf.signature_help, setBufOpts "Signature help")
-    keymap("n", "gr", function()
-      telescope_pickers.lsp_references(telescope_ivy_theme)
-    end, setBufOpts "Find references")
-    keymap("n", "<F2>", vim.lsp.buf.rename, setBufOpts "Rename")
-    keymap("n", "[d", function()
-      vim.diagnostic.goto_prev({ border = "single" })
-    end, setBufOpts "Jump to previous diagnostic")
-    keymap("n", "gl", function()
-      vim.diagnostic.open_float({ border = "single" })
-    end, setBufOpts "Open diagnostics")
-    keymap("n", "]d", function()
-      vim.diagnostic.goto_next({ border = "single" })
-    end, setBufOpts "Jump to next diagnostic")
-
-    -- FORMAT ON SAVE
-    format.setup()
-  end)
-
-  lsp_zero.setup()
-  require("lspconfig.ui.windows").default_options.border = "single"
 end
 
 return M

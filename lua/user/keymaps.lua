@@ -114,6 +114,51 @@ keymap("n", "q", "<nop>", opts)
 -- Select workd
 keymap("n", "<CR>", "viw", opts)
 
+-- LSP
+vim.api.nvim_create_autocmd("LspAttach", {
+  desc = "LSP actions",
+  callback = function(args)
+    local telescope_pickers = require "telescope.builtin"
+    local telescope_theme = require "telescope.themes"
+
+    local bufnr = args.buf
+
+    local telescope_ivy_theme = telescope_theme.get_ivy({
+      layout_config = { height = 0.5 },
+      initial_mode = "normal",
+      preview_title = "Preview",
+      show_line = true,
+    })
+
+    -- KEYMAPS
+    local function setBufOpts(desc)
+      return { noremap = true, silent = true, buffer = bufnr, desc = desc }
+    end
+
+    keymap("n", "gD", vim.lsp.buf.declaration, setBufOpts "Jump to declaration")
+    keymap("n", "gd", vim.lsp.buf.definition, setBufOpts "Jump to definition")
+    keymap("n", "gh", vim.lsp.buf.hover, setBufOpts "Hover")
+    keymap("n", "gI", vim.lsp.buf.implementation, setBufOpts "Implementation")
+    keymap("n", "gi", function()
+      telescope_pickers.lsp_implementations(telescope_ivy_theme)
+    end, setBufOpts "Implementation")
+    keymap("n", "<C-k>", vim.lsp.buf.signature_help, setBufOpts "Signature help")
+    keymap("n", "gr", function()
+      telescope_pickers.lsp_references(telescope_ivy_theme)
+    end, setBufOpts "Find references")
+    keymap("n", "<F2>", vim.lsp.buf.rename, setBufOpts "Rename")
+    keymap("n", "[d", function()
+      vim.diagnostic.goto_prev({ border = "single" })
+    end, setBufOpts "Jump to previous diagnostic")
+    keymap("n", "gl", function()
+      vim.diagnostic.open_float({ border = "single" })
+    end, setBufOpts "Open diagnostics")
+    keymap("n", "]d", function()
+      vim.diagnostic.goto_next({ border = "single" })
+    end, setBufOpts "Jump to next diagnostic")
+  end,
+})
+
 -- Leader key mappings
 
 local fn = require "user.functions.utils"
