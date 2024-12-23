@@ -33,7 +33,7 @@ function M.init()
   wk.add({
     { LeaderKey "w", group = "Workspaces" },
     { LeaderKey "wa", add_new_workspace, desc = "Add workspace with name" },
-    { LeaderKey "wo", CMD "Telescope workspaces", desc = "Open workspace" },
+    { LeaderKey "wo", Cmd "Telescope workspaces", desc = "Open workspace" },
   })
 end
 

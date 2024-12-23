@@ -31,7 +31,7 @@ function M.config()
 		]]
       vim.fn.system "kitty @ set-font-size +2"
 
-      vim.keymap.set("n", "q", CMD "close", { noremap = true, silent = true })
+      vim.keymap.set("n", "q", Cmd "close", { noremap = true, silent = true })
       vim.api.nvim_create_autocmd("VimLeavePre", {
         group = kitty_font_group_id,
         callback = function()

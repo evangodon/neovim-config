@@ -123,19 +123,19 @@ function M.init()
   local builtin_pickers = require "telescope.builtin"
 
   -- Find files
-  map("n", "<C-p>", builtin_pickers.find_files, opts "Find Files")
+  map("n", Ctrl "p", builtin_pickers.find_files, opts "Find Files")
 
   -- Use grep on files
-  map("n", "<C-t>", builtin_pickers.live_grep, opts "Grep files")
+  map("n", Ctrl "t", builtin_pickers.live_grep, opts "Grep files")
 
   -- Fuzzy search in buffer
-  map("n", "<C-f>", builtin_pickers.current_buffer_fuzzy_find, opts "Fuzzy find current buffer")
+  map("n", Ctrl "f", builtin_pickers.current_buffer_fuzzy_find, opts "Fuzzy find current buffer")
 
   wk.add({
     { LeaderKey "r", builtin_pickers.oldfiles, desc = "View recent files" },
     { LeaderKey "R", builtin_pickers.resume, desc = "Resume last search" },
-    { LeaderKey "d", CMD "telescope diagnostics", desc = "View diagnostics" },
-    { LeaderKey "K", CMD "Telescope knowledge_base list", desc = "View knowledge base" },
+    { LeaderKey "d", Cmd "Telescope diagnostics", desc = "View diagnostics" },
+    { LeaderKey "K", Cmd "Telescope knowledge_base list", desc = "View knowledge base" },
     { LeaderKey "m", builtin_pickers.marks, desc = "View marks" },
   })
 end

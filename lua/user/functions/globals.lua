@@ -31,11 +31,23 @@ function Get_loaded_buffers()
 end
 
 -- Format string for ex command
-function CMD(command)
-  return string.format(":%s<cr>", command)
+---@param cmd string
+function Cmd(cmd)
+  return function()
+    local ok, err = pcall(vim.api.nvim_command, cmd)
+    if not ok then
+      local formatted_cmd = string.format("'%s'", cmd)
+      Notify.error("Error running command " .. formatted_cmd .. "\n └ " .. err)
+    end
+  end
 end
 
 -- Format string for ex command
 function LeaderKey(key)
   return string.format("<leader>%s", key)
+end
+
+-- Format keymap with control key
+function Ctrl(key)
+  return string.format("<C-%s>", key)
 end

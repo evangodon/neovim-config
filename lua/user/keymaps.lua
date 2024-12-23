@@ -7,40 +7,34 @@ local function optsWithDesc(desc)
 end
 
 -- Save
-keymap("n", "<C-s>", function()
+keymap("n", Ctrl "s", function()
   vim.cmd "silent! update"
 end, { desc = "Save the file if modified", noremap = true, silent = true })
 
 -- better window movement
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", Ctrl "h", "<C-w>h", opts)
+keymap("n", Ctrl "j", "<C-w>j", opts)
+keymap("n", Ctrl "k", "<C-w>k", opts)
+keymap("n", Ctrl "l", "<C-w>l", opts)
 
 -- resize with arrows
-keymap("n", "<C-Up>", CMD "resize +3", opts)
-keymap("n", "<C-Down>", CMD "resize -3", opts)
-keymap("n", "<C-Left>", CMD "vertical resize +3", opts)
-keymap("n", "<C-Right>", CMD "vertical resize -3", opts)
+keymap("n", Ctrl "Up", Cmd "resize +3", opts)
+keymap("n", Ctrl "Down", Cmd "resize -3", opts)
+keymap("n", Ctrl "Left", Cmd "vertical resize +3", opts)
+keymap("n", Ctrl "Right", Cmd "vertical resize -3", opts)
 
 -- better indenting
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Navigate buffers
-keymap("n", "]b", CMD "bnext", opts) -- Next buffer
-keymap("n", "<C-n>", CMD "bnext", opts)
-keymap("n", "<TAB>", CMD "bnext", opts)
-keymap("n", "[b", CMD "bprevious", opts) -- Previous buffer
-keymap("n", "<S-TAB>", CMD "bprevious", opts)
-keymap("n", "<BS>", CMD "b#", opts)
-keymap("n", "<leader>\\", CMD "Telescope buffers", opts)
-
--- Navigate quickfix list
-local function set_quickfix_keymaps()
-  vim.api.nvim_buf_set_keymap(0, "n", "<TAB>", CMD "cnext", opts)
-  vim.api.nvim_buf_set_keymap(0, "n", "<S-TAB>", CMD "cprev", opts)
-end
+keymap("n", "]b", vim.cmd "bnext", opts) -- Next buffer
+keymap("n", Ctrl "n", Cmd "bnext", opts)
+keymap("n", "<TAB>", Cmd "bnext", opts)
+keymap("n", "[b", Cmd "bprevious", opts) -- Previous buffer
+keymap("n", "<S-TAB>", Cmd "bprevious", opts)
+keymap("n", "<BS>", Cmd "b#", opts)
+keymap("n", "<leader>\\", Cmd "Telescope buffers", opts)
 
 -- Duplicate a line and comment out the first line
 keymap("n", "yc", function()
@@ -50,7 +44,10 @@ end, optsWithDesc "Copy line and comment out the original")
 -- Autocommand to set keymaps when entering a quickfix buffer
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "qf",
-  callback = set_quickfix_keymaps,
+  callback = function()
+    keymap("n", "<TAB>", Cmd "cnext", opts)
+    keymap("n", "<S-TAB>", Cmd "cprev", opts)
+  end,
 })
 
 vim.api.nvim_del_keymap("n", "<C-W>d")
@@ -67,7 +64,7 @@ vim.api.nvim_create_user_command("CloseBuffer", function()
     vim.cmd "bprevious|confirm bdelete#"
   end
 end, {})
-keymap("n", "<C-w>", CMD "CloseBuffer", opts)
+keymap("n", "<C-w>", Cmd "CloseBuffer", opts)
 
 -- Move selected line / block of text in visual mode
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
@@ -95,11 +92,7 @@ keymap("v", "f", ":s/", opts)
 
 -- Prevent overiding the last yank when deleting empty line
 keymap("n", "dd", function()
-  if vim.api.nvim_get_current_line():match "^%s*$" then
-    return '"_dd'
-  else
-    return "dd"
-  end
+  return vim.api.nvim_get_current_line():match "^%s*$" and '"_dd' or "dd"
 end, { expr = true, noremap = true })
 
 keymap("", "<Space>", "<Nop>", opts)
@@ -165,9 +158,9 @@ local fn = require "user.functions.utils"
 local wk = require "which-key"
 
 wk.add({
-  { LeaderKey "q", CMD "quitall!", desc = "Force quit" },
-  { LeaderKey "c", CMD "close", desc = "Close window" },
-  { LeaderKey "O", CMD "OpenSlides", desc = "Open file in slides" },
+  { LeaderKey "q", Cmd "quitall!", desc = "Force quit" },
+  { LeaderKey "c", Cmd "close", desc = "Close window" },
+  { LeaderKey "O", Cmd "OpenSlides", desc = "Open file in slides" },
   { LeaderKey "B", fn.close_all_buffers_but_current, desc = "Close all buffers but current" },
 })
 

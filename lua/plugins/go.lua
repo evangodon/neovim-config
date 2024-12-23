@@ -27,11 +27,11 @@ function M.init()
 
       wk.add({
         { LeaderKey "G", group = "Go" },
-        { LeaderKey "Gf", CMD "GoFillStruct", desc = "Fill struct", buffer = bufnr },
-        { LeaderKey "Gi", CMD "GoImports", desc = "Go imports", buffer = bufnr },
-        { LeaderKey "Ge", CMD "GoIfErr", desc = "Add if err", buffer = bufnr },
-        { LeaderKey "Gd", CMD "GoDoc", desc = "Go doc", buffer = bufnr },
-        { LeaderKey "Gt", CMD "GoTestFile -v", desc = "Run tests for current file", buffer = bufnr },
+        { LeaderKey "Gf", Cmd "GoFillStruct", desc = "Fill struct", buffer = bufnr },
+        { LeaderKey "Gi", Cmd "GoImports", desc = "Go imports", buffer = bufnr },
+        { LeaderKey "Ge", Cmd "GoIfErr", desc = "Add if err", buffer = bufnr },
+        { LeaderKey "Gd", Cmd "GoDoc", desc = "Go doc", buffer = bufnr },
+        { LeaderKey "Gt", Cmd "GoTestFile -v", desc = "Run tests for current file", buffer = bufnr },
       })
     end,
   })
