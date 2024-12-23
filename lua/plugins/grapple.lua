@@ -41,12 +41,12 @@ function M.init()
     else
       Notify.info("Remove tag from " .. bufname)
     end
-    CMD "redrawtabline"
+    Cmd "redrawtabline"
   end)
 
   util.keymap("n", backslash .. backslash, function()
     grapple.toggle_tags()
-    CMD "redrawtabline"
+    Cmd "redrawtabline"
   end)
 end
 

@@ -1,6 +1,5 @@
 # TODO
 
-- [ ] Configure blink to only show if keyword is length at least 1
 - [ ] Remove nvim-autopairs for mini.pairs
 - [ ] Remove alpha for snack dashboard
 - [ ] Organize themes into dark and light tables and set background = light
@@ -25,3 +24,5 @@
 - [x] Create catppucin override to use embark colors
 - [x] Big Job: reorganize lsp files
 - [x] Big Job: replace nvim-cmp with blink
+- [x] Configure blink to only show if keyword is length at least 1
+- [ ] fix nvim-tree filling current buffer

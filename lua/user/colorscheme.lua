@@ -58,6 +58,6 @@ local wk = require "which-key"
 
 wk.add({
   LeaderKey "C",
-  CMD "Telescope colorscheme",
+  Cmd "Telescope colorscheme",
   desc = "Telescope [colorscheme]",
 })

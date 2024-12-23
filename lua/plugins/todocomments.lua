@@ -80,7 +80,7 @@ end
 function M.init()
   local wk = require "which-key"
   wk.add({
-    { LeaderKey "tt", CMD "TodoTelescope", desc = "View todos in Telescope" },
+    { LeaderKey "tt", Cmd "TodoTelescope", desc = "View todos in Telescope" },
   })
 end
 

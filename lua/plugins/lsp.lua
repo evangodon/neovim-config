@@ -68,9 +68,9 @@ for type, icon in pairs(custom_signs) do
 end
 
 function M.config()
-  local format = require "lsp/format"
   local lspconfig = require "lspconfig"
   local mason = require "mason-lspconfig"
+  local capabilities = require("blink.cmp").get_lsp_capabilities()
 
   -- Styling
   require("lspconfig.ui.windows").default_options.border = "single"
@@ -84,7 +84,9 @@ function M.config()
     ensure_installed = ensure_installed,
     handlers = {
       function(server_name)
-        require("lspconfig")[server_name].setup({})
+        require("lspconfig")[server_name].setup({
+          capabilities = capabilities,
+        })
       end,
       -- Go
       [lsp_server.go] = function()
