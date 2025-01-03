@@ -15,7 +15,7 @@ function M.config()
   telescope.setup({
     defaults = {
       prompt_prefix = "  ",
-      selection_caret = " ",
+      selection_caret = "█ ",
       path_display = { "truncate" },
       sorting_strategy = "ascending",
       layout_config = {
@@ -25,6 +25,8 @@ function M.config()
       },
       mappings = {
         i = {
+          [Ctrl "j"] = actions.move_selection_next,
+          [Ctrl "k"] = actions.move_selection_previous,
           ["<C-n>"] = actions.cycle_history_next,
           ["<C-p>"] = actions.cycle_history_prev,
 
@@ -80,11 +82,9 @@ function M.config()
         theme = "dropdown",
         previewer = false,
       },
-      live_grep = {
-        theme = "dropdown",
-      },
       current_buffer_fuzzy_find = {
         theme = "dropdown",
+        previewer = false,
       },
       buffers = {
         theme = "dropdown",
@@ -93,7 +93,11 @@ function M.config()
         sort_mru = true,
       },
       oldfiles = {
+        theme = "dropdown",
         only_cwd = true,
+        previewer = false,
+        prompt_title = "Recent Files",
+        results_title = "",
       },
     },
     extensions = {
@@ -136,7 +140,7 @@ function M.init()
     { LeaderKey "R", builtin_pickers.resume, desc = "Resume last search" },
     { LeaderKey "d", Cmd "Telescope diagnostics", desc = "View diagnostics" },
     { LeaderKey "K", Cmd "Telescope knowledge_base list", desc = "View knowledge base" },
-    { LeaderKey "m", builtin_pickers.marks, desc = "View marks" },
+    { LeaderKey "'", builtin_pickers.marks, desc = "View marks" },
   })
 end
 

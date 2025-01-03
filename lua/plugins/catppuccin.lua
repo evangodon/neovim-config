@@ -73,7 +73,7 @@ function M.config()
 
   catppuccin.setup({
     dim_inactive = {
-      enabled = false,
+      enabled = true,
       shade = "dark",
       percentage = 0.2,
     },
@@ -86,8 +86,12 @@ function M.config()
       notify = true,
       treesitter = true,
       cmp = true,
+      telescope = false,
     },
     custom_highlights = function(colors)
+      local accent_color = colors.green
+      local nvim_tree_accent_color = colors.blue
+
       return {
         GitSignsDeleteLn = { fg = colors.red, bg = no_color },
         Visual = { fg = colors.text, bg = util.darken(colors.mauve, 0.08, colors.base) },
@@ -101,9 +105,16 @@ function M.config()
         DiffDelete = { fg = colors.maroon, bg = no_color },
         -- IndentBlankline
         IndentBlanklineIndent1 = { fg = util.darken(colors.surface1, 0.2, colors.base), bg = colors.none },
+
         -- NvimTree
         NvimTreeCursorLine = { bg = util.darken(colors.mauve, 0.08, colors.base) },
         NvimTreeCursorLineNC = { bg = util.darken(colors.mauve, 0.15, colors.base) },
+        NvimTreeFolderIcon = { fg = nvim_tree_accent_color },
+        NvimTreeFolderName = { fg = nvim_tree_accent_color },
+        NvimTreeOpenedFolderName = { fg = nvim_tree_accent_color },
+        NvimTreeOpenedFolderIcon = { fg = nvim_tree_accent_color },
+        NvimTreeFileIcon = { fg = nvim_tree_accent_color },
+
         -- GitSigns
         GitSignsChange = { fg = colors.yellow, bg = no_color },
         GitSignsAdd = { fg = colors.green, bg = no_color },
@@ -114,6 +125,15 @@ function M.config()
         RenderMarkdownH4Bg = { fg = colors.green, bg = no_color },
         RenderMarkdownH5Bg = { fg = colors.sky, bg = no_color },
         RenderMarkdownH6Bg = { fg = colors.lavender, bg = no_color },
+
+        --Telescope
+        TelescopeNormal = { bg = colors.crust },
+        TelescopeBorder = { fg = colors.green, bg = colors.crust },
+        TelescopePromptNormal = { bg = colors.crust },
+        TelescopePrompt = { fg = colors.red, bg = colors.crust },
+        TelescopeMatching = { fg = colors.red },
+        TelescopeSelectionCaret = { fg = colors.red },
+        TelescopePromptPrefix = { fg = colors.green, bg = colors.crust },
 
         -- Code tokens
         String = { fg = colors.green },

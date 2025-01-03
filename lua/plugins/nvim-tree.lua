@@ -139,7 +139,7 @@ function M.config()
       root_folder_label = false,
       root_folder_modifier = ":t",
       icons = {
-        webdev_colors = true,
+        --webdev_colors = true,
         git_placement = "before",
         padding = " ",
         glyphs = {
