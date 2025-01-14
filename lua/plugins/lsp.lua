@@ -73,7 +73,7 @@ function M.config()
   local capabilities = require("blink.cmp").get_lsp_capabilities()
 
   -- Styling
-  require("lspconfig.ui.windows").default_options.border = "single"
+  --require("lspconfig.ui.windows").default_options.border = "single"
 
   local ensure_installed = {}
   for _, value in pairs(lsp_server) do

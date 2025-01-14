@@ -11,7 +11,15 @@ function M.config()
 
   snacks.setup({
     ---@type snacks.Config
-    opts = {},
+    opts = {
+      notify = true,
+      notifier = true,
+    },
+  })
+
+  local wk = require "which-key"
+  wk.add({
+    { LeaderKey "N", snacks.notifier.show_history, desc = "See Notifications" },
   })
 end
 

@@ -3,7 +3,7 @@ local M = {
   dependencies = {
     "cbochs/grapple.nvim",
   },
-  lazy = false,
+  event = "VimEnter",
 }
 
 local function pad(str, length)
@@ -50,7 +50,6 @@ end
 } ]]
 function M.config()
   local utils = require "user.functions.utils"
-  local tabby_utils = require "tabby.util"
 
   local function shortenPath(buf_path)
     local relativeToCurDir = vim.fn.fnamemodify(buf_path, ":.")
@@ -71,106 +70,46 @@ function M.config()
     return path .. tail
   end
 
-  local components = function()
-    local space = {
-      type = "text",
-      text = {
-        " ",
-        hl = "TabLineFill",
+  local function filterWindows(win)
+    return not string.match(win.name(), "NvimTree")
+  end
+
+  local function lineFn(line)
+    return {
+      {
+        { "   ", hl = theme.head },
+        line.sep("", theme.head, theme.fill),
       },
+      (#line.tabs().tabs > 1) and (line.tabs().foreach(function(tab)
+        return {
+          line.sep(" ", theme.win, theme.fill),
+          tab.is_current() and "" or "",
+          utils.all_nums_to_superscript(tab.number()),
+          line.sep(" ", theme.win, theme.fill),
+          hl = theme.fill,
+          margin = "",
+        }
+      end)),
+      line.spacer(),
+      line.bufs(line.api.get_current_tab()).filter(filterWindows).foreach(function(buf)
+        local hl = buf.is_current() and theme.current_tab or theme.tab
+        return {
+          line.sep("", hl, theme.fill),
+          buf.is_current() and "" or "",
+          buf.name(),
+          buf.is_changed() and "•" or "",
+          line.sep("", hl, theme.fill),
+          hl = hl,
+          margin = " ",
+        }
+      end),
+      line.spacer(),
+      hl = theme.fill,
     }
-    local spring = { type = "spring" }
-
-    -- HEAD
-    local head = {
-      type = "text",
-      text = {
-        pad(" " .. cwd(), 18),
-        hl = theme.tab,
-      },
-    }
-
-    local parts = {
-      head,
-      space,
-    }
-
-    -- TABS
-    local tabs = vim.api.nvim_list_tabpages()
-    if #tabs > 1 then
-      local current_tab = vim.api.nvim_get_current_tabpage()
-      for _, tabid in ipairs(tabs) do
-        local is_current_tab = tabid == current_tab
-        local tab_name = tabby_utils.get_tab_name(tabid, function()
-          return tabid
-        end)
-        local icon = is_current_tab and "" or ""
-        table.insert(parts, {
-          type = "tab",
-          tabid = tabid,
-          label = {
-            string.format(" %s %s ", icon, tab_name),
-            hl = theme.fill,
-          },
-        })
-      end
-    end
-
-    table.insert(parts, spring)
-
-    -- BUFFERS
-    local cur_bufid = vim.api.nvim_get_current_buf()
-    -- local buffers = vim.fn.tabpagebuflist()
-    local buffers = vim.api.nvim_list_bufs()
-    local buf_names = {}
-    -- Keep track of buffer names to check for duplicates
-    for _, bufid in ipairs(buffers) do
-      if vim.api.nvim_buf_is_valid(bufid) and vim.bo[bufid].buflisted then
-        local buf_path = vim.api.nvim_buf_get_name(bufid)
-        local name = vim.fn.fnamemodify(buf_path, ":t")
-        buf_names[name] = buf_names[name] == nil and 1 or buf_names[name] + 1
-      end
-    end
-
-    for _, bufid in ipairs(buffers) do
-      if vim.api.nvim_buf_is_valid(bufid) and vim.bo[bufid].buflisted then
-        local is_active = bufid == cur_bufid
-        local hl = is_active and theme.current_tab or theme.tab
-        local buf_path = vim.api.nvim_buf_get_name(bufid)
-        if buf_path == "" then
-          buf_path = "[No Name]"
-        end
-        local buffer_name = ""
-        local buf_name = vim.fn.fnamemodify(buf_path, ":t")
-        if buf_names[buf_name] == 1 then
-          buffer_name = buf_name
-        else
-          buffer_name = shortenPath(buf_path)
-        end
-        local grapple_key = get_grapple_key(bufid)
-        local grapple_key_sup = utils.get_superscript(grapple_key)
-        local icon = is_active and "" or ""
-        local is_modified = vim.api.nvim_get_option_value("modified", { buf = bufid }) and "● " or ""
-
-        table.insert(parts, space)
-        table.insert(parts, {
-          type = "text",
-          text = {
-            string.format(" %s %s%s %s", icon, buffer_name, grapple_key_sup, is_modified),
-            hl = hl,
-          },
-        })
-      end
-    end
-
-    table.insert(parts, space)
-    table.insert(parts, spring)
-
-    return parts
   end
 
   require("tabby").setup({
-    components = components,
+    line = lineFn,
   })
 end
 
