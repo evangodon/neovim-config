@@ -73,7 +73,7 @@ local superscript = {
   ["n"] = "ⁿ",
   ["o"] = "ᵒ",
   ["p"] = "ᵖ",
-  ["q"] = "q",
+  ["q"] = "q", -- Doesn't exist in UTF-8
   ["r"] = "ʳ",
   ["s"] = "ˢ",
   ["t"] = "ᵗ",
@@ -145,6 +145,7 @@ end
 
 ---@param input string
 function U.all_nums_to_superscript(input)
+  input = tostring(input)
   return (input:gsub("%d", function(digit)
     return superscript[digit] or digit
   end))

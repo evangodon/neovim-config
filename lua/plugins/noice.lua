@@ -8,6 +8,7 @@ local M = {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
     "MunifTanjim/nui.nvim",
   },
+  enabled = true,
 }
 
 function M.config()

@@ -8,20 +8,16 @@ local M = {
 }
 
 function M.config()
+  require("telescope").load_extension "grapple"
+
   require("grapple").setup({
     log_level = "warn",
     scope = "git",
-    popup_options = {
-      relative = "editor",
-      width = 60,
-      height = 12,
-      style = "minimal",
-      focusable = false,
-      border = "single",
-    },
-
     integrations = {
       resession = false,
+    },
+    win_opts = {
+      width = 100,
     },
   })
 end

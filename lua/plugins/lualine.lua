@@ -60,7 +60,7 @@ function M.config()
     function()
       local tag = grapple.name_or_index()
       local tag_sup = utils.all_nums_to_superscript(tostring(tag))
-      return "" .. tag_sup
+      return " " .. tag_sup
     end,
     cond = grapple.exists,
   }
