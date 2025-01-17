@@ -50,6 +50,7 @@ end
 } ]]
 function M.config()
   local utils = require "user.functions.utils"
+  local devicons = require "nvim-web-devicons"
 
   local function shortenPath(buf_path)
     local relativeToCurDir = vim.fn.fnamemodify(buf_path, ":.")
@@ -93,10 +94,12 @@ function M.config()
       line.spacer(),
       line.bufs(line.api.get_current_tab()).filter(filterWindows).foreach(function(buf)
         local hl = buf.is_current() and theme.current_tab or theme.tab
+        local buf_name = buf.name()
+
         return {
           line.sep("", hl, theme.fill),
           buf.is_current() and "" or "",
-          buf.name(),
+          buf_name,
           buf.is_changed() and "•" or "",
           line.sep("", hl, theme.fill),
           hl = hl,

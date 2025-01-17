@@ -93,16 +93,21 @@ function M.config()
       unnamed = "[No Name]",
       newfile = "[New]",
     },
+    color = "WinBar",
     fmt = function(str)
       return string.gsub(str, "/", " › ")
     end,
   }
+
+  local inactive_filename = vim.deepcopy(filename)
+  inactive_filename.color = "NormalNC"
 
   local dot = icons.diagnostics.default
 
   local diagnostics = {
     "diagnostics",
     symbols = { error = dot, warn = dot, info = dot, hint = dot },
+    color = "Winbar",
     fmt = function(str)
       return str
     end,
@@ -137,15 +142,15 @@ function M.config()
     winbar = {
       lualine_a = {},
       lualine_b = { filename },
-      lualine_c = { diagnostics },
+      lualine_c = {},
       lualine_x = {},
       lualine_y = {},
       lualine_z = {},
     },
     inactive_winbar = {
       lualine_a = {},
-      lualine_b = {},
-      lualine_c = { filename },
+      lualine_b = { inactive_filename },
+      lualine_c = {},
       lualine_x = {},
       lualine_y = {},
       lualine_z = {},

@@ -96,9 +96,14 @@ function M.config()
         GitSignsDeleteLn = { fg = colors.red, bg = no_color },
         Visual = { fg = colors.text, bg = util.darken(colors.mauve, 0.08, colors.base) },
         VertSplit = { bg = colors.crust, fg = colors.crust },
-        TabLineSel = { bg = colors.blue, fg = colors.mantle },
+        TabLineSel = { bg = colors.base, fg = colors.blue },
         TabLine = { fg = colors.overlay2, bg = colors.mantle },
         WarningMsg = { fg = colors.flamingo },
+
+        -- Winbar
+        WinBar = { fg = colors.subtext1, bg = colors.base },
+        WinBarNC = { fg = colors.subtext1, bg = colors.overlay2 },
+
         --lualine
         DiffAdd = { fg = colors.green, bg = no_color },
         DiffChange = { fg = colors.yellow, bg = no_color },
