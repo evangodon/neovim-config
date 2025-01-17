@@ -50,7 +50,6 @@ function M.init()
   vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*",
     callback = function(args)
-      P("ENABLED" .. vim.g.enable_format_on_save)
       if vim.g.enable_format_on_save then
         require("conform").format({ bufnr = args.buf })
       end

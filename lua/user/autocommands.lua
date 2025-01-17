@@ -1,13 +1,5 @@
 -- List of vim events:
 -- https://tech.saigonist.com/b/code/list-all-vim-script-events.html
---
--- Autocommand that reloads neovim whenever you save the plugins.lua file
--- vim.cmd [[
---   augroup packer_user_config
---     autocmd!
---     autocmd BufWritePost plugins/init.lua source <afile> | PackerSync
---   augroup end
--- ]]
 
 -- Hightlight on yank
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
@@ -36,10 +28,14 @@ vim.api.nvim_create_autocmd({ "CmdwinEnter", "CmdlineEnter" }, {
   end,
 })
 
--- Return to last cursor position on enter
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-  callback = function()
-    vim.cmd [[silent! '"; normal z.]]
+vim.api.nvim_create_autocmd("BufReadPost", {
+  desc = "Return to last cursor position on enter",
+  callback = function(args)
+    local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+    local line_count = vim.api.nvim_buf_line_count(args.buf)
+    if mark[1] > 0 and mark[1] <= line_count then
+      vim.cmd 'normal! g`"zz'
+    end
   end,
 })
 
@@ -71,26 +67,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Change color of cursorline on mode change (DISABLED)
---[[ local util = require "user.functions.utils" ]]
---[[ local cursorline_color = util.get_color("CursorLineNr", "fg#") ]]
---[[]]
---[[ vim.api.nvim_create_autocmd("ModeChanged", { ]]
---[[   callback = function() ]]
---[[     local modes = { ]]
---[[       --[[ ["i"] = "#7aa2f7", ]]
---[[       --[[ ["c"] = "#e0af68", ]]
---[[       --[[ ["v"] = "#c678dd", ]]
---[[       --[[ ["V"] = "#c678dd", ]]
---[[       --[[ [""] = "#c678dd", ]]
---[[     } ]]
---[[     local fg = modes[vim.api.nvim_get_mode().mode] or cursorline_color ]]
---[[     vim.api.nvim_set_hl(0, "CursorLineNr", { ]]
---[[       foreground = fg, ]]
---[[     }) ]]
---[[   end, ]]
---[[ }) ]]
-
 -- Close quickfix menu after selecting choice
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "qf" },
@@ -120,4 +96,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
       vim.bo.filetype = ft
     end
   end,
+})
+
+vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
+  desc = "Remove hl search when entering Insert",
+  callback = vim.schedule_wrap(function()
+    vim.cmd.nohlsearch()
+  end),
 })

@@ -44,7 +44,8 @@ end, optsWithDesc "Copy line and comment out the original")
 -- Autocommand to set keymaps when entering a quickfix buffer
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "qf",
-  callback = function()
+  callback = function(args)
+    opts["buffer"] = args.buf
     keymap("n", "<TAB>", Cmd "cnext", opts)
     keymap("n", "<S-TAB>", Cmd "cprev", opts)
   end,
