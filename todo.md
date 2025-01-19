@@ -1,7 +1,6 @@
 # TODO
 
 - [ ] Fix problems between Noice and Snack plugins
-- [ ] Add keymaps for leader-j and leader-k (flip between two marks)
 - [ ] Remove alpha for snack dashboard
 - [ ] Organize themes into dark and light tables and set background = light
 
@@ -27,3 +26,4 @@
 - [x] Configure blink to only show if keyword is length at least 1
 - [ ] fix nvim-tree filling current buffer
 - [x] Remove nvim-autopairs for mini.pairs
+- [x] Add keymaps for leader-j and leader-k 

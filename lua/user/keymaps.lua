@@ -1,5 +1,6 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
+local utils = require "user.functions.utils"
 
 ---@param desc string
 local function optsWithDesc(desc)
@@ -105,7 +106,7 @@ keymap("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 keymap("n", "Q", "<nop>", opts)
 keymap("n", "q", "<nop>", opts)
 
--- Select workd
+-- Select word
 keymap("n", "<CR>", "viw", opts)
 
 -- LSP
@@ -136,7 +137,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "gi", function()
       telescope_pickers.lsp_implementations(telescope_ivy_theme)
     end, setBufOpts "Implementation")
-    keymap("n", "<C-k>", vim.lsp.buf.signature_help, setBufOpts "Signature help")
+    keymap("n", "K", vim.lsp.buf.signature_help, setBufOpts "Signature help")
     keymap("n", "gr", function()
       telescope_pickers.lsp_references(telescope_ivy_theme)
     end, setBufOpts "Find references")
@@ -155,18 +156,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Leader key mappings
 
-local fn = require "user.functions.utils"
 local wk = require "which-key"
 
 wk.add({
   { LeaderKey "q", Cmd "quitall!", desc = "Force quit" },
   { LeaderKey "c", Cmd "close", desc = "Close window" },
   { LeaderKey "O", Cmd "OpenSlides", desc = "Open file in slides" },
-  { LeaderKey "B", fn.close_all_buffers_but_current, desc = "Close all buffers but current" },
+  { LeaderKey "B", utils.close_all_buffers_but_current, desc = "Close all buffers but current" },
+  { LeaderKey "j", utils.go_to_mark_cb "j", desc = "Go to mark 'j'" },
+  { LeaderKey "k", utils.go_to_mark_cb "k", desc = "Go to mark 'k'" },
 })
 
 wk.add({
   { LeaderKey "T", group = "Toggle option" },
-  { LeaderKey "Tc", fn.toggle_option "cursorcolumn", desc = "Toggle cursorcolumn" },
-  { LeaderKey "Tr", fn.toggle_option "relativenumber", desc = "Toggle relativenumber" },
+  { LeaderKey "Tc", utils.toggle_option "cursorcolumn", desc = "Toggle cursorcolumn" },
+  { LeaderKey "Tr", utils.toggle_option "relativenumber", desc = "Toggle relativenumber" },
 })
