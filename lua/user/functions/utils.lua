@@ -163,4 +163,18 @@ function U.strip_ansi_codes(lines)
   return stripped
 end
 
+--- Go to given mark
+---@param mark string
+function U.go_to_mark_cb(mark)
+  return function()
+    local pos = vim.fn.getpos("'" .. mark)
+    if pos[2] == 0 then
+      Notify.error(string.format("Mark %s doesn't exist", mark))
+      return
+    end
+
+    vim.api.nvim_win_set_cursor(0, { pos[2], pos[3] - 1 })
+  end
+end
+
 return U

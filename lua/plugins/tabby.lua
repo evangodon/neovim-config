@@ -44,13 +44,8 @@ local function split(inputstr, sep)
   return t
 end
 
---[[ local sep = {
-  right = "",
-  left = "",
-} ]]
 function M.config()
   local utils = require "user.functions.utils"
-  local devicons = require "nvim-web-devicons"
 
   local function shortenPath(buf_path)
     local relativeToCurDir = vim.fn.fnamemodify(buf_path, ":.")
@@ -83,7 +78,7 @@ function M.config()
       },
       (#line.tabs().tabs > 1) and (line.tabs().foreach(function(tab)
         return {
-          line.sep(" ", theme.win, theme.fill),
+          line.sep(" ", theme.tab, theme.fill),
           tab.is_current() and "" or "",
           utils.all_nums_to_superscript(tab.number()),
           line.sep(" ", theme.win, theme.fill),
@@ -97,13 +92,14 @@ function M.config()
         local buf_name = buf.name()
 
         return {
-          line.sep("", hl, theme.fill),
-          buf.is_current() and "" or "",
+          line.sep("", hl, theme.fill),
+          buf.is_current() and "▓ " or "  ",
           buf_name,
           buf.is_changed() and "•" or "",
-          line.sep("", hl, theme.fill),
+          " ",
+          line.sep(" ", hl, theme.fill),
           hl = hl,
-          margin = " ",
+          margin = "",
         }
       end),
       line.spacer(),
