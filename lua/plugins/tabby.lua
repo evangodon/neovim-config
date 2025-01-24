@@ -31,6 +31,9 @@ local theme = {
   tab = "TabLine",
   win = "TabLine",
   tail = "TabLine",
+  logo = "TabLineLogo",
+  headerNeo = "TabLineHeaderNeo",
+  headerVim = "TabLineHeaderVim",
 }
 
 local function split(inputstr, sep)
@@ -73,8 +76,9 @@ function M.config()
   local function lineFn(line)
     return {
       {
-        { "   ", hl = theme.head },
-        line.sep("", theme.head, theme.fill),
+        { "   ", hl = theme.logo },
+        { "Neo", hl = theme.headerNeo },
+        { "vim", hl = theme.headerVim },
       },
       (#line.tabs().tabs > 1) and (line.tabs().foreach(function(tab)
         return {
@@ -93,9 +97,9 @@ function M.config()
 
         return {
           line.sep("", hl, theme.fill),
-          buf.is_current() and "▓ " or "  ",
+          buf.is_current() and "▉ " or "  ",
           buf_name,
-          buf.is_changed() and "•" or "",
+          buf.is_changed() and "˖" or "",
           " ",
           line.sep(" ", hl, theme.fill),
           hl = hl,
