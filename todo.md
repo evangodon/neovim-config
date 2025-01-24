@@ -1,5 +1,6 @@
 # TODO
 
+- [ ] Fix unload buffer command to handle case where 1 buffer is modified
 - [ ] Fix problems between Noice and Snack plugins
 - [ ] Remove alpha for snack dashboard
 - [ ] Organize themes into dark and light tables and set background = light
