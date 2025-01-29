@@ -28,14 +28,24 @@ keymap("n", Ctrl "Right", Cmd "vertical resize -3", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+-- Delete without sending selection to default register
+keymap({ "x", "v" }, Del, '"_d', optsWithDesc "delete without copying")
+
 -- Navigate buffers
 keymap("n", "]b", vim.cmd "bnext", opts) -- Next buffer
 keymap("n", Ctrl "n", Cmd "bnext", opts)
 keymap("n", "<TAB>", Cmd "bnext", opts)
 keymap("n", "[b", Cmd "bprevious", opts) -- Previous buffer
 keymap("n", "<S-TAB>", Cmd "bprevious", opts)
-keymap("n", "<BS>", Cmd "b#", opts)
 keymap("n", "<leader>\\", Cmd "Telescope buffers", opts)
+vim.keymap.set("n", Del, function()
+  local last_buf = vim.fn.bufnr "#"
+  local last_buf_ft = vim.bo[last_buf].filetype
+
+  if last_buf ~= -1 and last_buf_ft ~= "NvimTree" then
+    vim.cmd "b#"
+  end
+end, optsWithDesc "Switch to last buffer, but not NvimTree")
 
 -- Duplicate a line and comment out the first line
 keymap("n", "yc", function()
