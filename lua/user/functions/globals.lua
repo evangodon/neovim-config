@@ -51,3 +51,6 @@ end
 function Ctrl(key)
   return string.format("<C-%s>", key)
 end
+
+-- The delete key
+Del = "<BS>"
