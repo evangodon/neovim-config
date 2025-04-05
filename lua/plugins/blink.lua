@@ -15,6 +15,8 @@ local M = {
       preset = "enter",
       [Ctrl "k"] = { "select_prev", "fallback" },
       [Ctrl "j"] = { "select_next", "fallback" },
+      ["<Tab>"] = { "select_next", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "fallback" },
     },
 
     appearance = {
@@ -25,6 +27,10 @@ local M = {
     sources = {
       default = { "lazydev", "lsp", "path", "snippets", "buffer" },
       providers = {
+        snippets = {
+          max_items = 5,
+          min_keyword_length = 2,
+        },
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
@@ -41,6 +47,7 @@ local M = {
         draw = {
           columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" }, { "source_name", gap = 1 } },
         },
+        border = "none",
       },
       trigger = {
         show_on_trigger_character = true,
@@ -48,6 +55,7 @@ local M = {
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 300,
+        window = { border = "single" },
       },
     },
   },
