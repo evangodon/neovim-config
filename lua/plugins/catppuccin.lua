@@ -103,7 +103,7 @@ function M.config()
         TabLine = { fg = colors.overlay2, bg = colors.mantle },
         TabLineLogo = { fg = colors.blue, bg = colors.mantle },
         TabLineHeaderNeo = { bg = colors.mantle, fg = colors.blue, italic = true },
-        TabLineHeaderVim = { bg = colors.mantle, fg = colors.blue, italic = true, bold = true },
+        TabLineHeaderVim = { bg = colors.mantle, fg = colors.blue, italic = false, bold = true },
 
         -- Winbar
         WinBar = { fg = colors.subtext1, bg = colors.base },
@@ -146,7 +146,8 @@ function M.config()
         TelescopePromptNormal = { bg = colors.crust },
         TelescopePrompt = { fg = colors.red, bg = colors.crust },
         TelescopeMatching = { fg = colors.red },
-        TelescopeSelectionCaret = { fg = colors.red },
+        TelescopeSelectionCaret = { fg = colors.red, bg = colors.mantle },
+        TelescopeSelection = { bg = colors.mantle },
         TelescopePromptPrefix = { fg = colors.green, bg = colors.crust },
 
         -- Code tokens

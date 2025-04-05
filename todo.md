@@ -1,5 +1,6 @@
 # TODO
 
+- [ ] Add command to prettify json in current buffer
 - [ ] Fix unload buffer command to handle case where 1 buffer is modified
 - [ ] Fix problems between Noice and Snack plugins
 - [ ] Remove alpha for snack dashboard

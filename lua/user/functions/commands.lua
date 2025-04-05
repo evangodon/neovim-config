@@ -64,3 +64,20 @@ end, { nargs = 0 })
 vim.api.nvim_create_user_command("PrintEnvValues", function()
   require("user.env").printValues()
 end, { nargs = 0 })
+
+-- Get path to daily log and open it
+vim.api.nvim_create_user_command("ZkDaily", function()
+  local work_notes_dir_var = "$WORK_NOTES_DIR"
+  local work_notes_dir = vim.fn.expand(work_notes_dir_var)
+  if work_notes_dir == "" or work_notes_dir == work_notes_dir_var then
+    Notify.error(work_notes_dir_var .. "variable is not set")
+    return
+  end
+
+  local cmd =
+    string.format('zk new --no-input --working-dir="%s" --group "daily" "./Log/daily" --print-path', work_notes_dir)
+
+  local output = vim.fn.system(cmd):gsub("%s+$", "")
+
+  vim.cmd("edit " .. vim.fn.fnameescape(output))
+end, { nargs = 0 })
