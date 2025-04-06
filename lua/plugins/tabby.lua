@@ -80,18 +80,19 @@ function M.config()
         { "Neo", hl = theme.headerNeo },
         { "vim", hl = theme.headerVim },
       },
+      line.sep(" ", theme.tab, theme.fill),
       (#line.tabs().tabs > 1) and (line.tabs().foreach(function(tab)
         return {
           line.sep(" ", theme.tab, theme.fill),
           tab.is_current() and "" or "",
           utils.all_nums_to_superscript(tab.number()),
-          line.sep(" ", theme.win, theme.fill),
+          line.sep("", theme.win, theme.fill),
           hl = theme.fill,
           margin = "",
         }
       end)),
       line.spacer(),
-      line.bufs(line.api.get_current_tab()).filter(filterWindows).foreach(function(buf)
+      line.bufs().filter(filterWindows).foreach(function(buf)
         local hl = buf.is_current() and theme.current_tab or theme.tab
         local buf_name = buf.name()
 
