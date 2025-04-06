@@ -1,12 +1,10 @@
 local M = {
   "saghen/blink.cmp",
+  build = "cargo build --release",
   enabled = true,
   lazy = false,
   dependencies = "rafamadriz/friendly-snippets",
 
-  version = "v0.*",
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
   opts = {
     enabled = function()
       return not vim.tbl_contains({ "DressingInput" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"
@@ -50,7 +48,7 @@ local M = {
         border = "none",
       },
       trigger = {
-        show_on_trigger_character = true,
+        show_on_trigger_character = false,
       },
       documentation = {
         auto_show = true,
