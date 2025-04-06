@@ -26,24 +26,31 @@ function M.init()
   local grapple = require "grapple"
   local util = require "user.functions.utils"
 
-  util.keymap("n", "<leader>J", function()
-    grapple.toggle()
-    local bufnr = vim.api.nvim_get_current_buf()
-    local bufpath = vim.api.nvim_buf_get_name(bufnr)
-    local bufname = vim.fn.fnamemodify(bufpath, ":t")
-
-    if grapple.exists() then
-      Notify.info("Added tag to " .. bufname)
-    else
-      Notify.info("Remove tag from " .. bufname)
-    end
-    Cmd "redrawtabline"
-  end)
-
   util.keymap("n", backslash .. backslash, function()
     grapple.toggle_tags()
     Cmd "redrawtabline"
   end)
+
+  local wk = require "which-key"
+  wk.add({
+    {
+      LeaderKey "J",
+      function()
+        grapple.toggle()
+        local bufnr = vim.api.nvim_get_current_buf()
+        local bufpath = vim.api.nvim_buf_get_name(bufnr)
+        local bufname = vim.fn.fnamemodify(bufpath, ":t")
+
+        if grapple.exists() then
+          Notify.info("Added tag to " .. bufname)
+        else
+          Notify.info("Remove tag from " .. bufname)
+        end
+        Cmd "redrawtabline"
+      end,
+      desc = "Add or remove file to grapple list",
+    },
+  })
 end
 
 return M
