@@ -26,6 +26,8 @@ function M.setup_interface()
   api.nvim_command "vsplit"
 
   local output_buf = buffer.create_buffer("[AI Ouput]", { listed = false, scratch = true }, { filetype = "markdown" })
+  output_buf:set_keymap("n", Del, "<Nop>")
+  output_buf:set_keymap("n", Tab, "<Nop>")
 
   M.output_buf = output_buf -- Store in tab variable
 
