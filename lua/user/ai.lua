@@ -1,5 +1,4 @@
 local api = vim.api
-local fn = vim.fn
 local buffer = require "user.buffer"
 
 --- @class Module
@@ -17,36 +16,37 @@ function M.setup_interface()
   vim.wo.linebreak = true
 
   local prompt_buf = buffer.create_buffer("[AI Prompt]", { listed = false, scratch = true })
+  prompt_buf:set_keymap("n", Tab, "<Nop>")
   M.prompt_buffer = prompt_buf
-
-  api.nvim_buf_set_name(prompt_buf:id(), "[AI Prompt]")
+  vim.cmd "startinsert"
 
   api.nvim_win_set_buf(0, prompt_buf:id())
 
   api.nvim_command "vsplit"
 
   local output_buf = buffer.create_buffer("[AI Ouput]", { listed = false, scratch = true }, { filetype = "markdown" })
+  M.output_buf = output_buf
   output_buf:set_keymap("n", Del, "<Nop>")
   output_buf:set_keymap("n", Tab, "<Nop>")
+  output_buf:set_is_modifiable(false)
 
-  M.output_buf = output_buf -- Store in tab variable
-
-  -- Associate output buffer with the new window (which is now current)
   api.nvim_win_set_buf(0, output_buf:id())
 
-  -- 5. Move focus back to the prompt window (left)
   api.nvim_command "wincmd h" -- Move cursor left
 
-  -- 6. Set up a buffer-local keymap in the prompt buffer to send the prompt
-  --    Using <Cmd> prevents mode changes and command line clutter
+  local unloaded_buffers = vim.tbl_filter(function(bufnr)
+    return vim.api.nvim_buf_is_loaded(bufnr) and vim.api.nvim_buf_get_name(bufnr) == ""
+  end, vim.api.nvim_list_bufs())
+
+  for _, bufnr in ipairs(unloaded_buffers) do
+    vim.api.nvim_buf_delete(bufnr, { force = true })
+  end
+
   prompt_buf:set_keymap("n", "<CR>", "", {
     noremap = true,
     silent = true,
     desc = "Send prompt to AI",
     callback = function()
-      output_buf:set_is_modifiable(true)
-      output_buf:set_lines({ "Thinking about that..." })
-
       M.send_prompt()
     end,
   })
@@ -71,46 +71,102 @@ function M.send_prompt()
     return
   end
 
-  -- Get all lines from the prompt buffer
-  local prompt_lines = api.nvim_buf_get_lines(prompt_buf:id(), 0, -1, false)
-  table.insert(prompt_lines, "Make sure all lines wrap after 80 characters.")
-  local prompt_text = table.concat(prompt_lines, "\n")
+  local prompt_text = api.nvim_buf_get_lines(prompt_buf:id(), 0, -1, false)
+  local full_prompt = table.concat(prompt_text, "\n")
+  local trimmed_prompt = string.match(full_prompt, "^%s*(.-)%s*$")
 
-  if prompt_text == "" then
-    Notify.error "Error: Prompt buffer is empty."
+  if trimmed_prompt == nil or trimmed_prompt == "" then
+    Notify.error "Error: Prompt buffer is empty or contains only whitespace."
     return
   end
 
   vim.cmd "redraw"
 
-  local cmd = "mods"
-  if conversation_started then
-    cmd = cmd .. " --continue-last"
-  end
-  local output = fn.system(cmd, prompt_text)
-  local exit_code = vim.v.shell_error
-
+  output_buf:set_is_modifiable(true)
   output_buf:clear()
 
-  if exit_code ~= 0 then
-    Notify.error("Error running mods (exit code " .. exit_code .. "): " .. output)
-    output_buf:set_lines({
-      "Error running mods CLI:",
-      "Exit Code: " .. exit_code,
-      "Output:",
-      output,
-    })
-  else
-    local output_lines = vim.split(output, "\n", { plain = true })
-
-    if #output_lines > 0 and output_lines[#output_lines] == "" then
-      table.remove(output_lines)
-    end
-
-    output_buf:set_lines(output_lines)
+  local cmd = { "mods", "--quiet", "--raw", "--no-cache" }
+  if conversation_started then
+    table.insert(cmd, "--continue-last")
   end
 
-  output_buf:set_is_modifiable(false)
+  output_buf:clear()
+  local job_id = vim.fn.jobstart(cmd, {
+    stdout_buffered = false,
+    stderr_buffered = false,
+    pty = false,
+    stdin = "pipe",
+
+    on_stdout = function(_, data, _)
+      if not data or #data == 0 then
+        return
+      end
+
+      local lines_to_insert = {}
+      local has_real_content = false
+      for _, line in ipairs(data) do
+        local processed_line = string.gsub(line, "([%.?!])%s%s+", "%1 ")
+        table.insert(lines_to_insert, processed_line)
+        if processed_line ~= "" then
+          has_real_content = true
+        end
+      end
+
+      if not has_real_content and #lines_to_insert > 0 then
+        return
+      end
+
+      if #lines_to_insert > 0 then
+        local buf_id = output_buf:id()
+        vim.schedule(function()
+          output_buf:set_is_modifiable(true)
+          if not vim.api.nvim_buf_is_valid(buf_id) then
+            return
+          end
+
+          local end_row = vim.api.nvim_buf_line_count(buf_id) - 1
+          if end_row < 0 then
+            end_row = 0
+          end
+
+          local last_line_content = vim.api.nvim_buf_get_lines(buf_id, end_row, end_row + 1, false)[1] or ""
+          local end_col = #last_line_content
+
+          vim.api.nvim_buf_set_text(buf_id, end_row, end_col, end_row, end_col, lines_to_insert)
+        end)
+      end
+    end,
+
+    on_stderr = function(_, data, _)
+      if data and #data > 0 then
+        local stderr_lines = {}
+        for _, line in ipairs(data) do
+          if line and line ~= "" then
+            table.insert(stderr_lines, "[stderr] " .. line)
+          end
+        end
+        if #stderr_lines > 0 then
+          local buf_id = output_buf:id()
+          vim.schedule(function()
+            if vim.api.nvim_buf_is_valid(buf_id) then
+              vim.api.nvim_buf_set_lines(buf_id, -1, -1, false, stderr_lines)
+            end
+          end)
+        end
+      end
+    end,
+
+    on_exit = function()
+      output_buf:set_is_modifiable(false)
+    end,
+  })
+
+  if job_id <= 0 then
+    Notify.error("Error: Failed to start job. Code: " .. job_id)
+  else
+    vim.fn.chansend(job_id, prompt_text)
+    vim.fn.chanclose(job_id, "stdin")
+  end
 end
 
 function M.setup()
