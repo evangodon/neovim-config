@@ -52,5 +52,6 @@ function Ctrl(key)
   return string.format("<C-%s>", key)
 end
 
--- The delete key
+-- Keyboard keys
 Del = "<BS>"
+Tab = "<Tab>"
