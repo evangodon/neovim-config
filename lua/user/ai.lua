@@ -85,7 +85,7 @@ function M.send_prompt()
   output_buf:set_is_modifiable(true)
   output_buf:clear()
 
-  local cmd = { "mods", "--quiet", "--raw", "--no-cache" }
+  local cmd = { "mods", "--quiet", "--raw" }
   if conversation_started then
     table.insert(cmd, "--continue-last")
   end
@@ -158,6 +158,7 @@ function M.send_prompt()
 
     on_exit = function()
       output_buf:set_is_modifiable(false)
+      conversation_started = true
     end,
   })
 
@@ -181,7 +182,6 @@ wk.add({
     LeaderKey "ao",
     function()
       M.setup_interface()
-      conversation_started = true
     end,
     desc = "Open AI Tab",
   },
