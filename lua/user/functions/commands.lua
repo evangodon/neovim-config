@@ -19,7 +19,7 @@ vim.api.nvim_create_user_command("OpenSlides", function()
   local kitty = require "user.functions.kitty"
   local path = vim.fn.expand "%:p"
 
-  local command = string.format("slides %s", path)
+  local command = string.format("presenterm --config-file ~/.config/presenterm/config.yaml %s", path)
   kitty.launch(command)
 end, { nargs = 0 })
 
