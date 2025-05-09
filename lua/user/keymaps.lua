@@ -151,7 +151,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "gr", function()
       telescope_pickers.lsp_references(telescope_ivy_theme)
     end, setBufOpts "Find references")
-    keymap("n", "<F2>", vim.lsp.buf.rename, setBufOpts "Rename")
+    keymap("n", "R", vim.lsp.buf.rename, setBufOpts "Rename")
     keymap("n", "[d", function()
       vim.diagnostic.goto_prev({ border = "single" })
     end, setBufOpts "Jump to previous diagnostic")
