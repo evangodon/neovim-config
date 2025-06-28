@@ -35,7 +35,7 @@ local M = {
 
 local lsp_server = {
   ts = "ts_ls",
-  deno = "denols",
+  --deno = "denols",
   lua = "lua_ls",
   --eslint = "eslint",
   go = "gopls",
@@ -55,10 +55,12 @@ vim.diagnostic.config({
   },
 })
 
+local icon = require "user.icons"
+
 local custom_signs = {
   Error = "󰯈",
   Warn = "󱙝",
-  Hint = "",
+  Hint = icon.diagnostics.default,
   Info = "󰮯",
 }
 
@@ -81,6 +83,7 @@ function M.config()
   end
 
   mason.setup({
+    automatic_enable = true,
     ensure_installed = ensure_installed,
     handlers = {
       function(server_name)
@@ -93,11 +96,11 @@ function M.config()
         lspconfig.gopls.setup({})
       end,
       -- Deno
-      [lsp_server.deno] = function()
-        lspconfig.denols.setup({
-          root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-        })
-      end,
+      --[[ [lsp_server.deno] = function() ]]
+      --[[   lspconfig.denols.setup({ ]]
+      --[[     root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"), ]]
+      --[[   }) ]]
+      --[[ end, ]]
       -- Typescript
       [lsp_server.ts] = function()
         lspconfig[lsp_server.ts].setup({
