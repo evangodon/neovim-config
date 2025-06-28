@@ -80,7 +80,8 @@ function M.config()
         { "Neo", hl = theme.headerNeo },
         { "vim", hl = theme.headerVim },
       },
-      line.sep(" ", theme.tab, theme.fill),
+      line.sep("   ", theme.tab, theme.fill),
+      cwd(),
       (#line.tabs().tabs > 1) and (line.tabs().foreach(function(tab)
         return {
           line.sep(" ", theme.tab, theme.fill),
