@@ -84,34 +84,56 @@ function M.config()
     ensure_installed = ensure_installed,
     handlers = {
       function(server_name)
-        require("lspconfig")[server_name].setup({
+        local server_config = {
           capabilities = capabilities,
-        })
+        }
+        -- Default settings for servers not explicitly handled below
+        require("lspconfig")[server_name].setup(server_config)
       end,
       -- Go
       [lsp_server.go] = function()
-        lspconfig.gopls.setup({})
+        lspconfig.gopls.setup({
+          capabilities = capabilities,
+        })
       end,
       -- Deno
       [lsp_server.deno] = function()
         lspconfig.denols.setup({
+          capabilities = capabilities,
           root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+          init_options = {
+            lint = false,
+          },
         })
       end,
       -- Typescript
       [lsp_server.ts] = function()
         lspconfig[lsp_server.ts].setup({
+          capabilities = capabilities,
           root_dir = lspconfig.util.root_pattern "package.json",
           single_file_support = false,
+          init_options = {
+            lint = false,
+            format = false,
+          },
         })
       end,
       -- Lua
       [lsp_server.lua] = function()
-        lspconfig[lsp_server.lua].setup(require "lsp.luals")
+        local luals_settings = require "lsp.luals"
+        luals_settings.capabilities = capabilities
+        lspconfig[lsp_server.lua].setup(luals_settings)
+      end,
+      -- JSON
+      [lsp_server.json] = function()
+        local jsonls_settings = require "user.lsp.settings.jsonls"
+        jsonls_settings.capabilities = capabilities
+        lspconfig[lsp_server.json].setup(jsonls_settings)
       end,
       -- Yaml
       [lsp_server.yaml] = function()
         lspconfig[lsp_server.yaml].setup({
+          capabilities = capabilities,
           settings = {
             yaml = {
               keyOrdering = false,
