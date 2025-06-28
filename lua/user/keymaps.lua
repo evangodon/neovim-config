@@ -123,8 +123,19 @@ keymap("n", "<CR>", "viw", opts)
 vim.api.nvim_create_autocmd("LspAttach", {
   desc = "LSP actions",
   callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local lspconfig_util = require "lspconfig.util" -- For root_pattern
     local telescope_pickers = require "telescope.builtin"
     local telescope_theme = require "telescope.themes"
+
+    -- Stop ts_ls if in a Deno project to let denols handle TS/JS
+    if client and client.name == "tsserver" then
+      local deno_root = lspconfig_util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd())
+      if deno_root then
+        client.stop()
+        return -- Stop further processing for this client
+      end
+    end
 
     local bufnr = args.buf
 
