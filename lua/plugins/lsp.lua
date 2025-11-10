@@ -1,10 +1,10 @@
 local M = {
   "neovim/nvim-lspconfig",
+  lazy = false,
   cmd = { "LspInfo", "LspInstall", "LspStart" },
   event = { "BufReadPre", "BufNewFile" },
 
   dependencies = {
-    { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
     {
       "williamboman/mason.nvim",
@@ -25,22 +25,7 @@ local M = {
         },
       },
     },
-    {
-      "williamboman/mason.nvim",
-      lazy = false,
-      opts = {},
-    },
   },
-}
-
-local lsp_server = {
-  ts = "ts_ls",
-  --deno = "denols",
-  lua = "lua_ls",
-  --eslint = "eslint",
-  go = "gopls",
-  json = "jsonls",
-  yaml = "yamlls",
 }
 
 vim.diagnostic.config({
@@ -69,10 +54,42 @@ for type, icon in pairs(custom_signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
+local lsp_server = {
+  ts = "ts_ls",
+  deno = "denols",
+  lua = "lua_ls",
+  eslint = "eslint",
+  go = "gopls",
+  json = "jsonls",
+  yaml = "yamlls",
+}
+
 function M.config()
   local lspconfig = require "lspconfig"
-  local mason = require "mason-lspconfig"
   local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+  vim.lsp.config["*"] = {
+    capabilities = capabilities,
+    on_attach = function() end,
+  }
+
+  vim.lsp.config[lsp_server.ts] = {
+    --single_file_support = false,
+  }
+
+  vim.lsp.config[lsp_server.deno] = {
+    --root_dir = lspconfig.util.root_pattern "deno.json",
+  }
+
+  require "lsp.luals"
+
+  vim.lsp.config[lsp_server.yaml] = {
+    settings = {
+      yaml = {
+        keyOrdering = false,
+      },
+    },
+  }
 
   -- Styling
   --require("lspconfig.ui.windows").default_options.border = "single"
@@ -82,47 +99,13 @@ function M.config()
     table.insert(ensure_installed, value)
   end
 
-  mason.setup({
-    automatic_enable = true,
-    ensure_installed = ensure_installed,
-    handlers = {
-      function(server_name)
-        require("lspconfig")[server_name].setup({
-          capabilities = capabilities,
-        })
-      end,
-      -- Go
-      [lsp_server.go] = function()
-        lspconfig.gopls.setup({})
-      end,
-      -- Deno
-      --[[ [lsp_server.deno] = function() ]]
-      --[[   lspconfig.denols.setup({ ]]
-      --[[     root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"), ]]
-      --[[   }) ]]
-      --[[ end, ]]
-      -- Typescript
-      [lsp_server.ts] = function()
-        lspconfig[lsp_server.ts].setup({
-          root_dir = lspconfig.util.root_pattern "package.json",
-          single_file_support = false,
-        })
-      end,
-      -- Lua
-      [lsp_server.lua] = function()
-        lspconfig[lsp_server.lua].setup(require "lsp.luals")
-      end,
-      -- Yaml
-      [lsp_server.yaml] = function()
-        lspconfig[lsp_server.yaml].setup({
-          settings = {
-            yaml = {
-              keyOrdering = false,
-            },
-          },
-        })
-      end,
+  local mason_lspconfig = require "mason-lspconfig"
+
+  mason_lspconfig.setup({
+    automatic_enable = {
+      exclude = { lsp_server.deno },
     },
+    ensure_installed = ensure_installed,
   })
 end
 

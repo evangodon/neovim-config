@@ -95,7 +95,7 @@ function M.config()
     filters = {
       dotfiles = false,
       custom = { ".git" },
-      exclude = { ".gitignore", ".github", "lazygit" },
+      exclude = { ".gitignore", ".github", "lazygit", ".gitattributes" },
     },
     diagnostics = {
       enable = true,
