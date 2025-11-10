@@ -29,7 +29,7 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Delete without sending selection to default register
-keymap({ "x", "v" }, Del, '"_d', optsWithDesc "delete without copying")
+keymap({ "x", "v" }, Del, '"_di', optsWithDesc "delete without copying")
 
 -- Navigate buffers
 keymap("n", "]b", vim.cmd "bnext", opts) -- Next buffer
