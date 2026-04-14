@@ -46,3 +46,8 @@ luac.out
 *.x86_64
 *.hex
 .DS_Store
+
+!.crush/
+.crush/*
+!.crush/skills/
+!.crush/skills/**

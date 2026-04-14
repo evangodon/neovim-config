@@ -26,6 +26,7 @@ function M.config()
       "typescript",
       "tsx",
       "go",
+      "ruby",
       "sql",
       "hurl",
     },
