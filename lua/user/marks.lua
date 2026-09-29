@@ -5,7 +5,7 @@
 local marks = {}
 
 --- The namespace and autocommand group name.
-local group_name = "mariasolos/marks_signs"
+local group_name = "user_marks"
 local ns = vim.api.nvim_create_namespace(group_name)
 local utils = require "user.functions.utils"
 
