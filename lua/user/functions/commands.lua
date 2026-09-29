@@ -23,26 +23,6 @@ vim.api.nvim_create_user_command("OpenSlides", function()
   kitty.launch(command)
 end, { nargs = 0 })
 
-vim.api.nvim_create_user_command("OpenTabNewWorkspace", function()
-  local wp = require "workspaces"
-  local workspaces = wp.get()
-
-  local paths = {}
-  for _, v in pairs(workspaces) do
-    table.insert(paths, v["path"])
-  end
-
-  vim.ui.select(paths, {
-    prompt = "Select a workspace:",
-    format_item = function(item)
-      return item
-    end,
-  }, function(path)
-    vim.cmd "$tabnew | NvimTreeOpen"
-    vim.cmd("tcd" .. path)
-  end)
-end, { nargs = 0 })
-
 vim.api.nvim_create_user_command("HideUI", function()
   -- Hide lualine
   require("lualine").hide({

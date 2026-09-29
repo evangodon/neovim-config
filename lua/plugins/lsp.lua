@@ -61,7 +61,7 @@ local lsp_server = {
   eslint = "eslint",
   go = "gopls",
   json = "jsonls",
-  yaml = "yamlls",
+  ruby = "ruby_lsp",
 }
 
 function M.config()
@@ -82,14 +82,6 @@ function M.config()
   }
 
   require "lsp.luals"
-
-  vim.lsp.config[lsp_server.yaml] = {
-    settings = {
-      yaml = {
-        keyOrdering = false,
-      },
-    },
-  }
 
   -- Styling
   --require("lspconfig.ui.windows").default_options.border = "single"
