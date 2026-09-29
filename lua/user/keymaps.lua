@@ -153,13 +153,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, setBufOpts "Find references")
     keymap("n", "R", vim.lsp.buf.rename, setBufOpts "Rename")
     keymap("n", "[d", function()
-      vim.diagnostic.jump({ count = -1 })
+      if vim.diagnostic.jump({ count = -1 }) then
+        vim.diagnostic.open_float({ border = "single" })
+      end
     end, setBufOpts "Jump to previous diagnostic")
     keymap("n", "gl", function()
       vim.diagnostic.open_float({ border = "single" })
     end, setBufOpts "Open diagnostics")
     keymap("n", "]d", function()
-      vim.diagnostic.jump({ count = 1 })
+      if vim.diagnostic.jump({ count = 1 }) then
+        vim.diagnostic.open_float({ border = "single" })
+      end
     end, setBufOpts "Jump to next diagnostic")
   end,
 })
