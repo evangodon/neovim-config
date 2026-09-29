@@ -18,7 +18,7 @@ function M.config()
   dashboard.section.header.val = { "", "", header, "" }
 
   dashboard.section.buttons.val = {
-    dashboard.button("p", "  Find project", Cmd "Telescope workspaces  initial_mode=normal"),
+    dashboard.button("p", "  Find files", Cmd "Telescope find_files"),
     dashboard.button("r", "  Recently used files", Cmd "Telescope oldfiles "),
     dashboard.button("c", "  Neovim Config", Cmd "edit ~/.config/nvim/"),
     dashboard.button("t", "  Open Todo list", Cmd ":edit ~/.config/nvim/todo.md"),
