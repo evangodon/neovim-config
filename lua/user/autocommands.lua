@@ -1,30 +1,12 @@
 -- List of vim events:
 -- https://tech.saigonist.com/b/code/list-all-vim-script-events.html
 
--- Hightlight on yank
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-  callback = function()
-    vim.highlight.on_yank({ higroup = "Search", timeout = 400 })
-  end,
-})
+-- TODO: Remove vim.hl.on_yank fallback after requiring Neovim 0.13.
+local highlight_yank = vim.hl.hl_op or vim.hl.on_yank
 
--- Clear command line message after a few seconds
-local cmdline_timer = vim.loop.new_timer()
-local message_duration = 4000
-vim.api.nvim_create_autocmd({ "CmdlineLeave" }, {
+vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
-    cmdline_timer:start(
-      message_duration,
-      0,
-      vim.schedule_wrap(function()
-        -- vim.notify ""
-      end)
-    )
-  end,
-})
-vim.api.nvim_create_autocmd({ "CmdwinEnter", "CmdlineEnter" }, {
-  callback = function()
-    cmdline_timer:stop()
+    highlight_yank({ higroup = "Search", timeout = 400 })
   end,
 })
 

@@ -40,20 +40,6 @@ vim.diagnostic.config({
   },
 })
 
-local icon = require "user.icons"
-
-local custom_signs = {
-  Error = "󰯈",
-  Warn = "󱙝",
-  Hint = icon.diagnostics.default,
-  Info = "󰮯",
-}
-
-for type, icon in pairs(custom_signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
-
 local lsp_server = {
   ts = "ts_ls",
   deno = "denols",
@@ -65,26 +51,13 @@ local lsp_server = {
 }
 
 function M.config()
-  local lspconfig = require "lspconfig"
   local capabilities = require("blink.cmp").get_lsp_capabilities()
 
   vim.lsp.config["*"] = {
     capabilities = capabilities,
-    on_attach = function() end,
-  }
-
-  vim.lsp.config[lsp_server.ts] = {
-    --single_file_support = false,
-  }
-
-  vim.lsp.config[lsp_server.deno] = {
-    --root_dir = lspconfig.util.root_pattern "deno.json",
   }
 
   require "lsp.luals"
-
-  -- Styling
-  --require("lspconfig.ui.windows").default_options.border = "single"
 
   local ensure_installed = {}
   for _, value in pairs(lsp_server) do

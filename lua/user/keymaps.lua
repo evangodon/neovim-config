@@ -147,19 +147,26 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "gi", function()
       telescope_pickers.lsp_implementations(telescope_ivy_theme)
     end, setBufOpts "Implementation")
+    keymap("n", "grt", vim.lsp.buf.type_definition, setBufOpts "Type definition")
+    keymap("n", "gO", vim.lsp.buf.document_symbol, setBufOpts "Document symbols")
+    keymap("n", "gra", vim.lsp.buf.code_action, setBufOpts "Code actions")
     keymap("n", "K", vim.lsp.buf.signature_help, setBufOpts "Signature help")
     keymap("n", "gr", function()
       telescope_pickers.lsp_references(telescope_ivy_theme)
     end, setBufOpts "Find references")
     keymap("n", "R", vim.lsp.buf.rename, setBufOpts "Rename")
     keymap("n", "[d", function()
-      vim.diagnostic.goto_prev({ border = "single" })
+      if vim.diagnostic.jump({ count = -1 }) then
+        vim.diagnostic.open_float({ border = "single" })
+      end
     end, setBufOpts "Jump to previous diagnostic")
     keymap("n", "gl", function()
       vim.diagnostic.open_float({ border = "single" })
     end, setBufOpts "Open diagnostics")
     keymap("n", "]d", function()
-      vim.diagnostic.goto_next({ border = "single" })
+      if vim.diagnostic.jump({ count = 1 }) then
+        vim.diagnostic.open_float({ border = "single" })
+      end
     end, setBufOpts "Jump to next diagnostic")
   end,
 })

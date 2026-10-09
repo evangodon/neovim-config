@@ -3,7 +3,7 @@ local o = vim.opt
 
 o.backup = false -- creates a backup file
 o.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-o.cmdheight = 1 -- more space in the neovim command line for displaying messages
+o.cmdheight = 0 -- hide cmd line
 o.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 o.conceallevel = 2
 -- o.fileencoding = "utf-8" -- the encoding written to a file
@@ -18,7 +18,6 @@ o.smartindent = true -- make indenting smarter again
 o.splitbelow = true -- force all horizontal splits to go below current window
 o.splitright = true -- force all vertical splits to go to the right of current window
 o.swapfile = false -- creates a swapfile
-o.cmdheight = 0 -- hide cmd line
 
 o.termguicolors = true -- set term gui colors (most terminals support this)
 o.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
@@ -55,6 +54,3 @@ o.shortmess:append "c"
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]] -- define how keywords are grouped
 vim.cmd [[let g:netrw_winsize = 30]] -- set the size of the netrw window
-
--- Hightlight yanked text
-vim.hl.on_yank({ higroup = "IncSearch", timeout = 400 })
