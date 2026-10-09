@@ -55,21 +55,9 @@ function M.config()
 
   vim.lsp.config["*"] = {
     capabilities = capabilities,
-    on_attach = function() end,
-  }
-
-  vim.lsp.config[lsp_server.ts] = {
-    --single_file_support = false,
-  }
-
-  vim.lsp.config[lsp_server.deno] = {
-    --root_dir = lspconfig.util.root_pattern "deno.json",
   }
 
   require "lsp.luals"
-
-  -- Styling
-  --require("lspconfig.ui.windows").default_options.border = "single"
 
   local ensure_installed = {}
   for _, value in pairs(lsp_server) do
