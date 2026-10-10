@@ -1,14 +1,9 @@
-require "user.functions.globals"
-require "user.lazy"
-require "user.icons"
-require "user.colorscheme"
-require "user.scope_buffers"
-require "user.marks"
-require "user.settings"
-require "user.autocommands"
-require "user.chezmoi"
-require "user.work"
-require "user.functions.commands"
-require "user.functions.floating_window"
-require "user.keymaps"
-require "user.ai"
+require "config.options"
+require "config.keymaps"
+require "config.autocmds"
+
+require("features.chezmoi").setup()
+require("features.marks").setup()
+require("features.scope_buffers").setup()
+
+require "config.lazy"

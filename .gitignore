@@ -1,7 +1,10 @@
+# Editor and OS noise
 Session.vim
 .netrwhist
 .vscode/
+.DS_Store
 
+# Secrets and local logs
 .env
 startup.log
 
@@ -20,7 +23,7 @@ luac.out
 *.obj
 *.elf
 
-# Precompiled Headers
+# Precompiled headers
 *.gch
 *.pch
 
@@ -32,7 +35,7 @@ luac.out
 *.def
 *.exp
 
-# Shared objects (inc. Windows DLLs)
+# Shared objects (including Windows DLLs)
 *.dll
 *.so
 *.so.*
@@ -45,9 +48,6 @@ luac.out
 *.i*86
 *.x86_64
 *.hex
-.DS_Store
 
-!.crush/
-.crush/*
-!.crush/skills/
-!.crush/skills/**
+# Crush shares its state with the stable config through a symlink, so it is not tracked here.
+.crush/
