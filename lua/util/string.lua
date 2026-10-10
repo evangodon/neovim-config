@@ -1,0 +1,111 @@
+--- String helpers.
+
+local M = {}
+
+--- Superscript equivalents for digits and letters.
+---
+--- Some characters have no superscript form in UTF-8, so they map to themselves.
+---
+---@type table<string, string>
+local superscript = {
+  ["0"] = "⁰",
+  ["1"] = "¹",
+  ["2"] = "²",
+  ["3"] = "³",
+  ["4"] = "⁴",
+  ["5"] = "⁵",
+  ["6"] = "⁶",
+  ["7"] = "⁷",
+  ["8"] = "⁸",
+  ["9"] = "⁹",
+  ["a"] = "ᵃ",
+  ["b"] = "ᵇ",
+  ["c"] = "ᶜ",
+  ["d"] = "ᵈ",
+  ["e"] = "ᵉ",
+  ["f"] = "ᶠ",
+  ["g"] = "ᵍ",
+  ["h"] = "ʰ",
+  ["i"] = "ⁱ",
+  ["j"] = "ʲ",
+  ["k"] = "ᵏ",
+  ["l"] = "ˡ",
+  ["m"] = "ᵐ",
+  ["n"] = "ⁿ",
+  ["o"] = "ᵒ",
+  ["p"] = "ᵖ",
+  ["q"] = "q",
+  ["r"] = "ʳ",
+  ["s"] = "ˢ",
+  ["t"] = "ᵗ",
+  ["u"] = "ᵘ",
+  ["v"] = "ᵛ",
+  ["w"] = "ʷ",
+  ["x"] = "ˣ",
+  ["y"] = "ʸ",
+  ["z"] = "ᶻ",
+  ["A"] = "ᴬ",
+  ["B"] = "ᴮ",
+  ["C"] = "ᶜ",
+  ["D"] = "ᴰ",
+  ["E"] = "ᴱ",
+  ["F"] = "ᶠ",
+  ["G"] = "ᴳ",
+  ["H"] = "ᴴ",
+  ["I"] = "ᴵ",
+  ["J"] = "ᴶ",
+  ["K"] = "ᴷ",
+  ["L"] = "ᴸ",
+  ["M"] = "ᴹ",
+  ["N"] = "ᴺ",
+  ["O"] = "ᴼ",
+  ["P"] = "ᴾ",
+  ["Q"] = "Q",
+  ["R"] = "ᴿ",
+  ["S"] = "ˢ",
+  ["T"] = "ᵀ",
+  ["U"] = "ᵁ",
+  ["V"] = "ⱽ",
+  ["W"] = "ᵂ",
+  ["X"] = "ˣ",
+  ["Y"] = "ʸ",
+  ["Z"] = "ᶻ",
+}
+
+--- Return the superscript form of a single character.
+---
+---@param char string|integer
+---@return string
+function M.superscript(char)
+  local value = tostring(char)
+  if #value ~= 1 then
+    return ""
+  end
+
+  return superscript[value] or value
+end
+
+--- Replace every digit in the input with its superscript form.
+---
+---@param input string|integer
+---@return string
+function M.digits_to_superscript(input)
+  return (tostring(input):gsub("%d", function(digit)
+    return superscript[digit] or digit
+  end))
+end
+
+--- Shorten a string to a maximum length, appending an ellipsis when it is cut.
+---
+---@param str string
+---@param max_length integer
+---@return string
+function M.truncate(str, max_length)
+  if #str <= max_length then
+    return str
+  end
+
+  return str:sub(1, max_length) .. "…"
+end
+
+return M
