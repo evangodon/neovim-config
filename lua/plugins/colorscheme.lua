@@ -4,7 +4,6 @@
 local notify = require "util.notify"
 local colors = require "util.colors"
 
---- Light palette overrides, darkened so every accent clears 3.0 against base.
 ---@type table<string, string>
 local embark_light = {
   rosewater = "#cf6b58",
@@ -72,26 +71,44 @@ local light_flavour = "catppuccin-latte"
 ---@type string
 local dark_flavour = "catppuccin-mocha"
 
---- Decide whether to use the light flavour, from the clock or the environment override.
----@return boolean
-local function should_use_light()
-  local hour = tonumber(os.date "%H")
-  local light = hour ~= nil and hour > 6 and hour < 20
+---@alias ThemeMode "auto"|"dark"|"light"
 
+---@type ThemeMode
+local mode = "auto"
+
+---@type string[]
+local modes = { "auto", "dark", "light" }
+
+---@return nil
+local function read_mode_from_env()
   local override = os.getenv "NVIM_USE_DARK_THEME"
   if override == "true" then
-    return false
+    mode = "dark"
+    return
   end
 
   if override == "false" then
-    return true
+    mode = "light"
+    return
   end
 
   if override ~= nil and override ~= "" then
     notify.warn(string.format('Ignoring NVIM_USE_DARK_THEME=%q, expected "true" or "false"', override))
   end
+end
 
-  return light
+---@return boolean
+local function should_use_light()
+  if mode == "light" then
+    return true
+  end
+
+  if mode == "dark" then
+    return false
+  end
+
+  local hour = tonumber(os.date "%H")
+  return hour ~= nil and hour > 6 and hour < 20
 end
 
 --- Match the float border background to the normal float background.
@@ -100,7 +117,6 @@ local function set_float_border()
   vim.api.nvim_set_hl(0, "FloatBorder", { bg = colors.get("NormalFloat", "bg#") })
 end
 
---- Apply the flavour for the current time of day.
 ---@return nil
 local function apply_theme()
   local light = should_use_light()
@@ -115,6 +131,21 @@ local function apply_theme()
   end
 
   set_float_border()
+end
+
+---@return nil
+local function cycle_theme()
+  local next_index = 1
+  for index, name in ipairs(modes) do
+    if name == mode then
+      next_index = index % #modes + 1
+      break
+    end
+  end
+
+  mode = modes[next_index]
+  apply_theme()
+  notify.info(string.format("Theme: %s", mode))
 end
 
 local M = {
@@ -226,6 +257,7 @@ function M.config()
     },
   })
 
+  read_mode_from_env()
   apply_theme()
 
   vim.api.nvim_create_autocmd("ColorScheme", {
@@ -233,6 +265,8 @@ function M.config()
     group = vim.api.nvim_create_augroup("theme", { clear = true }),
     callback = set_float_border,
   })
+
+  vim.keymap.set("n", "<leader>Tt", cycle_theme, { desc = "Cycle theme: auto, dark, light" })
 end
 
 return M

@@ -154,6 +154,27 @@ NVIM_APPNAME=nvim-2027 bob run nightly --headless \
 It cannot run through `nvim -l`, because that does not load the configuration and so cannot resolve
 the palette.
 
+## Theme switching
+
+The flavour is chosen by a three-state mode, cycled with `<leader>Tt`, which also fits the existing
+`<leader>T*` toggle group.
+
+| Mode | Behaviour |
+|---|---|
+| `auto` | follows the clock, light from 07:00 to 19:59 |
+| `dark` | pinned dark for the session |
+| `light` | pinned light for the session |
+
+Each transition announces itself, for example `Theme: dark`.
+
+`NVIM_USE_DARK_THEME` still sets the initial mode, so `"true"` starts pinned dark and `"false"`
+starts pinned light. The cycle can then move off that pin. An unrecognised value is reported and
+ignored, leaving the clock in charge.
+
+The mode is evaluated when the theme is applied, which is at startup and on each cycle. A session
+open across 07:00 or 20:00 keeps its flavour until the next cycle, which was accepted deliberately:
+long-lived sessions are common, so a timer was considered and declined in favour of manual control.
+
 ## Deferred
 
 - **The `<leader>C` colorscheme picker** needs a fuzzy finder, which arrives in Phase 3. The old
