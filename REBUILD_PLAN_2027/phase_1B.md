@@ -248,3 +248,57 @@ Still deferred to their feature phases:
 - `util/floating_window.lua` is ported and kept deliberately. Its only caller was the deleted
   `work.lua`, so it has no caller in the new tree yet, but the behavior is still used and the
   helper must not be deleted during cleanup. It needs a caller when that feature is ported.
+
+## Follow-up: file-backed logging with `vim.log`
+
+Phase 1B built `util/notify.lua`, which owns how this configuration reports things. It only sends
+transient notifications, so nothing survives the session. Neovim 0.13 added `vim.log`, a
+file-backed logger, and it should be adopted here.
+
+The old configuration had no logging at all, which is why background behavior was hard to debug.
+The clearest example is the chezmoi integration: its commands run asynchronously and its failures
+appear as a notification that disappears.
+
+### Verified API, against the installed 0.13 nightly
+
+| Item | Detail |
+|---|---|
+| Create | `vim.log.new({ name = "nvim-2027" })` returns a `vim.Log` |
+| Options | `name` is required, `level` defaults to `vim.log.levels.WARN`, `format_func` is optional |
+| Write | `trace()`, `debug()`, `info()`, `warn()`, `error()`, each taking any number of arguments |
+| Level | `vim.log.set_level(log, level)` and `vim.log.get_level(log)` |
+| Levels | `TRACE` 0, `DEBUG` 1, `INFO` 2, `WARN` 3, `ERROR` 4, `OFF` 5 |
+| Output | `stdpath("log")/<name>.log`, for example `~/.local/state/nvim-2027/logs/nvim-2027.log` |
+| Format | `[LEVEL][YYYY-MM-DD HH:MM:SS] source:line<TAB>arg1<TAB>arg2` |
+
+Sample output from a real run:
+
+```text
+[START][2026-10-09 22:01:41] crush-probe logging initiated
+[ERROR][2026-10-09 22:01:41] [string ":lua"]:1	"probe error"	"second arg"
+[INFO][2026-10-09 22:01:41] [string ":lua"]:1	"probe info"	{ buf = 1 }
+```
+
+Documented at `:h vim.log`, `:h vim.log.new()`, and `:h vim.log.levels`.
+
+### Why it fits here
+
+- `util/notify.lua` already centralizes reporting, so logging belongs beside it rather than being
+  scattered across call sites.
+- `vim.log` is a Neovim API, so it adds no plugin and no dependency, which matches the rebuild's
+  direction.
+- It satisfies the robustness rule directly: when an optional tool is missing, a log line is a
+  better record than a notification that scrolls away.
+
+### Notes and caveats
+
+- Logging and notification are different jobs. `util/notify.lua` should keep notifying the user;
+  logging should record what happened. Do not replace one with the other.
+- The default level is `WARN`, so `info()` and `debug()` calls are dropped until the level is
+  raised. Set the level explicitly rather than assuming.
+- Writing goes through `stdpath("log")`, which is already namespaced by `NVIM_APPNAME`, so the
+  rebuild's log does not mix with the stable configuration's.
+- 0.13 renamed a `vim.log.new()` parameter, per `news.txt`. Pin to the 0.13 signature and do not
+  copy examples written against an earlier nightly.
+- Decide whether this becomes `util/log.lua` or an addition to `util/notify.lua`. A separate module
+  keeps the two concerns apart; extending `notify` keeps one place for reporting.
