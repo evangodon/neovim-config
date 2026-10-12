@@ -3,7 +3,6 @@
 local M = {}
 
 --- Open a floating terminal window running the given command.
----
 ---@param cmd string Command to run in the terminal.
 ---@param on_open? fun(buf: integer) Called with the terminal buffer after it is created.
 ---@return nil

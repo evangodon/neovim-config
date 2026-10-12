@@ -1,8 +1,4 @@
--- :help options
---
--- LuaLS types every field of `vim.opt` as `vim.Option`, so each assignment below is reported as a
--- type mismatch even though it is the documented way to set an option. The check is disabled for
--- this file only; it stays active everywhere else.
+-- LuaLS types every `vim.opt` field as `vim.Option`, so assignments below look like mismatches.
 ---@diagnostic disable: assign-type-mismatch
 local options = vim.opt
 

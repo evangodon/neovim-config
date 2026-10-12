@@ -1,16 +1,4 @@
---- Chezmoi integration.
----
---- Two concerns are handled separately:
----
---- 1. Writing a chezmoi-managed destination file pushes that edit back into the source state with
----    `chezmoi re-add`, so editing the destination directly still ends up in the dotfiles. Files
----    that come from a template cannot be re-added, so they are reported instead.
---- 2. Writing a file inside the chezmoi source directory pushes it out to its destination with
----    `chezmoi apply`.
----
---- The managed-file set and the source directory are fetched once, asynchronously, at setup. Both
---- are then answered from memory, so no subprocess runs per buffer event. Until the caches are
---- warm the checks are skipped rather than blocking startup.
+--- Chezmoi integration: syncs edits between destination files and the source state.
 
 local notify = require "util.notify"
 
@@ -41,7 +29,6 @@ local busy = false
 local queued = nil
 
 --- Populate the managed set and source directory without blocking startup.
----
 ---@return nil
 local function warm_up()
   if vim.fn.executable "chezmoi" == 0 then
@@ -75,7 +62,6 @@ local function warm_up()
 end
 
 --- Check whether a path is a chezmoi-managed destination file.
----
 ---@param filepath string
 ---@return boolean
 local function is_managed_target(filepath)
@@ -83,7 +69,6 @@ local function is_managed_target(filepath)
 end
 
 --- Check whether a path lives inside the chezmoi source directory.
----
 ---@param filepath string
 ---@return boolean
 local function is_source_file(filepath)
@@ -95,7 +80,6 @@ local function is_source_file(filepath)
 end
 
 --- Report a failed chezmoi command using its own error text when available.
----
 ---@param cmd string[]
 ---@param result vim.SystemCompleted
 ---@return nil
@@ -109,9 +93,6 @@ local function report_failure(cmd, result)
 end
 
 --- Run a chezmoi command, then run the queued command if there is one.
----
---- Commands are serialized so that rapid saves never run concurrent chezmoi processes.
----
 ---@param cmd string[]
 ---@return nil
 local function run(cmd)
@@ -133,7 +114,6 @@ local function run(cmd)
 end
 
 --- Run a chezmoi command, queueing it behind any command already in flight.
----
 ---@param cmd string[]
 ---@return nil
 local function enqueue(cmd)
@@ -146,7 +126,6 @@ local function enqueue(cmd)
 end
 
 --- Resolve the source path for a target, caching the result.
----
 ---@param filepath string
 ---@param on_done fun(source: string)
 ---@return nil
@@ -165,7 +144,6 @@ local function resolve_source(filepath, on_done)
 end
 
 --- Push a destination edit back into the source state, or report a template that cannot be synced.
----
 ---@param filepath string
 ---@return nil
 local function sync_to_source(filepath)
@@ -185,17 +163,13 @@ local function sync_to_source(filepath)
 end
 
 --- Push a source file edit out to its destination.
----
 ---@param filepath string
 ---@return nil
 local function sync_to_target(filepath)
   enqueue({ "chezmoi", "apply", "--force", "--source-path", filepath })
 end
 
---- Route a write to the correct chezmoi command.
----
---- Runs on BufWritePost because both commands read the file from disk.
----
+--- Route a write to the correct chezmoi command, on BufWritePost since both read from disk.
 ---@return nil
 local function on_buf_write_post()
   local filepath = vim.fn.expand "%:p"
@@ -213,11 +187,7 @@ local function on_buf_write_post()
   end
 end
 
---- Report the current state of the chezmoi integration.
----
---- Useful for diagnosing why a write did not sync. A managed target count of zero means the
---- startup lookup has not finished or failed.
----
+--- Report the current state of the integration, for diagnosing a write that did not sync.
 ---@return table<string, any>
 function M.status()
   local filepath = vim.fn.expand "%:p"
@@ -241,7 +211,6 @@ function M.status()
 end
 
 --- Register the chezmoi autocommand group and warm the caches.
----
 ---@return nil
 function M.setup()
   local group = vim.api.nvim_create_augroup("chezmoi", { clear = true })

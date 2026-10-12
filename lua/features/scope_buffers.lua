@@ -61,7 +61,6 @@ function M.print_summary()
 end
 
 --- Register the tab-scoping autocommands.
----
 ---@return nil
 function M.setup()
   local group = vim.api.nvim_create_augroup("ScopeAU", { clear = true })

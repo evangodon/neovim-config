@@ -1,7 +1,4 @@
---- Notifications for the whole configuration.
----
---- Prefers `Snacks.notify` when the snacks plugin is loaded, and falls back to `vim.notify`
---- otherwise. This keeps the plugin dependency in one place so no other module inherits it.
+--- Notifications, via snacks when loaded and `vim.notify` otherwise.
 
 local M = {}
 
@@ -15,11 +12,7 @@ local levels = {
   error = vim.log.levels.ERROR,
 }
 
---- Return the snacks notifier when it is available.
----
---- The plugin may only be reachable through its global table, because it can be loaded before
---- `require` resolves it, so both are checked.
----
+--- Return the snacks notifier, checked as both a global and a module.
 ---@return table|nil
 local function resolve_snacks()
   local global = rawget(_G, "Snacks")
@@ -36,7 +29,6 @@ local function resolve_snacks()
 end
 
 --- Send a notification at the given level.
----
 ---@param level UtilNotifyLevel
 ---@param message string
 ---@param opts? table
@@ -82,8 +74,7 @@ function M.error(message, opts)
   M.notify("error", message, opts)
 end
 
---- Pretty-print any value at info level. Replaces the old global `P` helper.
----
+--- Pretty-print any value at info level.
 ---@param value any
 ---@return nil
 function M.inspect(value)

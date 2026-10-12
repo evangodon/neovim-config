@@ -1,16 +1,10 @@
 -- Catppuccin, with the custom Embark-derived dark palette.
 --
--- The flavour is chosen at startup from the clock and can be overridden with the
--- `NVIM_USE_DARK_THEME` environment variable.
 
 local notify = require "util.notify"
 local colors = require "util.colors"
 
---- Light palette overrides.
----
---- Currently unused: the light flavour still runs on stock Catppuccin, matching the old
---- configuration, which left this table defined and the reference below commented out.
----
+--- Light palette overrides, currently unused since the light flavour runs on stock Catppuccin.
 ---@type table<string, string>
 local embark_light = {
   rosewater = "#f5e0dc",
@@ -78,12 +72,7 @@ local light_flavour = "catppuccin-latte"
 ---@type string
 local dark_flavour = "catppuccin-mocha"
 
---- Decide whether to use the light flavour.
----
---- The clock rule treats 07:00 through 19:59 as light. `NVIM_USE_DARK_THEME` overrides it, but
---- only for the values `"true"` and `"false"`; anything else is reported and ignored, rather than
---- silently forcing the light theme the way the old lookup did.
----
+--- Decide whether to use the light flavour, from the clock or the environment override.
 ---@return boolean
 local function should_use_light()
   local hour = tonumber(os.date "%H")
@@ -106,14 +95,12 @@ local function should_use_light()
 end
 
 --- Match the float border background to the normal float background.
----
 ---@return nil
 local function set_float_border()
   vim.api.nvim_set_hl(0, "FloatBorder", { bg = colors.get("NormalFloat", "bg#") })
 end
 
 --- Apply the flavour for the current time of day.
----
 ---@return nil
 local function apply_theme()
   local light = should_use_light()
@@ -234,8 +221,7 @@ function M.config()
       }
     end,
     color_overrides = {
-      -- TODO: fix colors
-      -- latte = embark_light,
+      -- TODO: fix colors, then enable latte = embark_light
       mocha = embark_dark,
     },
   })

@@ -2,8 +2,7 @@
 
 local M = {}
 
---- Return a color attribute for a highlight group, such as `"fg#"` or `"bg#"`.
----
+--- Return a color attribute for a highlight group, such as `"fg#"`.
 ---@param group string Highlight group name.
 ---@param attr string Attribute name understood by `synIDattr`, for example `"fg#"`.
 ---@return string

@@ -51,3 +51,6 @@ luac.out
 
 # Crush shares its state with the stable config through a symlink, so it is not tracked here.
 .crush/
+
+# Tracked despite the global ignore rule.
+!AGENTS.md

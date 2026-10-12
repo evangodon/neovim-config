@@ -1,7 +1,4 @@
---- Dependency-free popup that lists every keymap starting with the leader key.
----
---- Entries are collected at invocation time, so mappings defined by plugins that load later are
---- still included. The popup uses only Neovim APIs.
+--- Popup listing every keymap that starts with the leader key, collected at invocation time.
 
 local M = {}
 
@@ -26,7 +23,6 @@ local mode_labels = {
 local scanned_modes = { "n", "v", "x", "s", "o", "i", "t" }
 
 --- Return the configured leader key as a literal string.
----
 ---@return string
 local function get_leader()
   local leader = vim.g.mapleader
@@ -43,7 +39,6 @@ local function get_leader()
 end
 
 --- Replace the leading leader key with a readable `<Leader>` marker.
----
 ---@param lhs string
 ---@param leader string
 ---@return string
@@ -79,12 +74,7 @@ local function to_entry(mapping, leader)
   }
 end
 
---- Collect all global and buffer-local leader mappings.
----
---- Mappings are keyed by their displayed left-hand side. Scanning overlapping modes such as
---- visual, select, and exclusive-visual returns the same mapping repeatedly, so modes are merged
---- and deduplicated.
----
+--- Collect all global and buffer-local leader mappings, merging duplicate left-hand sides.
 ---@return KeymapPopupEntry[]
 local function collect_entries()
   local leader = get_leader()
@@ -134,7 +124,6 @@ local function collect_entries()
 end
 
 --- Render entries as aligned display lines.
----
 ---@param entries KeymapPopupEntry[]
 ---@return string[]
 local function render(entries)
@@ -178,7 +167,6 @@ local function render(entries)
 end
 
 --- Open a floating window displaying the provided lines.
----
 ---@param lines string[]
 ---@return integer buffer Buffer handle of the popup.
 ---@return integer window Window handle of the popup.
@@ -227,7 +215,6 @@ local function open_float(lines)
 end
 
 --- Show all mappings that begin with the configured leader key.
----
 ---@return nil
 function M.open()
   local entries = collect_entries()

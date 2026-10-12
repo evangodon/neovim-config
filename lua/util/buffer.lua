@@ -1,15 +1,8 @@
 --- Buffer helpers.
----
---- Replaces the old global `Get_loaded_buffers` function and the `close_all_buffers_but_current`
---- utility.
 
 local M = {}
 
 --- Return every valid, listed buffer handle.
----
---- The old helper was named `Get_loaded_buffers` but filtered on `buflisted`, so this reports the
---- buffers that appear in listings rather than every buffer that exists in memory.
----
 ---@return integer[]
 function M.listed()
   return vim.tbl_filter(function(buf)
@@ -21,10 +14,7 @@ function M.listed()
   end, vim.api.nvim_list_bufs())
 end
 
---- Delete every listed buffer except the current one.
----
---- Buffers with unsaved changes are left alone and reported, instead of failing the whole loop.
----
+--- Delete every listed buffer except the current one, keeping modified ones.
 ---@return nil
 function M.close_all_but_current()
   local current = vim.api.nvim_get_current_buf()

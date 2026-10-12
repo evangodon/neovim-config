@@ -107,7 +107,6 @@ local function set_keymaps(bufnr)
 end
 
 --- Refresh the signs whenever a buffer is shown in a window.
----
 ---@param bufnr integer
 ---@return nil
 local function refresh(bufnr)
@@ -135,9 +134,7 @@ local function refresh(bufnr)
     end
   end
 
-  -- getmarklist("%") returns the current buffer's local marks. The generated type for
-  -- vim.fn.getmarklist only accepts an integer, but passing a buffer number returns nothing, so
-  -- the string form is required and this diagnostic is wrong here.
+  -- getmarklist("%") is correct here; the generated type only accepts an integer.
   ---@diagnostic disable-next-line: param-type-mismatch
   for _, data in ipairs(vim.fn.getmarklist "%") do
     local mark = data.mark:sub(2, 3)
@@ -151,7 +148,6 @@ local function refresh(bufnr)
 end
 
 --- Register the mark autocommand group.
----
 ---@return nil
 function M.setup()
   vim.api.nvim_create_autocmd("BufWinEnter", {

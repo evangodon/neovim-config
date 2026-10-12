@@ -2,10 +2,7 @@
 
 local M = {}
 
---- Superscript equivalents for digits and letters.
----
---- Some characters have no superscript form in UTF-8, so they map to themselves.
----
+--- Superscript equivalents, where they exist in UTF-8.
 ---@type table<string, string>
 local superscript = {
   ["0"] = "⁰",
@@ -73,7 +70,6 @@ local superscript = {
 }
 
 --- Return the superscript form of a single character.
----
 ---@param char string|integer
 ---@return string
 function M.superscript(char)
@@ -86,7 +82,6 @@ function M.superscript(char)
 end
 
 --- Replace every digit in the input with its superscript form.
----
 ---@param input string|integer
 ---@return string
 function M.digits_to_superscript(input)
@@ -95,8 +90,7 @@ function M.digits_to_superscript(input)
   end))
 end
 
---- Shorten a string to a maximum length, appending an ellipsis when it is cut.
----
+--- Shorten a string, appending an ellipsis when it is cut.
 ---@param str string
 ---@param max_length integer
 ---@return string
