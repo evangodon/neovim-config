@@ -4,35 +4,35 @@
 local notify = require "util.notify"
 local colors = require "util.colors"
 
---- Light palette overrides, currently unused since the light flavour runs on stock Catppuccin.
+--- Light palette overrides, darkened so every accent clears 3.0 against base.
 ---@type table<string, string>
 local embark_light = {
-  rosewater = "#f5e0dc",
-  flamingo = "#f2cdcd",
-  pink = "#f5c2e7",
-  mauve = "#cba6f7",
-  red = "#F02E6E",
-  maroon = "#F48FB1",
-  peach = "#F2B482",
-  yellow = "#FFE6B3",
-  green = "#7FE9C3",
-  teal = "#ABF8F7",
-  sky = "#63F2F1",
-  sapphire = "#91DDFF",
-  blue = "#78A8FF",
-  lavender = "#7676FF",
+  rosewater = "#cf6b58",
+  flamingo = "#d45959",
+  pink = "#d924a8",
+  mauve = "#9449ef",
+  red = "#d10f4f",
+  maroon = "#dc1659",
+  peach = "#b85d13",
+  yellow = "#bd7f00",
+  green = "#198f65",
+  teal = "#0d9f9e",
+  sky = "#0c9393",
+  sapphire = "#0083bd",
+  blue = "#0a61ff",
+  lavender = "#5252ff",
   text = "#2E2F45",
-  subtext1 = "#a4b0c6",
-  subtext0 = "#929db6",
+  subtext1 = "#5a6374",
+  subtext0 = "#6b7687",
   overlay2 = "#7e8a9e",
-  overlay1 = "#6b7687",
-  overlay0 = "#5a6374",
-  surface2 = "#e2e6f1",
+  overlay1 = "#929db6",
+  overlay0 = "#a4b0c6",
+  surface2 = "#b0b8d1",
   surface1 = "#d0d5e3",
-  surface0 = "#b0b8d1",
-  base = "#f1f5fc",
-  mantle = "#e2e7f0",
-  crust = "#f4f7fc",
+  surface0 = "#e2e6f1",
+  base = "#f4f7fc",
+  mantle = "#f1f5fc",
+  crust = "#e2e7f0",
 }
 
 ---@type table<string, string>
@@ -221,7 +221,7 @@ function M.config()
       }
     end,
     color_overrides = {
-      -- TODO: fix colors, then enable latte = embark_light
+      latte = embark_light,
       mocha = embark_dark,
     },
   })
