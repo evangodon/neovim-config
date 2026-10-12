@@ -7,7 +7,7 @@ options.clipboard = "unnamedplus" -- allows neovim to access the system clipboar
 options.cmdheight = 0 -- hide cmd line
 options.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 options.conceallevel = 2
--- options.fileencoding = "utf-8" -- the encoding written to a file
+-- options.fileencoding = "utf-8"                                 -- the encoding written to a file
 options.hlsearch = true -- highlight all matches on previous search pattern
 options.ignorecase = true -- ignore case in search patterns
 options.mouse = "a" -- allow the mouse to be used in neovim
@@ -52,4 +52,4 @@ options.shortmess:append "c"
 
 options.whichwrap:append "<,>,[,],h,l"
 options.iskeyword:append "-" -- define how keywords are grouped
-vim.g.netrw_winsize = 30 -- set the size of the netrw window
+vim.g.netrw_winsize = 30
