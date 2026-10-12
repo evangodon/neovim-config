@@ -19,9 +19,9 @@ recommendation for the rebuild.
 
 | Plugin | Status | Category | Role | Declaration and configuration summary |
 |---|---|---|---|---|
-| `neovim/nvim-lspconfig` | open | LSP | Language-server configuration | Direct, eagerly loaded. Configures the Neovim LSP integration and Mason-managed servers for TypeScript, Deno, Lua, ESLint, Go, JSON, and Ruby. Loads the Lua LSP settings and disables diagnostic virtual text. |
-| `williamboman/mason-lspconfig.nvim` | open | LSP tooling | Mason/LSP bridge | Dependency of `nvim-lspconfig`. Connects Mason-installed servers to Neovim LSP configuration and automatic enablement. |
-| `williamboman/mason.nvim` | open | LSP tooling | External-tool installer | Dependency of `nvim-lspconfig`. Installs and manages LSP servers and related tools. |
+| `neovim/nvim-lspconfig` | deleted | LSP | Language-server configuration | Replaced in Phase 4 by Neovim's native `vim.lsp.config()` and `vim.lsp.enable()` with host-managed executables. |
+| `williamboman/mason-lspconfig.nvim` | deleted | LSP tooling | Mason/LSP bridge | Not migrated. Native LSP configuration does not install or manage servers. |
+| `williamboman/mason.nvim` | deleted | LSP tooling | External-tool installer | Not migrated. Language-server installation remains outside Neovim. |
 | `folke/lazydev.nvim` | open | LSP enhancement | Lua and Neovim API metadata | Dependency of `nvim-lspconfig`, loaded for Lua. Supplies Lua library definitions, including `vim.uv`, and is also registered as a Blink completion source. |
 | `saghen/blink.cmp` | open | Autocomplete | Completion engine | Direct, eagerly loaded. Provides LSP, LazyDev, path, snippet, and buffer completion, completion navigation, documentation popups, and LSP capability integration. Builds with Cargo. |
 | `rafamadriz/friendly-snippets` | open | Snippets | Snippet collection | Dependency of `blink.cmp`. Provides community-maintained snippet definitions. |

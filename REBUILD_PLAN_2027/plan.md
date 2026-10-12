@@ -177,12 +177,78 @@ Feature modules that are our own code, rather than plugins or generic helpers, l
 
 ## Phase 4: Native LSP Configuration
 
-**Goal:** Configure Language Server Protocols using Neovim's built-in client.
+**Goal:** Configure language servers with Neovim's built-in client while keeping startup safe on machines
+where some servers are not installed.
 
-* **Constraint:** **Do not** use `nvim-lspconfig`, `lsp-zero`, or `mason-lspconfig`.
-* **Implementation:** Create `lua/config/lsp.lua`. Use `vim.lsp.config()` to define server settings (e.g., `lua_ls`, `pyright`, `gopls`) and `vim.lsp.enable()` to attach them.
-* **Safety Check:** Write a Lua loop that uses `vim.fn.executable()` to check if the LSP binary exists on the system PATH *before* calling `vim.lsp.config()`.
-* **Keymaps:** Create an `LspAttach` autocommand to map standard LSP actions (Go to Definition, Hover, Rename, Code Actions) only when an LSP attaches to a buffer.
+### Architecture
+
+- Keep shared LSP setup, diagnostics, executable gating, and `LspAttach` behavior in
+  `lua/config/lsp.lua`.
+- Define individual server configurations in the native root-level `lsp/` directory, with one file
+  per server. Neovim discovers these files from `runtimepath` when resolving `vim.lsp.config()` and
+  `vim.lsp.enable()`.
+- Use `vim.lsp.config()` and `vim.lsp.enable()` from Neovim 0.13.
+- Do not add `nvim-lspconfig`, `lsp-zero`, `mason.nvim`, or `mason-lspconfig.nvim`.
+- Do not make server installation part of the configuration. Language servers remain host-managed
+  executables, documented separately from startup configuration.
+- Keep completion capability wiring out of this phase unless it is required for the native client;
+  completion behavior belongs to Phase 5.
+
+### Initial server set
+
+Port only the useful server definitions from the stable audit, with explicit filetypes and root
+markers:
+
+| Config | Executable | Filetypes | Initial disposition |
+|---|---|---|---|
+| `lua_ls` | `lua-language-server` | Lua | Enable when installed; use LuaJIT and Neovim runtime library settings. |
+| `ts_ls` | `typescript-language-server` | JavaScript, TypeScript, JSX, TSX | Enable when installed. |
+| `denols` | `deno` | JavaScript, TypeScript, JSX, TSX | Enable only for Deno projects, without competing with `ts_ls`. |
+| `eslint` | `vscode-eslint-language-server` | JavaScript, TypeScript, JSX, TSX | Enable when installed and an ESLint project marker exists. |
+| `gopls` | `gopls` | Go, Go module files | Enable when installed. |
+| `jsonls` | `vscode-json-language-server` | JSON and JSONC | Enable when installed. |
+| `ruby_lsp` | `ruby-lsp` | Ruby, ERB | Enable when installed. |
+
+The exact server set may be narrowed during implementation if a server's executable, project-root
+behavior, or overlap cannot be made reliable without a plugin. Python support is not included until
+there is a concrete local server choice and project requirement.
+
+### Configuration requirements
+
+- Check `vim.fn.executable()` before defining and enabling each external server.
+- Use project markers such as `.git`, `package.json`, `tsconfig.json`, `deno.json`, `deno.jsonc`,
+  `eslint.config.js`, `go.mod`, `Gemfile`, `.luarc.json`, and `.git` to determine roots.
+- Prevent `denols` and `ts_ls` from attaching to the same project.
+- Configure diagnostics centrally with the existing icon and virtual-text policy, without coupling it
+  to a UI plugin.
+- Add one `LspAttach` autocmd that creates buffer-local, capability-aware mappings for definition,
+  declaration, implementation, references, type definition, hover, signature help, rename, code
+  actions, diagnostics, and formatting where supported.
+- Account for Neovim's current built-in global LSP mappings (`gra`, `gri`, `grn`, `grr`, `grt`, `grx`,
+  `gO`, and Insert-mode `<C-s>`), which are created at startup. Override or retain them deliberately
+  rather than assuming they are absent before `LspAttach`.
+- Preserve other Neovim LSP defaults unless there is a documented reason to override them.
+- Make repeated configuration loads safe and avoid require-time server startup side effects beyond
+  explicit setup from `init.lua`.
+- Log missing servers at debug or info level rather than treating them as startup errors.
+
+### Verification
+
+- Start with no language-server executables available and confirm there are no startup errors.
+- Start with each available server and verify the expected filetype, root, client name, and attach
+  event in a temporary fixture project.
+- Verify that missing executables are skipped without calling `vim.lsp.enable()` for them.
+- Verify buffer-local mappings are created only after `LspAttach` and are removed with the buffer.
+- Verify diagnostics, hover, definition, references, rename, code actions, and formatting mappings do
+  not appear globally before a client attaches.
+- Run the standard validation script, LuaLS, and headless LSP smoke tests.
+
+### Deferred
+
+- Completion engine capabilities and UI remain Phase 5.
+- Server installation and version management remain outside the Neovim configuration.
+- ZK's LSP integration remains with the later notes/knowledge-base work rather than becoming a
+  generic language-server definition in this phase.
 
 ## Phase 5: Autocompletion & Snippets
 

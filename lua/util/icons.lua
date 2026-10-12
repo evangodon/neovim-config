@@ -5,6 +5,10 @@ local M = {}
 M.diagnostics = {
   default = "•",
   light_shade = "▒",
+  error = "󰅚",
+  warn = "󰀪",
+  info = "󰋽",
+  hint = "󰌶",
 }
 
 return M
