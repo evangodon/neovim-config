@@ -42,9 +42,9 @@ recommendation for the rebuild.
 | `goolord/alpha-nvim` | open | UI/dashboard | Startup dashboard | Direct, eagerly loaded. Provides buttons for files, recent files, the configuration, the todo list, and quitting, with custom header and highlights. |
 | `kyazdani42/nvim-web-devicons` | open | UI/icons | Filetype icons | Direct and dependency of `alpha-nvim`. Provides icons used by file and UI plugins. |
 | `nvim-tree/nvim-web-devicons` | open | UI/icons | Filetype icons | Dependency of `render-markdown.nvim`. Separate repository from the similarly named `kyazdani42` plugin and provides overlapping icon functionality. |
-| `catppuccin/nvim` | open | Colorscheme | Primary theme | Direct, priority 1000. Configures a customized Catppuccin palette with integrations for NvimTree, Gitsigns, Notify, Treesitter, completion, Telescope-related UI, tabline, winbar, Grapple, and Markdown rendering. |
-| `embark-theme/vim` | open | Colorscheme | Embark theme | Direct. Installs the Embark Vim colorscheme. |
-| `EdenEast/nightfox.nvim` | open | Colorscheme | Nightfox theme | Direct. Compiles a customized Dayfox palette and defines Telescope, diff, split, and tabline highlights. |
+| `catppuccin/nvim` | migrated | Colorscheme | Primary theme | Migrated in Phase 2, priority 1000. The custom Embark-derived dark palette, inactive-window dimming, and integrations were ported as-is. Clock-based light/dark selection now lives in `lua/plugins/colorscheme.lua`. |
+| `embark-theme/vim` | deleted | Colorscheme | Embark theme | Was installed but never selected by the theme switcher. Not ported. |
+| `EdenEast/nightfox.nvim` | deleted | Colorscheme | Nightfox theme | Compiled a custom Dayfox palette, but its five flavours were unreachable because both light and dark resolved to Catppuccin. Not ported. |
 | `nvim-lualine/lualine.nvim` | open | UI/statusline | Statusline and winbar | Direct. Shows mode, branch, diff, filename, Grapple tags, indentation, LSP client count, diagnostics, and Git changes; also configures a path-shortened filename winbar. |
 | `nanozuki/tabby.nvim` | open | UI/tabline | Tab and buffer line | Direct. Provides a custom tabline showing working directory, tabs, buffers, changed state, and Grapple keys. |
 | `petertriho/nvim-scrollbar` | open | UI/navigation | Scrollbar and signs | Direct. Displays cursor, Git, and change indicators in the active window and integrates with Gitsigns and Zen Mode. |

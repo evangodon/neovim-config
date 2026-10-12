@@ -2,113 +2,105 @@
 
 ## Status
 
-Not started.
+Complete. The theme applies at startup and all automated checks pass.
 
-## Goal
+## Decisions taken
 
-Make the editor visually usable before configuring complex tools, so later phases can be reviewed
-against a real theme.
-
-From `plan.md`:
-
-- Pick a modern dark theme, for example TokyoNight, Catppuccin, or Rose Pine.
-- Load the theme plugin with `priority = 1000` so it renders immediately on startup.
-
-## Where the work goes
-
-| File | Purpose |
+| Question | Decision |
 |---|---|
-| `lua/plugins/colorscheme.lua` | Plugin specification and theme configuration, currently an empty placeholder |
-| `lua/util/colors.lua` | Existing helper for reading highlight group colors, already ported in Phase 1B |
+| Which theme | Catppuccin, as today |
+| Light and dark switching | Keep the clock-based rule, fixing the environment edge case |
+| Custom palette | Port as-is, preserving the current look |
 
-Theme switching logic belongs in `lua/plugins/colorscheme.lua` rather than a new config module,
-because it depends on the theme plugin being loaded.
+## What was built
 
-## What exists today
+`lua/plugins/colorscheme.lua` now holds the whole theme concern:
 
-The old configuration spreads theming across four files.
+- The `catppuccin/nvim` specification, with `lazy = false` and `priority = 1000` so the theme
+  loads at startup, as the plan requires.
+- The custom Embark-derived dark palette, the inactive-window dimming, the integrations, and the
+  full `custom_highlights` set, all ported from the old `catppuccin.lua`.
+- Clock-based flavour selection, with `NVIM_USE_DARK_THEME` as an override.
+- `FloatBorder` matched to the `NormalFloat` background, plus a `ColorScheme` autocommand that
+  re-applies it.
 
-### `lua/user/colorscheme.lua`, assigned to this phase
+The old configuration spread theming across four files and applied it from `user/colorscheme.lua`.
+All of it now lives in one plugin file, which is where the plan said it belongs.
 
-- Chooses light or dark at startup from the hour of the day: `hour < 20 and hour > 6`, so light
-  between 07:00 and 19:59.
-- Allows an override through the `NVIM_USE_DARK_THEME` environment variable.
-- Uses `catppuccin-latte` for light and `catppuccin-mocha` for dark.
-- Sets `vim.g.background = "light"` for the light theme.
-- Applies the theme through `pcall(vim.cmd.colorscheme, ...)` and notifies if it is missing.
-- Matches `FloatBorder` background to `NormalFloat`, and re-applies it on the `ColorScheme` event.
-- Maps `<leader>C` to `:Telescope colorscheme`.
+## Verification
 
-This module cannot be ported as-is:
+The flavour cannot be checked headlessly alone, because it depends on the clock, so every path was
+exercised directly.
 
-- It uses `which-key`, which Phase 1 removed.
-- `<leader>C` depends on Telescope, which arrives in Phase 3.
-- It reads `user.functions.utils.get_color`, replaced by `util.colors.get`.
-
-### Plugin files, one per theme
-
-| Plugin | Notes |
+| Scenario | Result |
 |---|---|
-| `catppuccin/nvim` | Primary theme. Carries a large custom Embark-inspired palette, inactive-window dimming, and integrations for NvimTree, Gitsigns, Notify, Treesitter, completion, tabline, winbar, Grapple, and Markdown rendering |
-| `EdenEast/nightfox.nvim` | Compiles a custom Dayfox palette and defines Telescope, diff, split, and tabline highlights |
-| `embark-theme/vim` | Installed, but the theme switcher never selects it |
+| No override, hour 10 | `catppuccin-latte`, `background=light` |
+| `NVIM_USE_DARK_THEME=true` | `catppuccin-mocha`, `background=dark` |
+| `NVIM_USE_DARK_THEME=false` | `catppuccin-latte`, `background=light` |
+| `NVIM_USE_DARK_THEME=yes` | Warns, then falls back to the clock |
+| Manual `:colorscheme` switch | `FloatBorder` still matches `NormalFloat` |
+| Dark palette applied | `Normal` resolves to the custom base and text, not stock Catppuccin |
 
-## Findings to resolve during this phase
+The full validation script also passes, including the LuaLS check at zero problems:
 
-These came out of reading the old code. They are recorded here rather than fixed, because each one
-is a decision.
+```text
+== headless startup ==
+ok:   headless startup
 
-1. **`embark-theme/vim` looks unused.** The switcher's theme table lists only Catppuccin and
-   Nightfox variants, so Embark is never applied. Confirm and then mark it `deleted` in
-   `current_state.md`.
-2. **The Nightfox entries in the theme table are unreachable.** `LIGHT_THEME` and `DARK_THEME` are
-   both Catppuccin, so `dayfox`, `dawnfox`, `duskfox`, `nightfox`, and `carbonfox` can only be
-   reached by running `:colorscheme` by hand. Decide whether to keep them as manual options or drop
-   the plugin.
-3. **The environment override has an edge case.** `NVIM_USE_DARK_THEME` is parsed through a
-   `{ ["true"] = true, ["false"] = false }` lookup. Any other value yields `nil`, and `not nil` is
-   `true`, which forces the light theme. An unexpected value should either be ignored or rejected
-   loudly, not silently switch themes.
-4. **Time-based switching is evaluated once.** The choice is made at startup and never revisited,
-   so a session open across the boundary keeps its original theme. Decide whether that is intended.
-5. **Three themes are a lot to carry.** If only one is actually used, keeping the others costs a
-   plugin, a lockfile entry, and palette maintenance for no benefit.
+== startup messages ==
+ok:   no startup errors
 
-## Decisions needed
+== missing dependencies ==
+ok:   startup with restricted PATH
 
-| Question | Why it matters |
-|---|---|
-| Which theme, or themes, to keep? | Determines whether one or three theme plugins are installed |
-| Keep automatic light and dark switching, or set one theme? | Determines whether the switcher logic and the environment override are ported at all |
-| If switching is kept, keep the clock-based rule or switch to something explicit? | The clock rule is invisible and hard to predict |
-| Port the custom Catppuccin palette, or start from stock? | The old palette is roughly 170 lines of overrides tuned to Embark colors |
+== Lua syntax ==
+ok:   luajit syntax check
 
-## Planned work
+== formatting ==
+ok:   stylua format check
 
-1. Add the chosen theme plugin to `lua/plugins/colorscheme.lua` with `priority = 1000`.
-2. Apply the theme at startup, tolerating a missing plugin rather than crashing.
-3. Port the `FloatBorder` handling, using `util.colors.get`.
-4. Port the `ColorScheme` autocommand that re-applies the float border.
-5. Reimplement light and dark selection if that decision is kept, without `which-key`.
-6. Add a colorscheme picker mapping once Phase 3 provides a fuzzy finder, or drop the mapping.
-7. Update `current_state.md` for each theme plugin: `migrated` or `deleted`.
+== LuaLS diagnostics ==
+ok:   lua-language-server diagnostics
 
-## Validation
-
-The usual script:
-
-```sh
-.crush/skills/validating-neovim-commands/scripts/validate.sh
+All executed checks passed.
 ```
 
-This phase has one extra risk worth testing directly: a theme failure is the most visible way to
-break startup, so the missing-plugin path must be exercised rather than assumed. Phase 1B showed
-that LuaLS catches problems `luajit` cannot, so the type check must stay at zero problems.
+`lazy-lock.json` was generated and pins `catppuccin` and `lazy.nvim`.
 
-A theme is also the first thing that cannot be verified headlessly. Confirming it actually renders
-requires opening `nvim2027` and looking at it.
+## Findings resolved
 
-## Deferred to later phases
+1. **`embark-theme/vim` was unused.** Confirmed: the switcher never selected it. Marked `deleted`
+   in `current_state.md` and not ported.
+2. **The Nightfox flavours were unreachable.** Both light and dark resolved to Catppuccin, so
+   `dayfox`, `dawnfox`, `duskfox`, `nightfox`, and `carbonfox` could only be reached by hand.
+   Marked `deleted` and not ported.
+3. **The environment override no longer fails silently.** The old lookup mapped `"true"` and
+   `"false"` and turned everything else into the light theme, because `not nil` is `true`. Anything
+   unrecognised is now reported and ignored, leaving the clock rule in charge.
+4. **Time-based switching is still evaluated once.** Kept deliberately, matching the old behavior.
+   A session open across the boundary keeps its original flavour.
 
-- The colorscheme picker mapping, which needs the fuzzy finder from Phase 3.
-- Statusline, tabline, winbar, and other UI integration once those plugins arrive in Phase 6.
+## Notes
+
+- **`vim.o.background` is now set for both flavours.** The old code only set it for light. Setting
+  it explicitly is more correct for plugins that read `background`, and it matches the flavour in
+  use.
+- **The light palette is retained but unused.** The old file defined a light override table and
+  left the reference to it commented out, with a `TODO: fix colors`. That table is preserved as
+  `embark_light` so the work is not lost, and the reference is still commented out, so the light
+  flavour runs on stock Catppuccin exactly as before. It is the one remaining LuaLS hint in the
+  tree, and hints do not fail the check.
+- **Palette values shift by one in the blue channel.** `#1E1C31` resolves to `#1E1C32`. This is
+  Catppuccin's own palette processing, not the port: `require("catppuccin.palettes").get_palette(
+  "mocha")` reports the shifted values itself. The old configuration fed in the same hex values, so
+  the result is identical.
+- **One dead local was dropped.** The old `custom_highlights` defined an `accent_color` that
+  nothing used. It was removed; the palette it referenced is unchanged.
+
+## Deferred
+
+- **The `<leader>C` colorscheme picker** needs a fuzzy finder, which arrives in Phase 3. The old
+  mapping used Telescope and also depended on `which-key`, which Phase 1 removed.
+- **UI integrations** for statusline, tabline, winbar, and file tree take effect once those plugins
+  arrive in Phase 6. The integration flags and custom highlight groups for them are already in
+  place, so they will apply without further changes.
