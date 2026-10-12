@@ -29,7 +29,7 @@ recommendation for the rebuild.
 | `ray-x/go.nvim` | open | Language tooling | Go development support | Direct, loaded for Go. Adds Go commands and mappings for imports, filling structs, error handling, documentation, and tests. |
 | `ray-x/guihua.lua` | open | Language tooling | Go UI dependency | Dependency of `go.nvim`. Supplies UI support used by the Go tooling plugin. |
 | `mickael-menu/zk-nvim` | open | Notes/LSP | ZK note-management integration | Direct, loaded for Markdown. Starts the `zk` LSP, attaches in ZK notebooks, uses Telescope for selection, and adds note hover, definition, and diagnostic mappings. |
-| `nvim-treesitter/nvim-treesitter` | open | Syntax | Parsing, highlighting, indentation | Direct and dependency of `render-markdown.nvim`. Installs parsers for the configured languages, enables highlighting and indentation, supports incremental selection, and supplies Markdown language injections. |
+| `nvim-treesitter/nvim-treesitter` | migrated | Syntax | Parsing, highlighting, indentation | Migrated in Phase 3 to the current main branch. Installs the configured parsers through the `tree-sitter` CLI; Neovim owns highlighting and indentation through native Treesitter APIs. |
 | `JoosepAlviste/nvim-ts-context-commentstring` | open | Editing | Context-aware comment strings | Dependency of `Comment.nvim`. Determines the appropriate comment syntax inside embedded Treesitter regions. |
 | `numToStr/Comment.nvim` | open | Editing | Comment toggling | Direct. Provides linewise, blockwise, visual, and operator-pending commenting with Treesitter-aware comment strings. |
 | `echasnovski/mini.pairs` | open | Editing enhancement | Automatic pairs | Direct, loaded in Insert mode. Inserts matching delimiters automatically. |
@@ -54,8 +54,8 @@ recommendation for the rebuild.
 | `MunifTanjim/nui.nvim` | open | UI library | UI components | Dependency of `noice.nvim`. Supplies reusable UI components and window primitives. |
 | `folke/snacks.nvim` | open | UI/utilities | Notifications | Direct, eagerly loaded with priority 1000. Enables the Snacks notifier and notification history mapping. |
 | `stevearc/dressing.nvim` | open | UI/input | Improved input and select UI | Direct, loaded lazily. Replaces basic input UI with improved presentation and disables window blending for inputs. |
-| `nvim-telescope/telescope.nvim` | open | Search/navigation | Fuzzy finder | Direct. Provides file, grep, buffer, recent-file, mark, diagnostic, and custom knowledge-base pickers, with custom layouts and mappings. |
-| `nvim-telescope/telescope-fzf-native.nvim` | open | Search | Native fuzzy sorting | Dependency of `telescope.nvim`, built with `make`. Provides native FZF sorting and smart-case matching. |
+| `nvim-telescope/telescope.nvim` | migrated | Search/navigation | Fuzzy finder | Migrated in Phase 3 with lazy key-triggered loading for files, grep, current-buffer search, recent files, diagnostics, marks, and colorschemes. The unused knowledge-base extension was intentionally not ported. |
+| `nvim-telescope/telescope-fzf-native.nvim` | migrated | Search | Native fuzzy sorting | Migrated in Phase 3 as a Telescope dependency; its native build and extension loading were verified successfully. |
 | `cbochs/grapple.nvim` | open | Navigation/workspace | Tagged-file navigation | Direct and dependency of Lualine and Tabby. Provides Git-scoped file tags, a Telescope extension, tag toggles, and statusline/tabline integration. |
 | `nvim-lua/plenary.nvim` | open | Library | Lua utility functions | Dependency of Grapple and Todo Comments. Supplies shared Lua utilities. |
 | `folke/which-key.nvim` | deleted | UI/keymaps | Keymap discovery | Direct and dependency of Grapple. Displayed keymap popups, supported grouped mappings, and enabled spelling suggestions while disabling marks integration. Removed in Phase 1 and replaced with the dependency-free popup in `lua/util/keymap_popup.lua`, bound to `<leader>?`. |

@@ -113,8 +113,6 @@ map("n", "dd", function()
   return vim.api.nvim_get_current_line():match "^%s*$" and '"_dd' or "dd"
 end, { expr = true, noremap = true })
 
-map("", "<Space>", "<Nop>", opts)
-
 -- Terminal
 map("t", "<Esc><Esc>", [[<C-\><C-N> :q<CR>]], opts)
 

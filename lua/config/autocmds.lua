@@ -79,3 +79,17 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     end
   end,
 })
+
+-- Neovim owns highlighting and indentation, and missing parsers are harmless.
+vim.api.nvim_create_autocmd("FileType", {
+  group = group,
+  desc = "Start treesitter highlighting and indentation when a parser exists",
+  callback = function(args)
+    local started = pcall(vim.treesitter.start, args.buf)
+    if not started or vim.bo[args.buf].filetype == "yaml" then
+      return
+    end
+
+    vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+})

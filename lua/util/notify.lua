@@ -4,6 +4,8 @@ local M = {}
 
 ---@alias UtilNotifyLevel "debug"|"info"|"warn"|"error"
 
+local logger = vim.log.new({ name = "nvim-2027", level = vim.log.levels.TRACE })
+
 ---@type table<UtilNotifyLevel, integer>
 local levels = {
   debug = vim.log.levels.DEBUG,
@@ -34,6 +36,8 @@ end
 ---@param opts? table
 ---@return nil
 function M.notify(level, message, opts)
+  logger[level](message)
+
   local snacks = resolve_snacks()
   if snacks then
     local handler = snacks[level]

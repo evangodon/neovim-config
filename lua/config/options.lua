@@ -20,7 +20,6 @@ options.splitbelow = true -- force all horizontal splits to go below current win
 options.splitright = true -- force all vertical splits to go to the right of current window
 options.swapfile = false -- creates a swapfile
 
-options.termguicolors = true -- set term gui colors (most terminals support this)
 options.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
 options.undofile = true -- enable persistent undo
 options.updatetime = 300 -- faster completion (4000ms default)
@@ -51,6 +50,6 @@ vim.wo.fillchars = "eob: " -- Remove tilde in sidebar
 
 options.shortmess:append "c"
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd "set iskeyword+=-" -- define how keywords are grouped
+options.whichwrap:append "<,>,[,],h,l"
+options.iskeyword:append "-" -- define how keywords are grouped
 vim.g.netrw_winsize = 30 -- set the size of the netrw window
